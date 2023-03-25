@@ -1,0 +1,40 @@
+project:
+  type: website
+
+website:
+  title: "Medienbasierte Wissenskonstruktion mit R"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Infos"
+        file: index.qmd
+      - text: "Kontakt"
+        file: index.qmd
+  sidebar:
+    logo: "assets/img/logo_ude.png"
+    style: "docked"
+    search: true
+    contents:
+      - section: "Basics"
+        contents:
+          - index.qmd
+          - about.qmd
+          - twitter-classifier.qmd
+          - shiny.qmd
+      - section: "Layout"
+        contents:
+          - layout.qmd
+          - layout-knitr.qmd
+          - layout-jupyter.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+

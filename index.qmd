@@ -1,0 +1,20 @@
+---
+title: "Einführung in RStudio"
+subtitle: "Erklärung der GUI, R als Software und vieles mehr"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+editor: visual
+---
+
+# Installation
+
+Wenn du alle Schritte aus dem letzten Tutorial befolgt hast, sollte die Oberfläche von R nun so bei dir aussehen:
+
+![](assets/img/rstudio_gui.png){fig-align="center" width="500"}
+
+```{r}
+1 + 1
+```
