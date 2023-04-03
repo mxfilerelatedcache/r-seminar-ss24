@@ -21,7 +21,7 @@ Trotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE zu benutzen. 
 
 # Download & Installation
 
-Starten wir also mit dem Download. Besuche folgende **Website**:
+Starten wir also mit dem Download. Besuche folgende [**Website**](https://posit.co/download/rstudio-desktop/):
 
 ![Figure 2: posit.co](assets/img/posit_co.png){style="text-align:center" fig-align="center" width="500"}
 
