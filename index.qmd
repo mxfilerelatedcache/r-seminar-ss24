@@ -1,7 +1,7 @@
 ---
-title: "Einführung in RStudio"
-subtitle: "Erklärung der GUI, R als Software und vieles mehr"
-author: "Simon Krukowski"
+title: "Seminar Medienbasierte Wissenskonstruktion: R - Website"
+subtitle: ""
+author: "Simon Krukowski, Kira Wolff"
 format:
   html:
     code-fold: true
@@ -9,12 +9,6 @@ format:
 editor: visual
 ---
 
-# Installation
+# Seminar Medienbasierte Wissenskonstruktion: R
 
-Wenn du alle Schritte aus dem letzten Tutorial befolgt hast, sollte die Oberfläche von R nun so bei dir aussehen:
-
-![](assets/img/rstudio_gui.png){fig-align="center" width="1000"}
-
-```{r}
-1 + 1
-```
+Hier werden ab dem 12.04. mehr Infos stehen.

@@ -1,0 +1,52 @@
+---
+title: "Download & Installation von R"
+subtitle: "Installation von R & RStudio und was es zu beachten gibt"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+editor: visual
+---
+
+In diesem Notebook erklären wir, wie ihr euch R und RStudio herunterladen könnt. Zwar gibt es im Web einige How-Tos und Tutorials, wir wollen euch an dieser Stelle der Vollständigkeit halber aber nochmal vermitteln, wie genau ihr euch die Software installiert und was es dabei zu beachten gibt. Falls während der Installation Fragen aufkommen, meldet euch gerne per Mail bei uns (simon.krukowski\@stud.uni-due.de) oder schaut einfach im Web nach How-Tos/Troubleshooting. Das ist generell auch eine gute Idee beim Thema R, Programmieren & Datenanalyse - mehr dazu erfahrt ihr dann im Seminar.
+
+# Überblick
+
+Da dein Computer R als Programmiersprache nicht von selbst versteht, musst du R zunächst installieren. Sobald du R installiert hast, kannst du es theoretisch benutzen, und Daten damit auswerten. Hierbei ist wichtig zu differenzieren, dass du R zwar in der Kommandozeile/Terminal verwenden kannst, dies aber wenig intuitiv ist. In Figure 1 unten kannst du sehen, wie wir in der Kommandozeile mit Hilfe von R 1+1 gerechnet haben. Perfekt!
+
+![Figure 1: R & Rstudio](assets/img/rstudiovsr.png){style="text-align:center" fig-align="center" width="800"}
+
+Trotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE zu benutzen. Die populärste IDE dafür ist RStudio. Im Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in diesem Notebook.
+
+# Download & Installation
+
+Starten wir also mit dem Download. Besuche folgende **Website**:
+
+![Figure 2: posit.co](assets/img/posit_co.png){style="text-align:center" fig-align="center" width="500"}
+
+Wenn du dem Link folgst, wirst du auf die offzielle Seite von R (CRAN) weitergeleitet, und kannst dir dort die für dein System richtige Version auswählen:
+
+![Figure 3: CRAN](assets/img/cran1.png){style="text-align:center" fig-align="center" width="500"}
+
+In unserem Fall haben wir einen Mac, und wählen den entsprechenden Link aus. Auf der folgenden Seite gibt es viele verschiedene Links, hier ist es wichtig den bei *latest release* und für euer System richtigen zu nehmen (in unserem Fall Intel Mac).
+
+![Figure 4: CRAN](assets/img/cran2.png){style="text-align:center" fig-align="center" width="500"}
+
+Nach dem Download könnt ihr den Installer ausführen und voilà - ihr habt R installiert! Da bei uns R schon installiert ist gibt es hier leider keinen Screenshot.
+
+Theoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu **posit.co**und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):
+
+![Figure 5: posit.co](assets/img/posit_co2.png){style="text-align:center" fig-align="center" width="500"}
+
+Je nach System unterscheidet sich hier die Installation etwas, aber am Ende sollte RStudio bei dir installiert sein. Öffnet also R, und es sollte etwa wie folgt aussehen:
+
+![Figure 6: So sollte RStudio aussehen](assets/img/rstudio.png){style="text-align:center" fig-align="center" width="800"}
+
+# R-Skripte ausführen
+
+Als erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript zunächst herunter:
+
+{{< downloadthis assets/scripts/termin1.R label="R Skript" icon=code-square type=primary class=btn >}}
+
+Öffnet das Skript durch einen Doppelklick mit RStudio und führt es aus. Wenn ihr alles richtig gemacht habt, sollte etwas in der Konsole erscheinen. Diesen Output werden wir in der ersten Seminarstunde besprechen.

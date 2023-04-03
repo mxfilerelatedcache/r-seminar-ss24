@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Simon Krukowski, Kira Wolff">
+<meta name="author" content="Simon Krukowski">
 
-<title>Medienbasierte Wissenskonstruktion mit R - Seminar Medienbasierte Wissenskonstruktion: R - Website</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Download &amp; Installation von R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,6 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Seminar Medienbasierte Wissenskonstruktion: R - Website</h1>
+      <h1 class="quarto-secondary-nav-title">Download &amp; Installation von R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -132,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
+  <a href="./installation.html" class="sidebar-item-text sidebar-link active">Download &amp; Installation von R</a>
   </div>
 </li>
       </ul>
@@ -146,7 +147,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#seminar-medienbasierte-wissenskonstruktion-r" id="toc-seminar-medienbasierte-wissenskonstruktion-r" class="nav-link active" data-scroll-target="#seminar-medienbasierte-wissenskonstruktion-r">Seminar Medienbasierte Wissenskonstruktion: R</a></li>
+  <li><a href="#überblick" id="toc-überblick" class="nav-link active" data-scroll-target="#überblick">Überblick</a></li>
+  <li><a href="#download-installation" id="toc-download-installation" class="nav-link" data-scroll-target="#download-installation">Download &amp; Installation</a></li>
+  <li><a href="#r-skripte-ausführen" id="toc-r-skripte-ausführen" class="nav-link" data-scroll-target="#r-skripte-ausführen">R-Skripte ausführen</a></li>
   </ul>
 </nav>
     </div>
@@ -155,7 +158,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Seminar Medienbasierte Wissenskonstruktion: R - Website</h1>
+<h1 class="title d-none d-lg-block">Download &amp; Installation von R</h1>
+<p class="subtitle lead">Installation von R &amp; RStudio und was es zu beachten gibt</p>
 </div>
 
 
@@ -165,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Simon Krukowski, Kira Wolff </p>
+             <p>Simon Krukowski </p>
           </div>
   </div>
     
@@ -176,9 +180,70 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="seminar-medienbasierte-wissenskonstruktion-r" class="level1">
-<h1>Seminar Medienbasierte Wissenskonstruktion: R</h1>
-<p>Hier werden ab dem 12.04. mehr Infos stehen.</p>
+<p>In diesem Notebook erklären wir, wie ihr euch R und RStudio herunterladen könnt. Zwar gibt es im Web einige How-Tos und Tutorials, wir wollen euch an dieser Stelle der Vollständigkeit halber aber nochmal vermitteln, wie genau ihr euch die Software installiert und was es dabei zu beachten gibt. Falls während der Installation Fragen aufkommen, meldet euch gerne per Mail bei uns (simon.krukowski@stud.uni-due.de) oder schaut einfach im Web nach How-Tos/Troubleshooting. Das ist generell auch eine gute Idee beim Thema R, Programmieren &amp; Datenanalyse - mehr dazu erfahrt ihr dann im Seminar.</p>
+<section id="überblick" class="level1">
+<h1>Überblick</h1>
+<p>Da dein Computer R als Programmiersprache nicht von selbst versteht, musst du R zunächst installieren. Sobald du R installiert hast, kannst du es theoretisch benutzen, und Daten damit auswerten. Hierbei ist wichtig zu differenzieren, dass du R zwar in der Kommandozeile/Terminal verwenden kannst, dies aber wenig intuitiv ist. In Figure 1 unten kannst du sehen, wie wir in der Kommandozeile mit Hilfe von R 1+1 gerechnet haben. Perfekt!</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/rstudiovsr.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption class="figure-caption">Figure 1: R &amp; Rstudio</figcaption><p></p>
+</figure>
+</div>
+<p>Trotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE zu benutzen. Die populärste IDE dafür ist RStudio. Im Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in diesem Notebook.</p>
+</section>
+<section id="download-installation" class="level1">
+<h1>Download &amp; Installation</h1>
+<p>Starten wir also mit dem Download. Besuche folgende <strong>Website</strong>:</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/posit_co.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure 2: posit.co</figcaption><p></p>
+</figure>
+</div>
+<p>Wenn du dem Link folgst, wirst du auf die offzielle Seite von R (CRAN) weitergeleitet, und kannst dir dort die für dein System richtige Version auswählen:</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/cran1.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure 3: CRAN</figcaption><p></p>
+</figure>
+</div>
+<p>In unserem Fall haben wir einen Mac, und wählen den entsprechenden Link aus. Auf der folgenden Seite gibt es viele verschiedene Links, hier ist es wichtig den bei <em>latest release</em> und für euer System richtigen zu nehmen (in unserem Fall Intel Mac).</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/cran2.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure 4: CRAN</figcaption><p></p>
+</figure>
+</div>
+<p>Nach dem Download könnt ihr den Installer ausführen und voilà - ihr habt R installiert! Da bei uns R schon installiert ist gibt es hier leider keinen Screenshot.</p>
+<p>Theoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu <strong>posit.co</strong>und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/posit_co2.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Figure 5: posit.co</figcaption><p></p>
+</figure>
+</div>
+<p>Je nach System unterscheidet sich hier die Installation etwas, aber am Ende sollte RStudio bei dir installiert sein. Öffnet also R, und es sollte etwa wie folgt aussehen:</p>
+<div class="quarto-figure quarto-figure-center" style="text-align:center">
+<figure class="figure">
+<p><img src="assets/img/rstudio.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption class="figure-caption">Figure 6: So sollte RStudio aussehen</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="r-skripte-ausführen" class="level1">
+<h1>R-Skripte ausführen</h1>
+<p>Als erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript zunächst herunter:</p>
+<p><a href="#dnldts55781" onclick="fetch('data:text/plain;base64,IyBFcnN0ZXMgU2tyaXB0IHp1bSBTZW1pbmFyIE1lZGllbmJhc2llcnRlIFdpc3NlbnNrb25zdHJ1a3Rpb246IFIKCiMgU2F0eiBpbiBLb25zb2xlIHByaW50ZW46CnByaW50KHBhc3RlMCgiSWNoIGhhYmUgIixSLnZlcnNpb24kdmVyc2lvbi5zdHJpbmcsIiB1bmQgUlN0dWRpbyB2Iixyc3R1ZGlvYXBpOjp2ZXJzaW9uSW5mbygpJHZlcnNpb24pKQoK').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'file.R'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+        });"><button class="btn btn-primary downloadthis  btn" id="dnldts55781"><i class="bi bi-code-square"></i> R Skript </button></a></p>
+<p>Öffnet das Skript durch einen Doppelklick mit RStudio und führt es aus. Wenn ihr alles richtig gemacht habt, sollte etwas in der Konsole erscheinen. Diesen Output werden wir in der ersten Seminarstunde besprechen.</p>
 
 
 </section>

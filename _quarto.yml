@@ -20,15 +20,7 @@ website:
     contents:
       - section: "Basics"
         contents:
-          - index.qmd
-          - about.qmd
-          - twitter-classifier.qmd
-          - shiny.qmd
-      - section: "Layout"
-        contents:
-          - layout.qmd
-          - layout-knitr.qmd
-          - layout-jupyter.qmd
+          - installation.qmd
 
 format:
   html:
