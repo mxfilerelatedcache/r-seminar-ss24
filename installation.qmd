@@ -50,3 +50,7 @@ Als erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript zu
 {{< downloadthis assets/scripts/termin1.R label="R Skript" icon=code-square type=primary class=btn >}}
 
 Öffnet das Skript durch einen Doppelklick mit RStudio und führt es aus. Wenn ihr alles richtig gemacht habt, sollte etwas in der Konsole erscheinen. Diesen Output werden wir in der ersten Seminarstunde besprechen.
+
+# Troubleshooting
+
+Haben sich bei der Installation Probleme ergeben? Meldet euch gerne per Mail an simon.krukowski\@stud.uni-due.de.
