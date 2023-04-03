@@ -17,7 +17,7 @@ Da dein Computer R als Programmiersprache nicht von selbst versteht, musst du R 
 
 ![Figure 1: R & Rstudio](assets/img/rstudiovsr.png){style="text-align:center" fig-align="center" width="800"}
 
-Trotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE (Entwirklungsumgebung, siehe [hier](https://en.wikipedia.org/wiki/Integrated_development_environment)) zu benutzen. Die populärste IDE dafür ist RStudio. Im Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in diesem Notebook.
+Trotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE (Entwicklungsumgebung, siehe [hier](https://en.wikipedia.org/wiki/Integrated_development_environment)) zu benutzen. Die populärste IDE dafür ist RStudio. Im Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in diesem Notebook.
 
 # Download & Installation
 
@@ -35,7 +35,7 @@ In unserem Fall haben wir einen Mac, und wählen den entsprechenden Link aus. Au
 
 Nach dem Download könnt ihr den Installer ausführen und voilà - ihr habt R installiert! Da bei uns R schon installiert ist gibt es hier leider keinen Screenshot.
 
-Theoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu [**posit.co**](https://posit.co/download/rstudio-desktop/)und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):
+Theoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu [**posit.co**](https://posit.co/download/rstudio-desktop/) und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):
 
 ![Figure 5: posit.co](assets/img/posit_co2.png){style="text-align:center" fig-align="center" width="800"}
 
