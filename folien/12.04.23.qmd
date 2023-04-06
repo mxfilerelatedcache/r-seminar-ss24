@@ -1,0 +1,12 @@
+---
+title: "R-Seminar: Basics"
+format: pptx
+---
+
+## folie 1
+
+test test
+
+## folie 2
+
+test
