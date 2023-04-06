@@ -1,6 +1,8 @@
 ---
-title: "R-Seminar - Basics"
-format: pptx
+title: "12.04.23"
+format: revealjs
+execute: 
+  output: asis = TRUE
 ---
 
 ## Vorstellungsrunde
@@ -13,7 +15,6 @@ format: pptx
 -   Daten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten
 -   Einblick in Breite und Tiefe, die R bietet
 -   Grundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)
--   
 
 ## Zeitplan
 
@@ -25,16 +26,22 @@ format: pptx
 ## Prüfungsleistung
 
 1.  Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
-    -   Abgabe per Moodle
-    -   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
-    -   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
-    -   Einzelarbeit!
 
-```{=html}
-<!-- -->
-```
+-   Abgabe per Moodle
+-   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
+-   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
+-   Einzelarbeit!
+
 2.  1x Hausaufgabe vorstellen
 
 3.  Bericht zu (neuem) Datensatz einreichen
 
 Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
+
+## User Interface
+
+## Codetest
+
+```{r}
+1+1
+```
