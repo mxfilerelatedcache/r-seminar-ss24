@@ -22,7 +22,9 @@ execute:
 -   31.05 vrsl. letzte, kürzere Sitzung
 -   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
+-   Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)
 
+::: smaller
 ## Prüfungsleistung
 
 1.  Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
@@ -30,18 +32,247 @@ execute:
 -   Abgabe per Moodle
 -   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
 -   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
--   Einzelarbeit!
+-   Einzelarbeit (Plagiatscheck)
+-   Wir laden nach Abgabe "Musterlösung" hoch
 
 2.  1x Hausaufgabe vorstellen
 
 3.  Bericht zu (neuem) Datensatz einreichen
 
 Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
+:::
+
+## Was ist R?
+
+-   Programmiersprache (und -oberfläche) für statistische Berechnungen und Grafiken
+-   open-source & kostenlos
+-   große Community, die ständig Funktionen erweitert und bei Problemen hilft
+-   R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher
 
 ## User Interface
+
+-   oben links: Code
+
+-   unten links: Konsole - ausgeführter Code und Output
+
+    -   hier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden
+
+-   oben rechts: u.a. Environment - welche Objekte und Daten exisitieren
+
+-   unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht
+
+Bild einfügen
+
+## Code erstellen + ausführen
+
+-   Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)
+-   In dem File ist nur die Zeile ohne "\#" ausführbarer Code. Wie hier geschehen, lassen sich mit "\#" Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
+-   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
+-   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
+
+```{r echo=T, eval = FALSE}
+# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R
+
+# Satz in Konsole printen:
+print(paste0("Ich habe ",R.version$version.string," und RStudio v",rstudioapi::versionInfo()$version))
+```
+
+```{r echo=F, eval=TRUE}
+print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
+```
+
+## .R vs. Quarto
+
+-   R's Standardformat sind .R-Dateien
+-   Für "echte Arbeit" mit R sind Quarto-Dokumente meistens nützlicher:
+    -   ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,...)
+    -   ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTex)
+    -   ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll
+    -   Auswertung & Bericht können somit im gleichen Dokument geschehen
+    -   Diese Präsentation ist auch in R entstanden!
+-   
+
+Bild Vergleich .R und .qmd
+
+## Quarto
+
+-   *Erstellt ein Quarto-Dokument über File \> New File \> Quarto Document*
+-   Im auftauchenden Fenster könnt ihr einstellen:
+    -   Titel & AutorIn des Dokuments
+    -   gewünschtes Output-Format (hier: html)
+    -   womit das Quarto-Dokument gerendert werden soll (hier: knitr)
+-   Im Dokument:
+    -   Den Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
+    -   Im Feld darunter kann Text geschrieben und formatiert werden
+        -   Source: Format lässt sich über bestimmte Zeichen einstellen
+        -   Visual: Format lässt sich über Markieren + Auswählen einstellen
+    -   Code kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)
+    -   Im grau unterlegten Kästchen lässt sich "normaler" R-Code schreiben und ausführen
+        -   "Vorschau" über den Play-Button
+        -   in den geschweiften Klammern lässt sich einstellen, was mit Code + Output beim Rendern passieren soll
+-   Über "Render" wird das Dokument in das Zielformat umgewandelt
+-   
+
+Bild Dialogfenster
+
+## Quarto
+
+-   *Erstellt zwei Code-Chunks*
+-   *Fügt bei einem der Chunks in geschweiften Klammern neben das "r" "echo = TRUE" (ohne Anführungszeichen)*
+-   *Schreibt in den Text- und in die Code-Bereich "4+5" (ohne Anführungzeichen)*
+-   *Rendert das Dokument*
+
+```{r}
+4+5
+```
+
+```{r echo = TRUE}
+4+5
+```
+
+4+5
+
+## Rechenoperatoren
+
+-   Dezimaltrennzeichen: Punkt ".", nicht Komma ","
+-   " + "
+-   " - "
+-   " \* "
+-   " / " (alle ohne Anführungszeichen)
+-   Exponent: \^
+
+::: smaller
+## Objekte
+
+-   Anstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern
+-   Konzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll
+
+```{r echo=T, eval=T}
+ergebnis <- 3+5
+```
+
+-   R führt den Code rechts vom Pfeil aus - das Objekt ist "8", nicht "3+5"!
+-   Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt
+-   R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!
+-   Objekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
+
+```{r echo=T, eval=T}
+ergebnis
+```
+
+-   *Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!*
+-   *Was passiert, wenn man den gleichen Objektnamen erneut verwendet?*
+:::
+
+## Objekte
+
+-   Warum ist Objekte erstellen wichtig?
+    -   Für R ist jeder Output sonst "flüchtig": Es wird nicht wirklich etwas verändert
+    -   Zwischenergebnisse überprüfen
+    -   Parameter festlegen
+    -   Flüchtigkeitsfehler vermeiden
+    -   uvm.
+-   Shortcut für \<- : ALT+-
+-   Pfeil in die andere Richtung und Gleichheitszeichen funktionieren nicht bzw. sollten nicht verwendet werden!
+
+::: smaller
+## Funktionen
+
+-   Mithilfe von Funktionen lassen sich Objekte/Daten bearbeiten
+
+-   Beispiel: `round(3.45, digits = 1)` rundet 3.45 auf die erste Nachkommastelle
+
+    -   am Anfang steht der Name der Funktion (auch hier: case-sensitive)
+
+    -   die Argumente der Funktion werden von [runden]{.underline} Klammern eingerahmt
+
+    -   Argumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll
+
+    -   Sie folgen der Syntax "Argument = Angabe"
+
+    -   Argumente werden durch Komma getrennt
+
+    -   die Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. `round(3.45, 1)` (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)
+:::
+
+## Hilfe
+
+-   Über `help(Funktion)` wird die Hilfeseite/Dokumentation der Funktion "Funktion" aufgerufen
+
+    -   genauso funktioniert `?Funktion`
+
+    -   auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)
+
+-   Findet mit der Hilfe-Funktion heraus, was `mean()` macht und welche Argumente es hat
+
+    ```{r echo=TRUE}
+    ?mean
+    #oder
+    help(mean)
+    ```
+
+## Packages
+
+-   Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen
+
+-   Durch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig
+
+-   Im Fenster unten rechts unter "Packages" könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind
+
+-   Neue Packages lassen sich mit `install.packages("package-name")` installieren und mit `library(package-name)` aktivieren (auf die Anführungszeichen achten!)
+
+-   *Installiert das Package psych*
+
+-   *Findet heraus, wie sich mit der Hilfefunktion help() auch Informationen über ein Package anzeigen lassen*
+
+-   *Schaut euch mit der Hilfefunktion help() an, welche Funktionen das Package psych beinhaltet*
+
+```{r}
+# Installieren
+install.packages("psych")
+# Aktivieren
+library(psych)
+
+# Mehr über help() herausfinden
+help(help) # Inception!
+# Aha, das Argument "package" kann mir weiterhelfen!
+
+# Über psych informieren
+help(package=psych)
+```
+
+Screenshot von help(psych)
+
+## Datentypen
+
+-   Basic:
+
+    -   **numeric:** Zahlen
+
+    -   **character:** Buchstabenfolgen
+
+    -   **factor:** z.B. Faktorstufen eines Faktors
+
+    -   **logical:** 1 oder 0 bzw. TRUE oder FALSE
+
+-   **Vektor:** eindimensionale "Aufzählung" von Elementen des gleichen Datentyps
+
+-   **Matrix:** ein- bis zweidimensionale Aufzählung von Elementen des gleichen Datentyps
+
+-   **Array:** beliebig-dimensionale Aufzählung von Elementen des gleichen Datentyps
+
+-   **Liste:** kann Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)
+
+-   **Dataframe**, **tibble**: Spezifische Formate, um Datensätze darzustellen. Können pro Spalte unterschiedliche Datentypen beinhalten.
 
 ## Codetest
 
 ```{r}
+1+1
+```
+
+`1+1`
+
+```         
 1+1
 ```
