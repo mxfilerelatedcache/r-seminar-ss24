@@ -1,0 +1,76 @@
+---
+title: "Analyse der Survey-Daten"
+subtitle: ""
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+editor: visual
+---
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+survey <- read.csv("/Users/simonkrukowski/Downloads/results-survey368965.csv")
+```
+
+```{r}
+survey %>%
+  # rename columns
+  rename(age = G01Q02,
+         r_knowledge = G01Q03,
+         r_problems = G01Q09,
+         programming_knowledge = G01Q05,
+         programming_c = G01Q06_c,
+         programming_javascript = G01Q06_javascript,
+         programming_python = G01Q06_python,
+         programming_java = G01Q06_java,
+         programming_sql = G01Q06_sql,
+         programming_julia = G01Q06_julia,
+         programming_other = G01Q06_other) %>% 
+  # mutate (create new/change old columns to account for limesurvey artifacts)
+  mutate(across(everything(), ~na_if(., "")),
+         sex = case_when(G01Q01_female == "Y" ~ "female",
+                         G01Q01_male == "Y" ~ "male",
+                         G01Q01_diverse == "Y" ~ "diverse"),
+         r_knowledge_amount = case_when(G01Q04_priorknow == "AO01" ~ 1,
+                                        G01Q04_priorknow == "AO02" ~ 2,
+                                        G01Q04_priorknow == "AO03" ~ 3,
+                                        G01Q04_priorknow == "AO04" ~ 4,
+                                        G01Q04_priorknow == "AO05" ~ 5),
+         hopes_base_knowledge = case_when(G01Q10_SQ001 == "Y" ~ "Y"),
+         hopes_improve_knowledge = case_when(G01Q10_SQ002 == "Y" ~ "Y"),
+         hopes_dataviz = case_when(G01Q10_SQ003 == "Y" ~ "Y"),
+         hopes_stat_analyses = case_when(G01Q10_SQ004 == "Y" ~ "Y"),
+         hopes_websites = case_when(G01Q10_SQ005 == "Y" ~ "Y")
+         ) %>% 
+  # remove all columns that start with G0 (all limesurvey artifacts)
+  select(-starts_with("G0")) %>% 
+  # replace all Ys with bool values and replace NAs with FALSE for multiple choice items
+  mutate(across(everything(),  ~replace(., . ==  "Y" , TRUE)),
+         across(starts_with(c("programming_","hopes_")),~replace(., is.na(.), FALSE))) -> survey
+```
+
+```{r}
+# optional: we need to replicate rows to imitate a completed survey
+survey %>% 
+  slice(rep(1:n(), each = 3)) -> survey
+```
+
+We start by filtering out subjects that did not complete the survey. Limesurvey gives us the last page they accessed (`lastpage`), which in our case is 1 for completed surveys.
+
+```{r}
+survey %>% 
+ filter(lastpage > 0) -> survey
+```
+
+# Übungsblatt 1
+
+In diesem Übungsblatt könnt ihr euer im Seminar erlerntes Wissen direkt anwenden und erweitern.
+
+```{r}
+
+```
