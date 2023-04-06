@@ -1,12 +1,40 @@
 ---
-title: "R-Seminar: Basics"
+title: "R-Seminar - Basics"
 format: pptx
 ---
 
-## folie 1
+## Vorstellungsrunde
 
-test test
+-   Wer sind wir?
+-   Wer seid ihr? Semester..,
 
-## folie 2
+## Ziele des Seminars
 
-test
+-   Daten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten
+-   Einblick in Breite und Tiefe, die R bietet
+-   Grundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)
+-   
+
+## Zeitplan
+
+-   7-8 Sitzungen, die jeweils 3h dauern
+-   31.05 vrsl. letzte, kürzere Sitzung
+-   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten
+-   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
+
+## Prüfungsleistung
+
+1.  Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
+    -   Abgabe per Moodle
+    -   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
+    -   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
+    -   Einzelarbeit!
+
+```{=html}
+<!-- -->
+```
+2.  1x Hausaufgabe vorstellen
+
+3.  Bericht zu (neuem) Datensatz einreichen
+
+Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
