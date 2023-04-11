@@ -20,7 +20,7 @@ execute:
 
 -   7-8 Sitzungen, die jeweils 3h dauern
 -   31.05 vrsl. letzte, kürzere Sitzung
--   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten
+-   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
 -   Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)
 
@@ -29,7 +29,7 @@ execute:
 
 1.  Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
 
--   Abgabe per Moodle
+-   Abgabe per Moodle spätestens am Dienstag vor der nächsten Sitzung
 -   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
 -   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
 -   Einzelarbeit (Plagiatscheck)
@@ -37,7 +37,7 @@ execute:
 
 2.  1x Hausaufgabe vorstellen
 
-3.  Bericht zu (neuem) Datensatz einreichen
+3.  Bericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen
 
 Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
 :::
@@ -63,9 +63,10 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 Bild einfügen
 
+::: smaller
 ## Code erstellen + ausführen
 
--   Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)
+-   *Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)*
 -   In dem File ist nur die Zeile ohne "\#" ausführbarer Code. Wie hier geschehen, lassen sich mit "\#" Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
 -   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
 -   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
@@ -80,7 +81,9 @@ print(paste0("Ich habe ",R.version$version.string," und RStudio v",rstudioapi::v
 ```{r echo=F, eval=TRUE}
 print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 ```
+:::
 
+::: smaller
 ## .R vs. Quarto
 
 -   R's Standardformat sind .R-Dateien
@@ -93,7 +96,9 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 -   
 
 Bild Vergleich .R und .qmd
+:::
 
+::: smaller
 ## Quarto
 
 -   *Erstellt ein Quarto-Dokument über File \> New File \> Quarto Document*
@@ -114,6 +119,7 @@ Bild Vergleich .R und .qmd
 -   
 
 Bild Dialogfenster
+:::
 
 ## Quarto
 
@@ -140,6 +146,8 @@ Bild Dialogfenster
 -   " \* "
 -   " / " (alle ohne Anführungszeichen)
 -   Exponent: \^
+-   logisch gleich: ==
+-   logisch ungleich: !=
 
 ::: smaller
 ## Objekte
@@ -153,17 +161,18 @@ ergebnis <- 3+5
 
 -   R führt den Code rechts vom Pfeil aus - das Objekt ist "8", nicht "3+5"!
 -   Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt
--   R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!
--   Objekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
 
 ```{r echo=T, eval=T}
 ergebnis
 ```
 
+-   R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!
+-   Objekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
 -   *Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!*
 -   *Was passiert, wenn man den gleichen Objektnamen erneut verwendet?*
 :::
 
+::: smaller
 ## Objekte
 
 -   Warum ist Objekte erstellen wichtig?
@@ -174,6 +183,7 @@ ergebnis
     -   uvm.
 -   Shortcut für \<- : ALT+-
 -   Pfeil in die andere Richtung und Gleichheitszeichen funktionieren nicht bzw. sollten nicht verwendet werden!
+:::
 
 ::: smaller
 ## Funktionen
@@ -203,7 +213,7 @@ ergebnis
 
     -   auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)
 
--   Findet mit der Hilfe-Funktion heraus, was `mean()` macht und welche Argumente es hat
+-   *Findet mit der Hilfe-Funktion heraus, was `mean()` macht und welche Argumente es hat*
 
     ```{r echo=TRUE, eval=FALSE}
     ?mean
@@ -211,6 +221,7 @@ ergebnis
     help(mean)
     ```
 
+::: smaller
 ## Packages
 
 -   Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen
@@ -242,6 +253,7 @@ help(package=psych)
 ```
 
 Screenshot von help(psych)
+:::
 
 ::: smaller
 ## Datentypen
@@ -271,16 +283,88 @@ Screenshot von help(psych)
     -   Standardformat, wenn man von extern Daten in R reinlädt
 :::
 
+::: smaller
 ## Datentypen
 
+Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:
+
 ```{r echo=F}
-install.packages("tidyverse")
 library(tidyverse)
+library(readr)
+umfrage <- read_csv("dataset1.csv") %>% 
+  select(id, age, sex, r_knowledge, r_knowledge_amount, r_problems, programming_knowledge, hopes_perc) %>% 
+  mutate(id = id,
+         alter = age,
+         geschlecht = as.factor(sex),
+         r.vorwissen = r_knowledge,
+         r.wieviel.vorwissen = r_knowledge_amount,
+         r.probleme = as.character(r_problems),
+         programmier.vorwissen = programming_knowledge,
+         age = NULL,
+         sex = NULL,
+         r_knowledge = NULL,
+         r_knowledge_amount = NULL,
+         r_problems = NULL,
+         programming_knowledge = NULL,
+         hopes_perc = NULL)
+         
+umfrage
 ```
 
-```{r}
+-   
 
+    1.  Zeile: Ein Tibble mit diesen Dimensionen wird angezeigt
+
+-   
+
+    2.  Zeile: Spaltennamen
+
+-   
+
+    3.  Zeile: Datentypen
+
+-   folgende Zeilen: Daten
+
+-   in der Konsole werden Daten meistens nur gekürzt angezeigt
+
+-   Über `view(daten)` öffnet sich eine Tabellenübersicht
+:::
+
+::: smaller
+## Daten extrahieren
+
+-   Natürlich lassen sich auch bestimmte Spalten oder Zellen abrufen
+-   In eckigen Klammern nach dem Objektnamen lassen sich die "Koordinaten" angeben
+
+```{r echo=T}
+umfrage[2,3] # zeigt den Wert der zweiten Spalte und dritten Zeile
 ```
+
+-   Statt Zahlen können auch Spaltennamen benutzt werden
+
+```{r echo=T}
+umfrage["geschlecht", 3]
+```
+:::
+
+## Datentypen
+
+-   R erkennt häufig von selbst, welcher Datentyp gemeint ist
+-   Häufig ist es aber sinnvoll, noch mal "von Hand" zu überprüfen und/oder den richtigen Datentyp festzulegen
+-   `typeof()` um den Datentyp zu erfragen
+-   `is.numeric()` / `is.factor()` / `is.logical()` / `is.character()` um einen bestimmten Datentyp zu testen
+-   `as.numeric()` usw. nutzen, um den Datentyp zu verändern
+
+```{r echo=T}
+umfrage$r.probleme <- as.factor(umfrage$r.probleme)
+# Die umgewandelte Spalte überschreibt die alte Spalte!
+```
+
+c() which, any?
+
+## Unterschiede zu anderen Programmiersprachen
+
+-   double, integer?
 
 ## Codetest
 
