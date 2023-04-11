@@ -64,8 +64,11 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 -   große Community, die ständig Funktionen erweitert und bei Problemen hilft
 -   R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher
 
-## User Interface
+## User Interface {.smaller}
 
+![](.R.png){.absolute top=100 right=0 width="700" height="600"}
+
+::: {.column width="35%"}
 ::: incremental
 -   oben links: Code
 
@@ -77,8 +80,7 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 -   unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht
 :::
-
-Bild einfügen
+:::
 
 ::: smaller
 ## Code erstellen + ausführen
@@ -114,7 +116,6 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
     -   ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll
     -   Auswertung & Bericht können somit im gleichen Dokument geschehen
     -   Diese Präsentation ist auch in R entstanden!
--   
 
 Bild Vergleich .R und .qmd
 :::
@@ -470,11 +471,38 @@ umfrage$r.probleme <- as.factor(umfrage$r.probleme)
 # Die umgewandelte Spalte überschreibt die alte Spalte!
 ```
 
-c() which, any?
+## Neue Daten erstellen {.smaller}
+
+::: incremental
+-   Vektoren: `c()`
+-   Kombiniert alle aufgezählten Objekte
+:::
+
+. . .
+
+```{r}
+#| echo: true
+vektor <- c(1,3,5)
+vektor
+```
+
+::: incremental
+-   Strings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.
+-   Im Output erkennt man Strings auch an den Anführungszeichen
+:::
+
+. . .
+
+```{r}
+#| echo: true
+string <- "hallo"
+string
+```
 
 ## Unterschiede zu anderen Programmiersprachen
 
--   double, integer?
--   nicht Zuweisungsbasiert
-
-
+::: incremental
+-   keine Unterscheidung zwischen integer und double
+-   verwendet keine Pointer
+-   tendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut
+:::

@@ -2,3 +2,7 @@
 title: "test2"
 format: pptx
 ---
+
+```{r}
+print(paste0("Ich habe ",R.version$version.string," und RStudio v",rstudioapi::versionInfo()$version))
+```
