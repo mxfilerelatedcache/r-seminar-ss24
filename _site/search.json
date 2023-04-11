@@ -81,27 +81,118 @@
     "href": "folien/120423.html#zeitplan",
     "title": "12.04.23",
     "section": "Zeitplan",
-    "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis"
+    "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)"
   },
   {
     "objectID": "folien/120423.html#prüfungsleistung",
     "href": "folien/120423.html#prüfungsleistung",
     "title": "12.04.23",
     "section": "Prüfungsleistung",
-    "text": "Prüfungsleistung\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\n\nAbgabe per Moodle\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit!\n\n\n1x Hausaufgabe vorstellen\nBericht zu (neuem) Datensatz einreichen\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden."
+    "text": "Prüfungsleistung\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\n\nAbgabe per Moodle\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit (Plagiatscheck)\nWir laden nach Abgabe “Musterlösung” hoch\n\n\n1x Hausaufgabe vorstellen\nBericht zu (neuem) Datensatz einreichen\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden."
   },
   {
     "objectID": "folien/120423.html#user-interface",
     "href": "folien/120423.html#user-interface",
     "title": "12.04.23",
     "section": "User Interface",
-    "text": "User Interface"
+    "text": "User Interface\n\noben links: Code\nunten links: Konsole - ausgeführter Code und Output\n\nhier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden\n\noben rechts: u.a. Environment - welche Objekte und Daten exisitieren\nunten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht\n\nBild einfügen"
   },
   {
     "objectID": "folien/120423.html#codetest",
     "href": "folien/120423.html#codetest",
     "title": "12.04.23",
     "section": "Codetest",
-    "text": "Codetest\n\n\n[1] 2"
+    "text": "Codetest\n\n\n[1] 2\n\n\n1+1\n1+1"
+  },
+  {
+    "objectID": "folien/120423.html#was-ist-r",
+    "href": "folien/120423.html#was-ist-r",
+    "title": "12.04.23",
+    "section": "Was ist R?",
+    "text": "Was ist R?\n\nProgrammiersprache (und -oberfläche) für statistische Berechnungen und Grafiken\nopen-source & kostenlos\ngroße Community, die ständig Funktionen erweitert und bei Problemen hilft\nR Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher"
+  },
+  {
+    "objectID": "folien/120423.html#r-vs.-quarto",
+    "href": "folien/120423.html#r-vs.-quarto",
+    "title": "12.04.23",
+    "section": ".R vs. Quarto",
+    "text": ".R vs. Quarto\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTex)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen\nDiese Präsentation ist auch in R entstanden!\n\n\n\nBild Vergleich .R und .qmd"
+  },
+  {
+    "objectID": "folien/120423.html#code-erstellen-ausführen",
+    "href": "folien/120423.html#code-erstellen-ausführen",
+    "title": "12.04.23",
+    "section": "Code erstellen + ausführen",
+    "text": "Code erstellen + ausführen\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne “#” ausführbarer Code. Wie hier geschehen, lassen sich mit “#” Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
+  },
+  {
+    "objectID": "folien/120423.html#quarto",
+    "href": "folien/120423.html#quarto",
+    "title": "12.04.23",
+    "section": "Quarto",
+    "text": "Quarto\n\nErstellt ein Quarto-Dokument über File > New File > Quarto Document\nIm auftauchenden Fenster könnt ihr einstellen:\n\nTitel & AutorIn des Dokuments\ngewünschtes Output-Format (hier: html)\nwomit das Quarto-Dokument gerendert werden soll (hier: knitr)\n\nIm Dokument:\n\nDen Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)\nIm Feld darunter kann Text geschrieben und formatiert werden\n\nSource: Format lässt sich über bestimmte Zeichen einstellen\nVisual: Format lässt sich über Markieren + Auswählen einstellen\n\nCode kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)\nIm grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen\n\n“Vorschau” über den Play-Button\nin den geschweiften Klammern lässt sich einstellen, was mit Code + Output beim Rendern passieren soll\n\n\nÜber “Render” wird das Dokument in das Zielformat umgewandelt\n\n\nBild Dialogfenster"
+  },
+  {
+    "objectID": "folien/120423.html#quarto-1",
+    "href": "folien/120423.html#quarto-1",
+    "title": "12.04.23",
+    "section": "Quarto",
+    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in geschweiften Klammern neben das “r” “echo = TRUE” (ohne Anführungszeichen)\nSchreibt in den Text- und in die Code-Bereich “4+5” (ohne Anführungzeichen)\nRendert das Dokument\n\n\n\n[1] 9\n\n\n\n4+5\n\n[1] 9\n\n\n4+5"
+  },
+  {
+    "objectID": "folien/120423.html#rechenoperatoren",
+    "href": "folien/120423.html#rechenoperatoren",
+    "title": "12.04.23",
+    "section": "Rechenoperatoren",
+    "text": "Rechenoperatoren\n\nDezimaltrennzeichen: Punkt “.”, nicht Komma “,”\n” + ”\n” - ”\n” * ”\n” / ” (alle ohne Anführungszeichen)\nExponent: ^"
+  },
+  {
+    "objectID": "folien/120423.html#objekte",
+    "href": "folien/120423.html#objekte",
+    "title": "12.04.23",
+    "section": "Objekte",
+    "text": "Objekte\n\nAnstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern\nKonzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll\n\n\nergebnis <- 3+5\n\n\nR führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!\nObjekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt\nR ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!\nObjekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)\n\n\nergebnis\n\n[1] 8\n\n\n\nErstellt selbst eine Rechenaufgabe und speichert sie als Objekt!\nWas passiert, wenn man den gleichen Objektnamen erneut verwendet?"
+  },
+  {
+    "objectID": "folien/120423.html#funktionen",
+    "href": "folien/120423.html#funktionen",
+    "title": "12.04.23",
+    "section": "Funktionen",
+    "text": "Funktionen\n\nMithilfe von Funktionen lassen sich Objekte/Daten bearbeiten\nBeispiel: round(3.45, digits = 1) rundet 3.45 auf die erste Nachkommastelle\n\nam Anfang steht der Name der Funktion (auch hier: case-sensitive)\ndie Argumente der Funktion werden von runden Klammern eingerahmt\nArgumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll\nSie folgen der Syntax “Argument = Angabe”\nArgumente werden durch Komma getrennt\ndie Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. round(3.45, 1) (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)"
+  },
+  {
+    "objectID": "folien/120423.html#hilfe",
+    "href": "folien/120423.html#hilfe",
+    "title": "12.04.23",
+    "section": "Hilfe",
+    "text": "Hilfe\n\nÜber help(Funktion) wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen\n\ngenauso funktioniert ?Funktion\nauf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)\n\nFindet mit der Hilfe-Funktion heraus, was mean() macht und welche Argumente es hat\n\n?mean\n#oder\nhelp(mean)"
+  },
+  {
+    "objectID": "folien/120423.html#packages",
+    "href": "folien/120423.html#packages",
+    "title": "12.04.23",
+    "section": "Packages",
+    "text": "Packages\n\nFrisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen\nDurch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig\nIm Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind\nNeue Packages lassen sich mit install.packages(\"package-name\") installieren und mit library(package-name) aktivieren (auf die Anführungszeichen achten!)\nInstalliert das Package psych\nFindet heraus, wie sich mit der Hilfefunktion help() auch Informationen über ein Package anzeigen lassen\nSchaut euch mit der Hilfefunktion help() an, welche Funktionen das Package psych beinhaltet\n\n\n\n\nScreenshot von help(psych)"
+  },
+  {
+    "objectID": "folien/120423.html#objekte-erstellen",
+    "href": "folien/120423.html#objekte-erstellen",
+    "title": "12.04.23",
+    "section": "Objekte erstellen",
+    "text": "Objekte erstellen"
+  },
+  {
+    "objectID": "folien/120423.html#datentypen",
+    "href": "folien/120423.html#datentypen",
+    "title": "12.04.23",
+    "section": "Datentypen",
+    "text": "Datentypen\n\nBasic:\n\nnumeric: Zahlen\ncharacter: Buchstabenfolgen\nfactor: z.B. Faktorstufen eines Faktors\nlogical: 1 oder 0 bzw. TRUE oder FALSE\n\nVektor: eindimensionale “Aufzählung” von Elementen des gleichen Datentyps\nMatrix: ein- bis zweidimensionale Aufzählung von Elementen des gleichen Datentyps\nArray: beliebig-dimensionale Aufzählung von Elementen des gleichen Datentyps\nListe: kann Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)\nDataframe, tibble: Spezifische Formate, um Datensätze darzustellen. Können pro Spalte unterschiedliche Datentypen beinhalten."
+  },
+  {
+    "objectID": "folien/120423.html#objekte-1",
+    "href": "folien/120423.html#objekte-1",
+    "title": "12.04.23",
+    "section": "Objekte",
+    "text": "Objekte\n\nWarum ist Objekte erstellen wichtig?\n\nFür R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert\nZwischenergebnisse überprüfen\nParameter festlegen\nFlüchtigkeitsfehler vermeiden\nuvm.\n\nShortcut für <- : ALT+-\nPfeil in die andere Richtung und Gleichheitszeichen funktionieren nicht bzw. sollten nicht verwendet werden!"
   }
 ]

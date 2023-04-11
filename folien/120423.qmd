@@ -205,7 +205,7 @@ ergebnis
 
 -   Findet mit der Hilfe-Funktion heraus, was `mean()` macht und welche Argumente es hat
 
-    ```{r echo=TRUE}
+    ```{r echo=TRUE, eval=FALSE}
     ?mean
     #oder
     help(mean)
@@ -227,7 +227,7 @@ ergebnis
 
 -   *Schaut euch mit der Hilfefunktion help() an, welche Funktionen das Package psych beinhaltet*
 
-```{r}
+```{r eval=FALSE}
 # Installieren
 install.packages("psych")
 # Aktivieren
@@ -243,6 +243,7 @@ help(package=psych)
 
 Screenshot von help(psych)
 
+::: smaller
 ## Datentypen
 
 -   Basic:
@@ -263,7 +264,23 @@ Screenshot von help(psych)
 
 -   **Liste:** kann Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)
 
--   **Dataframe**, **tibble**: Spezifische Formate, um Datensätze darzustellen. Können pro Spalte unterschiedliche Datentypen beinhalten.
+-   **Dataframe**, **Tibble**: Spezifische Formate, um Datensätze darzustellen
+
+    -   Können pro Spalte unterschiedliche Datentypen beinhalten
+
+    -   Standardformat, wenn man von extern Daten in R reinlädt
+:::
+
+## Datentypen
+
+```{r echo=F}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+```{r}
+
+```
 
 ## Codetest
 
