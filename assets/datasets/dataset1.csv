@@ -1,0 +1,5 @@
+"","id","submitdate","lastpage","age","sex","r_knowledge","r_knowledge_amount","r_problems","programming_knowledge","hopes_perc"
+"1",1,NA,0,NA,NA,NA,NA,NA,FALSE,0
+"2",2,"2023-04-05 17:59:26",1,12,"female",TRUE,TRUE,"Test",TRUE,0.4
+"3",3,"2023-04-06 10:11:38",1,19,"female",TRUE,TRUE,"kp",TRUE,0.2
+"4",4,"2023-04-06 10:12:39",1,20,"male",TRUE,TRUE,"problemz",TRUE,0.6

@@ -51,7 +51,8 @@ survey %>%
   select(-starts_with("G0")) %>% 
   # replace all Ys with bool values and replace NAs with FALSE for multiple choice items
   mutate(across(everything(),  ~replace(., . ==  "Y" , TRUE)),
-         across(starts_with(c("programming_","hopes_")),~replace(., is.na(.), FALSE))) -> survey
+         across(starts_with(c("programming_","hopes_")),~replace(., is.na(.), FALSE)),
+         across(starts_with(c("hopes","programming","r_kn")),as.logical)) -> survey
 ```
 
 ```{r}
@@ -67,10 +68,20 @@ survey %>%
  filter(lastpage > 0) -> survey
 ```
 
-# Übungsblatt 1
 
-In diesem Übungsblatt könnt ihr euer im Seminar erlerntes Wissen direkt anwenden und erweitern.
 
 ```{r}
+# create export of dataset for seminar
+survey %>% 
+  mutate(
+    hopes_perc = rowMeans(across(starts_with("hopes")))
+  ) %>% 
+  select(id,submitdate,lastpage,age,sex,r_knowledge,r_knowledge_amount,r_problems,programming_knowledge,,hopes_perc) -> export
 
+write.csv(export, "assets/datasets/dataset1.csv")
 ```
+
+```{r}
+read.csv("assets/datasets/dataset1.csv")
+```
+
