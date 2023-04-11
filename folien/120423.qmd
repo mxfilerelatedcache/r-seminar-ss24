@@ -1,6 +1,9 @@
 ---
-title: "12.04.23"
-format: revealjs
+title: "Basics - 12.04.23"
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
 execute: 
   output: asis = TRUE
 ---
@@ -8,7 +11,11 @@ execute:
 ## Vorstellungsrunde
 
 -   Wer sind wir?
--   Wer seid ihr? Semester..,
+
+Auswertung Umfrage
+
+-   Wer seid ihr?
+    -   Semester
 
 ## Ziele des Seminars
 
@@ -24,22 +31,30 @@ execute:
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
 -   Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)
 
+Link einfügen
+
 ::: smaller
 ## Prüfungsleistung
 
-1.  Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
+-   Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
 
--   Abgabe per Moodle spätestens am Dienstag vor der nächsten Sitzung
--   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
--   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
--   Einzelarbeit (Plagiatscheck)
--   Wir laden nach Abgabe "Musterlösung" hoch
+    -   Abgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung
 
-2.  1x Hausaufgabe vorstellen
+    -   werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus
 
-3.  Bericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen
+    -   Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt
 
+    -   Einzelarbeit (Plagiatscheck)
+
+    -   Wir laden nach Abgabe "Musterlösung" hoch
+
+-   1x Hausaufgabe vorstellen (unbenotet)
+
+-   Bericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen
+
+::: aside
 Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
+:::
 :::
 
 ## Was ist R?
@@ -51,6 +66,7 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 ## User Interface
 
+::: incremental
 -   oben links: Code
 
 -   unten links: Konsole - ausgeführter Code und Output
@@ -60,16 +76,21 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 -   oben rechts: u.a. Environment - welche Objekte und Daten exisitieren
 
 -   unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht
+:::
 
 Bild einfügen
 
 ::: smaller
 ## Code erstellen + ausführen
 
+::: incremental
 -   *Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)*
 -   In dem File ist nur die Zeile ohne "\#" ausführbarer Code. Wie hier geschehen, lassen sich mit "\#" Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
 -   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
 -   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
+:::
+
+. . .
 
 ```{r echo=T, eval = FALSE}
 # Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R
@@ -89,7 +110,7 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 -   R's Standardformat sind .R-Dateien
 -   Für "echte Arbeit" mit R sind Quarto-Dokumente meistens nützlicher:
     -   ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,...)
-    -   ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTex)
+    -   ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)
     -   ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll
     -   Auswertung & Bericht können somit im gleichen Dokument geschehen
     -   Diese Präsentation ist auch in R entstanden!
@@ -98,7 +119,6 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 Bild Vergleich .R und .qmd
 :::
 
-::: smaller
 ## Quarto
 
 -   *Erstellt ein Quarto-Dokument über File \> New File \> Quarto Document*
@@ -106,8 +126,12 @@ Bild Vergleich .R und .qmd
     -   Titel & AutorIn des Dokuments
     -   gewünschtes Output-Format (hier: html)
     -   womit das Quarto-Dokument gerendert werden soll (hier: knitr)
+
+::: smaller
+## Quarto
+
 -   Im Dokument:
-    -   Den Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
+    -   Der Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
     -   Im Feld darunter kann Text geschrieben und formatiert werden
         -   Source: Format lässt sich über bestimmte Zeichen einstellen
         -   Visual: Format lässt sich über Markieren + Auswählen einstellen
@@ -116,7 +140,7 @@ Bild Vergleich .R und .qmd
         -   "Vorschau" über den Play-Button
         -   in den geschweiften Klammern lässt sich einstellen, was mit Code + Output beim Rendern passieren soll
 -   Über "Render" wird das Dokument in das Zielformat umgewandelt
--   
+-   In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau
 
 Bild Dialogfenster
 :::
@@ -124,70 +148,95 @@ Bild Dialogfenster
 ## Quarto
 
 -   *Erstellt zwei Code-Chunks*
--   *Fügt bei einem der Chunks in geschweiften Klammern neben das "r" "echo = TRUE" (ohne Anführungszeichen)*
--   *Schreibt in den Text- und in die Code-Bereich "4+5" (ohne Anführungzeichen)*
+-   *Fügt bei einem der Chunks in die erste Zeile `#| echo: TRUE`*
+-   *Schreibt in den Text- und in die Code-Bereich `4+5`*
 -   *Rendert das Dokument*
+
+. . .
+
+Output ohne Code:
 
 ```{r}
 4+5
 ```
 
-```{r echo = TRUE}
+. . .
+
+Output mit Code:
+
+```{r}
+#| echo: TRUE
 4+5
 ```
 
-4+5
+. . .
 
-## Rechenoperatoren
+Reiner Text: 4+5
 
--   Dezimaltrennzeichen: Punkt ".", nicht Komma ","
--   " + "
--   " - "
--   " \* "
--   " / " (alle ohne Anführungszeichen)
--   Exponent: \^
--   logisch gleich: ==
--   logisch ungleich: !=
+## (Rechen)Operatoren
+
+-   Dezimaltrennzeichen: Punkt `.` , nicht Komma `,`
+-   `+ - * /`
+-   Exponent: `^`
+-   logisch gleich: `==`
+-   logisch ungleich: `!=`
+-   logisches und: `&`
+-   logisches oder: `|`
+-   logisches exklusives oder: `xor`
+-   nicht: `!`
 
 ::: smaller
 ## Objekte
 
+::: incremental
 -   Anstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern
 -   Konzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll
+:::
+
+. . .
 
 ```{r echo=T, eval=T}
 ergebnis <- 3+5
 ```
 
+::: incremental
 -   R führt den Code rechts vom Pfeil aus - das Objekt ist "8", nicht "3+5"!
 -   Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt
+:::
+
+. . .
 
 ```{r echo=T, eval=T}
 ergebnis
 ```
 
+::: incremental
 -   R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!
--   Objekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
+-   Objekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
 -   *Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!*
 -   *Was passiert, wenn man den gleichen Objektnamen erneut verwendet?*
+:::
 :::
 
 ::: smaller
 ## Objekte
 
+::: incremental
 -   Warum ist Objekte erstellen wichtig?
     -   Für R ist jeder Output sonst "flüchtig": Es wird nicht wirklich etwas verändert
     -   Zwischenergebnisse überprüfen
     -   Parameter festlegen
     -   Flüchtigkeitsfehler vermeiden
     -   uvm.
--   Shortcut für \<- : ALT+-
--   Pfeil in die andere Richtung und Gleichheitszeichen funktionieren nicht bzw. sollten nicht verwendet werden!
+-   Shortcut für `<-` : ALT+-
+-   Pfeil in die andere Richtung `->` und Gleichheitszeichen `=` funktionieren nicht bzw. sollten nicht verwendet werden!
+:::
 :::
 
 ::: smaller
 ## Funktionen
 
+::: incremental
 -   Mithilfe von Funktionen lassen sich Objekte/Daten bearbeiten
 
 -   Beispiel: `round(3.45, digits = 1)` rundet 3.45 auf die erste Nachkommastelle
@@ -198,15 +247,19 @@ ergebnis
 
     -   Argumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll
 
-    -   Sie folgen der Syntax "Argument = Angabe"
+    -   sie folgen der Syntax `Argument = Angabe`
 
     -   Argumente werden durch Komma getrennt
 
+    -   manche Argumente sind zwingend notwendig, viele aber optional
+
     -   die Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. `round(3.45, 1)` (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)
 :::
+:::
 
-## Hilfe
+## Hilfe in R
 
+::: incremental
 -   Über `help(Funktion)` wird die Hilfeseite/Dokumentation der Funktion "Funktion" aufgerufen
 
     -   genauso funktioniert `?Funktion`
@@ -214,16 +267,36 @@ ergebnis
     -   auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)
 
 -   *Findet mit der Hilfe-Funktion heraus, was `mean()` macht und welche Argumente es hat*
+:::
 
-    ```{r echo=TRUE, eval=FALSE}
-    ?mean
-    #oder
-    help(mean)
-    ```
+. . .
+
+```{r echo=TRUE, eval=FALSE}
+?mean
+#oder
+help(mean)
+```
+
+## Hilfe außerhalb von R
+
+::: incremental
+-   Fehlermeldungen lesen und versuchen, Problem zu verstehen
+
+-   das Internet!
+
+    -   Fehlermeldung bei Google einfügen und Links durchsuchen
+
+    -   Stack Overflow
+
+    -   Statt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen
+
+-   Danach: Lösung für sich dokumentieren
+:::
 
 ::: smaller
 ## Packages
 
+::: incremental
 -   Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen
 
 -   Durch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig
@@ -232,13 +305,23 @@ ergebnis
 
 -   Neue Packages lassen sich mit `install.packages("package-name")` installieren und mit `library(package-name)` aktivieren (auf die Anführungszeichen achten!)
 
--   *Installiert das Package psych*
+-   Man kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig
+:::
+:::
 
--   *Findet heraus, wie sich mit der Hilfefunktion help() auch Informationen über ein Package anzeigen lassen*
+## Packages {.smaller}
 
--   *Schaut euch mit der Hilfefunktion help() an, welche Funktionen das Package psych beinhaltet*
+::: incremental
+-   *Installiert und aktiviert das Package `psych` (Erinnerung: `install.packages() library()`)*
 
-```{r eval=FALSE}
+-   *Wendet die Hilfefunktion `help()` auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt*
+
+-   *Schaut euch mit dem neuen Wissen an, welche Funktionen das Package `psych` beinhaltet*
+:::
+
+. . .
+
+```{r eval=FALSE, echo=T}
 # Installieren
 install.packages("psych")
 # Aktivieren
@@ -252,21 +335,20 @@ help(help) # Inception!
 help(package=psych)
 ```
 
-Screenshot von help(psych)
-:::
+Screenshot von help(package = psych)
 
 ::: smaller
 ## Datentypen
 
 -   Basic:
 
-    -   **numeric:** Zahlen
+    -   **numeric:** Zahlen (integer, double)
 
-    -   **character:** Buchstabenfolgen
+    -   **character:** Buchstabenfolgen (strings)
 
     -   **factor:** z.B. Faktorstufen eines Faktors
 
-    -   **logical:** 1 oder 0 bzw. TRUE oder FALSE
+    -   **logical:** TRUE, FALSE (vgl. 1 & 0)
 
 -   **Vektor:** eindimensionale "Aufzählung" von Elementen des gleichen Datentyps
 
@@ -274,7 +356,7 @@ Screenshot von help(psych)
 
 -   **Array:** beliebig-dimensionale Aufzählung von Elementen des gleichen Datentyps
 
--   **Liste:** kann Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)
+-   **Liste:** kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)
 
 -   **Dataframe**, **Tibble**: Spezifische Formate, um Datensätze darzustellen
 
@@ -331,9 +413,8 @@ umfrage
 :::
 
 ::: smaller
-## Daten extrahieren
+## Bestimmte Daten abrufen
 
--   Natürlich lassen sich auch bestimmte Spalten oder Zellen abrufen
 -   In eckigen Klammern nach dem Objektnamen lassen sich die "Koordinaten" angeben
 
 ```{r echo=T}
@@ -343,17 +424,46 @@ umfrage[2,3] # zeigt den Wert der zweiten Spalte und dritten Zeile
 -   Statt Zahlen können auch Spaltennamen benutzt werden
 
 ```{r echo=T}
-umfrage["geschlecht", 3]
+umfrage[3, "geschlecht"]
+```
+
+-   Spalten lassen sich auch direkt über `$` ansprechen.
+
+```{r}
+#| echo: true
+umfrage$geschlecht
+```
+:::
+
+::: smaller
+## Bestimmte Daten abrufen
+
+-   Um alles anzeigen zu lassen, kann man die Koordinate "leer" lassen
+
+```{r}
+#| echo: true
+umfrage[ , "geschlecht"]
+```
+
+. . .
+
+```{r}
+#| echo: true
+umfrage[ , ]
 ```
 :::
 
 ## Datentypen
 
+::: incremental
 -   R erkennt häufig von selbst, welcher Datentyp gemeint ist
 -   Häufig ist es aber sinnvoll, noch mal "von Hand" zu überprüfen und/oder den richtigen Datentyp festzulegen
 -   `typeof()` um den Datentyp zu erfragen
 -   `is.numeric()` / `is.factor()` / `is.logical()` / `is.character()` um einen bestimmten Datentyp zu testen
 -   `as.numeric()` usw. nutzen, um den Datentyp zu verändern
+:::
+
+. . .
 
 ```{r echo=T}
 umfrage$r.probleme <- as.factor(umfrage$r.probleme)
@@ -365,15 +475,6 @@ c() which, any?
 ## Unterschiede zu anderen Programmiersprachen
 
 -   double, integer?
+-   nicht Zuweisungsbasiert
 
-## Codetest
 
-```{r}
-1+1
-```
-
-`1+1`
-
-```         
-1+1
-```
