@@ -9,8 +9,6 @@ Im Seminar habt ihr einige Dinge über **R-Studio**, **R** & **Quarto** gelernt.
 
 # Aufgaben
 
-## Rechenoperatoren & Datentypen
-
 Im Seminar habt ihr verschiedene Rechenoperatoren gelernt. Vervollständigt den folgenden Code, indem ihr die entsprechenden Rechenoperationen wie in den Beispielen anpasst, sodass das Ergebnis `4` ist.
 
 ```{r}
@@ -56,7 +54,7 @@ Sind die beiden Objekte gleich? Begründe deine Antwort:
 
 ------------------------------------------------------------------------
 
-Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und beschreibt das Ergebnis:
+Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und beschreibt das Ergebnis, bzw. etwaige Fehlermeldungen:
 
 ```{r}
 combined_results <- result1+result2
@@ -68,15 +66,11 @@ combined_results <- result1+result2
 
 ------------------------------------------------------------------------
 
-## Vektoren
-
-Vektoren sind ein zentraler Bestandteil von R. Erstelle im Folgenden einen 5-stelligen Vektor `vec` mit aufsteigender Zahlenfolge (also 1, 2 etc.):
+Vektoren sind auch ein zentraler Bestandteil von R. Erstelle im Folgenden einen 5-stelligen Vektor `vec` mit aufsteigender Zahlenfolge (also 1, 2 etc.):
 
 ```{r}
 # Lösung hier
 ```
-
-## Funktionen
 
 Ihr habt auch über Funktionen gelernt. Bei einer Berechnung hat ein Ergebnis leider sehr viele Nachkommastellen. Wir hätten das Ergebnis gerne auf drei Nachkommastellen gerundet:
 
@@ -88,4 +82,4 @@ value <- 2/12
 # Lösung hier
 ```
 
-In R sind noch weitere Funktionen voreingebaut. Ein Beispiel ist die `nchar()` Funktion, welche die Anzahl an Zeichen in einem String
+In R sind noch weitere Funktionen voreingebaut. Ein Beispiel ist die `paste` Funktion, welche Strings aneinanderketten kann. ⇒ vllt doch einfach als "freie" Aufgabe & sie müssen selbst recherchieren?
