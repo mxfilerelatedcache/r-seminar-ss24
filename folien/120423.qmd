@@ -66,7 +66,7 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 ## User Interface {.smaller}
 
-![](.R.png){.absolute top=100 right=0 width="700" height="600"}
+![](.R.png){.absolute top="100" right="0" width="700" height="600"}
 
 ::: {.column width="35%"}
 ::: incremental

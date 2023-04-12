@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-  <title>Medienbasierte Wissenskonstruktion mit R - 12.04.23</title>
+  <title>Medienbasierte Wissenskonstruktion mit R - Basics - 12.04.23</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -387,7 +387,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">12.04.23</h1>
+  <h1 class="title">Basics - 12.04.23</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -397,7 +397,13 @@
 <h2>Vorstellungsrunde</h2>
 <ul>
 <li>Wer sind wir?</li>
-<li>Wer seid ihr? Semester..,</li>
+</ul>
+<p>Auswertung Umfrage</p>
+<ul>
+<li>Wer seid ihr?
+<ul>
+<li>Semester</li>
+</ul></li>
 </ul>
 </section>
 <section id="ziele-des-seminars" class="slide level2">
@@ -413,29 +419,30 @@
 <ul>
 <li>7-8 Sitzungen, die jeweils 3h dauern</li>
 <li>31.05 vrsl. letzte, kürzere Sitzung</li>
-<li>Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungs daten</li>
+<li>Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten</li>
 <li>innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis</li>
 <li>Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)</li>
 </ul>
+<p>Link einfügen</p>
 </section>
 <section id="prüfungsleistung" class="slide level2 smaller">
 <h2>Prüfungsleistung</h2>
-<ol type="1">
-<li>Wöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte</li>
-</ol>
 <ul>
-<li>Abgabe per Moodle</li>
-<li>werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus</li>
-<li>Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt</li>
-<li>Einzelarbeit (Plagiatscheck)</li>
-<li>Wir laden nach Abgabe “Musterlösung” hoch</li>
+<li><p>Wöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte</p>
+<ul>
+<li><p>Abgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung</p></li>
+<li><p>werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus</p></li>
+<li><p>Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt</p></li>
+<li><p>Einzelarbeit (Plagiatscheck)</p></li>
+<li><p>Wir laden nach Abgabe “Musterlösung” hoch</p></li>
+</ul></li>
+<li><p>1x Hausaufgabe vorstellen (unbenotet)</p></li>
+<li><p>Bericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen</p></li>
 </ul>
-<ol start="2" type="1">
-<li><p>1x Hausaufgabe vorstellen</p></li>
-<li><p>Bericht zu (neuem) Datensatz einreichen</p></li>
-</ol>
+
+<aside><div>
 <p>Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.</p>
-</section>
+</div></aside></section>
 <section id="was-ist-r" class="slide level2">
 <h2>Was ist R?</h2>
 <ul>
@@ -445,27 +452,34 @@
 <li>R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher</li>
 </ul>
 </section>
-<section id="user-interface" class="slide level2">
+<section id="user-interface" class="slide level2 smaller">
 <h2>User Interface</h2>
+<p><img data-src=".R.png" class="absolute" style="top: 100px; right: 0px; width: 700px; height: 600px; "></p>
+<div class="column" style="width:35%;">
+<div>
 <ul>
-<li><p>oben links: Code</p></li>
-<li><p>unten links: Konsole - ausgeführter Code und Output</p>
+<li class="fragment"><p>oben links: Code</p></li>
+<li class="fragment"><p>unten links: Konsole - ausgeführter Code und Output</p>
 <ul>
-<li>hier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden</li>
+<li class="fragment">hier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden</li>
 </ul></li>
-<li><p>oben rechts: u.a. Environment - welche Objekte und Daten exisitieren</p></li>
-<li><p>unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht</p></li>
+<li class="fragment"><p>oben rechts: u.a. Environment - welche Objekte und Daten exisitieren</p></li>
+<li class="fragment"><p>unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht</p></li>
 </ul>
-<p>Bild einfügen</p>
+</div>
+</div>
 </section>
-<section id="code-erstellen-ausführen" class="slide level2">
+<section id="code-erstellen-ausführen" class="slide level2 smaller">
 <h2>Code erstellen + ausführen</h2>
+<div>
 <ul>
-<li>Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)</li>
-<li>In dem File ist nur die Zeile ohne “#” ausführbarer Code. Wie hier geschehen, lassen sich mit “#” Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll</li>
-<li><em>Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und <strong>STRG+ENTER</strong> drückt</em></li>
-<li>Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt</li>
+<li class="fragment"><em>Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)</em></li>
+<li class="fragment">In dem File ist nur die Zeile ohne “#” ausführbarer Code. Wie hier geschehen, lassen sich mit “#” Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll</li>
+<li class="fragment"><em>Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und <strong>STRG+ENTER</strong> drückt</em></li>
+<li class="fragment">Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt</li>
 </ul>
+</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -477,20 +491,20 @@
 <pre><code>[1] "Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386"</code></pre>
 </div>
 </div>
+</div>
 </section>
-<section id="r-vs.-quarto" class="slide level2">
+<section id="r-vs.-quarto" class="slide level2 smaller">
 <h2>.R vs.&nbsp;Quarto</h2>
 <ul>
 <li>R’s Standardformat sind .R-Dateien</li>
 <li>Für “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:
 <ul>
 <li>ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)</li>
-<li>ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTex)</li>
+<li>ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)</li>
 <li>ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll</li>
 <li>Auswertung &amp; Bericht können somit im gleichen Dokument geschehen</li>
 <li>Diese Präsentation ist auch in R entstanden!</li>
 </ul></li>
-<li></li>
 </ul>
 <p>Bild Vergleich .R und .qmd</p>
 </section>
@@ -504,9 +518,14 @@
 <li>gewünschtes Output-Format (hier: html)</li>
 <li>womit das Quarto-Dokument gerendert werden soll (hier: knitr)</li>
 </ul></li>
+</ul>
+</section>
+<section id="quarto-1" class="slide level2 smaller">
+<h2>Quarto</h2>
+<ul>
 <li>Im Dokument:
 <ul>
-<li>Den Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)</li>
+<li>Der Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)</li>
 <li>Im Feld darunter kann Text geschrieben und formatiert werden
 <ul>
 <li>Source: Format lässt sich über bestimmte Zeichen einstellen</li>
@@ -520,156 +539,378 @@
 </ul></li>
 </ul></li>
 <li>Über “Render” wird das Dokument in das Zielformat umgewandelt</li>
-<li></li>
+<li>In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau</li>
 </ul>
 <p>Bild Dialogfenster</p>
 </section>
-<section id="quarto-1" class="slide level2">
+<section id="quarto-2" class="slide level2">
 <h2>Quarto</h2>
 <ul>
 <li><em>Erstellt zwei Code-Chunks</em></li>
-<li><em>Fügt bei einem der Chunks in geschweiften Klammern neben das “r” “echo = TRUE” (ohne Anführungszeichen)</em></li>
-<li><em>Schreibt in den Text- und in die Code-Bereich “4+5” (ohne Anführungzeichen)</em></li>
+<li><em>Fügt bei einem der Chunks in die erste Zeile <code>#| echo: TRUE</code></em></li>
+<li><em>Schreibt in den Text- und in die Code-Bereich <code>4+5</code></em></li>
 <li><em>Rendert das Dokument</em></li>
 </ul>
+<div class="fragment">
+<p>Output ohne Code:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p>Output mit Code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="dv">4</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
 </div>
-<p>4+5</p>
+</div>
+<div class="fragment">
+<p>Reiner Text: 4+5</p>
+</div>
 </section>
 <section id="rechenoperatoren" class="slide level2">
-<h2>Rechenoperatoren</h2>
+<h2>(Rechen)Operatoren</h2>
 <ul>
-<li>Dezimaltrennzeichen: Punkt “.”, nicht Komma “,”</li>
-<li>” + ”</li>
-<li>” - ”</li>
-<li>” * ”</li>
-<li>” / ” (alle ohne Anführungszeichen)</li>
-<li>Exponent: ^</li>
+<li>Dezimaltrennzeichen: Punkt <code>.</code> , nicht Komma <code>,</code></li>
+<li><code>+ - * /</code></li>
+<li>Exponent: <code>^</code></li>
+<li>logisch gleich: <code>==</code></li>
+<li>logisch ungleich: <code>!=</code></li>
+<li>logisches und: <code>&amp;</code></li>
+<li>logisches oder: <code>|</code></li>
+<li>logisches exklusives oder: <code>xor</code></li>
+<li>nicht: <code>!</code></li>
 </ul>
 </section>
 <section id="objekte" class="slide level2 smaller">
 <h2>Objekte</h2>
+<div>
 <ul>
-<li>Anstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern</li>
-<li>Konzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll</li>
+<li class="fragment">Anstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern</li>
+<li class="fragment">Konzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll</li>
 </ul>
+</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ergebnis <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div>
 <ul>
-<li>R führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!</li>
-<li>Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt</li>
-<li>R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!</li>
-<li>Objekte lassens sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)</li>
+<li class="fragment">R führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!</li>
+<li class="fragment">Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt</li>
 </ul>
+</div>
+</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>ergebnis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
+<div>
 <ul>
-<li><em>Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!</em></li>
-<li><em>Was passiert, wenn man den gleichen Objektnamen erneut verwendet?</em></li>
+<li class="fragment">R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!</li>
+<li class="fragment">Objekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)</li>
+<li class="fragment"><em>Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!</em></li>
+<li class="fragment"><em>Was passiert, wenn man den gleichen Objektnamen erneut verwendet?</em></li>
 </ul>
+</div>
+</div>
 </section>
-<section id="objekte-1" class="slide level2">
+<section id="objekte-1" class="slide level2 smaller">
 <h2>Objekte</h2>
+<div>
 <ul>
-<li>Warum ist Objekte erstellen wichtig?
+<li class="fragment">Warum ist Objekte erstellen wichtig?
 <ul>
-<li>Für R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert</li>
-<li>Zwischenergebnisse überprüfen</li>
-<li>Parameter festlegen</li>
-<li>Flüchtigkeitsfehler vermeiden</li>
-<li>uvm.</li>
+<li class="fragment">Für R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert</li>
+<li class="fragment">Zwischenergebnisse überprüfen</li>
+<li class="fragment">Parameter festlegen</li>
+<li class="fragment">Flüchtigkeitsfehler vermeiden</li>
+<li class="fragment">uvm.</li>
 </ul></li>
-<li>Shortcut für &lt;- : ALT+-</li>
-<li>Pfeil in die andere Richtung und Gleichheitszeichen funktionieren nicht bzw. sollten nicht verwendet werden!</li>
+<li class="fragment">Shortcut für <code>&lt;-</code> : ALT+-</li>
+<li class="fragment">Pfeil in die andere Richtung <code>-&gt;</code> und Gleichheitszeichen <code>=</code> funktionieren nicht bzw. sollten nicht verwendet werden!</li>
 </ul>
+</div>
 </section>
 <section id="funktionen" class="slide level2 smaller">
 <h2>Funktionen</h2>
+<div>
 <ul>
-<li><p>Mithilfe von Funktionen lassen sich Objekte/Daten bearbeiten</p></li>
-<li><p>Beispiel: <code>round(3.45, digits = 1)</code> rundet 3.45 auf die erste Nachkommastelle</p>
+<li class="fragment"><p>Mithilfe von Funktionen lassen sich Objekte/Daten bearbeiten</p></li>
+<li class="fragment"><p>Beispiel: <code>round(3.45, digits = 1)</code> rundet 3.45 auf die erste Nachkommastelle</p>
 <ul>
-<li><p>am Anfang steht der Name der Funktion (auch hier: case-sensitive)</p></li>
-<li><p>die Argumente der Funktion werden von <u>runden</u> Klammern eingerahmt</p></li>
-<li><p>Argumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll</p></li>
-<li><p>Sie folgen der Syntax “Argument = Angabe”</p></li>
-<li><p>Argumente werden durch Komma getrennt</p></li>
-<li><p>die Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. <code>round(3.45, 1)</code> (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)</p></li>
+<li class="fragment"><p>am Anfang steht der Name der Funktion (auch hier: case-sensitive)</p></li>
+<li class="fragment"><p>die Argumente der Funktion werden von <u>runden</u> Klammern eingerahmt</p></li>
+<li class="fragment"><p>Argumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll</p></li>
+<li class="fragment"><p>sie folgen der Syntax <code>Argument = Angabe</code></p></li>
+<li class="fragment"><p>Argumente werden durch Komma getrennt</p></li>
+<li class="fragment"><p>manche Argumente sind zwingend notwendig, viele aber optional</p></li>
+<li class="fragment"><p>die Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. <code>round(3.45, 1)</code> (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)</p></li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="hilfe" class="slide level2">
-<h2>Hilfe</h2>
+<section id="hilfe-in-r" class="slide level2">
+<h2>Hilfe in R</h2>
+<div>
 <ul>
-<li><p>Über <code>help(Funktion)</code> wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen</p>
+<li class="fragment"><p>Über <code>help(Funktion)</code> wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen</p>
 <ul>
-<li><p>genauso funktioniert <code>?Funktion</code></p></li>
-<li><p>auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)</p></li>
+<li class="fragment"><p>genauso funktioniert <code>?Funktion</code></p></li>
+<li class="fragment"><p>auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)</p></li>
 </ul></li>
-<li><p>Findet mit der Hilfe-Funktion heraus, was <code>mean()</code> macht und welche Argumente es hat</p>
+<li class="fragment"><p><em>Findet mit der Hilfe-Funktion heraus, was <code>mean()</code> macht und welche Argumente es hat</em></p></li>
+</ul>
+</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>?mean</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#oder</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="packages" class="slide level2">
-<h2>Packages</h2>
-<ul>
-<li><p>Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen</p></li>
-<li><p>Durch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig</p></li>
-<li><p>Im Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind</p></li>
-<li><p>Neue Packages lassen sich mit <code>install.packages("package-name")</code> installieren und mit <code>library(package-name)</code> aktivieren (auf die Anführungszeichen achten!)</p></li>
-<li><p><em>Installiert das Package psych</em></p></li>
-<li><p><em>Findet heraus, wie sich mit der Hilfefunktion help() auch Informationen über ein Package anzeigen lassen</em></p></li>
-<li><p><em>Schaut euch mit der Hilfefunktion help() an, welche Funktionen das Package psych beinhaltet</em></p></li>
-</ul>
-<div class="cell">
-
 </div>
-<p>Screenshot von help(psych)</p>
+</div>
+</section>
+<section id="hilfe-außerhalb-von-r" class="slide level2">
+<h2>Hilfe außerhalb von R</h2>
+<div>
+<ul>
+<li class="fragment"><p>Fehlermeldungen lesen und versuchen, Problem zu verstehen</p></li>
+<li class="fragment"><p>das Internet!</p>
+<ul>
+<li class="fragment"><p>Fehlermeldung bei Google einfügen und Links durchsuchen</p></li>
+<li class="fragment"><p>Stack Overflow</p></li>
+<li class="fragment"><p>Statt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen</p></li>
+</ul></li>
+<li class="fragment"><p>Danach: Lösung für sich dokumentieren</p></li>
+</ul>
+</div>
+</section>
+<section id="packages" class="slide level2 smaller">
+<h2>Packages</h2>
+<div>
+<ul>
+<li class="fragment"><p>Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen</p></li>
+<li class="fragment"><p>Durch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig</p></li>
+<li class="fragment"><p>Im Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind</p></li>
+<li class="fragment"><p>Neue Packages lassen sich mit <code>install.packages("package-name")</code> installieren und mit <code>library(package-name)</code> aktivieren (auf die Anführungszeichen achten!)</p></li>
+<li class="fragment"><p>Man kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig</p></li>
+</ul>
+</div>
+</section>
+<section id="packages-1" class="slide level2 smaller">
+<h2>Packages</h2>
+<div>
+<ul>
+<li class="fragment"><p><em>Installiert und aktiviert das Package <code>psych</code> (Erinnerung: <code>install.packages() library()</code>)</em></p></li>
+<li class="fragment"><p><em>Wendet die Hilfefunktion <code>help()</code> auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt</em></p></li>
+<li class="fragment"><p><em>Schaut euch mit dem neuen Wissen an, welche Funktionen das Package <code>psych</code> beinhaltet</em></p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Installieren</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">install.packages</span>(<span class="st">"psych"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Aktivieren</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(psych)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Mehr über help() herausfinden</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="fu">help</span>(help) <span class="co"># Inception!</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Aha, das Argument "package" kann mir weiterhelfen!</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># Über psych informieren</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="fu">help</span>(<span class="at">package=</span>psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Screenshot von help(package = psych)</p>
+</div>
 </section>
 <section id="datentypen" class="slide level2 smaller">
 <h2>Datentypen</h2>
 <ul>
 <li><p>Basic:</p>
 <ul>
-<li><p><strong>numeric:</strong> Zahlen</p></li>
-<li><p><strong>character:</strong> Buchstabenfolgen</p></li>
+<li><p><strong>numeric:</strong> Zahlen (integer, double)</p></li>
+<li><p><strong>character:</strong> Buchstabenfolgen (strings)</p></li>
 <li><p><strong>factor:</strong> z.B. Faktorstufen eines Faktors</p></li>
-<li><p><strong>logical:</strong> 1 oder 0 bzw. TRUE oder FALSE</p></li>
+<li><p><strong>logical:</strong> TRUE, FALSE (vgl. 1 &amp; 0)</p></li>
 </ul></li>
 <li><p><strong>Vektor:</strong> eindimensionale “Aufzählung” von Elementen des gleichen Datentyps</p></li>
 <li><p><strong>Matrix:</strong> ein- bis zweidimensionale Aufzählung von Elementen des gleichen Datentyps</p></li>
 <li><p><strong>Array:</strong> beliebig-dimensionale Aufzählung von Elementen des gleichen Datentyps</p></li>
-<li><p><strong>Liste:</strong> kann Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)</p></li>
-<li><p><strong>Dataframe</strong>, <strong>tibble</strong>: Spezifische Formate, um Datensätze darzustellen. Können pro Spalte unterschiedliche Datentypen beinhalten.</p></li>
+<li><p><strong>Liste:</strong> kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)</p></li>
+<li><p><strong>Dataframe</strong>, <strong>Tibble</strong>: Spezifische Formate, um Datensätze darzustellen</p>
+<ul>
+<li><p>Können pro Spalte unterschiedliche Datentypen beinhalten</p></li>
+<li><p>Standardformat, wenn man von extern Daten in R reinlädt</p></li>
+</ul></li>
 </ul>
 </section>
-<section id="codetest" class="slide level2">
-<h2>Codetest</h2>
+<section id="datentypen-1" class="slide level2 smaller">
+<h2>Datentypen</h2>
+<p>Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code># A tibble: 4 × 7
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
 </div>
 </div>
-<p><code>1+1</code></p>
-<pre><code>1+1</code></pre>
+<ul>
+<li><ol type="1">
+<li>Zeile: Ein Tibble mit diesen Dimensionen wird angezeigt</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Zeile: Spaltennamen</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>Zeile: Datentypen</li>
+</ol></li>
+<li><p>folgende Zeilen: Daten</p></li>
+<li><p>in der Konsole werden Daten meistens nur gekürzt angezeigt</p></li>
+<li><p>Über <code>view(daten)</code> öffnet sich eine Tabellenübersicht</p></li>
+</ul>
+</section>
+<section id="bestimmte-daten-abrufen" class="slide level2 smaller">
+<h2>Bestimmte Daten abrufen</h2>
+<ul>
+<li>In eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Spalte und dritten Zeile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 female    </code></pre>
+</div>
+</div>
+<ul>
+<li>Statt Zahlen können auch Spaltennamen benutzt werden</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 female    </code></pre>
+</div>
+</div>
+<ul>
+<li>Spalten lassen sich auch direkt über <code>$</code> ansprechen.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &lt;NA&gt;   female female male  
+Levels: female male</code></pre>
+</div>
+</div>
+</section>
+<section id="bestimmte-daten-abrufen-1" class="slide level2 smaller">
+<h2>Bestimmte Daten abrufen</h2>
+<ul>
+<li>Um alles anzeigen zu lassen, kann man die Koordinate “leer” lassen</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 &lt;NA&gt;      
+2 female    
+3 female    
+4 male      </code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="datentypen-2" class="slide level2">
+<h2>Datentypen</h2>
+<div>
+<ul>
+<li class="fragment">R erkennt häufig von selbst, welcher Datentyp gemeint ist</li>
+<li class="fragment">Häufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen</li>
+<li class="fragment"><code>typeof()</code> um den Datentyp zu erfragen</li>
+<li class="fragment"><code>is.numeric()</code> / <code>is.factor()</code> / <code>is.logical()</code> / <code>is.character()</code> um einen bestimmten Datentyp zu testen</li>
+<li class="fragment"><code>as.numeric()</code> usw. nutzen, um den Datentyp zu verändern</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="neue-daten-erstellen" class="slide level2 smaller">
+<h2>Neue Daten erstellen</h2>
+<div>
+<ul>
+<li class="fragment">Vektoren: <code>c()</code></li>
+<li class="fragment">Kombiniert alle aufgezählten Objekte</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5</code></pre>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment">Strings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.</li>
+<li class="fragment">Im Output erkennt man Strings auch an den Anführungszeichen</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hallo"</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="unterschiede-zu-anderen-programmiersprachen" class="slide level2">
+<h2>Unterschiede zu anderen Programmiersprachen</h2>
+<div>
+<ul>
+<li class="fragment">keine Unterscheidung zwischen integer und double</li>
+<li class="fragment">verwendet keine Pointer</li>
+<li class="fragment">tendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut</li>
+</ul>
+</div>
 
 <div class="footer footer-default">
 
@@ -727,7 +968,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
