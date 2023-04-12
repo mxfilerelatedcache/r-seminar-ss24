@@ -9,11 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-<<<<<<< HEAD
   <title>Medienbasierte Wissenskonstruktion mit R - R Basics - 12.04.23</title>
-=======
-  <title>Medienbasierte Wissenskonstruktion mit R - Basics - 12.04.23</title>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,11 +387,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-<<<<<<< HEAD
   <h1 class="title">R Basics - 12.04.23</h1>
-=======
-  <h1 class="title">Basics - 12.04.23</h1>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 
 <div class="quarto-title-authors">
 </div>
@@ -406,7 +398,6 @@
 <ul>
 <li>Wer sind wir?</li>
 </ul>
-<<<<<<< HEAD
 </section>
 <section id="vorstellungsrunde-1" class="slide level2">
 <h2>Vorstellungsrunde</h2>
@@ -425,18 +416,12 @@
 <img data-src="unnamed-chunk-20-1.png" width="800" class="r-stretch quarto-figure-left"></section>
 <section id="vorstellungsrunde-4" class="slide level2">
 <h2>Vorstellungsrunde</h2>
-=======
-<p>Auswertung Umfrage</p>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 <ul>
 <li>Wer seid ihr?
 <ul>
 <li>Semester</li>
-<<<<<<< HEAD
 <li>Warum Interesse an R?</li>
 <li>Fun Fact</li>
-=======
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 </ul></li>
 </ul>
 </section>
@@ -511,11 +496,7 @@
 <div>
 <ul>
 <li class="fragment"><em>Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)</em></li>
-<<<<<<< HEAD
 <li class="fragment">In dem File ist nur die Zeile ohne <code>#</code>ausführbarer Code. Wie hier geschehen, lassen sich mit <code>#</code> Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll</li>
-=======
-<li class="fragment">In dem File ist nur die Zeile ohne “#” ausführbarer Code. Wie hier geschehen, lassen sich mit “#” Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll</li>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 <li class="fragment"><em>Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und <strong>STRG+ENTER</strong> drückt</em></li>
 <li class="fragment">Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt</li>
 </ul>
@@ -541,19 +522,11 @@
 <li class="fragment">R’s Standardformat sind .R-Dateien</li>
 <li class="fragment">Für “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:
 <ul>
-<<<<<<< HEAD
 <li class="fragment">ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)</li>
 <li class="fragment">ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)</li>
 <li class="fragment">ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll</li>
 <li class="fragment">Auswertung &amp; Bericht können somit im gleichen Dokument geschehen</li>
 <li class="fragment">Diese Präsentation ist auch in R entstanden!</li>
-=======
-<li>ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)</li>
-<li>ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)</li>
-<li>ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll</li>
-<li>Auswertung &amp; Bericht können somit im gleichen Dokument geschehen</li>
-<li>Diese Präsentation ist auch in R entstanden!</li>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 </ul></li>
 </ul>
 </div>
@@ -572,34 +545,8 @@
 <li>gewünschtes Output-Format (hier: html)</li>
 <li>womit das Quarto-Dokument gerendert werden soll (hier: knitr)</li>
 </ul></li>
-<<<<<<< HEAD
-=======
 </ul>
 </section>
-<section id="quarto-1" class="slide level2 smaller">
-<h2>Quarto</h2>
-<ul>
-<li>Im Dokument:
-<ul>
-<li>Der Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)</li>
-<li>Im Feld darunter kann Text geschrieben und formatiert werden
-<ul>
-<li>Source: Format lässt sich über bestimmte Zeichen einstellen</li>
-<li>Visual: Format lässt sich über Markieren + Auswählen einstellen</li>
-</ul></li>
-<li>Code kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)</li>
-<li>Im grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen
-<ul>
-<li>“Vorschau” über den Play-Button</li>
-<li>in den geschweiften Klammern lässt sich einstellen, was mit Code + Output beim Rendern passieren soll</li>
-</ul></li>
-</ul></li>
-<li>Über “Render” wird das Dokument in das Zielformat umgewandelt</li>
-<li>In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau</li>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
-</ul>
-</section>
-<<<<<<< HEAD
 <section id="quarto---im-dokument" class="slide level2 smaller">
 <h2>Quarto - im Dokument</h2>
 <div>
@@ -622,18 +569,11 @@
 </div>
 </section>
 <section id="quarto" class="slide level2">
-=======
-<section id="quarto-2" class="slide level2">
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 <h2>Quarto</h2>
 <ul>
 <li><em>Erstellt zwei Code-Chunks</em></li>
 <li><em>Fügt bei einem der Chunks in die erste Zeile <code>#| echo: TRUE</code></em></li>
-<<<<<<< HEAD
 <li><em>Schreibt in den Text- und in die Code-Bereiche <code>4+5</code></em></li>
-=======
-<li><em>Schreibt in den Text- und in die Code-Bereich <code>4+5</code></em></li>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 <li><em>Rendert das Dokument</em></li>
 </ul>
 <div class="fragment">
@@ -793,11 +733,7 @@
 <h2>Packages</h2>
 <div>
 <ul>
-<<<<<<< HEAD
 <li class="fragment"><p><em>Installiert und aktiviert das Package <code>psych</code> (Erinnerung: <code>install.packages()</code>&amp; <code>library()</code>)</em></p></li>
-=======
-<li class="fragment"><p><em>Installiert und aktiviert das Package <code>psych</code> (Erinnerung: <code>install.packages() library()</code>)</em></p></li>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 <li class="fragment"><p><em>Wendet die Hilfefunktion <code>help()</code> auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt</em></p></li>
 <li class="fragment"><p><em>Schaut euch mit dem neuen Wissen an, welche Funktionen das Package <code>psych</code> beinhaltet</em></p></li>
 </ul>
@@ -816,10 +752,6 @@
 <span id="cb10-10"><a href="#cb10-10"></a><span class="co"># Über psych informieren</span></span>
 <span id="cb10-11"><a href="#cb10-11"></a><span class="fu">help</span>(<span class="at">package=</span>psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<<<<<<< HEAD
-=======
-<p>Screenshot von help(package = psych)</p>
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 </div>
 </section>
 <section id="datentypen" class="slide level2 smaller">
@@ -1003,12 +935,9 @@ Levels: female male</code></pre>
 <li class="fragment">tendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut</li>
 </ul>
 </div>
-<<<<<<< HEAD
 </section>
 <section id="fragen" class="slide level2">
 <h2>Fragen?</h2>
-=======
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
 
 <div class="footer footer-default">
 
