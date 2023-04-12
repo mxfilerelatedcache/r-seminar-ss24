@@ -1,0 +1,85 @@
+---
+title: "Hausaufgabe 1: Grundlagen von R"
+author: "Kira Wolff & Simon Krukowski"
+---
+
+# Beschreibung
+
+Im Seminar habt ihr einige Dinge über **R-Studio**, **R** & **Quarto** gelernt. Diese erste Hausaufgabe dient dazu, euer erlerntes Wissen zu festigen. Wie ihr seht, besteht dieses Aufgabenblatt aus einem Quarto-Markdown Dokument, in welchem ihr direkt in den entsprechenden Chunks eure Antworten/Lösungen eintragen könnt. Dabei können die Antworten entweder Code- oder Text-Blöcke sein - das werden wir dann jeweils kenntlich machen.
+
+# Aufgaben
+
+Im Seminar habt ihr verschiedene Rechenoperatoren gelernt. Vervollständigt den folgenden Code, indem ihr die entsprechenden Rechenoperationen wie in den Beispielen anpasst, sodass das Ergebnis `4` ist.
+
+```{r}
+# Addition:
+2+2
+
+# Subtraktion:
+6-2
+
+# Division:
+(18-2)/4
+
+# Multiplikation:
+
+# Lösung hier
+
+# Exponent:
+
+# Lösung hier
+```
+
+Speichert nun das Ergebnis folgender Rechnung in einem Objekt namens `result1`:
+
+```{r}
+(3.5*14)-7
+
+# Lösung hier
+```
+
+Und prüft dann, ob es mit `result2` übereinstimmt:
+
+```{r}
+result2 <- "42"
+
+# Lösung hier
+```
+
+Sind die beiden Objekte gleich? Begründe deine Antwort:
+
+------------------------------------------------------------------------
+
+*Antwort hier*
+
+------------------------------------------------------------------------
+
+Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und beschreibt das Ergebnis, bzw. etwaige Fehlermeldungen:
+
+```{r}
+combined_results <- result1+result2
+```
+
+------------------------------------------------------------------------
+
+*Antwort hier*
+
+------------------------------------------------------------------------
+
+Vektoren sind auch ein zentraler Bestandteil von R. Erstelle im Folgenden einen 5-stelligen Vektor `vec` mit aufsteigender Zahlenfolge (also 1, 2 etc.):
+
+```{r}
+# Lösung hier
+```
+
+Ihr habt auch über Funktionen gelernt. Bei einer Berechnung hat ein Ergebnis leider sehr viele Nachkommastellen. Wir hätten das Ergebnis gerne auf drei Nachkommastellen gerundet:
+
+```{r}
+value <- 2/12
+
+# Runden des Ergebnisses:
+
+# Lösung hier
+```
+
+In R sind noch weitere Funktionen voreingebaut. Ein Beispiel ist die `paste` Funktion, welche Strings aneinanderketten kann. ⇒ vllt doch einfach als "freie" Aufgabe & sie müssen selbst recherchieren?
