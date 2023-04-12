@@ -13,7 +13,7 @@ Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenn
 
 ### Für Experten
 
-Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als **\[Für Experten\]** markiert - hier berücksichtigen wir nicht nur die Lösung, sondern auch eure Lösungswege (falls ihr auf keine Lösung kommt).
+Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als **\[Für Experten\]** markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).
 
 ### Abgabe:
 
@@ -76,7 +76,7 @@ Sind die beiden Objekte gleich? Begründe deine Antwort:
 
 ### Aufgabe 5 \[1 Punkt\]
 
-Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und erklärt wie das Ergebnis bzw. etwaige Fehlermeldungen zustande gekommen sein könnten:
+Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und erklärt, wie das Ergebnis bzw. etwaige Fehlermeldungen zustande gekommen sein könnten:
 
 ```{r}
 combined_results <- result1+result2
@@ -105,7 +105,7 @@ Nun wollen wir den Vektor um die Zahl `6` an letzter Stelle ergänzen. Da ihr be
 vec[5]
 ```
 
-Wie könnte man über den Zuweisungsoperator die Zahl 6 als sechstes Element hinzufügen? **\[Für Experten\]**
+Wie könnte man über den Zuweisungsoperator die Zahl 6 als sechstes Element hinzufügen(, ohne den Weg aus Aufgabe 8 zu benutzen)? **\[Für Experten\]**
 
 ```{r}
 # Lösung hier
@@ -113,7 +113,7 @@ Wie könnte man über den Zuweisungsoperator die Zahl 6 als sechstes Element hin
 
 ### Aufgabe 8 \[1 Punkt\]
 
-Ihr habt auch über Funktionen gelernt. Es gibt eine base-R Funktion zum Hinzufügen von Elementen zu Vektoren namens `append()`. Benutzt diese, um die Zahl `6` als sechstes Element zum Vektor `vec` hinzuzufügen.
+Ihr habt auch über Funktionen gelernt. Es gibt eine base-R Funktion zum Hinzufügen von Elementen zu Vektoren namens `append()`. Benutzt diese, um die Zahl `6` als sechstes Element zum Vektor `vec` hinzuzufügen. (Hinweis: die Hilfefunktion ist euer Freund!)
 
 ```{r}
 # Lösung hier
