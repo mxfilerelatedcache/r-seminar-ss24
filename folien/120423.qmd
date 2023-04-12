@@ -1,5 +1,5 @@
 ---
-title: "Basics - 12.04.23"
+title: "R \n Basics - 12.04.23"
 format: 
   revealjs:
     theme: default
@@ -16,6 +16,8 @@ Auswertung Umfrage
 
 -   Wer seid ihr?
     -   Semester
+    -   Warum Interesse an R?
+    -   Fun Fact
 
 ## Ziele des Seminars
 
@@ -26,6 +28,7 @@ Auswertung Umfrage
 ## Zeitplan
 
 -   7-8 Sitzungen, die jeweils 3h dauern
+    -   Mittagspause?
 -   31.05 vrsl. letzte, kürzere Sitzung
 -   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
@@ -66,7 +69,7 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 ## User Interface {.smaller}
 
-![](.R.png){.absolute top=100 right=0 width="700" height="600"}
+![](.R.png){.absolute top="100" right="0" width="700" height="600"}
 
 ::: {.column width="35%"}
 ::: incremental
@@ -87,7 +90,7 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 ::: incremental
 -   *Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)*
--   In dem File ist nur die Zeile ohne "\#" ausführbarer Code. Wie hier geschehen, lassen sich mit "\#" Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
+-   In dem File ist nur die Zeile ohne `#`ausführbarer Code. Wie hier geschehen, lassen sich mit `#` Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
 -   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
 -   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
 :::
@@ -109,6 +112,7 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 ::: smaller
 ## .R vs. Quarto
 
+::: incremental
 -   R's Standardformat sind .R-Dateien
 -   Für "echte Arbeit" mit R sind Quarto-Dokumente meistens nützlicher:
     -   ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,...)
@@ -116,11 +120,14 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
     -   ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll
     -   Auswertung & Bericht können somit im gleichen Dokument geschehen
     -   Diese Präsentation ist auch in R entstanden!
-
-Bild Vergleich .R und .qmd
+:::
 :::
 
-## Quarto
+## .R vs. Quarto
+
+![](Asset%201vs.png){fig-align="center"}
+
+## Quarto - Dokument aufsetzen
 
 -   *Erstellt ein Quarto-Dokument über File \> New File \> Quarto Document*
 -   Im auftauchenden Fenster könnt ihr einstellen:
@@ -129,28 +136,27 @@ Bild Vergleich .R und .qmd
     -   womit das Quarto-Dokument gerendert werden soll (hier: knitr)
 
 ::: smaller
-## Quarto
+## Quarto - im Dokument
 
--   Im Dokument:
-    -   Der Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
-    -   Im Feld darunter kann Text geschrieben und formatiert werden
-        -   Source: Format lässt sich über bestimmte Zeichen einstellen
-        -   Visual: Format lässt sich über Markieren + Auswählen einstellen
-    -   Code kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)
-    -   Im grau unterlegten Kästchen lässt sich "normaler" R-Code schreiben und ausführen
-        -   "Vorschau" über den Play-Button
-        -   in den geschweiften Klammern lässt sich einstellen, was mit Code + Output beim Rendern passieren soll
+::: incremental
+-   Der Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
+-   Im Feld darunter kann Text geschrieben und formatiert werden
+    -   Source: Format lässt sich über bestimmte Zeichen einstellen
+    -   Visual: Format lässt sich über Markieren + Auswählen einstellen
+-   Code kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)
+-   Im grau unterlegten Kästchen lässt sich "normaler" R-Code schreiben und ausführen
+    -   "Vorschau" über den Play-Button
+    -   Über `#|` am Zeilenbeginn lässt sich einstellen, was mit Code + Output beim Rendern passieren soll
 -   Über "Render" wird das Dokument in das Zielformat umgewandelt
 -   In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau
-
-Bild Dialogfenster
+:::
 :::
 
 ## Quarto
 
 -   *Erstellt zwei Code-Chunks*
 -   *Fügt bei einem der Chunks in die erste Zeile `#| echo: TRUE`*
--   *Schreibt in den Text- und in die Code-Bereich `4+5`*
+-   *Schreibt in den Text- und in die Code-Bereiche `4+5`*
 -   *Rendert das Dokument*
 
 . . .
@@ -313,7 +319,7 @@ help(mean)
 ## Packages {.smaller}
 
 ::: incremental
--   *Installiert und aktiviert das Package `psych` (Erinnerung: `install.packages() library()`)*
+-   *Installiert und aktiviert das Package `psych` (Erinnerung: `install.packages()`& `library()`)*
 
 -   *Wendet die Hilfefunktion `help()` auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt*
 
@@ -335,8 +341,6 @@ help(help) # Inception!
 # Über psych informieren
 help(package=psych)
 ```
-
-Screenshot von help(package = psych)
 
 ::: smaller
 ## Datentypen
@@ -506,3 +510,5 @@ string
 -   verwendet keine Pointer
 -   tendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut
 :::
+
+## Fragen?
