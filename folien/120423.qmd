@@ -12,7 +12,25 @@ execute:
 
 -   Wer sind wir?
 
-Auswertung Umfrage
+## Vorstellungsrunde
+
+Verteilung Vorwissen
+
+![](unnamed-chunk-12-1.png){fig-align="center" width="800"}
+
+## Vorstellungsrunde
+
+Vorwissen Programmiersprachen
+
+![](unnamed-chunk-18-1.png){fig-align="left" width="800"}
+
+## Vorstellungsrunde
+
+Erwartungen ans Seminar
+
+![](unnamed-chunk-20-1.png){fig-align="left" width="800"}
+
+## Vorstellungsrunde
 
 -   Wer seid ihr?
     -   Semester
