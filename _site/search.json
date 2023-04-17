@@ -65,59 +65,35 @@
   {
     "objectID": "folien/120423.html#vorstellungsrunde",
     "href": "folien/120423.html#vorstellungsrunde",
-<<<<<<< HEAD
-    "title": "R Basics - 12.04.23",
-    "section": "Vorstellungsrunde",
-    "text": "Vorstellungsrunde\n\nWer sind wir?"
-=======
     "title": "Basics - 12.04.23",
     "section": "Vorstellungsrunde",
     "text": "Vorstellungsrunde\n\nWer sind wir?\n\nAuswertung Umfrage\n\nWer seid ihr?\n\nSemester"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
   },
   {
     "objectID": "folien/120423.html#ziele-des-seminars",
     "href": "folien/120423.html#ziele-des-seminars",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Ziele des Seminars",
     "text": "Ziele des Seminars\n\nDaten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten\nEinblick in Breite und Tiefe, die R bietet\nGrundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)"
   },
   {
     "objectID": "folien/120423.html#zeitplan",
     "href": "folien/120423.html#zeitplan",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
     "section": "Zeitplan",
     "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n\nMittagspause?\n\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)\n\nLink einfügen"
-=======
-    "title": "Basics - 12.04.23",
-    "section": "Zeitplan",
-    "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)\n\nLink einfügen"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
   },
   {
     "objectID": "folien/120423.html#prüfungsleistung",
     "href": "folien/120423.html#prüfungsleistung",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Prüfungsleistung",
     "text": "Prüfungsleistung\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\nAbgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit (Plagiatscheck)\nWir laden nach Abgabe “Musterlösung” hoch\n\n1x Hausaufgabe vorstellen (unbenotet)\nBericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen\n\n\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden."
   },
   {
     "objectID": "folien/120423.html#user-interface",
     "href": "folien/120423.html#user-interface",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "User Interface",
     "text": "User Interface\n\n\n\n\noben links: Code\nunten links: Konsole - ausgeführter Code und Output\n\nhier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden\n\noben rechts: u.a. Environment - welche Objekte und Daten exisitieren\nunten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht"
   },
@@ -131,52 +107,30 @@
   {
     "objectID": "folien/120423.html#was-ist-r",
     "href": "folien/120423.html#was-ist-r",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Was ist R?",
     "text": "Was ist R?\n\nProgrammiersprache (und -oberfläche) für statistische Berechnungen und Grafiken\nopen-source & kostenlos\ngroße Community, die ständig Funktionen erweitert und bei Problemen hilft\nR Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher"
   },
   {
     "objectID": "folien/120423.html#r-vs.-quarto",
     "href": "folien/120423.html#r-vs.-quarto",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
     "section": ".R vs. Quarto",
     "text": ".R vs. Quarto\n\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen\nDiese Präsentation ist auch in R entstanden!"
-=======
-    "title": "Basics - 12.04.23",
-    "section": ".R vs. Quarto",
-    "text": ".R vs. Quarto\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen\nDiese Präsentation ist auch in R entstanden!\n\n\nBild Vergleich .R und .qmd"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
   },
   {
     "objectID": "folien/120423.html#code-erstellen-ausführen",
     "href": "folien/120423.html#code-erstellen-ausführen",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
     "section": "Code erstellen + ausführen",
     "text": "Code erstellen + ausführen\n\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne #ausführbarer Code. Wie hier geschehen, lassen sich mit # Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
-=======
-    "title": "Basics - 12.04.23",
-    "section": "Code erstellen + ausführen",
-    "text": "Code erstellen + ausführen\n\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne “#” ausführbarer Code. Wie hier geschehen, lassen sich mit “#” Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
   },
   {
     "objectID": "folien/120423.html#quarto",
     "href": "folien/120423.html#quarto",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
     "section": "Quarto",
-    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\n\nOutput ohne Code:\n\n\n[1] 9\n\n\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\n\n\nReiner Text: 4+5"
-=======
-    "title": "Basics - 12.04.23",
-    "section": "Quarto",
-    "text": "Quarto\n\nErstellt ein Quarto-Dokument über File > New File > Quarto Document\nIm auftauchenden Fenster könnt ihr einstellen:\n\nTitel & AutorIn des Dokuments\ngewünschtes Output-Format (hier: html)\nwomit das Quarto-Dokument gerendert werden soll (hier: knitr)"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
+    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\n\nOutput ohne Code:\n\n4+5\n\n[1] 9\n\n\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\n\n\nReiner Text: 4+5"
   },
   {
     "objectID": "folien/120423.html#quarto-1",
@@ -188,33 +142,21 @@
   {
     "objectID": "folien/120423.html#rechenoperatoren",
     "href": "folien/120423.html#rechenoperatoren",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "(Rechen)Operatoren",
     "text": "(Rechen)Operatoren\n\nDezimaltrennzeichen: Punkt . , nicht Komma ,\n+ - * /\nExponent: ^\nlogisch gleich: ==\nlogisch ungleich: !=\nlogisches und: &\nlogisches oder: |\nlogisches exklusives oder: xor\nnicht: !"
   },
   {
     "objectID": "folien/120423.html#objekte",
     "href": "folien/120423.html#objekte",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Objekte",
     "text": "Objekte\n\n\nAnstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern\nKonzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll\n\n\n\n\nergebnis <- 3+5\n\n\n\nR führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!\nObjekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt\n\n\n\n\n\nergebnis\n\n[1] 8\n\n\n\n\nR ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!\nObjekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)\nErstellt selbst eine Rechenaufgabe und speichert sie als Objekt!\nWas passiert, wenn man den gleichen Objektnamen erneut verwendet?"
   },
   {
     "objectID": "folien/120423.html#funktionen",
     "href": "folien/120423.html#funktionen",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Funktionen",
     "text": "Funktionen\n\n\nMithilfe von Funktionen lassen sich Objekte/Daten bearbeiten\nBeispiel: round(3.45, digits = 1) rundet 3.45 auf die erste Nachkommastelle\n\nam Anfang steht der Name der Funktion (auch hier: case-sensitive)\ndie Argumente der Funktion werden von runden Klammern eingerahmt\nArgumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll\nsie folgen der Syntax Argument = Angabe\nArgumente werden durch Komma getrennt\nmanche Argumente sind zwingend notwendig, viele aber optional\ndie Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. round(3.45, 1) (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)"
   },
@@ -228,11 +170,7 @@
   {
     "objectID": "folien/120423.html#packages",
     "href": "folien/120423.html#packages",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Packages",
     "text": "Packages\n\n\nFrisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen\nDurch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig\nIm Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind\nNeue Packages lassen sich mit install.packages(\"package-name\") installieren und mit library(package-name) aktivieren (auf die Anführungszeichen achten!)\nMan kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig"
   },
@@ -246,32 +184,23 @@
   {
     "objectID": "folien/120423.html#datentypen",
     "href": "folien/120423.html#datentypen",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Datentypen",
     "text": "Datentypen\n\nBasic:\n\nnumeric: Zahlen (integer, double)\ncharacter: Buchstabenfolgen (strings)\nfactor: z.B. Faktorstufen eines Faktors\nlogical: TRUE, FALSE (vgl. 1 & 0)\n\nVektor: eindimensionale “Aufzählung” von Elementen des gleichen Datentyps\nMatrix: ein- bis zweidimensionale Aufzählung von Elementen des gleichen Datentyps\nArray: beliebig-dimensionale Aufzählung von Elementen des gleichen Datentyps\nListe: kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)\nDataframe, Tibble: Spezifische Formate, um Datensätze darzustellen\n\nKönnen pro Spalte unterschiedliche Datentypen beinhalten\nStandardformat, wenn man von extern Daten in R reinlädt"
   },
   {
     "objectID": "folien/120423.html#objekte-1",
     "href": "folien/120423.html#objekte-1",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Objekte",
     "text": "Objekte\n\n\nWarum ist Objekte erstellen wichtig?\n\nFür R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert\nZwischenergebnisse überprüfen\nParameter festlegen\nFlüchtigkeitsfehler vermeiden\nuvm.\n\nShortcut für <- : ALT+-\nPfeil in die andere Richtung -> und Gleichheitszeichen = funktionieren nicht bzw. sollten nicht verwendet werden!"
   },
   {
-<<<<<<< HEAD
     "objectID": "folien/120423.html#datentypen-1",
     "href": "folien/120423.html#datentypen-1",
     "title": "R Basics - 12.04.23",
     "section": "Datentypen",
-    "text": "Datentypen\nDer Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:\n\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen\n\n\n\n\nZeile: Ein Tibble mit diesen Dimensionen wird angezeigt\n\n\nZeile: Spaltennamen\n\n\nZeile: Datentypen\n\nfolgende Zeilen: Daten\nin der Konsole werden Daten meistens nur gekürzt angezeigt\nÜber view(daten) öffnet sich eine Tabellenübersicht"
+    "text": "Datentypen\nDer Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.1     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.1     ✔ tibble    3.2.0\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the \u001b]8;;http://conflicted.r-lib.org/\u0007conflicted package\u001b]8;;\u0007 to force all conflicts to become errors\nNew names:\nRows: 4 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): sex, r_problems\ndbl  (5): ...1, id, lastpage, age, hopes_perc\nlgl  (3): r_knowledge, r_knowledge_amount, programming_knowledge\ndttm (1): submitdate\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen\n\n\n\n\nZeile: Ein Tibble mit diesen Dimensionen wird angezeigt\n\n\nZeile: Spaltennamen\n\n\nZeile: Datentypen\n\nfolgende Zeilen: Daten\nin der Konsole werden Daten meistens nur gekürzt angezeigt\nÜber view(daten) öffnet sich eine Tabellenübersicht"
   },
   {
     "objectID": "folien/120423.html#daten-extrahieren",
@@ -288,18 +217,11 @@
     "text": "Datentypen\n\n\nR erkennt häufig von selbst, welcher Datentyp gemeint ist\nHäufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen\ntypeof() um den Datentyp zu erfragen\nis.numeric() / is.factor() / is.logical() / is.character() um einen bestimmten Datentyp zu testen\nas.numeric() usw. nutzen, um den Datentyp zu verändern\n\n\n\n\numfrage$r.probleme <- as.factor(umfrage$r.probleme)\n# Die umgewandelte Spalte überschreibt die alte Spalte!"
   },
   {
-    "objectID": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
-    "href": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
-    "title": "R Basics - 12.04.23",
-    "section": "Unterschiede zu anderen Programmiersprachen",
-    "text": "Unterschiede zu anderen Programmiersprachen\n\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
-=======
     "objectID": "Auswertung_survey.html",
     "href": "Auswertung_survey.html",
     "title": "analysis_priorknowledge",
     "section": "",
-    "text": "library(dplyr, warn.conflicts = F)\nlibrary(ggplot2)\nlibrary(reshape2)\n\npalette1 <- c(\"#648fff\",\"#785ef0\",\"#dc267f\",\"#fe6100\",\"#ffb000\",\"#000000\",\"#ffffff\")\npalette2 <- c(\"#CC79A7\",\"#D55E00\",\"#0072B2\",\"#F0E442\",\"#009E73\",\"#56B4E9\",\"#E69F00\",\"#000000\")\n\nThis is the corresponding quarto file for our analyses regarding the prior-existing knowledge in our R-course.\nFirst we want to import the data:\n\ndataset <- read.csv(\"/Users/simonkrukowski/Downloads/results-survey368965-6.csv\")\n\nOf course we’re dissatisfied with the variable names as provided by LimeSurvey, so we have to take care of that as well:\n\ndataset %>% \n  rename_with(., ~ gsub(\".\",\"_\",.,fixed = T)) -> dataset\n\n\ndataset %>% \n  # rename columns\n  rename(age = G01Q02,\n         r_knowledge = G01Q03,\n         r_problems = G01Q09,\n         programming_knowledge = G01Q05,\n         programming_c = G01Q06_c_,\n         programming_javascript = G01Q06_javascript_,\n         programming_python = G01Q06_python_,\n         programming_java = G01Q06_Java_,\n         programming_sql = G01Q06_sql_,\n         programming_julia = G01Q06_julia_,\n         programming_other = G01Q06_other_) %>% \n  # mutate (create new/change old columns to account for limesurvey artifacts)\n  mutate(across(everything(), ~na_if(., \"\")),\n         sex = case_when(G01Q01_female_ == \"Y\" ~ \"female\",\n                         G01Q01_male_ == \"Y\" ~ \"male\",\n                         G01Q01_diverse_ == \"Y\" ~ \"diverse\"),\n         r_knowledge_amount = case_when(G01Q04_priorknow_ == \"AO01\" ~ 1,\n                                        G01Q04_priorknow_ == \"AO02\" ~ 2,\n                                        G01Q04_priorknow_ == \"AO03\" ~ 3,\n                                        G01Q04_priorknow_ == \"AO04\" ~ 4,\n                                        G01Q04_priorknow_ == \"AO05\" ~ 5),\n         hopes_base_knowledge = case_when(G01Q10_SQ001_ == \"Y\" ~ \"Y\"),\n         hopes_improve_knowledge = case_when(G01Q10_SQ002_ == \"Y\" ~ \"Y\"),\n         hopes_dataviz = case_when(G01Q10_SQ003_ == \"Y\" ~ \"Y\"),\n         hopes_stat_analyses = case_when(G01Q10_SQ004_ == \"Y\" ~ \"Y\"),\n         hopes_websites = case_when(G01Q10_SQ005_ == \"Y\" ~ \"Y\")\n         ) %>% \n  # remove all columns that start with G0 (all limesurvey artifacts)\n  select(-starts_with(\"G0\")) %>% \n  # replace all Ys with bool values and replace NAs with FALSE for multiple choice items\n  mutate(across(everything(),  ~replace(., . ==  \"Y\" , TRUE)),\n         across(starts_with(c(\"programming_\",\"hopes_\")),~replace(., is.na(.), FALSE)),\n         across(c(starts_with(c(\"hopes\",\"programming\")),r_knowledge),as.logical)) %>% \n  mutate(r_knowledge = case_when(is.na(r_knowledge) ~ FALSE,\n                                 !is.na(r_knowledge) ~ TRUE)) -> dataset\n\nNow we want to delete the first four rows because these were test data.\n\ndataset %>% \n  filter(row_number() > 4) -> dataset\n\nOkay now it comes to visualising. Let’s skip the descriptive data for our second assignment and let’s instead focus on prior knowledge.\n\ndataset %>% \n  mutate(r_knowledge = case_when(r_knowledge == T ~\"Vorwissen\",\n                                 r_knowledge == F ~\"kein Vorwissen\")) %>% \n  ggplot(aes(x=r_knowledge))+\n  geom_bar(aes(fill=r_knowledge),color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(..count../sum(..count..)*100, \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values=palette1[2:3])+\n  theme_classic()+\n  ylab(\"Anzahl\")+xlab(\"Vorwissen\")+labs(fill=\"Vorwissen\")\n\nWarning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(count)` instead.\n\n\n\n\n\nAnd then on the mean value of the 2 persons who do have prior knowledge. Here, a plot doesnt really make sense:\n\ndataset %>% \n  mutate(r_knowledge = case_when(r_knowledge == T ~\"Vorwissen\",\n                                 r_knowledge == F ~\"kein Vorwissen\")) %>% \n  group_by(r_knowledge) %>% \n  summarise(mean=mean(r_knowledge_amount))\n\n# A tibble: 2 × 2\n  r_knowledge     mean\n  <chr>          <dbl>\n1 kein Vorwissen  NA  \n2 Vorwissen        1.5\n\n\nOkay now let’s focus on prior knowledge in programming:\n\ndataset %>% \n  select(id,starts_with(\"progr\"),-programming_knowledge) %>% \n  rename_with(., ~ gsub(\"programming_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  group_by(variable) %>% \n  summarise(sum=sum(value))\n\n# A tibble: 7 × 2\n  variable     sum\n  <fct>      <int>\n1 javascript     5\n2 python         9\n3 java           7\n4 c              3\n5 sql            3\n6 julia          0\n7 other          1\n\n\nLet’s visualise it. Here, we can skip the summarise.\n\ndataset %>% \n  select(id,starts_with(\"progr\"),-programming_knowledge) %>% \n  rename_with(., ~ gsub(\"programming_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  filter(value==T) %>% \n  ggplot(aes(x=variable))+\n  geom_bar(aes(fill=variable),stat = \"count\",color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(round(..count../sum(..count..)*100,1), \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values = palette1)+\n  theme_classic()+\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))+\n  ylab(\"Anzahl\")+xlab(\"Programmiersprache\")+labs(fill=\"Programmiersprache\")\n\n\n\n\nOkay, now we also want to check the expectations:\n\ndataset %>% \n  select(id,starts_with(\"hopes\")) %>% \n  rename_with(., ~ gsub(\"hopes_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  filter(value==T) %>% \n  ggplot(aes(x=variable))+\n  geom_bar(aes(fill=variable),stat = \"count\",color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(round(..count../sum(..count..)*100,1), \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values = palette1)+\n  theme_classic()+\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))+\n  ylab(\"Anzahl\")+xlab(\"Erwartungen\")+labs(fill=\"Erwartungen\")"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
+    "text": "library(dplyr, warn.conflicts = F)\nlibrary(ggplot2)\nlibrary(reshape2)\n\npalette1 <- c(\"#648fff\",\"#785ef0\",\"#dc267f\",\"#fe6100\",\"#ffb000\",\"#000000\",\"#ffffff\")\npalette2 <- c(\"#CC79A7\",\"#D55E00\",\"#0072B2\",\"#F0E442\",\"#009E73\",\"#56B4E9\",\"#E69F00\",\"#000000\")\n\nThis is the corresponding quarto file for our analyses regarding the prior-existing knowledge in our R-course.\nFirst we want to import the data:\n\ndataset <- read.csv(\"/Users/simonkrukowski/Downloads/results-survey368965-6.csv\")\n\nOf course we’re dissatisfied with the variable names as provided by LimeSurvey, so we have to take care of that as well:\n\ndataset %>% \n  rename_with(., ~ gsub(\".\",\"_\",.,fixed = T)) -> dataset\n\n\ndataset %>% \n  # rename columns\n  rename(age = G01Q02,\n         r_knowledge = G01Q03,\n         r_problems = G01Q09,\n         programming_knowledge = G01Q05,\n         programming_c = G01Q06_c_,\n         programming_javascript = G01Q06_javascript_,\n         programming_python = G01Q06_python_,\n         programming_java = G01Q06_Java_,\n         programming_sql = G01Q06_sql_,\n         programming_julia = G01Q06_julia_,\n         programming_other = G01Q06_other_) %>% \n  # mutate (create new/change old columns to account for limesurvey artifacts)\n  mutate(across(everything() & where(is.character), ~na_if(., \"\")),\n         across(everything() & where(is.numeric), ~na_if(., 0)),\n         sex = case_when(G01Q01_female_ == \"Y\" ~ \"female\",\n                         G01Q01_male_ == \"Y\" ~ \"male\",\n                         G01Q01_diverse_ == \"Y\" ~ \"diverse\"),\n         r_knowledge_amount = case_when(G01Q04_priorknow_ == \"AO01\" ~ 1,\n                                        G01Q04_priorknow_ == \"AO02\" ~ 2,\n                                        G01Q04_priorknow_ == \"AO03\" ~ 3,\n                                        G01Q04_priorknow_ == \"AO04\" ~ 4,\n                                        G01Q04_priorknow_ == \"AO05\" ~ 5),\n         hopes_base_knowledge = case_when(G01Q10_SQ001_ == \"Y\" ~ \"Y\"),\n         hopes_improve_knowledge = case_when(G01Q10_SQ002_ == \"Y\" ~ \"Y\"),\n         hopes_dataviz = case_when(G01Q10_SQ003_ == \"Y\" ~ \"Y\"),\n         hopes_stat_analyses = case_when(G01Q10_SQ004_ == \"Y\" ~ \"Y\"),\n         hopes_websites = case_when(G01Q10_SQ005_ == \"Y\" ~ \"Y\")\n         ) %>% \n  # remove all columns that start with G0 (all limesurvey artifacts)\n  select(-starts_with(\"G0\")) %>% \n  # replace all Ys with bool values and replace NAs with FALSE for multiple choice items\n  mutate(across(everything(),  ~replace(., . ==  \"Y\" , TRUE)),\n         across(starts_with(c(\"programming_\",\"hopes_\")),~replace(., is.na(.), FALSE)),\n         across(c(starts_with(c(\"hopes\",\"programming\")),r_knowledge),as.logical)) %>% \n  mutate(r_knowledge = case_when(is.na(r_knowledge) ~ FALSE,\n                                 !is.na(r_knowledge) ~ TRUE)) -> dataset\n\nNow we want to delete the first four rows because these were test data.\n\ndataset %>% \n  filter(row_number() > 4) -> dataset\n\nOkay now it comes to visualising. Let’s skip the descriptive data for our second assignment and let’s instead focus on prior knowledge.\n\ndataset %>% \n  mutate(r_knowledge = case_when(r_knowledge == T ~\"Vorwissen\",\n                                 r_knowledge == F ~\"kein Vorwissen\")) %>% \n  ggplot(aes(x=r_knowledge))+\n  geom_bar(aes(fill=r_knowledge),color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(after_stat(count)/sum(after_stat(count))*100, \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values=palette1[2:3])+\n  theme_classic()+\n  ylab(\"Anzahl\")+xlab(\"Vorwissen\")+labs(fill=\"Vorwissen\")\n\n\n\n\nAnd then on the mean value of the 2 persons who do have prior knowledge. Here, a plot doesnt really make sense:\n\ndataset %>% \n  mutate(r_knowledge = case_when(r_knowledge == T ~\"Vorwissen\",\n                                 r_knowledge == F ~\"kein Vorwissen\")) %>% \n  group_by(r_knowledge) %>% \n  summarise(mean=mean(r_knowledge_amount))\n\n# A tibble: 2 × 2\n  r_knowledge     mean\n  <chr>          <dbl>\n1 Vorwissen        1.5\n2 kein Vorwissen  NA  \n\n\nOkay now let’s focus on prior knowledge in programming:\n\ndataset %>% \n  select(id,starts_with(\"progr\"),-programming_knowledge) %>% \n  rename_with(., ~ gsub(\"programming_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  group_by(variable) %>% \n  summarise(sum=sum(value))\n\n# A tibble: 7 × 2\n  variable     sum\n  <fct>      <int>\n1 javascript     5\n2 python         9\n3 java           7\n4 c              3\n5 sql            3\n6 julia          0\n7 other          1\n\n\nLet’s visualise it. Here, we can skip the summarise.\n\ndataset %>% \n  select(id,starts_with(\"progr\"),-programming_knowledge) %>% \n  rename_with(., ~ gsub(\"programming_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  filter(value==T) %>% \n  ggplot(aes(x=variable))+\n  geom_bar(aes(fill=variable),stat = \"count\",color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(round(after_stat(count)/sum(after_stat(count))*100,1), \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values = palette1)+\n  theme_classic()+\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))+\n  ylab(\"Anzahl\")+xlab(\"Programmiersprache\")+labs(fill=\"Programmiersprache\")\n\n\n\n\nOkay, now we also want to check the expectations:\n\ndataset %>% \n  select(id,starts_with(\"hopes\")) %>% \n  rename_with(., ~ gsub(\"hopes_\",\"\",.,fixed = T)) %>% \n  melt(id.vars = c(\"id\")) %>% \n  filter(value==T) %>% \n  ggplot(aes(x=variable))+\n  geom_bar(aes(fill=variable),stat = \"count\",color=\"#2b2b2b\")+\n  geom_label(aes(label = paste0(round(after_stat(count)/sum(after_stat(count))*100,1), \"%\")),\n            stat = \"count\",\n            colour = \"black\",\n            position = position_dodge(width=0.9),vjust = 0.5) +\n  scale_fill_manual(values = palette1)+\n  theme_classic()+\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))+\n  ylab(\"Anzahl\")+xlab(\"Erwartungen\")+labs(fill=\"Erwartungen\")"
   },
   {
     "objectID": "folien/120423.html#quarto-2",
@@ -309,7 +231,6 @@
     "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nSchreibt in den Text- und in die Code-Bereich 4+5\nRendert das Dokument\n\n\nOutput ohne Code:\n\n\n[1] 9\n\n\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\n\n\nReiner Text: 4+5"
   },
   {
-<<<<<<< HEAD
     "objectID": "folien/120423.html#packages-1",
     "href": "folien/120423.html#packages-1",
     "title": "R Basics - 12.04.23",
@@ -320,31 +241,17 @@
     "objectID": "folien/120423.html#hilfe-in-r",
     "href": "folien/120423.html#hilfe-in-r",
     "title": "R Basics - 12.04.23",
-=======
-    "objectID": "folien/120423.html#hilfe-in-r",
-    "href": "folien/120423.html#hilfe-in-r",
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Hilfe in R",
     "text": "Hilfe in R\n\n\nÜber help(Funktion) wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen\n\ngenauso funktioniert ?Funktion\nauf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)\n\nFindet mit der Hilfe-Funktion heraus, was mean() macht und welche Argumente es hat\n\n\n\n\n?mean\n#oder\nhelp(mean)"
   },
   {
     "objectID": "folien/120423.html#hilfe-außerhalb-von-r",
     "href": "folien/120423.html#hilfe-außerhalb-von-r",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Hilfe außerhalb von R",
     "text": "Hilfe außerhalb von R\n\n\nFehlermeldungen lesen und versuchen, Problem zu verstehen\ndas Internet!\n\nFehlermeldung bei Google einfügen und Links durchsuchen\nStack Overflow\nStatt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen\n\nDanach: Lösung für sich dokumentieren"
   },
   {
-<<<<<<< HEAD
-    "objectID": "folien/120423.html#bestimmte-daten-abrufen",
-    "href": "folien/120423.html#bestimmte-daten-abrufen",
-    "title": "R Basics - 12.04.23",
-=======
     "objectID": "folien/120423.html#packages-1",
     "href": "folien/120423.html#packages-1",
     "title": "Basics - 12.04.23",
@@ -361,28 +268,18 @@
   {
     "objectID": "folien/120423.html#bestimmte-daten-abrufen",
     "href": "folien/120423.html#bestimmte-daten-abrufen",
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
+    "title": "R Basics - 12.04.23",
     "section": "Bestimmte Daten abrufen",
     "text": "Bestimmte Daten abrufen\n\nIn eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben\n\n\numfrage[2,3] # zeigt den Wert der zweiten Spalte und dritten Zeile\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nStatt Zahlen können auch Spaltennamen benutzt werden\n\n\numfrage[3, \"geschlecht\"]\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nSpalten lassen sich auch direkt über $ ansprechen.\n\n\numfrage$geschlecht\n\n[1] <NA>   female female male  \nLevels: female male"
   },
   {
     "objectID": "folien/120423.html#bestimmte-daten-abrufen-1",
     "href": "folien/120423.html#bestimmte-daten-abrufen-1",
-<<<<<<< HEAD
     "title": "R Basics - 12.04.23",
-=======
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
     "section": "Bestimmte Daten abrufen",
     "text": "Bestimmte Daten abrufen\n\nUm alles anzeigen zu lassen, kann man die Koordinate “leer” lassen\n\n\numfrage[ , \"geschlecht\"]\n\n# A tibble: 4 × 1\n  geschlecht\n  <fct>     \n1 <NA>      \n2 female    \n3 female    \n4 male      \n\n\n\n\numfrage[ , ]\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen"
   },
   {
-<<<<<<< HEAD
-    "objectID": "folien/120423.html#neue-daten-erstellen",
-    "href": "folien/120423.html#neue-daten-erstellen",
-    "title": "R Basics - 12.04.23",
-=======
     "objectID": "folien/120423.html#datentypen-2",
     "href": "folien/120423.html#datentypen-2",
     "title": "Basics - 12.04.23",
@@ -392,13 +289,11 @@
   {
     "objectID": "folien/120423.html#neue-daten-erstellen",
     "href": "folien/120423.html#neue-daten-erstellen",
-    "title": "Basics - 12.04.23",
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
+    "title": "R Basics - 12.04.23",
     "section": "Neue Daten erstellen",
     "text": "Neue Daten erstellen\n\n\nVektoren: c()\nKombiniert alle aufgezählten Objekte\n\n\n\n\nvektor <- c(1,3,5)\nvektor\n\n[1] 1 3 5\n\n\n\n\nStrings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.\nIm Output erkennt man Strings auch an den Anführungszeichen\n\n\n\n\n\nstring <- \"hallo\"\nstring\n\n[1] \"hallo\""
   },
   {
-<<<<<<< HEAD
     "objectID": "folien/120423.html#r-vs.-quarto-1",
     "href": "folien/120423.html#r-vs.-quarto-1",
     "title": "R Basics - 12.04.23",
@@ -455,17 +350,577 @@
     "text": "Vorstellungsrunde\nErwartungen ans Seminar"
   },
   {
+    "objectID": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
+    "href": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
+    "title": "R Basics - 12.04.23",
+    "section": "Unterschiede zu anderen Programmiersprachen",
+    "text": "Unterschiede zu anderen Programmiersprachen\n\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
+  },
+  {
+    "objectID": "Deskriptives.html",
+    "href": "Deskriptives.html",
+    "title": "Base R",
+    "section": "",
+    "text": "Show code\nlibrary(tidyverse)\nlibrary(reshape2)\nlibrary(reactable)\n\npalette1 <- c(\"#648fff\",\"#785ef0\",\"#dc267f\",\"#fe6100\",\"#ffb000\",\"#000000\",\"#ffffff\")\npalette2 <- c(\"#CC79A7\",\"#D55E00\",\"#0072B2\",\"#F0E442\",\"#009E73\",\"#56B4E9\",\"#E69F00\",\"#000000\")"
+  },
+  {
+    "objectID": "folien/test fuer fehler.html",
+    "href": "folien/test fuer fehler.html",
+    "title": "test2",
+    "section": "",
+    "text": "print(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))"
+  },
+  {
+    "objectID": "Deskriptives.html#einlesen-von-daten",
+    "href": "Deskriptives.html#einlesen-von-daten",
+    "title": "Deskriptives",
+    "section": "Einlesen von Daten",
+    "text": "Einlesen von Daten\nBeginnen wir also zunächst damit, Daten in R einzulesen. Wir werden heute mit dem iris Datensatz arbeiten, einem berühmten Datensatz von R.A. Fisher aus dem Jahr 1936, in dem verschiedene Eigenschaften in Bezug auf die Blütengröße verschiedener Spezies der Blume Iris enthalten sind (siehe hier).\n\n\n\nSources: Wikipedia; Danielle Langlois, Денис Анисимов & Eric Hunt\n\n\nIm Zentrum des Datensatzes steht die Größe der verschiedenen Blatttypen für die jeweilige Spezies. Dabei gibt es die Blatttypen Sepal und Petal. Die folgende Grafik verdeutlicht das etwas:\n\n\n\n\n\nDer Datensatz ist direkt im Package datasets integriert. Um allerdings zu lernen, wie wir Daten bspw. aus .csv einlesen, haben wir den Datensatz nochmal als einzelne Datei vorbereitet. Diese können wir hier herunterladen:\n Iris Datensatz \n\nExkurs: Trennzeichengetrennte Textdateien & CSV\n.csv ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:\n\n\n\n.csv in einem Texteditor (hier Sublime Text)\n\n\nWir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das ,) voneinander getrennt sind. Strings werden mit \" abgespeichert. Die erste Zeile beschreibt die Spaltennamen.\nNun wissen wir also, wie .csv Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:\n\n\nShow code\ndataset <- read.csv(\"assets/datasets/iris.csv\")\n\n\nDie Funktion read.csv liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (,) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei .csv oft mit Semikolon (;) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).\n\nMac User aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann alt bzw. option drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.\n\nWenn alles geklappt hat, sollte dataset rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:\n\n\nShow code\n# we use the reactable package for nicer display of tables in html\ndataset %>% reactable()"
+  },
+  {
+    "objectID": "folien/120423.html",
+    "href": "folien/120423.html",
+    "title": "R Basics - 12.04.23",
+    "section": "",
+    "text": "Wer sind wir?"
+  },
+  {
     "objectID": "folien/120423.html#vorstellungsrunde-4",
     "href": "folien/120423.html#vorstellungsrunde-4",
     "title": "R Basics - 12.04.23",
     "section": "Vorstellungsrunde",
     "text": "Vorstellungsrunde\n\nWer seid ihr?\n\nSemester\nWarum Interesse an R?\nFun Fact"
-=======
-    "objectID": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
-    "href": "folien/120423.html#unterschiede-zu-anderen-programmiersprachen",
-    "title": "Basics - 12.04.23",
+  },
+  {
+    "objectID": "folien/120423 - Website.html",
+    "href": "folien/120423 - Website.html",
+    "title": "R Basics - 12.04.23",
+    "section": "",
+    "text": "Verteilung Vorwissen"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#vorstellungsrunde-1",
+    "href": "folien/120423 - Website.html#vorstellungsrunde-1",
+    "title": "R Basics - 12.04.23",
+    "section": "Vorstellungsrunde",
+    "text": "Vorstellungsrunde\nVorwissen Programmiersprachen"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#vorstellungsrunde-2",
+    "href": "folien/120423 - Website.html#vorstellungsrunde-2",
+    "title": "R Basics - 12.04.23",
+    "section": "Vorstellungsrunde",
+    "text": "Vorstellungsrunde\nErwartungen ans Seminar"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#ziele-des-seminars",
+    "href": "folien/120423 - Website.html#ziele-des-seminars",
+    "title": "R Basics - 12.04.23",
+    "section": "Ziele des Seminars",
+    "text": "Ziele des Seminars\n\nDaten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten\nEinblick in Breite und Tiefe, die R bietet\nGrundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#zeitplan",
+    "href": "folien/120423 - Website.html#zeitplan",
+    "title": "R Basics - 12.04.23",
+    "section": "Zeitplan",
+    "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n\nMittagspause?\n\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#prüfungsleistung",
+    "href": "folien/120423 - Website.html#prüfungsleistung",
+    "title": "R Basics - 12.04.23",
+    "section": "Prüfungsleistung",
+    "text": "Prüfungsleistung\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\nAbgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit (Plagiatscheck)\nWir laden nach Abgabe “Musterlösung” hoch\n\n1x Hausaufgabe vorstellen (unbenotet)\nBericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden."
+  },
+  {
+    "objectID": "folien/120423 - Website.html#was-ist-r",
+    "href": "folien/120423 - Website.html#was-ist-r",
+    "title": "R Basics - 12.04.23",
+    "section": "Was ist R?",
+    "text": "Was ist R?\n\nProgrammiersprache (und -oberfläche) für statistische Berechnungen und Grafiken\nopen-source & kostenlos\ngroße Community, die ständig Funktionen erweitert und bei Problemen hilft\nR Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#user-interface",
+    "href": "folien/120423 - Website.html#user-interface",
+    "title": "R Basics - 12.04.23",
+    "section": "User Interface",
+    "text": "User Interface\n\n\noben links: Code\nunten links: Konsole - ausgeführter Code und Output\n\nhier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden\n\noben rechts: u.a. Environment - welche Objekte und Daten exisitieren\nunten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#code-erstellen-ausführen",
+    "href": "folien/120423 - Website.html#code-erstellen-ausführen",
+    "title": "R Basics - 12.04.23",
+    "section": "Code erstellen + ausführen",
+    "text": "Code erstellen + ausführen\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne #ausführbarer Code. Wie hier geschehen, lassen sich mit # Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
+  },
+  {
+    "objectID": "folien/120423 - Website.html#r-vs.-quarto",
+    "href": "folien/120423 - Website.html#r-vs.-quarto",
+    "title": "R Basics - 12.04.23",
+    "section": ".R vs. Quarto",
+    "text": ".R vs. Quarto\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen\nDiese Präsentation ist auch in R entstanden!"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#r-vs.-quarto-1",
+    "href": "folien/120423 - Website.html#r-vs.-quarto-1",
+    "title": "R Basics - 12.04.23",
+    "section": ".R vs. Quarto",
+    "text": ".R vs. Quarto"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#quarto---dokument-aufsetzen",
+    "href": "folien/120423 - Website.html#quarto---dokument-aufsetzen",
+    "title": "R Basics - 12.04.23",
+    "section": "Quarto - Dokument aufsetzen",
+    "text": "Quarto - Dokument aufsetzen\n\nErstellt ein Quarto-Dokument über File > New File > Quarto Document\nIm auftauchenden Fenster könnt ihr einstellen:\n\nTitel & AutorIn des Dokuments\ngewünschtes Output-Format (hier: html)\nwomit das Quarto-Dokument gerendert werden soll (hier: knitr)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#quarto---im-dokument",
+    "href": "folien/120423 - Website.html#quarto---im-dokument",
+    "title": "R Basics - 12.04.23",
+    "section": "Quarto - im Dokument",
+    "text": "Quarto - im Dokument\n\nDer Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)\nIm Feld darunter kann Text geschrieben und formatiert werden\n\nSource: Format lässt sich über bestimmte Zeichen einstellen\nVisual: Format lässt sich über Markieren + Auswählen einstellen\n\nCode kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)\nIm grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen\n\n“Vorschau” über den Play-Button\nÜber #| am Zeilenbeginn lässt sich einstellen, was mit Code + Output beim Rendern passieren soll\n\nÜber “Render” wird das Dokument in das Zielformat umgewandelt\nIn den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#quarto",
+    "href": "folien/120423 - Website.html#quarto",
+    "title": "R Basics - 12.04.23",
+    "section": "Quarto",
+    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nFügt beim anderen Chunk in die erste Zeile #| echo: FALSE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\nOutput ohne Code:\n\n4+5\n\n[1] 9\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\nReiner Text:\n4+5"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#rechenoperatoren",
+    "href": "folien/120423 - Website.html#rechenoperatoren",
+    "title": "R Basics - 12.04.23",
+    "section": "(Rechen)Operatoren",
+    "text": "(Rechen)Operatoren\n\nDezimaltrennzeichen: Punkt . , nicht Komma ,\n+ - * /\nExponent: ^\nlogisch gleich: ==\nlogisch ungleich: !=\nlogisches und: &\nlogisches oder: |\nlogisches exklusives oder: xor\nnicht: !"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#objekte",
+    "href": "folien/120423 - Website.html#objekte",
+    "title": "R Basics - 12.04.23",
+    "section": "Objekte",
+    "text": "Objekte\n\nAnstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern\nKonzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll\n\n\nergebnis <- 3+5\n\n\nR führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!\nObjekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt\n\n\nergebnis\n\n[1] 8\n\n\n\nR ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!\nObjekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)\nErstellt selbst eine Rechenaufgabe und speichert sie als Objekt!\nWas passiert, wenn man den gleichen Objektnamen erneut verwendet?"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#objekte-1",
+    "href": "folien/120423 - Website.html#objekte-1",
+    "title": "R Basics - 12.04.23",
+    "section": "Objekte",
+    "text": "Objekte\n\nWarum ist Objekte erstellen wichtig?\n\nFür R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert\nZwischenergebnisse überprüfen\nParameter festlegen\nFlüchtigkeitsfehler vermeiden\nuvm.\n\nShortcut für <- : ALT+-\nPfeil in die andere Richtung -> und Gleichheitszeichen = funktionieren nicht bzw. sollten nicht verwendet werden!"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#funktionen",
+    "href": "folien/120423 - Website.html#funktionen",
+    "title": "R Basics - 12.04.23",
+    "section": "Funktionen",
+    "text": "Funktionen\n\nMithilfe von Funktionen lassen sich Objekte/Daten bearbeiten\nBeispiel: round(3.45, digits = 1) rundet 3.45 auf die erste Nachkommastelle\n\nam Anfang steht der Name der Funktion (auch hier: case-sensitive)\ndie Argumente der Funktion werden von runden Klammern eingerahmt\nArgumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll\nsie folgen der Syntax Argument = Angabe\nArgumente werden durch Komma getrennt\nmanche Argumente sind zwingend notwendig, viele aber optional\ndie Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. round(3.45, 1) (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#hilfe-in-r",
+    "href": "folien/120423 - Website.html#hilfe-in-r",
+    "title": "R Basics - 12.04.23",
+    "section": "Hilfe in R",
+    "text": "Hilfe in R\n\nÜber help(Funktion) wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen\n\ngenauso funktioniert ?Funktion\nauf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)\n\nFindet mit der Hilfe-Funktion heraus, was mean() macht und welche Argumente es hat\n\n\n?mean\n#oder\nhelp(mean)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#hilfe-außerhalb-von-r",
+    "href": "folien/120423 - Website.html#hilfe-außerhalb-von-r",
+    "title": "R Basics - 12.04.23",
+    "section": "Hilfe außerhalb von R",
+    "text": "Hilfe außerhalb von R\n\nFehlermeldungen lesen und versuchen, Problem zu verstehen\ndas Internet!\n\nFehlermeldung bei Google einfügen und Links durchsuchen\nStack Overflow\nStatt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen\n\nDanach: Lösung für sich dokumentieren"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#packages",
+    "href": "folien/120423 - Website.html#packages",
+    "title": "R Basics - 12.04.23",
+    "section": "Packages",
+    "text": "Packages\n\nFrisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen\nDurch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig\nIm Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind\nNeue Packages lassen sich mit install.packages(\"package-name\") installieren und mit library(package-name) aktivieren (auf die Anführungszeichen achten!)\nMan kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#packages-1",
+    "href": "folien/120423 - Website.html#packages-1",
+    "title": "R Basics - 12.04.23",
+    "section": "Packages",
+    "text": "Packages\n\nInstalliert und aktiviert das Package psych (Erinnerung: install.packages()& library())\nWendet die Hilfefunktion help() auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt\nSchaut euch mit dem neuen Wissen an, welche Funktionen das Package psych beinhaltet\n\n\n# Installieren\ninstall.packages(\"psych\")\n# Aktivieren\nlibrary(psych)\n\n# Mehr über help() herausfinden\nhelp(help) # Inception!\n# Aha, das Argument \"package\" kann mir weiterhelfen!\n\n# Über psych informieren\nhelp(package=psych)"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#datentypen",
+    "href": "folien/120423 - Website.html#datentypen",
+    "title": "R Basics - 12.04.23",
+    "section": "Datentypen",
+    "text": "Datentypen\n\nBasic:\n\nnumeric: Zahlen (integer, double)\ncharacter: Buchstabenfolgen (strings)\nfactor: z.B. Faktorstufen eines Faktors\nlogical: TRUE, FALSE (vgl. 1 & 0)\n\nVektor: eindimensionale “Aufzählung” von Elementen\nMatrix: ein- bis zweidimensionale Aufzählung von Elementen\nArray: beliebig-dimensionale Aufzählung von Elementen\nListe: kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)\nDataframe, Tibble: Spezifische Formate, um Datensätze darzustellen\n\nKönnen pro Spalte unterschiedliche Datentypen beinhalten\nStandardformat, wenn man von extern Daten in R reinlädt"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#datentypen-1",
+    "href": "folien/120423 - Website.html#datentypen-1",
+    "title": "R Basics - 12.04.23",
+    "section": "Datentypen",
+    "text": "Datentypen\nDer Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.1     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.1     ✔ tibble    3.2.0\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the \u001b]8;;http://conflicted.r-lib.org/\u0007conflicted package\u001b]8;;\u0007 to force all conflicts to become errors\nNew names:\nRows: 4 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): sex, r_problems\ndbl  (5): ...1, id, lastpage, age, hopes_perc\nlgl  (3): r_knowledge, r_knowledge_amount, programming_knowledge\ndttm (1): submitdate\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen\n\n\n\n\nZeile: Ein Tibble mit diesen Dimensionen wird angezeigt\n\n\nZeile: Spaltennamen\n\n\nZeile: Datentypen\n\nfolgende Zeilen: Daten\nin der Konsole werden Daten meistens nur gekürzt angezeigt\nÜber view(daten) öffnet sich eine Tabellenübersicht"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#bestimmte-daten-abrufen",
+    "href": "folien/120423 - Website.html#bestimmte-daten-abrufen",
+    "title": "R Basics - 12.04.23",
+    "section": "Bestimmte Daten abrufen",
+    "text": "Bestimmte Daten abrufen\n\nIn eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben\n\n\numfrage[2,3] # zeigt den Wert der zweiten Zeile und dritten Spalte\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nStatt Zahlen können auch Spaltennamen benutzt werden\n\n\numfrage[3, \"geschlecht\"]\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nSpalten lassen sich auch direkt über $ ansprechen.\n\n\numfrage$geschlecht\n\n[1] <NA>   female female male  \nLevels: female male"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#bestimmte-daten-abrufen-1",
+    "href": "folien/120423 - Website.html#bestimmte-daten-abrufen-1",
+    "title": "R Basics - 12.04.23",
+    "section": "Bestimmte Daten abrufen",
+    "text": "Bestimmte Daten abrufen\n\nUm alles anzeigen zu lassen, kann man die Koordinate “leer” lassen\n\n\numfrage[ , \"geschlecht\"]\n\n# A tibble: 4 × 1\n  geschlecht\n  <fct>     \n1 <NA>      \n2 female    \n3 female    \n4 male      \n\n\n\numfrage[ , ]\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#datentypen-2",
+    "href": "folien/120423 - Website.html#datentypen-2",
+    "title": "R Basics - 12.04.23",
+    "section": "Datentypen",
+    "text": "Datentypen\n\nR erkennt häufig von selbst, welcher Datentyp gemeint ist\nHäufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen\ntypeof() um den Datentyp zu erfragen\nis.numeric() / is.factor() / is.logical() / is.character() um einen bestimmten Datentyp zu testen\nas.numeric() usw. nutzen, um den Datentyp zu verändern\n\n\numfrage$r.probleme <- as.factor(umfrage$r.probleme)\n# Die umgewandelte Spalte überschreibt die alte Spalte!"
+  },
+  {
+    "objectID": "folien/120423 - Website.html#neue-daten-erstellen",
+    "href": "folien/120423 - Website.html#neue-daten-erstellen",
+    "title": "R Basics - 12.04.23",
+    "section": "Neue Daten erstellen",
+    "text": "Neue Daten erstellen\n\nVektoren: c()\nKombiniert alle aufgezählten Objekte\n\n\nvektor <- c(1,3,5)\nvektor\n\n[1] 1 3 5\n\n\n\nStrings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.\nIm Output erkennt man Strings auch an den Anführungszeichen\n\n\nstring <- \"hallo\"\nstring\n\n[1] \"hallo\""
+  },
+  {
+    "objectID": "folien/120423 - Website.html#unterschiede-zu-anderen-programmiersprachen",
+    "href": "folien/120423 - Website.html#unterschiede-zu-anderen-programmiersprachen",
+    "title": "R Basics - 12.04.23",
     "section": "Unterschiede zu anderen Programmiersprachen",
-    "text": "Unterschiede zu anderen Programmiersprachen\n\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
->>>>>>> eed52cdd48bf6dec4598b636a3f148e27b4f4743
+    "text": "Unterschiede zu anderen Programmiersprachen\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html",
+    "href": "folien/120423 - Website 2.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "Verteilung Vorwissen"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#vorstellungsrunde-1",
+    "href": "folien/120423 - Website 2.html#vorstellungsrunde-1",
+    "title": "Untitled",
+    "section": "Vorstellungsrunde",
+    "text": "Vorstellungsrunde\nVorwissen Programmiersprachen"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#vorstellungsrunde-2",
+    "href": "folien/120423 - Website 2.html#vorstellungsrunde-2",
+    "title": "Untitled",
+    "section": "Vorstellungsrunde",
+    "text": "Vorstellungsrunde\nErwartungen ans Seminar"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#ziele-des-seminars",
+    "href": "folien/120423 - Website 2.html#ziele-des-seminars",
+    "title": "Untitled",
+    "section": "Ziele des Seminars",
+    "text": "Ziele des Seminars\n\nDaten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten\nEinblick in Breite und Tiefe, die R bietet\nGrundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#zeitplan",
+    "href": "folien/120423 - Website 2.html#zeitplan",
+    "title": "Untitled",
+    "section": "Zeitplan",
+    "text": "Zeitplan\n\n7-8 Sitzungen, die jeweils 3h dauern\n\nMittagspause?\n\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#prüfungsleistung",
+    "href": "folien/120423 - Website 2.html#prüfungsleistung",
+    "title": "Untitled",
+    "section": "Prüfungsleistung",
+    "text": "Prüfungsleistung\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\nAbgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit (Plagiatscheck)\nWir laden nach Abgabe “Musterlösung” hoch\n\n1x Hausaufgabe vorstellen (unbenotet)\nBericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden."
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#was-ist-r",
+    "href": "folien/120423 - Website 2.html#was-ist-r",
+    "title": "Untitled",
+    "section": "Was ist R?",
+    "text": "Was ist R?\n\nProgrammiersprache (und -oberfläche) für statistische Berechnungen und Grafiken\nopen-source & kostenlos\ngroße Community, die ständig Funktionen erweitert und bei Problemen hilft\nR Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#user-interface",
+    "href": "folien/120423 - Website 2.html#user-interface",
+    "title": "Untitled",
+    "section": "User Interface",
+    "text": "User Interface\n\n\noben links: Code\nunten links: Konsole - ausgeführter Code und Output\n\nhier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden\n\noben rechts: u.a. Environment - welche Objekte und Daten exisitieren\nunten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#code-erstellen-ausführen",
+    "href": "folien/120423 - Website 2.html#code-erstellen-ausführen",
+    "title": "Untitled",
+    "section": "Code erstellen + ausführen",
+    "text": "Code erstellen + ausführen\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne #ausführbarer Code. Wie hier geschehen, lassen sich mit # Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#r-vs.-quarto",
+    "href": "folien/120423 - Website 2.html#r-vs.-quarto",
+    "title": "Untitled",
+    "section": ".R vs. Quarto",
+    "text": ".R vs. Quarto\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen\nDiese Präsentation ist auch in R entstanden!"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#r-vs.-quarto-1",
+    "href": "folien/120423 - Website 2.html#r-vs.-quarto-1",
+    "title": "Untitled",
+    "section": ".R vs. Quarto",
+    "text": ".R vs. Quarto"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#quarto---dokument-aufsetzen",
+    "href": "folien/120423 - Website 2.html#quarto---dokument-aufsetzen",
+    "title": "Untitled",
+    "section": "Quarto - Dokument aufsetzen",
+    "text": "Quarto - Dokument aufsetzen\n\nErstellt ein Quarto-Dokument über File > New File > Quarto Document\nIm auftauchenden Fenster könnt ihr einstellen:\n\nTitel & AutorIn des Dokuments\ngewünschtes Output-Format (hier: html)\nwomit das Quarto-Dokument gerendert werden soll (hier: knitr)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#quarto---im-dokument",
+    "href": "folien/120423 - Website 2.html#quarto---im-dokument",
+    "title": "Untitled",
+    "section": "Quarto - im Dokument",
+    "text": "Quarto - im Dokument\n\nDer Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)\nIm Feld darunter kann Text geschrieben und formatiert werden\n\nSource: Format lässt sich über bestimmte Zeichen einstellen\nVisual: Format lässt sich über Markieren + Auswählen einstellen\n\nCode kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)\nIm grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen\n\n“Vorschau” über den Play-Button\nÜber #| am Zeilenbeginn lässt sich einstellen, was mit Code + Output beim Rendern passieren soll\n\nÜber “Render” wird das Dokument in das Zielformat umgewandelt\nIn den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#quarto",
+    "href": "folien/120423 - Website 2.html#quarto",
+    "title": "Untitled",
+    "section": "Quarto",
+    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nFügt beim anderen Chunk in die erste Zeile #| echo: FALSE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\nOutput ohne Code:\n\n4+5\n\n[1] 9\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\nReiner Text:\n4+5"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#rechenoperatoren",
+    "href": "folien/120423 - Website 2.html#rechenoperatoren",
+    "title": "Untitled",
+    "section": "(Rechen)Operatoren",
+    "text": "(Rechen)Operatoren\n\nDezimaltrennzeichen: Punkt . , nicht Komma ,\n+ - * /\nExponent: ^\nlogisch gleich: ==\nlogisch ungleich: !=\nlogisches und: &\nlogisches oder: |\nlogisches exklusives oder: xor\nnicht: !"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#objekte",
+    "href": "folien/120423 - Website 2.html#objekte",
+    "title": "Untitled",
+    "section": "Objekte",
+    "text": "Objekte\n\nAnstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern\nKonzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll\n\n\nergebnis <- 3+5\n\n\nR führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!\nObjekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt\n\n\nergebnis\n\n[1] 8\n\n\n\nR ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!\nObjekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)\nErstellt selbst eine Rechenaufgabe und speichert sie als Objekt!\nWas passiert, wenn man den gleichen Objektnamen erneut verwendet?"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#objekte-1",
+    "href": "folien/120423 - Website 2.html#objekte-1",
+    "title": "Untitled",
+    "section": "Objekte",
+    "text": "Objekte\n\nWarum ist Objekte erstellen wichtig?\n\nFür R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert\nZwischenergebnisse überprüfen\nParameter festlegen\nFlüchtigkeitsfehler vermeiden\nuvm.\n\nShortcut für <- : ALT+-\nPfeil in die andere Richtung -> und Gleichheitszeichen = funktionieren nicht bzw. sollten nicht verwendet werden!"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#funktionen",
+    "href": "folien/120423 - Website 2.html#funktionen",
+    "title": "Untitled",
+    "section": "Funktionen",
+    "text": "Funktionen\n\nMithilfe von Funktionen lassen sich Objekte/Daten bearbeiten\nBeispiel: round(3.45, digits = 1) rundet 3.45 auf die erste Nachkommastelle\n\nam Anfang steht der Name der Funktion (auch hier: case-sensitive)\ndie Argumente der Funktion werden von runden Klammern eingerahmt\nArgumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll\nsie folgen der Syntax Argument = Angabe\nArgumente werden durch Komma getrennt\nmanche Argumente sind zwingend notwendig, viele aber optional\ndie Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. round(3.45, 1) (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#hilfe-in-r",
+    "href": "folien/120423 - Website 2.html#hilfe-in-r",
+    "title": "Untitled",
+    "section": "Hilfe in R",
+    "text": "Hilfe in R\n\nÜber help(Funktion) wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen\n\ngenauso funktioniert ?Funktion\nauf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)\n\nFindet mit der Hilfe-Funktion heraus, was mean() macht und welche Argumente es hat\n\n\n?mean\n#oder\nhelp(mean)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#hilfe-außerhalb-von-r",
+    "href": "folien/120423 - Website 2.html#hilfe-außerhalb-von-r",
+    "title": "Untitled",
+    "section": "Hilfe außerhalb von R",
+    "text": "Hilfe außerhalb von R\n\nFehlermeldungen lesen und versuchen, Problem zu verstehen\ndas Internet!\n\nFehlermeldung bei Google einfügen und Links durchsuchen\nStack Overflow\nStatt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen\n\nDanach: Lösung für sich dokumentieren"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#packages",
+    "href": "folien/120423 - Website 2.html#packages",
+    "title": "Untitled",
+    "section": "Packages",
+    "text": "Packages\n\nFrisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen\nDurch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig\nIm Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind\nNeue Packages lassen sich mit install.packages(\"package-name\") installieren und mit library(package-name) aktivieren (auf die Anführungszeichen achten!)\nMan kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#packages-1",
+    "href": "folien/120423 - Website 2.html#packages-1",
+    "title": "Untitled",
+    "section": "Packages",
+    "text": "Packages\n\nInstalliert und aktiviert das Package psych (Erinnerung: install.packages()& library())\nWendet die Hilfefunktion help() auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt\nSchaut euch mit dem neuen Wissen an, welche Funktionen das Package psych beinhaltet\n\n\n# Installieren\ninstall.packages(\"psych\")\n# Aktivieren\nlibrary(psych)\n\n# Mehr über help() herausfinden\nhelp(help) # Inception!\n# Aha, das Argument \"package\" kann mir weiterhelfen!\n\n# Über psych informieren\nhelp(package=psych)"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#datentypen",
+    "href": "folien/120423 - Website 2.html#datentypen",
+    "title": "Untitled",
+    "section": "Datentypen",
+    "text": "Datentypen\n\nBasic:\n\nnumeric: Zahlen (integer, double)\ncharacter: Buchstabenfolgen (strings)\nfactor: z.B. Faktorstufen eines Faktors\nlogical: TRUE, FALSE (vgl. 1 & 0)\n\nVektor: eindimensionale “Aufzählung” von Elementen\nMatrix: ein- bis zweidimensionale Aufzählung von Elementen\nArray: beliebig-dimensionale Aufzählung von Elementen\nListe: kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)\nDataframe, Tibble: Spezifische Formate, um Datensätze darzustellen\n\nKönnen pro Spalte unterschiedliche Datentypen beinhalten\nStandardformat, wenn man von extern Daten in R reinlädt"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#datentypen-1",
+    "href": "folien/120423 - Website 2.html#datentypen-1",
+    "title": "Untitled",
+    "section": "Datentypen",
+    "text": "Datentypen\nDer Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.1     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.1     ✔ tibble    3.2.0\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the \u001b]8;;http://conflicted.r-lib.org/\u0007conflicted package\u001b]8;;\u0007 to force all conflicts to become errors\nNew names:\nRows: 4 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): sex, r_problems\ndbl  (5): ...1, id, lastpage, age, hopes_perc\nlgl  (3): r_knowledge, r_knowledge_amount, programming_knowledge\ndttm (1): submitdate\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen\n\n\n\n\nZeile: Ein Tibble mit diesen Dimensionen wird angezeigt\n\n\nZeile: Spaltennamen\n\n\nZeile: Datentypen\n\nfolgende Zeilen: Daten\nin der Konsole werden Daten meistens nur gekürzt angezeigt\nÜber view(daten) öffnet sich eine Tabellenübersicht"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#bestimmte-daten-abrufen",
+    "href": "folien/120423 - Website 2.html#bestimmte-daten-abrufen",
+    "title": "Untitled",
+    "section": "Bestimmte Daten abrufen",
+    "text": "Bestimmte Daten abrufen\n\nIn eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben\n\n\numfrage[2,3] # zeigt den Wert der zweiten Zeile und dritten Spalte\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nStatt Zahlen können auch Spaltennamen benutzt werden\n\n\numfrage[3, \"geschlecht\"]\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nSpalten lassen sich auch direkt über $ ansprechen.\n\n\numfrage$geschlecht\n\n[1] <NA>   female female male  \nLevels: female male"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#bestimmte-daten-abrufen-1",
+    "href": "folien/120423 - Website 2.html#bestimmte-daten-abrufen-1",
+    "title": "Untitled",
+    "section": "Bestimmte Daten abrufen",
+    "text": "Bestimmte Daten abrufen\n\nUm alles anzeigen zu lassen, kann man die Koordinate “leer” lassen\n\n\numfrage[ , \"geschlecht\"]\n\n# A tibble: 4 × 1\n  geschlecht\n  <fct>     \n1 <NA>      \n2 female    \n3 female    \n4 male      \n\n\n\numfrage[ , ]\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#datentypen-2",
+    "href": "folien/120423 - Website 2.html#datentypen-2",
+    "title": "Untitled",
+    "section": "Datentypen",
+    "text": "Datentypen\n\nR erkennt häufig von selbst, welcher Datentyp gemeint ist\nHäufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen\ntypeof() um den Datentyp zu erfragen\nis.numeric() / is.factor() / is.logical() / is.character() um einen bestimmten Datentyp zu testen\nas.numeric() usw. nutzen, um den Datentyp zu verändern\n\n\numfrage$r.probleme <- as.factor(umfrage$r.probleme)\n# Die umgewandelte Spalte überschreibt die alte Spalte!"
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#neue-daten-erstellen",
+    "href": "folien/120423 - Website 2.html#neue-daten-erstellen",
+    "title": "Untitled",
+    "section": "Neue Daten erstellen",
+    "text": "Neue Daten erstellen\n\nVektoren: c()\nKombiniert alle aufgezählten Objekte\n\n\nvektor <- c(1,3,5)\nvektor\n\n[1] 1 3 5\n\n\n\nStrings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.\nIm Output erkennt man Strings auch an den Anführungszeichen\n\n\nstring <- \"hallo\"\nstring\n\n[1] \"hallo\""
+  },
+  {
+    "objectID": "folien/120423 - Website 2.html#unterschiede-zu-anderen-programmiersprachen",
+    "href": "folien/120423 - Website 2.html#unterschiede-zu-anderen-programmiersprachen",
+    "title": "Untitled",
+    "section": "Unterschiede zu anderen Programmiersprachen",
+    "text": "Unterschiede zu anderen Programmiersprachen\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
+  },
+  {
+    "objectID": "Deskriptives.html#iris-datensatz",
+    "href": "Deskriptives.html#iris-datensatz",
+    "title": "Base R",
+    "section": "Iris Datensatz",
+    "text": "Iris Datensatz\nBeginnen wir also zunächst damit, Daten in R einzulesen. Wir werden heute mit dem iris Datensatz arbeiten, einem berühmten Datensatz von R.A. Fisher aus dem Jahr 1936, in dem verschiedene Eigenschaften in Bezug auf die Blütengröße verschiedener Spezies der Blume Iris enthalten sind (siehe hier).\n\n\n\nSources: Wikipedia; Danielle Langlois, Денис Анисимов & Eric Hunt\n\n\nIm Zentrum des Datensatzes steht die Größe der verschiedenen Blatttypen für die jeweilige Spezies. Dabei gibt es die Blatttypen Sepal und Petal. Die folgende Grafik verdeutlicht das etwas:\n\n\n\n\n\nDer Datensatz ist direkt im Package datasets integriert. Um allerdings zu lernen, wie wir Daten bspw. aus .csv einlesen, haben wir den Datensatz nochmal als einzelne Datei vorbereitet. Diese können wir hier herunterladen:\n Iris Datensatz \n\nExkurs: Trennzeichengetrennte Textdateien & CSV\n.csv ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:\n\n\n\n.csv in einem Texteditor (hier Sublime Text)\n\n\nWir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das ,) voneinander getrennt sind. Strings werden mit \" abgespeichert. Die erste Zeile beschreibt die Spaltennamen."
+  },
+  {
+    "objectID": "Deskriptives.html#daten-einlesen",
+    "href": "Deskriptives.html#daten-einlesen",
+    "title": "Base R",
+    "section": "Daten einlesen",
+    "text": "Daten einlesen\nNun wissen wir also, wie .csv Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:\n\ndataset <- read.csv(\"assets/datasets/iris.csv\")\n\nDie Funktion read.csv liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (,) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei .csv oft mit Semikolon (;) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).\n\nMac User aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann alt bzw. option drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.\n\nWenn alles geklappt hat, sollte dataset rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:\n\ndataset\n\n\n\n  \n\n\n\nWie wir sehen gibt es mehrere Spalten für die Länge und Breite der Blätter (e.g., Sepal.Length), sowie eine Spalte mit der Spezies (Species).\nWerfen wir nun einen genaueren Blick in die Daten."
+  },
+  {
+    "objectID": "Deskriptives.html#daten-anschauen",
+    "href": "Deskriptives.html#daten-anschauen",
+    "title": "Base R",
+    "section": "Daten anschauen",
+    "text": "Daten anschauen\nUm schnell einen Überblick über die Daten zu bekommen, eignet sich die summary() Funktion:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n   Species         \n Length:150        \n Class :character  \n Mode  :character  \n                   \n                   \n                   \n\n\nHier sehen wir direkt deskriptive Werte wie Minimum, Maximum oder Median für jede einzelne Spalte. Für die Spalte Species sehen wir allerdings lediglich, dass diese als character gespeichert ist, wenngleich es sich eigentlich um einen Faktor handelt, da wir ja bereits wissen, dass es drei Spezies gibt. Das können wir ändern:\n\ndataset$Species <- as.factor(dataset$Species)\n\nFühren wir nun den Code erneut aus, sehen wir die entsprechenden Faktorlevel bzw. Ausprägungen und die jeweiligen Datenpunkte pro Ausprägung:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n       Species  \n setosa    :50  \n versicolor:50  \n virginica :50  \n                \n                \n                \n\n\nDas Gleiche würden wir sehen, wenn wir mit der Funktion levels die Ausprägungen für die entsprechende Spalte abfragen:\n\nlevels(dataset$Species)\n\n[1] \"setosa\"     \"versicolor\" \"virginica\""
+  },
+  {
+    "objectID": "Deskriptives.html#deskriptive-analysen",
+    "href": "Deskriptives.html#deskriptive-analysen",
+    "title": "Base R",
+    "section": "Deskriptive Analysen",
+    "text": "Deskriptive Analysen\nStrenggenommen hat uns die summary() Funktion bereits viele interessante Werte für alle Spalten gegeben. Falls wir dies aber für eine einzelne Spalte machen wollen, können wir dies natürlich auch tun:\n\nmean(dataset$Sepal.Length)\n\n[1] 5.843333\n\n\nWie wir sehen, kann die mean() Funktion mit einer Spalte eines Dataframes (über den $-Operator ausgewählt) arbeiten, und gibt uns den entsprechenden Mittelwert aus. Gleich verhält es sich mit der Standardabweichung:\n\nsd(dataset$Sepal.Length)\n\n[1] 0.8280661\n\n\nWie wir in der ersten Seminarstunde bereits gesagt haben, bietet R als Statistiksoftware natürlich eine Vielzahl eingebauter Standard-Funktionen. So können wir etwa auch gleich die Korrelation zwischen Sepal.Width und Sepal.Length berechnen…\n\ncor(dataset$Sepal.Length,dataset$Sepal.Width, method = \"pearson\")\n\n[1] -0.1175698\n\n\n… oder die Quantile ausgeben lassen:\n\nquantile(dataset$Sepal.Length)\n\n  0%  25%  50%  75% 100% \n 4.3  5.1  5.8  6.4  7.9 \n\n\nDas sind natürlich alles nur Beispiele der im base Package enthaltenen Funktionen - alle weiteren können wir bspw. in der Dokumentation oder über help(base) finden."
+  },
+  {
+    "objectID": "Deskriptives.html#datensatz-aufteilen",
+    "href": "Deskriptives.html#datensatz-aufteilen",
+    "title": "Base R",
+    "section": "Datensatz aufteilen",
+    "text": "Datensatz aufteilen\nAngenommen, wir wollen die Spalte Species von den anderen Spalten trennen, und in einem separaten Aufgabenblatt abspeichern. Dies können wir über die $ und <- Operatoren machen:\n\ndataset_species <- dataset$Species\n\nDies speichert die entsprechende Spalte als Objekt dataset_species in unserem Environment. Dies geschieht als Vektor des Typs factor. Die Länge des Vektors entspricht natürlich der Anzahl an Observations:\n\nlength(dataset_species)\n\n[1] 150\n\n\nNun wollen wir einen Schritt weitergehen, und nicht nur einzelne Spalten extrahieren, sondern unseren Datensatz auf Basis gewisser Kriterien filtern, bzw. ein Subset bilden. Base R bietet dafür die subset() Funktion. Deren Syntax ist folgendermaßen:\n\ndataset_filtered <- subset(dataset, Sepal.Width > 3)\n\nWir definieren das betreffende Objekt dataset, sowie die Spalte, nach der wir filtern wollen (Sepal.Width) und unsere Bedingung (> 3).\nWir wollen aber noch weiter spezifizieren. Angenommen, wir wollen, dass zusätzlich nur Blumen der Spezies setosa im Datensatz enthalten sind, und wir nur die Spalten Sepal.Width und Sepal.Length betrachten wollen:\n\ndataset_filtered2 <- subset(dataset, Sepal.Width > 3 & Species == \"setosa\",select = c(Sepal.Width,Sepal.Length,Species))\n\nDer obige Befehl hat das Objekt dataset_filtered2 erzeugt, welches die entsprechenden Filterungen beinhaltet.\nWir haben nun also gelernt, wie wir sogenannte Subsets von Dataframes auf Basis von Variablenausprägungen und Spalten erzeugen können, und diese enstprechend in unserem Environment speichern können.\nWenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: Wie können wir den Überblick behalten?\n\n\n\nHow the author imagines Environment overload\n\n\nDabei, sowie bei vielen anderen Dingen die mit Data Wrangling zu tun haben, hilft uns das dplyr package."
+  },
+  {
+    "objectID": "datawrangling_base.html",
+    "href": "datawrangling_base.html",
+    "title": "Base R",
+    "section": "",
+    "text": "Show code\nlibrary(tidyverse)\nlibrary(reshape2)\nlibrary(reactable)\n\npalette1 <- c(\"#648fff\",\"#785ef0\",\"#dc267f\",\"#fe6100\",\"#ffb000\",\"#000000\",\"#ffffff\")\npalette2 <- c(\"#CC79A7\",\"#D55E00\",\"#0072B2\",\"#F0E442\",\"#009E73\",\"#56B4E9\",\"#E69F00\",\"#000000\")"
+  },
+  {
+    "objectID": "datawrangling_base.html#iris-datensatz",
+    "href": "datawrangling_base.html#iris-datensatz",
+    "title": "Base R",
+    "section": "Iris Datensatz",
+    "text": "Iris Datensatz\nBeginnen wir also zunächst damit, Daten in R einzulesen. Wir werden heute mit dem iris Datensatz arbeiten, einem berühmten Datensatz von R.A. Fisher aus dem Jahr 1936, in dem verschiedene Eigenschaften in Bezug auf die Blütengröße verschiedener Spezies der Blume Iris enthalten sind (siehe hier).\n\n\n\nSources: Wikipedia; Danielle Langlois, Денис Анисимов & Eric Hunt\n\n\nIm Zentrum des Datensatzes steht die Größe der verschiedenen Blatttypen für die jeweilige Spezies. Dabei gibt es die Blatttypen Sepal und Petal. Die folgende Grafik verdeutlicht das etwas:\n\n\n\n\n\nDer Datensatz ist direkt im Package datasets integriert. Um allerdings zu lernen, wie wir Daten bspw. aus .csv einlesen, haben wir den Datensatz nochmal als einzelne Datei vorbereitet. Diese können wir hier herunterladen:\n Iris Datensatz \n\nExkurs: Trennzeichengetrennte Textdateien & CSV\n.csv ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:\n\n\n\n.csv in einem Texteditor (hier Sublime Text)\n\n\nWir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das ,) voneinander getrennt sind. Strings werden mit \" abgespeichert. Die erste Zeile beschreibt die Spaltennamen."
+  },
+  {
+    "objectID": "datawrangling_base.html#daten-einlesen",
+    "href": "datawrangling_base.html#daten-einlesen",
+    "title": "Base R",
+    "section": "Daten einlesen",
+    "text": "Daten einlesen\nNun wissen wir also, wie .csv Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:\n\ndataset <- read.csv(\"assets/datasets/iris.csv\")\n\nDie Funktion read.csv liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (,) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei .csv oft mit Semikolon (;) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).\n\nMac User aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann alt bzw. option drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.\n\nWenn alles geklappt hat, sollte dataset rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:\n\ndataset\n\n\n\n  \n\n\n\nWie wir sehen gibt es mehrere Spalten für die Länge und Breite der Blätter (e.g., Sepal.Length), sowie eine Spalte mit der Spezies (Species).\nWerfen wir nun einen genaueren Blick in die Daten."
+  },
+  {
+    "objectID": "datawrangling_base.html#daten-anschauen",
+    "href": "datawrangling_base.html#daten-anschauen",
+    "title": "Base R",
+    "section": "Daten anschauen",
+    "text": "Daten anschauen\nUm schnell einen Überblick über die Daten zu bekommen, eignet sich die summary() Funktion:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n   Species         \n Length:150        \n Class :character  \n Mode  :character  \n                   \n                   \n                   \n\n\nHier sehen wir direkt deskriptive Werte wie Minimum, Maximum oder Median für jede einzelne Spalte. Für die Spalte Species sehen wir allerdings lediglich, dass diese als character gespeichert ist, wenngleich es sich eigentlich um einen Faktor handelt, da wir ja bereits wissen, dass es drei Spezies gibt. Das können wir ändern:\n\ndataset$Species <- as.factor(dataset$Species)\n\nFühren wir nun den Code erneut aus, sehen wir die entsprechenden Faktorlevel bzw. Ausprägungen und die jeweiligen Datenpunkte pro Ausprägung:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n       Species  \n setosa    :50  \n versicolor:50  \n virginica :50  \n                \n                \n                \n\n\nDas Gleiche würden wir sehen, wenn wir mit der Funktion levels die Ausprägungen für die entsprechende Spalte abfragen:\n\nlevels(dataset$Species)\n\n[1] \"setosa\"     \"versicolor\" \"virginica\""
+  },
+  {
+    "objectID": "datawrangling_base.html#deskriptive-analysen",
+    "href": "datawrangling_base.html#deskriptive-analysen",
+    "title": "Base R",
+    "section": "Deskriptive Analysen",
+    "text": "Deskriptive Analysen\nStrenggenommen hat uns die summary() Funktion bereits viele interessante Werte für alle Spalten gegeben. Falls wir dies aber für eine einzelne Spalte machen wollen, können wir dies natürlich auch tun:\n\nmean(dataset$Sepal.Length)\n\n[1] 5.843333\n\n\nWie wir sehen, kann die mean() Funktion mit einer Spalte eines Dataframes (über den $-Operator ausgewählt) arbeiten, und gibt uns den entsprechenden Mittelwert aus. Gleich verhält es sich mit der Standardabweichung:\n\nsd(dataset$Sepal.Length)\n\n[1] 0.8280661\n\n\nWie wir in der ersten Seminarstunde bereits gesagt haben, bietet R als Statistiksoftware natürlich eine Vielzahl eingebauter Standard-Funktionen. So können wir etwa auch gleich die Korrelation zwischen Sepal.Width und Sepal.Length berechnen…\n\ncor(dataset$Sepal.Length,dataset$Sepal.Width, method = \"pearson\")\n\n[1] -0.1175698\n\n\n… oder die Quantile ausgeben lassen:\n\nquantile(dataset$Sepal.Length)\n\n  0%  25%  50%  75% 100% \n 4.3  5.1  5.8  6.4  7.9 \n\n\nDas sind natürlich alles nur Beispiele der im base Package enthaltenen Funktionen - alle weiteren können wir bspw. in der Dokumentation oder über help(base) finden."
+  },
+  {
+    "objectID": "datawrangling_base.html#datensatz-aufteilen",
+    "href": "datawrangling_base.html#datensatz-aufteilen",
+    "title": "Base R",
+    "section": "Datensatz aufteilen",
+    "text": "Datensatz aufteilen\nAngenommen, wir wollen die Spalte Species von den anderen Spalten trennen, und in einem separaten Aufgabenblatt abspeichern. Dies können wir über die $ und <- Operatoren machen:\n\ndataset_species <- dataset$Species\n\nDies speichert die entsprechende Spalte als Objekt dataset_species in unserem Environment. Dies geschieht als Vektor des Typs factor. Die Länge des Vektors entspricht natürlich der Anzahl an Observations:\n\nlength(dataset_species)\n\n[1] 150\n\n\nNun wollen wir einen Schritt weitergehen, und nicht nur einzelne Spalten extrahieren, sondern unseren Datensatz auf Basis gewisser Kriterien filtern, bzw. ein Subset bilden. Base R bietet dafür die subset() Funktion. Deren Syntax ist folgendermaßen:\n\ndataset_filtered <- subset(dataset, Sepal.Width > 3)\n\nWir definieren das betreffende Objekt dataset, sowie die Spalte, nach der wir filtern wollen (Sepal.Width) und unsere Bedingung (> 3).\nWir wollen aber noch weiter spezifizieren. Angenommen, wir wollen, dass zusätzlich nur Blumen der Spezies setosa im Datensatz enthalten sind, und wir nur die Spalten Sepal.Width und Sepal.Length betrachten wollen:\n\ndataset_filtered2 <- subset(dataset, Sepal.Width > 3 & Species == \"setosa\",select = c(Sepal.Width,Sepal.Length,Species))\n\nDer obige Befehl hat das Objekt dataset_filtered2 erzeugt, welches die entsprechenden Filterungen beinhaltet.\nWir haben nun also gelernt, wie wir sogenannte Subsets von Dataframes auf Basis von Variablenausprägungen und Spalten erzeugen können, und diese enstprechend in unserem Environment speichern können.\nWenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: Wie können wir den Überblick behalten?\n\n\n\nHow the author imagines Environment overload\n\n\nDabei, sowie bei vielen anderen Dingen die mit Data Wrangling zu tun haben, hilft uns das dplyr package. Dazu auf der nächsten Seite mehr."
+  },
+  {
+    "objectID": "datawrangling_dplyr.html",
+    "href": "datawrangling_dplyr.html",
+    "title": "dplyr",
+    "section": "",
+    "text": "Show code\nlibrary(tidyverse)\nlibrary(reshape2)\nlibrary(reactable)\n\npalette1 <- c(\"#648fff\",\"#785ef0\",\"#dc267f\",\"#fe6100\",\"#ffb000\",\"#000000\",\"#ffffff\")\npalette2 <- c(\"#CC79A7\",\"#D55E00\",\"#0072B2\",\"#F0E442\",\"#009E73\",\"#56B4E9\",\"#E69F00\",\"#000000\")"
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#iris-datensatz",
+    "href": "datawrangling_dplyr.html#iris-datensatz",
+    "title": "Base R",
+    "section": "Iris Datensatz",
+    "text": "Iris Datensatz\nBeginnen wir also zunächst damit, Daten in R einzulesen. Wir werden heute mit dem iris Datensatz arbeiten, einem berühmten Datensatz von R.A. Fisher aus dem Jahr 1936, in dem verschiedene Eigenschaften in Bezug auf die Blütengröße verschiedener Spezies der Blume Iris enthalten sind (siehe hier).\n\n\n\nSources: Wikipedia; Danielle Langlois, Денис Анисимов & Eric Hunt\n\n\nIm Zentrum des Datensatzes steht die Größe der verschiedenen Blatttypen für die jeweilige Spezies. Dabei gibt es die Blatttypen Sepal und Petal. Die folgende Grafik verdeutlicht das etwas:\n\n\n\n\n\nDer Datensatz ist direkt im Package datasets integriert. Um allerdings zu lernen, wie wir Daten bspw. aus .csv einlesen, haben wir den Datensatz nochmal als einzelne Datei vorbereitet. Diese können wir hier herunterladen:\n Iris Datensatz \n\nExkurs: Trennzeichengetrennte Textdateien & CSV\n.csv ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:\n\n\n\n.csv in einem Texteditor (hier Sublime Text)\n\n\nWir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das ,) voneinander getrennt sind. Strings werden mit \" abgespeichert. Die erste Zeile beschreibt die Spaltennamen."
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#daten-einlesen",
+    "href": "datawrangling_dplyr.html#daten-einlesen",
+    "title": "Base R",
+    "section": "Daten einlesen",
+    "text": "Daten einlesen\nNun wissen wir also, wie .csv Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:\n\ndataset <- read.csv(\"assets/datasets/iris.csv\")\n\nDie Funktion read.csv liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (,) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei .csv oft mit Semikolon (;) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).\n\nMac User aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann alt bzw. option drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.\n\nWenn alles geklappt hat, sollte dataset rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:\n\ndataset\n\n\n\n  \n\n\n\nWie wir sehen gibt es mehrere Spalten für die Länge und Breite der Blätter (e.g., Sepal.Length), sowie eine Spalte mit der Spezies (Species).\nWerfen wir nun einen genaueren Blick in die Daten."
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#daten-anschauen",
+    "href": "datawrangling_dplyr.html#daten-anschauen",
+    "title": "Base R",
+    "section": "Daten anschauen",
+    "text": "Daten anschauen\nUm schnell einen Überblick über die Daten zu bekommen, eignet sich die summary() Funktion:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n   Species         \n Length:150        \n Class :character  \n Mode  :character  \n                   \n                   \n                   \n\n\nHier sehen wir direkt deskriptive Werte wie Minimum, Maximum oder Median für jede einzelne Spalte. Für die Spalte Species sehen wir allerdings lediglich, dass diese als character gespeichert ist, wenngleich es sich eigentlich um einen Faktor handelt, da wir ja bereits wissen, dass es drei Spezies gibt. Das können wir ändern:\n\ndataset$Species <- as.factor(dataset$Species)\n\nFühren wir nun den Code erneut aus, sehen wir die entsprechenden Faktorlevel bzw. Ausprägungen und die jeweiligen Datenpunkte pro Ausprägung:\n\nsummary(dataset)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n       Species  \n setosa    :50  \n versicolor:50  \n virginica :50  \n                \n                \n                \n\n\nDas Gleiche würden wir sehen, wenn wir mit der Funktion levels die Ausprägungen für die entsprechende Spalte abfragen:\n\nlevels(dataset$Species)\n\n[1] \"setosa\"     \"versicolor\" \"virginica\""
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#deskriptive-analysen",
+    "href": "datawrangling_dplyr.html#deskriptive-analysen",
+    "title": "Base R",
+    "section": "Deskriptive Analysen",
+    "text": "Deskriptive Analysen\nStrenggenommen hat uns die summary() Funktion bereits viele interessante Werte für alle Spalten gegeben. Falls wir dies aber für eine einzelne Spalte machen wollen, können wir dies natürlich auch tun:\n\nmean(dataset$Sepal.Length)\n\n[1] 5.843333\n\n\nWie wir sehen, kann die mean() Funktion mit einer Spalte eines Dataframes (über den $-Operator ausgewählt) arbeiten, und gibt uns den entsprechenden Mittelwert aus. Gleich verhält es sich mit der Standardabweichung:\n\nsd(dataset$Sepal.Length)\n\n[1] 0.8280661\n\n\nWie wir in der ersten Seminarstunde bereits gesagt haben, bietet R als Statistiksoftware natürlich eine Vielzahl eingebauter Standard-Funktionen. So können wir etwa auch gleich die Korrelation zwischen Sepal.Width und Sepal.Length berechnen…\n\ncor(dataset$Sepal.Length,dataset$Sepal.Width, method = \"pearson\")\n\n[1] -0.1175698\n\n\n… oder die Quantile ausgeben lassen:\n\nquantile(dataset$Sepal.Length)\n\n  0%  25%  50%  75% 100% \n 4.3  5.1  5.8  6.4  7.9 \n\n\nDas sind natürlich alles nur Beispiele der im base Package enthaltenen Funktionen - alle weiteren können wir bspw. in der Dokumentation oder über help(base) finden."
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#datensatz-aufteilen",
+    "href": "datawrangling_dplyr.html#datensatz-aufteilen",
+    "title": "Base R",
+    "section": "Datensatz aufteilen",
+    "text": "Datensatz aufteilen\nAngenommen, wir wollen die Spalte Species von den anderen Spalten trennen, und in einem separaten Aufgabenblatt abspeichern. Dies können wir über die $ und <- Operatoren machen:\n\ndataset_species <- dataset$Species\n\nDies speichert die entsprechende Spalte als Objekt dataset_species in unserem Environment. Dies geschieht als Vektor des Typs factor. Die Länge des Vektors entspricht natürlich der Anzahl an Observations:\n\nlength(dataset_species)\n\n[1] 150\n\n\nNun wollen wir einen Schritt weitergehen, und nicht nur einzelne Spalten extrahieren, sondern unseren Datensatz auf Basis gewisser Kriterien filtern, bzw. ein Subset bilden. Base R bietet dafür die subset() Funktion. Deren Syntax ist folgendermaßen:\n\ndataset_filtered <- subset(dataset, Sepal.Width > 3)\n\nWir definieren das betreffende Objekt dataset, sowie die Spalte, nach der wir filtern wollen (Sepal.Width) und unsere Bedingung (> 3).\nWir wollen aber noch weiter spezifizieren. Angenommen, wir wollen, dass zusätzlich nur Blumen der Spezies setosa im Datensatz enthalten sind, und wir nur die Spalten Sepal.Width und Sepal.Length betrachten wollen:\n\ndataset_filtered2 <- subset(dataset, Sepal.Width > 3 & Species == \"setosa\",select = c(Sepal.Width,Sepal.Length,Species))\n\nDer obige Befehl hat das Objekt dataset_filtered2 erzeugt, welches die entsprechenden Filterungen beinhaltet.\nWir haben nun also gelernt, wie wir sogenannte Subsets von Dataframes auf Basis von Variablenausprägungen und Spalten erzeugen können, und diese enstprechend in unserem Environment speichern können.\nWenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: Wie können wir den Überblick behalten?\n\n\n\nHow the author imagines Environment overload\n\n\nDabei, sowie bei vielen anderen Dingen die mit Data Wrangling zu tun haben, hilft uns das dplyr package. Dazu auf der nächsten Seite mehr."
+  },
+  {
+    "objectID": "datawrangling_dplyr.html#hintergrund-syntax",
+    "href": "datawrangling_dplyr.html#hintergrund-syntax",
+    "title": "dplyr",
+    "section": "Hintergrund & Syntax",
+    "text": "Hintergrund & Syntax\nViele verschiedene Objekte im Environment sind nur eine Motivation, dplyr zu benutzen. Vielmehr bietet es “eine einfache Grammatik der Datenmanipulation, welche einfach zu lernen & anzuwenden ist” (vgl. tidyverse.com) und viel Flexibilität bietet - daher gehört es auch zu den beliebtesten R-Packages, besonders wenn es um Datenanalyse geht.\nIm Zentrum von dplyr steht der sogenannte Pipe-Operator %>%. Dieser schaut zunächst etwas ungewohnt aus, daran gewöhnt man sich aber schnell:\n\nobject %>% \n  do_something(parameters = \"xyz\")\n\nMithilfe des Pipe Operators können wir verschiedene Befehler aneinanderketten. Der Output des jeweiligen Befehls wird sozusagen als Input in die nächste Zeile “gepiped”.\nWir erinnern uns, dass der obige Befehl üblicherweise so lauten würde:\n\ndo_something(object, parameters = \"xyz\")\n\nHier müssen wir das betreffende Objekt als Parameter übergeben, und anschließend den Output entweder direkt verwerten, oder über <- speichern. Wenn wir nun eine zweite Funktion do_something_else für das gleiche Objekt verwenden wollten, müssten wir dies erneut speichern, oder überspeichern:\n\nresult <- do_something(object, parameters = \"xyz\")\n\ndo_something_else(result, parameters = \"abc\")\n\nMithilfe des Pipe Operators %>% können wir uns dies sparen. Wir starten mit dem ursprünglichen Objekt, und geben dann die bearbeiteten Versionen in die jeweilige Zeile weiter:\n\nobject %>% \n  do_something(parameters = \"xyz\") %>% \n  do_something_else(parameters = \"abc\")"
   }
 ]

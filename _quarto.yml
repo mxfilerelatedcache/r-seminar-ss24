@@ -21,6 +21,10 @@ website:
       - section: "Basics"
         contents:
           - installation.qmd
+      - section: "Data Wrangling & Visualisierung"
+        contents:
+          - datawrangling_base.qmd
+          - datawrangling_dplyr.qmd
 
 format:
   html:

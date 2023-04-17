@@ -1,0 +1,75 @@
+---
+title: "dplyr"
+subtitle: "Seminar[2] <- Data Wrangling, Desriptives & Visualisierung"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+# Data Wrangling: dplyr
+
+Wir wissen nun, wie wir mithilfe von base R einige aufregende Sachen machen können. Während wir unsere verschiedenen Bearbeitungs- und Filterungsschritte in einzelnen Objekten speichern können, so kommt die Base-R Syntax doch etwas umständlich daher.
+
+![How the author imagines how dplyr solves confusion](assets/img/dplyr.png){alt="How the author imagines confusion" fig-align="center" width="600"}
+
+Genau da kommt das `dplyr` Package ins Spiel. Dieses installiert sich automatisch, wenn ihr das `tidyverse` Package installiert:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+library(dplyr)
+```
+
+## Hintergrund & Syntax
+
+Viele verschiedene Objekte im Environment sind nur eine Motivation, `dplyr` zu benutzen. Vielmehr bietet es "eine einfache Grammatik der Datenmanipulation, welche einfach zu lernen & anzuwenden ist" (vgl. [tidyverse.com](https://dplyr.tidyverse.org)) und viel Flexibilität bietet - daher gehört es auch zu den beliebtesten R-Packages, besonders wenn es um Datenanalyse geht.
+
+Im Zentrum von `dplyr` steht der sogenannte Pipe-Operator `%>%`. Dieser schaut zunächst etwas ungewohnt aus, daran gewöhnt man sich aber schnell:
+
+```{r}
+#| eval: false
+object %>% 
+  do_something(parameters = "xyz")
+```
+
+Mithilfe des Pipe Operators können wir verschiedene Befehler **aneinanderketten**. Der Output des jeweiligen Befehls wird sozusagen als Input in die nächste Zeile "gepiped".
+
+Wir erinnern uns, dass der obige Befehl üblicherweise so lauten würde:
+
+```{r}
+#| eval: false
+do_something(object, parameters = "xyz")
+```
+
+Hier müssen wir das betreffende Objekt als Parameter übergeben, und anschließend den Output entweder direkt verwerten, oder über `<-` speichern. Wenn wir nun eine zweite Funktion `do_something_else` für das gleiche Objekt verwenden wollten, müssten wir dies erneut speichern, oder überspeichern:
+
+```{r}
+#| eval: false
+result <- do_something(object, parameters = "xyz")
+
+do_something_else(result, parameters = "abc")
+```
+
+Mithilfe des Pipe Operators `%>%` können wir uns dies sparen. Wir starten mit dem ursprünglichen Objekt, und geben dann die bearbeiteten Versionen in die jeweilige Zeile weiter:
+
+```{r}
+#| eval: false
+object %>% 
+  do_something(parameters = "xyz") %>% 
+  do_something_else(parameters = "abc")
+```
