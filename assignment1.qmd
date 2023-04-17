@@ -1,0 +1,149 @@
+---
+title: "Hausaufgabe 1: Grundlagen von R"
+author: "Kira Wolff & Simon Krukowski"
+---
+
+# Beschreibung
+
+Im Seminar habt ihr einige Dinge über **R-Studio**, **R** & **Quarto** gelernt. Diese erste Hausaufgabe dient dazu, euer erlerntes Wissen zu festigen. Wie ihr seht, besteht dieses Aufgabenblatt aus einem Quarto-Markdown Dokument, in welchem ihr direkt in den entsprechenden Chunks eure Antworten/Lösungen eintragen könnt. Dabei können die Antworten entweder Code- oder Text-Blöcke sein - das werden wir dann jeweils kenntlich machen.
+
+### Punkte
+
+Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als **\[Bonus\]** markiert sind, geben keine Punkte.
+
+### Für Experten
+
+Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als **\[Für Experten\]** markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).
+
+### Abgabe:
+
+Um eure Hausaufgabe abzugeben, ladet diese bitte als `.qmd` Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. `hausaufgabe1_simon_krukowski.qmd`, und schreibt oben bei `author` euren Namen rein.
+
+# Aufgaben
+
+### Aufgabe 1 \[1 Punkt\]
+
+Im Seminar habt ihr verschiedene Rechenoperatoren gelernt. Vervollständigt den folgenden Code, indem ihr die entsprechenden Rechenoperationen wie in den Beispielen anpasst, sodass das Ergebnis `4` ist.
+
+```{r}
+# Addition:
+2+2
+
+# Subtraktion:
+6-2
+
+# Division:
+(18-2)/4
+
+# Multiplikation:
+
+# Lösung hier
+
+# Exponent:
+
+# Lösung hier
+```
+
+### Aufgabe 2 \[1 Punkt\]
+
+Speichert nun das Ergebnis folgender Rechnung in einem Objekt namens `result1`:
+
+```{r}
+(3.5*14)-7
+
+# Lösung hier
+```
+
+### Aufgabe 3 \[1 Punkt\]
+
+Und prüft dann, ob es mit `result2` übereinstimmt (logischer Vergleich):
+
+```{r}
+result2 <- "42"
+
+# Lösung hier
+```
+
+### Aufgabe 4 \[1 Punkt\]
+
+Sind die beiden Objekte gleich? Begründe deine Antwort:
+
+------------------------------------------------------------------------
+
+*Antwort hier*
+
+------------------------------------------------------------------------
+
+### Aufgabe 5 \[1 Punkt\]
+
+Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und erklärt, wie das Ergebnis bzw. etwaige Fehlermeldungen zustande gekommen sein könnten:
+
+```{r}
+combined_results <- result1+result2
+```
+
+------------------------------------------------------------------------
+
+*Antwort hier*
+
+------------------------------------------------------------------------
+
+### Aufgabe 6 \[1 Punkt\]
+
+Vektoren sind auch ein zentraler Bestandteil von R. Erstelle im Folgenden einen 5-stelligen Vektor `vec` mit aufsteigender Zahlenfolge (also 1, 2 etc.):
+
+```{r}
+# Lösung hier
+```
+
+### Aufgabe 7 \[1 Punkt\]
+
+Nun wollen wir den Vektor um die Zahl `6` an letzter Stelle ergänzen. Da ihr bereits wisst, wie man in Dataframes Elemente referenziert, könnt ihr euer Wissen auch auf Vektoren anwenden:
+
+```{r}
+# Element an 5. Stelle anzeigen:
+vec[5]
+```
+
+Wie könnte man über den Zuweisungsoperator die Zahl 6 als sechstes Element hinzufügen(, ohne den Weg aus Aufgabe 8 zu benutzen)? **\[Für Experten\]**
+
+```{r}
+# Lösung hier
+```
+
+### Aufgabe 8 \[1 Punkt\]
+
+Ihr habt auch über Funktionen gelernt. Es gibt eine base-R Funktion zum Hinzufügen von Elementen zu Vektoren namens `append()`. Benutzt diese, um die Zahl `6` als sechstes Element zum Vektor `vec` hinzuzufügen. (Hinweis: die Hilfefunktion ist euer Freund!)
+
+```{r}
+# Lösung hier
+```
+
+### Aufgabe 9 \[1 Punkt\]
+
+Im Folgenden habt ihr die zwei Vektoren `vec1` und `vec2`, welche ihr zusammenfügen wollt. Dazu bieten sich die Funktionen `rbind` und `cbind` an. Findet mithilfe der `help()` Funktion heraus, was der Unterschied zwischen den beiden ist, und nutzt beide, um die zwei Vektoren zu kombinieren.
+
+```{r}
+vec1 <- c(1,2,3)
+vec2 <- c(4,5,6)
+
+# Lösung hier
+```
+
+### Aufgabe 10 \[1 Punkt\]
+
+Wo liegt der Unterschied zwischen den beiden Ergebnissen?
+
+------------------------------------------------------------------------
+
+*Antwort hier*
+
+------------------------------------------------------------------------
+
+### Aufgabe 11 \[Bonus\]
+
+Um welchen Datentyp handelt es sich bei den beiden Ergebnissen?
+
+```{r}
+# Lösung hier
+```
