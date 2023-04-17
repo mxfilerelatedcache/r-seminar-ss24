@@ -1,3 +1,11 @@
 ---
 title: "Untitled"
 ---
+<<<<<<< HEAD
+
+```{r}
+#| eval: false
+print(paste0("Ich habe ",R.version$version.string," und RStudio v",rstudioapi::versionInfo()$version))
+```
+=======
+>>>>>>> b600353fb768d3bf6269b56dd1a7177bdca36417
