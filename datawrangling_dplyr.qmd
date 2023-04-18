@@ -1,0 +1,244 @@
+---
+title: "dplyr"
+subtitle: "Seminar[2] <- Data Wrangling, Desriptives & Visualisierung"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+
+dataset <- read.csv("assets/datasets/iris.csv")
+dataset$Species <- as.factor(dataset$Species)
+```
+
+# Data Wrangling: dplyr
+
+Wir wissen nun, wie wir mithilfe von base R einige aufregende Sachen machen können. Während wir unsere verschiedenen Bearbeitungs- und Filterungsschritte in einzelnen Objekten speichern können, so kommt die Base-R Syntax doch etwas umständlich daher.
+
+![How the author imagines how dplyr solves confusion](assets/img/dplyr.png){alt="How the author imagines confusion" fig-align="center" width="600"}
+
+Genau da kommt das `dplyr` Package ins Spiel. Dieses installiert sich automatisch, wenn ihr das `tidyverse` Package installiert:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+library(dplyr)
+```
+
+## Hintergrund
+
+Viele verschiedene Objekte im Environment sind nur eine Motivation, `dplyr` zu benutzen. Vielmehr bietet es "eine einfache Grammatik der Datenmanipulation, welche einfach zu lernen & anzuwenden ist" (vgl. [tidyverse.com](https://dplyr.tidyverse.org)) und viel Flexibilität bietet - daher gehört es auch zu den beliebtesten R-Packages, besonders wenn es um Datenanalyse geht.
+
+## Der Pipe-Operator
+
+Im Zentrum von `dplyr` steht der sogenannte Pipe-Operator `%>%`. Dieser schaut zunächst etwas ungewohnt aus, daran gewöhnt man sich aber schnell:
+
+```{r}
+#| eval: false
+object %>% 
+  do_something(parameters = "xyz")
+```
+
+Mithilfe des Pipe Operators können wir verschiedene Befehler **aneinanderketten**. Der Output des jeweiligen Befehls wird sozusagen als Input in die nächste Zeile "gepiped". Für den Operator gibt es natürlich eine Tastenkombination, mithilfe derer wir ihn schnell eingeben können. Diese lautet `COMMAND` + `SHIFT` + `M` für Mac-User, und `STRG` + `SHIFT` + `M` für Windows User.
+
+Wir erinnern uns, dass der obige Befehl üblicherweise so lauten würde:
+
+```{r}
+#| eval: false
+do_something(object, parameters = "xyz")
+```
+
+Hier müssen wir das betreffende Objekt als Parameter übergeben, und anschließend den Output entweder direkt verwerten, oder über `<-` speichern. Wenn wir nun eine zweite Funktion `do_something_else` für das gleiche Objekt verwenden wollten, müssten wir dies erneut speichern, oder überspeichern:
+
+```{r}
+#| eval: false
+result <- do_something(object, parameters = "xyz")
+
+do_something_else(result, parameters = "abc")
+```
+
+Mithilfe des Pipe Operators `%>%` können wir uns das sparen. Wir starten mit dem ursprünglichen Objekt, und geben dann die bearbeiteten Versionen in die jeweilige Zeile weiter:
+
+```{r}
+#| eval: false
+object %>% 
+  do_something(parameters = "xyz") %>% 
+  do_something_else(parameters = "abc")
+```
+
+Der Output von `do_something()` wird also zum Input von `do_something_else()` .
+
+## Funktionen
+
+`dplyr` ist aber natürlich nicht nur wegen des Pipe-Operators so praktisch. Es bringt auch viele Funktionen mit sich, die bei typischen Datenanalyse-Aufgaben relevant sind. Diese Funktionen ermöglichen ähnliche Dinge wie bspw. das auf der vorigen Seite gezeigte `subset()`, sind dabei jedoch etwas weniger umständlich und intuitiver. Im Folgenden wollen wir euch die wichtigsten davon vorstellen:
+
+### filter()
+
+Mit der `filter()` Funktion können wir, wie der Name schon sagt, Datensätze auf Basis gewisser Kriterien filtern. Angenommen, wir wollen wieder nach der Spezies `setosa` filtern. Dies geschieht mit `dplyr` wie folgt:
+
+```{r}
+dataset %>% 
+  filter(Species == "setosa")
+```
+
+Ebenso können wir mehrere Bedingungen kombinieren:
+
+```{r}
+dataset %>% 
+  filter(Species == "setosa" & Sepal.Length < 5)
+```
+
+Das besondere an `dplyr` ist, dass wir dies nun aber auch in zwei Schritten machen könnten:
+
+```{r}
+dataset %>% 
+  filter(Species == "setosa") %>% 
+  filter(Sepal.Length < 5)
+```
+
+Wie wir sehen können, ist das resultierende Dataframe dasselbe.
+
+## select()
+
+Ebenso wie mit `select()` in `subset()` können wir hiermit verschiedene Spalten auswählen. Die Syntax ist wie folgt:
+
+```{r}
+dataset %>% 
+  select(Sepal.Length,Sepal.Width)
+```
+
+Damit wählen wir die Spalten `Sepal.Length` und `Sepal.Width` aus. Wir könnten auch sagen, wir wollen alle Spalten **außer** `Species`:
+
+```{r}
+dataset %>% 
+  select(-Species)
+```
+
+Oft kommt es vor, dass wir bspw. durch Limesurvey wissen, dass alle Variablen eines Fragebogens mit "SQ.." anfangen. Sollten wir diese alle schnell auswählen wollen (bspw. zum Berechnen von Summenscores), kann uns `dplyr` auch dabei helfen, mithilfe von `starts_with()`.
+
+```{r}
+dataset %>% 
+  select(starts_with("Se"))
+```
+
+## mutate()
+
+Apropos Summenscores - `mutate()` klingt gruseliger, als es ist. Mit `mutate()` können wir neue Variablen kreieren, oder bestehende modifizieren. Angenommen, die Blätter der Iris-Blume wären rechteckig, und wir könnten die Fläche **`Petal.Square`** einfach in Quadratzentimeter berechnen:
+
+```{r}
+dataset %>% 
+  mutate(Petal.Square = Petal.Length*Petal.Width)
+```
+
+Wir sehen, die Syntax ist `mutate(neue_variable = berechnungen)`. Wir können auch mehrere Variablen in einem Zug erzeugen:
+
+```{r}
+dataset %>% 
+  mutate(Petal.Square = Petal.Length*Petal.Width,
+         Sepal.Square = Sepal.Length*Sepal.Width)
+```
+
+Wenn der `neue_variable` Name gleich wie der alte ist, überschreiben wir die Spalte:
+
+```{r}
+dataset %>% 
+  mutate(Sepal.Length = Sepal.Length/10)
+```
+
+## arrange()
+
+Manchmal kommt es vor, dass wir einen Datensatz sortieren wollen, um einen besseren Überblick über die Daten zu bekommen. Dazu bietet sich `arrange()` an:
+
+```{r}
+dataset %>% 
+  arrange(Sepal.Length)
+```
+
+Wir sehen, die Spalte `Sepal.Length` wird in aufsteigender Reihenfole sortiert. Wollen wir es in absteigender Reihenfolge haben, müssen wir die Funktion `desc()` dazunehmen:
+
+```{r}
+dataset %>% 
+  arrange(desc(Sepal.Length))
+```
+
+## group_by()
+
+Eine der hilfreichsten Funktionen von `dplyr` ist die `group_by()` Funktion. Hier ist allerdings eine etwas genauere Erklärung erforderlich. Die generelle Syntax ist die folgende:
+
+```{r}
+#| eval: false
+object %>% 
+  group_by(variable) %>% 
+  do_something()
+```
+
+Wir übergeben der `group_by()` Funktion als Parameter eine Variable, nach der diese den Datensatz gruppieren soll. Hier ist es wichtig zu verstehen, dass diese Gruppierung für alle nachfolgenden Schritte gilt, **selbst aber keinen Effekt hat**. Was heißt das genau? Betrachten wir folgenden Code:
+
+```{r}
+dataset %>% 
+  group_by(Species)
+```
+
+Außer der Info `Groups: Species [3]` hat sich nichts verändert. Nehmen wir allerdings in der nächsten Zeile eine Funktion hinzu (bspw. `mutate()`), so verändert das, wie diese sich verhält. Normalerweise würde folgender Code die Variable `Sepal.Length_mean` erzeugen, welche den Mittelwert von `Sepal.Length` enthält:
+
+```{r}
+dataset %>% 
+  mutate(Sepal.Length_mean = mean(Sepal.Length))
+```
+
+Da dieser natürlich für den gesamten Datensatz berechnet wird, beträgt er für jede Messung 5.84. Wenn wir vorher allerdings `group_by()` eingeben, sieht das anders aus:
+
+```{r}
+dataset %>% 
+  group_by(Species) %>% 
+  mutate(Sepal.Length_mean = mean(Sepal.Length))
+```
+
+Wir sehen, dass `mutate()` den Wert **pro Gruppe** berechnet hat. Dies kann sehr hilfreich für verschiedenste Anwendungen sein. Ebenso können wir nach mehreren Variablen gruppieren. Dazu aber gleich mehr.
+
+## summarise()
+
+Vielleicht wirkt es etwas merkwürdig, dass wir oben die Variable `Sepal.Length_mean` für jeden Datenpunkt einzeln berechnet haben, obwohl diese natürlich immer gleich ist. Meistens wollen wir solche Werte **für die gesamte Stichprobe** haben. Dabei hilft uns `summarise()`:
+
+```{r}
+dataset %>% 
+  summarise(Sepal.Length_mean = mean(Sepal.Length))
+```
+
+Wir sehen, dass die Syntax dieselbe wie die von `mutate()` ist, nur dass der Output eben nur eine Zahl (bzw. eine Zeile ist) - eben die Summary unseres Datensatzes unter den gegebenen Bedingungen. Besonders hilfreich ist `summarise()` in Kombination mit `group_by()`:
+
+```{r}
+dataset %>% 
+  group_by(Species) %>% 
+  summarise(Sepal.Length_mean = mean(Sepal.Length))
+```
+
+So können wir mit drei Zeilen die Mittelwerte für die jeweilige Gruppe sehen. Wir können natürlich auch gleich die Standardabweichung mitberechnen:
+
+```{r}
+dataset %>% 
+  group_by(Species) %>% 
+  summarise(Sepal.Length_mean = mean(Sepal.Length),
+            Sepal.Length_sd = sd(Sepal.Length))
+```
+
+Oben wurde kurz erwähnt, dass wir auch nach mehreren Variablen gruppieren können. Angenommen, es gäbe noch zusätzlich die Variable `color` in den Ausprägungen `purple`, `blue` und `white` für jeden Datenpunkt, d.h., jede Blüte kann auch eine dieser verschiedenen Farben haben.
+
+```{r}
+#| code-fold: true
+dataset %>% 
+  mutate(color = as.factor(sample(rep(c("purple","blue","white"),50)))) -> dataset
+```

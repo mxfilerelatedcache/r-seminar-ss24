@@ -138,6 +138,21 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">[2] Data Wrangling, Desriptives &amp; Visualisierung</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -235,7 +250,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="r-skripte-ausführen" class="level1">
 <h1>R-Skripte ausführen</h1>
 <p>Als erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript zunächst herunter:</p>
+<<<<<<< HEAD
+<p><a href="#dnldts6991" onclick="fetch('data:text/plain;base64,IyBFcnN0ZXMgU2tyaXB0IHp1bSBTZW1pbmFyIE1lZGllbmJhc2llcnRlIFdpc3NlbnNrb25zdHJ1a3Rpb246IFIKCiMgU2F0eiBpbiBLb25zb2xlIHByaW50ZW46CnByaW50KHBhc3RlMCgiSWNoIGhhYmUgIixSLnZlcnNpb24kdmVyc2lvbi5zdHJpbmcsIiB1bmQgUlN0dWRpbyB2Iixyc3R1ZGlvYXBpOjp2ZXJzaW9uSW5mbygpJHZlcnNpb24pKQoK').then(res => res.blob()).then(blob => {
+=======
 <p><a href="#dnldts21666" onclick="fetch('data:text/plain;base64,IyBFcnN0ZXMgU2tyaXB0IHp1bSBTZW1pbmFyIE1lZGllbmJhc2llcnRlIFdpc3NlbnNrb25zdHJ1a3Rpb246IFIKCiMgU2F0eiBpbiBLb25zb2xlIHByaW50ZW46CnByaW50KHBhc3RlMCgiSWNoIGhhYmUgIixSLnZlcnNpb24kdmVyc2lvbi5zdHJpbmcsIiB1bmQgUlN0dWRpbyB2Iixyc3R1ZGlvYXBpOjp2ZXJzaW9uSW5mbygpJHZlcnNpb24pKQoK').then(res => res.blob()).then(blob => {
+>>>>>>> 4aaef80d49687fcf34af15fffa10b0bef05964d9
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -243,7 +262,11 @@ ul.task-list li input[type="checkbox"] {
       a.download = 'file.R'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
+<<<<<<< HEAD
+        });"><button class="btn btn-primary downloadthis  btn" id="dnldts6991"><i class="bi bi-code-square"></i> R Skript </button></a></p>
+=======
         });"><button class="btn btn-primary downloadthis  btn" id="dnldts21666"><i class="bi bi-code-square"></i> R Skript </button></a></p>
+>>>>>>> 4aaef80d49687fcf34af15fffa10b0bef05964d9
 <p>Öffnet das Skript durch einen Doppelklick mit RStudio und führt es aus. Wenn ihr alles richtig gemacht habt, sollte etwas in der Konsole erscheinen. Diesen Output werden wir in der ersten Seminarstunde besprechen.</p>
 </section>
 <section id="troubleshooting" class="level1">
