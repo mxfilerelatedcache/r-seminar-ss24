@@ -157,6 +157,6 @@ Wir haben nun also gelernt, wie wir sogenannte *Subsets* von Dataframes auf Basi
 
 Wenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: **Wie können wir den Überblick behalten?**
 
-![[How the author imagines Environment overload]{style="text-align: center"}](assets/img/overload.png){fig-align="center" width="600"}
+![[How the author imagines Environment overload]{style="text-align: center"}](assets/img/overload.png){fig-align="center" width="800"}
 
 Dabei, sowie bei vielen anderen Dingen die mit **Data Wrangling** zu tun haben, hilft uns das `dplyr` package. Dazu auf der [nächsten Seite](datawrangling_dplyr.qmd) mehr.

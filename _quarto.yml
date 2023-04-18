@@ -25,6 +25,7 @@ website:
         contents:
           - datawrangling_base.qmd
           - datawrangling_dplyr.qmd
+          - dataviz_ggplot2.qmd
 
 format:
   html:

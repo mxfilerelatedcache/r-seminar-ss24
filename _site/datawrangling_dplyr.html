@@ -8,7 +8,7 @@
 
 <meta name="author" content="Simon Krukowski">
 
-<title>Medienbasierte Wissenskonstruktion mit R - dplyr</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Wrangling mit dplyr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">dplyr</h1>
+      <h1 class="quarto-secondary-nav-title">Wrangling mit dplyr</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -218,7 +218,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datawrangling_dplyr.html" class="sidebar-item-text sidebar-link active">dplyr</a>
+  <a href="./datawrangling_dplyr.html" class="sidebar-item-text sidebar-link active">Wrangling mit dplyr</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
   </div>
 </li>
       </ul>
@@ -239,12 +244,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a>
   <ul class="collapse">
   <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">filter()</a></li>
-  </ul></li>
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select">select()</a></li>
   <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate">mutate()</a></li>
   <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange">arrange()</a></li>
   <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by">group_by()</a></li>
   <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise()</a></li>
+  </ul></li>
+  <li><a href="#temporär-oder-speichern" id="toc-temporär-oder-speichern" class="nav-link" data-scroll-target="#temporär-oder-speichern">Temporär oder Speichern?</a></li>
+  <li><a href="#fazit" id="toc-fazit" class="nav-link" data-scroll-target="#fazit">Fazit</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -254,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">dplyr</h1>
+<h1 class="title d-none d-lg-block">Wrangling mit dplyr</h1>
 <p class="subtitle lead">Seminar[2] &lt;- Data Wrangling, Desriptives &amp; Visualisierung</p>
 </div>
 
@@ -295,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Wir wissen nun, wie wir mithilfe von base R einige aufregende Sachen machen können. Während wir unsere verschiedenen Bearbeitungs- und Filterungsschritte in einzelnen Objekten speichern können, so kommt die Base-R Syntax doch etwas umständlich daher.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/img/dplyr.png" class="img-fluid figure-img" alt="How the author imagines confusion" width="600"></p>
+<p><img src="assets/img/dplyr.png" class="img-fluid figure-img" alt="How the author imagines confusion" width="800"></p>
 <p></p><figcaption class="figure-caption">How the author imagines how dplyr solves confusion</figcaption><p></p>
 </figure>
 </div>
@@ -310,12 +317,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="der-pipe-operator" class="level2">
 <h2 class="anchored" data-anchor-id="der-pipe-operator">Der Pipe-Operator</h2>
-<p>Im Zentrum von <code>dplyr</code> steht der sogenannte Pipe-Operator <code>%&gt;%</code>. Dieser schaut zunächst etwas ungewohnt aus, daran gewöhnt man sich aber schnell:</p>
+<p>Im Zentrum von <code>dplyr</code> steht der sogenannte Pipe-Operator <code>%&gt;%</code> (ursprünglich aus dem <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">Magrittr</a> Package). Dieser schaut zunächst etwas ungewohnt aus, daran gewöhnt man sich aber schnell:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do_something</span>(<span class="at">parameters =</span> <span class="st">"xyz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Mithilfe des Pipe Operators können wir verschiedene Befehler <strong>aneinanderketten</strong>. Der Output des jeweiligen Befehls wird sozusagen als Input in die nächste Zeile “gepiped”. Für den Operator gibt es natürlich eine Tastenkombination, mithilfe derer wir ihn schnell eingeben können. Diese lautet <code>COMMAND</code> + <code>SHIFT</code> + <code>M</code> für Mac-User, und <code>STRG</code> + <code>SHIFT</code> + <code>M</code> für Windows User.</p>
+<p>Mithilfe des Pipe Operators können wir verschiedene Befehler <strong>aneinanderketten</strong>. Der Output des jeweiligen Befehls wird sozusagen als Input in die nächste Zeile “gepiped”. Das heißt, wenn der Input ein Dataframe ist, mit dem dann entsprechend Anpassungen vorgenommen werden, so ist der Output für die nächste Zeile wieder ein Dataframe - welches diese dann weiterverarbeitet.</p>
+<p>Für den Operator gibt es natürlich eine Tastenkombination, mithilfe derer wir ihn schnell eingeben können. Diese lautet <code>COMMAND</code> + <code>SHIFT</code> + <code>M</code> für Mac-User, und <code>STRG</code> + <code>SHIFT</code> + <code>M</code> für Windows User.</p>
 <p>Wir erinnern uns, dass der obige Befehl üblicherweise so lauten würde:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">do_something</span>(object, <span class="at">parameters =</span> <span class="st">"xyz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -339,6 +347,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>dplyr</code> ist aber natürlich nicht nur wegen des Pipe-Operators so praktisch. Es bringt auch viele Funktionen mit sich, die bei typischen Datenanalyse-Aufgaben relevant sind. Diese Funktionen ermöglichen ähnliche Dinge wie bspw. das auf der vorigen Seite gezeigte <code>subset()</code>, sind dabei jedoch etwas weniger umständlich und intuitiver. Im Folgenden wollen wir euch die wichtigsten davon vorstellen:</p>
 <section id="filter" class="level3">
 <h3 class="anchored" data-anchor-id="filter">filter()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/filter.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p>The&nbsp;<code>filter()</code>&nbsp;function is used to subset a data frame, retaining all rows that satisfy your conditions. To be retained, the row must produce a value of&nbsp;<code>TRUE</code>&nbsp;for all conditions. Note that when a condition evaluates to&nbsp;<code>NA</code>&nbsp;the row will be dropped, unlike base subsetting with&nbsp;<code>[</code>.</p>
+</blockquote>
+<hr>
 <p>Mit der <code>filter()</code> Funktion können wir, wie der Name schon sagt, Datensätze auf Basis gewisser Kriterien filtern. Angenommen, wir wollen wieder nach der Spezies <code>setosa</code> filtern. Dies geschieht mit <code>dplyr</code> wie folgt:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
@@ -379,11 +392,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>Wie wir sehen können, ist das resultierende Dataframe dasselbe.</p>
+<p>Wie zu sehen ist, sind die resultierenden Dataframes dieselben.</p>
 </section>
-</section>
-<section id="select" class="level2">
-<h2 class="anchored" data-anchor-id="select">select()</h2>
+<section id="select" class="level3">
+<h3 class="anchored" data-anchor-id="select">select()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/select.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p>Select (and optionally rename) variables in a data frame, using a concise mini-language that makes it easy to refer to variables based on their name (e.g.&nbsp;<code>a:f</code>&nbsp;selects all columns from&nbsp;<code>a</code>&nbsp;on the left to&nbsp;<code>f</code>&nbsp;on the right) or type (e.g.&nbsp;<code>where(is.numeric)</code>&nbsp;selects all numeric columns).</p>
+</blockquote>
+<hr>
 <p>Ebenso wie mit <code>select()</code> in <code>subset()</code> können wir hiermit verschiedene Spalten auswählen. Die Syntax ist wie folgt:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
@@ -424,8 +441,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="mutate" class="level2">
-<h2 class="anchored" data-anchor-id="mutate">mutate()</h2>
+<section id="mutate" class="level3">
+<h3 class="anchored" data-anchor-id="mutate">mutate()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/mutate.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p><code>mutate()</code>&nbsp;creates new columns that are functions of existing variables. It can also modify (if the name is the same as an existing column) and delete columns (by setting their value to&nbsp;<code>NULL</code>).</p>
+</blockquote>
+<hr>
 <p>Apropos Summenscores - <code>mutate()</code> klingt gruseliger, als es ist. Mit <code>mutate()</code> können wir neue Variablen kreieren, oder bestehende modifizieren. Angenommen, die Blätter der Iris-Blume wären rechteckig, und wir könnten die Fläche <strong><code>Petal.Square</code></strong> einfach in Quadratzentimeter berechnen:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
@@ -467,8 +489,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="arrange" class="level2">
-<h2 class="anchored" data-anchor-id="arrange">arrange()</h2>
+<section id="arrange" class="level3">
+<h3 class="anchored" data-anchor-id="arrange">arrange()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/arrange.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p><code>arrange()</code>&nbsp;orders the rows of a data frame by the values of selected columns. Unlike other dplyr verbs,&nbsp;<code>arrange()</code>&nbsp;largely ignores grouping; you need to explicitly mention grouping variables (or use&nbsp;&nbsp;<code>.by_group = TRUE</code>) in order to group by them, and functions of variables are evaluated once per data frame, not once per group.</p>
+</blockquote>
+<hr>
 <p>Manchmal kommt es vor, dass wir einen Datensatz sortieren wollen, um einen besseren Überblick über die Daten zu bekommen. Dazu bietet sich <code>arrange()</code> an:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
@@ -496,8 +523,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="group_by" class="level2">
-<h2 class="anchored" data-anchor-id="group_by">group_by()</h2>
+<section id="group_by" class="level3">
+<h3 class="anchored" data-anchor-id="group_by">group_by()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/group_by.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p>Most data operations are done on groups defined by variables.&nbsp;<code>group_by()</code>&nbsp;takes an existing tbl and converts it into a grouped tbl where operations are performed “by group”.&nbsp;<code>ungroup()</code>&nbsp;removes grouping.</p>
+</blockquote>
+<hr>
 <p>Eine der hilfreichsten Funktionen von <code>dplyr</code> ist die <code>group_by()</code> Funktion. Hier ist allerdings eine etwas genauere Erklärung erforderlich. Die generelle Syntax ist die folgende:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> </span>
@@ -530,7 +562,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>Da dieser natürlich für den gesamten Datensatz berechnet wird, beträgt er für jede Messung 5.84. Wenn wir vorher allerdings <code>group_by()</code> eingeben, sieht das anders aus:</p>
+<p>Da dieser natürlich für den gesamten Datensatz berechnet wird, beträgt er für jede Messung <strong>5.84</strong>. Wenn wir vorher allerdings <code>group_by()</code> eingeben, sieht das anders aus:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
@@ -546,8 +578,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Wir sehen, dass <code>mutate()</code> den Wert <strong>pro Gruppe</strong> berechnet hat. Dies kann sehr hilfreich für verschiedenste Anwendungen sein. Ebenso können wir nach mehreren Variablen gruppieren. Dazu aber gleich mehr.</p>
 </section>
-<section id="summarise" class="level2">
-<h2 class="anchored" data-anchor-id="summarise">summarise()</h2>
+<section id="summarise" class="level3">
+<h3 class="anchored" data-anchor-id="summarise">summarise()</h3>
+<p>Beschreibung von <a href="https://dplyr.tidyverse.org/reference/summarise.html">tidyverse.org</a>:</p>
+<blockquote class="blockquote">
+<p><code>summarise()</code>&nbsp;creates a new data frame. It returns one row for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified. <code>summarise()</code>&nbsp;and&nbsp;<code>summarize()</code>&nbsp;are synonyms.</p>
+</blockquote>
+<hr>
 <p>Vielleicht wirkt es etwas merkwürdig, dass wir oben die Variable <code>Sepal.Length_mean</code> für jeden Datenpunkt einzeln berechnet haben, obwohl diese natürlich immer gleich ist. Meistens wollen wir solche Werte <strong>für die gesamte Stichprobe</strong> haben. Dabei hilft uns <code>summarise()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
@@ -590,6 +627,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
+<section id="für-expertinnen" class="level4">
+<h4 class="anchored" data-anchor-id="für-expertinnen">Für Expert:innen:</h4>
 <p>Oben wurde kurz erwähnt, dass wir auch nach mehreren Variablen gruppieren können. Angenommen, es gäbe noch zusätzlich die Variable <code>color</code> in den Ausprägungen <code>purple</code>, <code>blue</code> und <code>white</code> für jeden Datenpunkt, d.h., jede Blüte kann auch eine dieser verschiedenen Farben haben.</p>
 <div class="cell">
 <details>
@@ -598,6 +637,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(<span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"purple"</span>,<span class="st">"blue"</span>,<span class="st">"white"</span>),<span class="dv">50</span>)))) <span class="ot">-&gt;</span> dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Wenn wir nun nach den Variablen <code>Species</code> und <code>color</code> gruppieren wollen, müssen wir diese beiden Variablen als Parameter übergeben:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species, color) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sepal.Length_mean =</span> <span class="fu">mean</span>(Sepal.Length),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Sepal.Length_sd =</span> <span class="fu">sd</span>(Sepal.Length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["color"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Sepal.Length_mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sepal.Length_sd"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"setosa","2":"blue","3":"4.971429","4":"0.3667499"},{"1":"setosa","2":"purple","3":"5.088235","4":"0.3722942"},{"1":"setosa","2":"white","3":"4.957895","4":"0.3288292"},{"1":"versicolor","2":"blue","3":"6.020000","4":"0.5366563"},{"1":"versicolor","2":"purple","3":"5.725000","4":"0.5322906"},{"1":"versicolor","2":"white","3":"6.057143","4":"0.4182643"},{"1":"virginica","2":"blue","3":"6.737500","4":"0.7069889"},{"1":"virginica","2":"purple","3":"6.488235","4":"0.4498366"},{"1":"virginica","2":"white","3":"6.547059","4":"0.7298267"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Nun sehen wir die Mittelwerte für die verschiedenen Kombinationen der Variablen (also bspw. <code>setosa</code> &amp; <code>blue</code>). Hier kann es hilfreich sein, die Anzahl an Zeilen pro Gruppe zu bekommen. Hierfür eignet sich die <code>n()</code> Funktion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species, color) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sepal.Length_mean =</span> <span class="fu">mean</span>(Sepal.Length),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Sepal.Length_sd =</span> <span class="fu">sd</span>(Sepal.Length),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["color"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Sepal.Length_mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sepal.Length_sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"setosa","2":"blue","3":"4.971429","4":"0.3667499","5":"14"},{"1":"setosa","2":"purple","3":"5.088235","4":"0.3722942","5":"17"},{"1":"setosa","2":"white","3":"4.957895","4":"0.3288292","5":"19"},{"1":"versicolor","2":"blue","3":"6.020000","4":"0.5366563","5":"20"},{"1":"versicolor","2":"purple","3":"5.725000","4":"0.5322906","5":"16"},{"1":"versicolor","2":"white","3":"6.057143","4":"0.4182643","5":"14"},{"1":"virginica","2":"blue","3":"6.737500","4":"0.7069889","5":"16"},{"1":"virginica","2":"purple","3":"6.488235","4":"0.4498366","5":"17"},{"1":"virginica","2":"white","3":"6.547059","4":"0.7298267","5":"17"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Nun haben wir die Mittelwerte für jede Kombination aus <code>Species</code> und <code>color</code>, sowie die Anzahl <code>n</code> der jeweiligen Zeilen bzw. Messungen.</p>
+</section>
+</section>
+</section>
+<section id="temporär-oder-speichern" class="level2">
+<h2 class="anchored" data-anchor-id="temporär-oder-speichern">Temporär oder Speichern?</h2>
+<p>Sicherlich ist aufgefallen, dass alle unsere gezeigten “Pipes” nur zu einem Output im Chunk geführt haben, wir diese allerdings nicht in unserem Environment gespeichert haben. Natürlich können wir dies tun, indem wir unsere Pipe einem Objekt über den Zuweisungsoperator <code>&lt;-</code> zuweisen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>object <span class="ot">&lt;-</span> object <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">select</span>(variableA,variableB,variableC) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(variableA<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Natürlich ist uns selbst überlassen, wie wir mit den Daten umgehen. Manchmal wird es Fälle geben, in denen Speichern Sinn ergibt (bspw. wenn sonst immer wieder die gleiche Transformation anstünde), oft wird es aber auch ausreichend sein, die Daten einfach im Output des jeweiligen Chunks anzuschauen, bzw. etwaige Transformationen unmittelbar vor weiteren Schritten zu machen (bspw. beim Erzeugen von Plots).</p>
+<p>Achtung: Wenn wir mit <code>summarise()</code> einen Output bekommen, so ist dieser natürlich nicht mehr das “ursprüngliche” Dataframe. Diesen würden wir uns also üblicherweise im Chunk-Output anschauen.</p>
+</section>
+<section id="fazit" class="level2">
+<h2 class="anchored" data-anchor-id="fazit">Fazit</h2>
+<p><code>dplyr</code> bringt eine einfach verständliche Grammatik mit sich, die uns hilft, uns auf das wesentliche zu konzentrieren: die Daten. Im nächsten Kapitel werden wir lernen, wie wir diese Daten visualiseren können, um sie noch besser zu verstehen.</p>
 
 
 </section>

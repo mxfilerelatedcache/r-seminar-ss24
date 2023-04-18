@@ -1,0 +1,132 @@
+---
+title: "Visualisierung mit ggplot2"
+subtitle: "Seminar[2] <- Data Wrangling, Desriptives & Visualisierung"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+
+dataset <- read.csv("assets/datasets/iris.csv")
+dataset$Species <- as.factor(dataset$Species)
+```
+
+# Data Visualisation: ggplot2
+
+Wir wissen nun, wie wir mithilfe von `dplyr` schnell & effizient eine bessere Idee über unsere Daten bekommen. Doch tabellarische Daten und einzelne Werte sind nur eine Seite der Data-Science Medaille: Besonders durch Datenvisualierung bekommen wir schnell eine Idee über die Verteilung von Daten, und können versteckte Signale in den Daten enthüllen. Dazu eignet sich `ggplot2` hervorragend. Ebenso wie `dplyr` gehört `ggplot2` zu den beliebtesten R-Packages.
+
+![How the author imagines how ggplot2 uncovers the world of knowledge](assets/img/ggplot2.png){alt="How the author imagines how ggplot2 uncovers the world of knowledge" fig-align="center" width="800"}
+
+Ebenso wie `dplyr` sollte sich `ggplot2` automatisch durch die Installation von `tidyverse` installiert haben:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+library(dplyr)
+```
+
+## Hintergrund
+
+Base-R bietet natürlich auch Funktionen zur Visualisierung von Daten. Jedoch ist es auch hier hilfreich, gleich den "state-of-the-art" zu lernen und sich `ggplot2` anzueignen, da wir somit viel mehr Anpassungsmöglichkeiten, sowie eine vereinfachte Grammatik haben. Um dennoch etwas Kontext zu bieten, schauen wir uns illustrativ die `base`-R `hist()` Funktion an:
+
+```{r}
+hist(dataset$Sepal.Length)
+```
+
+Wir sehen, mit ganz wenig Code bietet `base`-R bereits eine Funktion zum erstellen von Histogrammen an. Das kann manchmal nützlich sein, bspw. wenn wir schnell einen Überblick über die Verteilung einer Variablen bekommen möchten. Aus den oben genannten Gründen wollen wir an dieser Stelle aber den Fokus vor allem auf `ggplot2` setzen. Hinweis: `ggplot2` ist der offzielle Name und auch das richtige Package, der Einfachheit halber werden wir aber von `ggplot` sprechen.
+
+## Syntax
+
+Ebenso wie der Pipe-Operator `%>%` bei `dplyr` eine besondere Rolle spielt, tut es das `+` bei `ggplot`. Aber dazu gleich mehr. Im Folgenden sehen wir den grundsätzlichen Aufbau eines Befehls bzw. einer Befehlskette, die ein Plot erzeugt:
+
+```{r}
+#| eval: false
+
+ggplot(data=object)+
+  geom_function(aes(x=variable),parameters="xyz")+
+  additional_functions(parameters="additionals")
+```
+
+Das sieht auf den ersten Blick erstmal komplizierter aus, als es ist. Aber wir werden den Code Schritt für Schritt aufschlüsseln.
+
+### + Operator
+
+Wie bereits erwähnt, spielt der `+` Operator eine wichtige Rolle bei `ggplot2`. Durch `+` können wir Befehle miteinander verketten. Wichtig zu verstehen ist, dass - ähnlich wie bei `dplyr` - das Verketten von Befehlen dem "Stapeln" verschiedener Visualisierungen bzw. Eigenschaften entspricht, und jeder einzelne Schritt etwas zum finalen Plot beiträgt. Wie genau das abläuft, werden wir gleich am Beispiel des `iris` Datensatzes sehen.
+
+### geom_function()
+
+`geom_function()` (`geom_` für *geometrical*) ist hier nur ein Platzhalter für eine Vielzahl verschiedener Funktionen, die wir in Abhängigkeit davon benutzen, was wir visualisieren wollen. So gibt es etwa `geom_bar()` für Bar-Charts, `geom_point()` für Punktwolken oder `geom_line()` für Liniendiagramme. Weiter unten werden wir einige davon beispielhaft vorstellen.
+
+### aes()
+
+`aes()` steht für *aesthetics* und sorgt dafür, Datenpunkte in visuelle Darstellung zu übertragen bzw. zu mappen. Das klingt erstmal abstrakter, als es eigentlich ist. Meistens werden hier die Variablen für die entsprechenden Achsen angebenen (bspw. `x=Sepal.Width`) oder aber auch für die Farben bzw. Füllungen von Balken/Punkten (bspw. `color=Species`). Warum das wichtig ist und was der Unterschied zu Parametern außerhalb der `aes()` Funktion ist, werden wir gleich sehen.
+
+### Parameters
+
+Wie bei allen Funktionen können wir hier auch diverse Dinge als Parameter übergeben. Beispiele sind etwa `color` oder `size`.
+
+### additional_functions()
+
+Auch `additional_functions()` sind hier nur ein Platzhalter für eine Vielzahl weiterer Funktionen, die wir mit in unsere `ggplot` Kette nehmen können, bspw. `theme_classic()` oder `xlab()`. Mithilfe dieser können wir das Plot im Nachhinein weiter anpassen.
+
+## Beispiel
+
+Soweit die Syntax. Am besten lässt sich `ggplot` aber anhand eines Beispiels verstehen. Machen wir also mit unserem `iris` Datensatz weiter. Wir wollen die Verteilung der Blattgrößen besser verstehen, und entscheiden uns dazu, ein Plot mit `ggplot` zu erstellen. Wie bereits beschrieben, hilft der `+` Operator dabei, verschiedene Funktionen für das Plot miteinander zu verketten. Fangen wir also mit der ersten Ebene an:
+
+```{r}
+ggplot(data = dataset)
+```
+
+Wir sehen, mit dem Befehl `ggplot()` haben wir ein leeres Plot erzeugt. Fügen wir nun also ein Diagramm unserer Wahl hinzu. Wir fangen mit `geom_bar()` an.
+
+```{r}
+#| eval: false
+ggplot(data = dataset)+
+  geom_bar()
+```
+
+Wie wir sehen können, wirft R den Fehler :
+
+```         
+`stat_count()` requires an x or y aesthetic.
+```
+
+Das liegt daran, dass wir die `aes()` Funktion vergessen haben. Ohne das mapping von Datenpunkten weiß die `geom_bar()` Funktion nicht, wo welcher Datenpunkt hinsoll. Versuchen wir es also nochmal, und spezifizieren wir `Sepal.Width` als `x`-Variable:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width))
+```
+
+Wie wir sehen, haben wir nun die Variable `Sepal.Width` erfolgreich visualisiert und entdecken eine Normalverteilung.
+
+Da es sich bei `geom_bar()` um ein Histogramm handelt, müssen wir lediglich die `x`-Variable übergeben, da für die `y`-Variable automatisch gezählt wird.
+
+Angenommen, wir möchten die Farbe verändern, sodass die Balken die Farbe rot haben. Dann müssen wir dies als `fill` Parameter der `geom_bar()` Funktion übergeben:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width), fill="red")
+```
+
+Nun sind alle Balken rot. Was ist aber, wenn wir wollen, dass die Balken **in Abhängigkeit einer Variable** verschiedenfarbig sind? Dann müssen wir die `fill` Variable in der `aes()` Funktion übergeben:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species))
+```
+
+Perfekt! Auf einen Blick können wir sehen, dass Pflanzen der Spezies **`setosa`** eher größere `Sepal.Width` haben. Bis jetzt haben wir allerdings nur einen Befehl mithilfe des `+` Operators verknüpft.
