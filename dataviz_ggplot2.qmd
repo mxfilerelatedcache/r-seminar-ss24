@@ -139,7 +139,43 @@ ggplot(data=dataset)+
   ggtitle("Sepal width of Iris Flower for each Species")
 ```
 
-An diesem Beispiel haben wir gesehen, wie einfach wir mit `ggplot` Plots erzeugen können. Im Folgenden wollen wir euch noch eine Auswahl an Visualisierungsfunktionen vorstellen, die wir häufig benötigen.
+Die Farben sehen noch etwas langweilig aus. Ein kurzer Blick auf [**colorhunt.co**](https://colorhunt.co/palettes/popular) inspiriert uns und wir wollen nun die Farben `#9A208C`, `#E11299` und `#F5C6EC` als Farben haben. Das können wir über `scale_fill_manual()` machen. Dazu speichern wir die Farben einfach in einen Vektor namens `palette` und übergeben diesen als Parameter.
+
+```{r}
+palette <- c("#9A208C","#E11299","#F5C6EC")
+
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species))+
+  ylab("Prevalence")+
+  xlab("Width of Sepal")+
+  ggtitle("Sepal width of Iris Flower for each Species")+
+  scale_fill_manual(values = palette)
+```
+
+Wir hätten nun gerne noch einen schwarzen Rand um die Balken. Dabei hilft uns der Parameter `colour` in `geom_bar()`:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species), color="#2b2b2b")+
+  ylab("Prevalence")+
+  xlab("Width of Sepal")+
+  ggtitle("Sepal width of Iris Flower for each Species")+
+  scale_fill_manual(values = palette)
+```
+
+Jetzt stört uns nur noch der Hintergrund, und dann sind wir zufrieden. `ggplot` bietet verschiedene themes, die wir einfach über den `+` Operator verwenden können. Wir entscheiden uns für `theme_classic()`:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species), color="#2b2b2b")+
+  ylab("Prevalence")+
+  xlab("Width of Sepal")+
+  ggtitle("Sepal width of Iris Flower for each Species")+
+  scale_fill_manual(values = palette)+
+  theme_classic()
+```
+
+Super! Ein publizierfähiges Plot in 7 Zeilen wiederverwendbarem Code. An diesem Beispiel haben wir gesehen, wie einfach das mit `ggplot` und das verketten von Befehlen geht. Im Folgenden wollen wir euch noch eine Auswahl an Visualisierungsfunktionen vorstellen, die wir häufig benötigen.
 
 ## Visualisierungsfunktionen
 
