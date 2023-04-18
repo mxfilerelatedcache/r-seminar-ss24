@@ -248,7 +248,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#additional_functions" id="toc-additional_functions" class="nav-link" data-scroll-target="#additional_functions">additional_functions()</a></li>
   </ul></li>
-  <li><a href="#beispiel" id="toc-beispiel" class="nav-link" data-scroll-target="#beispiel">Beispiel</a></li>
+  <li><a href="#beispiel" id="toc-beispiel" class="nav-link" data-scroll-target="#beispiel">Beispiel</a>
+  <ul class="collapse">
+  <li><a href="#richtige-stelle-für-aes" id="toc-richtige-stelle-für-aes" class="nav-link" data-scroll-target="#richtige-stelle-für-aes">Richtige Stelle für aes()</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -391,9 +394,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Perfekt! Auf einen Blick können wir sehen, dass Pflanzen der Spezies <strong><code>setosa</code></strong> eher größere <code>Sepal.Width</code> haben. Bis jetzt haben wir allerdings nur einen Befehl mithilfe des <code>+</code> Operators verknüpft.</p>
+<p>Perfekt! Auf einen Blick können wir sehen, dass Pflanzen der Spezies <code>setosa</code>eher größere <code>Sepal.Width</code> haben. Bis jetzt haben wir allerdings nur einen Befehl mithilfe des <code>+</code> Operators verknüpft. Angenommen, uns stören die Achsenbeschriftungen und wir wollen einen Titel haben. Auch das ist einfach möglich:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dataset)<span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width, <span class="at">fill=</span>Species))<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Prevalence"</span>)<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Width of Sepal"</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sepal width of Iris Flower for each Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="richtige-stelle-für-aes" class="level3">
+<h3 class="anchored" data-anchor-id="richtige-stelle-für-aes">Richtige Stelle für aes()</h3>
+<p>Wir haben nun gesehen, dass wir mithilfe von <code>aes()</code> innerhalb von <code>geom_bar()</code> das Matching von Datenpunkten zu Visualisierung sicherstellen können. Doch was ist, wenn wir bspw. noch</p>
 
 
+</section>
 </section>
 </section>
 

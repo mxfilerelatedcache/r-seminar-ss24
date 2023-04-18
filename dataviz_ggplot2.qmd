@@ -129,4 +129,16 @@ ggplot(data=dataset)+
   geom_bar(aes(x=Sepal.Width, fill=Species))
 ```
 
-Perfekt! Auf einen Blick können wir sehen, dass Pflanzen der Spezies **`setosa`** eher größere `Sepal.Width` haben. Bis jetzt haben wir allerdings nur einen Befehl mithilfe des `+` Operators verknüpft.
+Perfekt! Auf einen Blick können wir sehen, dass Pflanzen der Spezies `setosa`eher größere `Sepal.Width` haben. Bis jetzt haben wir allerdings nur einen Befehl mithilfe des `+` Operators verknüpft. Angenommen, uns stören die Achsenbeschriftungen und wir wollen einen Titel haben. Auch das ist einfach möglich:
+
+```{r}
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species))+
+  ylab("Prevalence")+
+  xlab("Width of Sepal")+
+  ggtitle("Sepal width of Iris Flower for each Species")
+```
+
+### Richtige Stelle für aes() 
+
+Wir haben nun gesehen, dass wir mithilfe von `aes()` innerhalb von `geom_bar()` das Matching von Datenpunkten zu Visualisierung sicherstellen können. Doch was ist, wenn wir bspw. noch
