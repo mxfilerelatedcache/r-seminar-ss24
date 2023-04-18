@@ -248,10 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#additional_functions" id="toc-additional_functions" class="nav-link" data-scroll-target="#additional_functions">additional_functions()</a></li>
   </ul></li>
-  <li><a href="#beispiel" id="toc-beispiel" class="nav-link" data-scroll-target="#beispiel">Beispiel</a>
+  <li><a href="#beispiel" id="toc-beispiel" class="nav-link" data-scroll-target="#beispiel">Beispiel</a></li>
+  <li><a href="#visualisierungsfunktionen" id="toc-visualisierungsfunktionen" class="nav-link" data-scroll-target="#visualisierungsfunktionen">Visualisierungsfunktionen</a>
   <ul class="collapse">
-  <li><a href="#richtige-stelle-für-aes" id="toc-richtige-stelle-für-aes" class="nav-link" data-scroll-target="#richtige-stelle-für-aes">Richtige Stelle für aes()</a></li>
+  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point">geom_point()</a></li>
   </ul></li>
+  <li><a href="#fazit-weitere-resourcen" id="toc-fazit-weitere-resourcen" class="nav-link" data-scroll-target="#fazit-weitere-resourcen">Fazit &amp; Weitere Resourcen</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -405,12 +407,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="richtige-stelle-für-aes" class="level3">
-<h3 class="anchored" data-anchor-id="richtige-stelle-für-aes">Richtige Stelle für aes()</h3>
-<p>Wir haben nun gesehen, dass wir mithilfe von <code>aes()</code> innerhalb von <code>geom_bar()</code> das Matching von Datenpunkten zu Visualisierung sicherstellen können. Doch was ist, wenn wir bspw. noch</p>
-
-
+<p>An diesem Beispiel haben wir gesehen, wie einfach wir mit <code>ggplot</code> Plots erzeugen können. Im Folgenden wollen wir euch noch eine Auswahl an Visualisierungsfunktionen vorstellen, die wir häufig benötigen.</p>
 </section>
+<section id="visualisierungsfunktionen" class="level2">
+<h2 class="anchored" data-anchor-id="visualisierungsfunktionen">Visualisierungsfunktionen</h2>
+<p>Wie bereits beschrieben, sind <code>geom_</code> die Visualisierungsfunktionen. Jenachdem, wie unsere Daten strukturiert sind, bietet sich einige davon mehr, andere weniger an. Eine sinnvolle Einteilung geht <strong>von den Achsen</strong> bzw. <strong>zu visualisierenden Variablen</strong> aus. Dabei sollten wir uns immer die Frage stellen:</p>
+<blockquote class="blockquote">
+<p>Wieviele Variablen möchte ich darstellen?</p>
+</blockquote>
+<p>In einem 2-dimensionalen Koordinatensystem können wir natürlich erstmal nur zwei Variablen darstellen. Allerdings erlaubt uns <code>ggplot</code> auch die Visualisierung von mehr Variablen. So können wir etwa über <code>fill</code> bzw. <code>colour</code> weitere Variablen visualieren. Eine weitere Frage, die wir uns in diese Richtung stellen sollten, ist:</p>
+<blockquote class="blockquote">
+<p>Was für einen Datentyp haben die zu visualisierenden Variablen?</p>
+</blockquote>
+<p>Je nachdem, wie die wir diese Fragen beantworten, bieten sich dann verschiedene Funktionen an. Im obigen Beispiel haben wir <strong>eine Variable</strong> (<code>Sepal.Width)</code><strong>,</strong> welche <strong>intervall</strong>skaliert ist. Dafür bietet sich entsprechend ein Histogramm bzw. <code>geom_bar()</code>an. Doch was ist, wenn wir <strong>zwei intervallskalierte</strong> Variablen haben? Hier könnten wir bspw. die <code>geom_point()</code> Funktion benutzen. Für solche Fragestellungen kann das <strong>ggplot Cheatsheet</strong> sehr hilfreich sein:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf"><img src="assets/img/ggplot_cheatsheet.png" class="img-fluid figure-img" width="300"></a></p>
+</figure>
+</div>
+<p>Neben geom_bar wollen wir zwei weitere, häufig benötigte Funktionen, sowie deren Kombination zeigen: <code>geom_point()</code> und <code>geom_smooth()</code>.</p>
+<section id="geom_point" class="level3">
+<h3 class="anchored" data-anchor-id="geom_point">geom_point()</h3>
+<p>Angenommen, wir haben zwei intervallskalierte Variablen, die wir visualisieren wollen. Dann bietet sich <code>geom_point()</code> an. Versuchen wir also mal, die Verteilung von <code>Sepal.Width</code> und <code>Sepal.Length</code> zu visualisieren.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dataset)<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Super! Nun wäre es praktisch, wenn wir auch noch die Variable <code>Species</code> einbringen könnten. Dies können wir durch <code>colour</code> in <code>aes()</code> tun.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dataset)<span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length,<span class="at">color=</span>Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Auch hier sehen wir direkt, dass es einen Unterschied zwischen den verschiedenen Spezies zu geben scheint. Visuell können wir auch den (offensichtlichen) Zusammenhang zwischen <code>Sepal.Width</code> und <code>Sepal.Length</code> erkennen. Um das aber noch etwas besser zu verstehen, legen wir eine Regressionsgrade mithilfe von <code>geom_smooth()</code> rein. Das können wir über den <code>+</code> Operator tun - denn in <code>ggplot</code> können wir alle Visualisierungsfunktionen nach Belieben “stapeln”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dataset)<span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length,<span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length), <span class="at">method=</span><span class="st">"lm"</span>) <span class="co"># lm for linear model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Die Regressionsgrade zeigt einen negativen Zusammenhang, obwohl wir offensichtlich einen positiven Zusammenhang vorliegen haben. Das liegt daran, dass <code>geom_smooth()</code> unseren Faktor <code>Species</code> nicht berücksichtigt. Dies können wir ändern, indem wir in dessen <code>aes()</code> Funktion ebenfalls <code>colour</code> übergeben.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dataset)<span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length,<span class="at">colour=</span>Species))<span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">y=</span>Sepal.Length, <span class="at">colour=</span>Species), <span class="at">method=</span><span class="st">"lm"</span>) <span class="co"># lm for linear model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="dataviz_ggplot2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Voila! Wir sehen unsere drei kleinen Regressionsgraden und den erwarteten positiven Zusammenhang.</p>
+</section>
+</section>
+<section id="fazit-weitere-resourcen" class="level2">
+<h2 class="anchored" data-anchor-id="fazit-weitere-resourcen">Fazit &amp; Weitere Resourcen</h2>
+<p>Wir haben nun gelernt, wie wir mithilfe von <code>ggplot</code> Daten visualisieren können. Natürlich war das nur die Spitze des Eisbergs, und noch viel mehr ist möglich. Einige dieser Dinge werden wir im weiteren Verlauf des Seminars kennenlernen, wenn es um das Arbeiten (und Visualisieren) von konkreten Datensätzen geht. Im Laufe des Seminars werden wir auch eine eigene “nice to know” Seite erstellen, auf der wir zusätzliches Wissen sammeln.</p>
+<p>Neben dieser Website hier (🥳) gibt es natürlich noch viele weitere, tolle Resourcen im Internet. Neben den offziellen Dokumentationen bspw. auf tidyverse oder CRAN wollen wir euch vor allem mit Blick auf <code>dplyr</code> und <code>ggplot</code> noch einige ans ❤️ legen:</p>
+<ul>
+<li><p><a href="http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization"><strong>sthda.com</strong></a><strong>:</strong> Be Awesome in ggplot2: A Practical Guide to be Highly Effective - R software and data visualization</p></li>
+<li><p><a href="https://r-graph-gallery.com/index.html"><strong>r-graph-gallery.com</strong></a>: A collection of charts made with the R programming language</p></li>
+<li><p><a href="https://www.r-bloggers.com/2018/05/dplyr-a-beginners-guide/"><strong>r-bloggers.com</strong></a>: DPLYR: A beginner’s guide</p></li>
+</ul>
+
+
 </section>
 </section>
 
