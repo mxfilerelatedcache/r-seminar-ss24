@@ -217,16 +217,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./datawrangling_base.html" class="sidebar-item-text sidebar-link active">Base R</a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -240,14 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#data-wrangling-base-r" id="toc-data-wrangling-base-r" class="nav-link active" data-scroll-target="#data-wrangling-base-r">Data Wrangling: Base R</a>
   <ul class="collapse">
-  <li><a href="#iris-datensatz" id="toc-iris-datensatz" class="nav-link" data-scroll-target="#iris-datensatz">Iris Datensatz</a>
-  <ul class="collapse">
-  <li><a href="#exkurs-trennzeichengetrennte-textdateien-csv" id="toc-exkurs-trennzeichengetrennte-textdateien-csv" class="nav-link" data-scroll-target="#exkurs-trennzeichengetrennte-textdateien-csv">Exkurs: Trennzeichengetrennte Textdateien &amp; CSV</a></li>
-  </ul></li>
-  <li><a href="#daten-einlesen" id="toc-daten-einlesen" class="nav-link" data-scroll-target="#daten-einlesen">Daten einlesen</a></li>
-  <li><a href="#daten-anschauen" id="toc-daten-anschauen" class="nav-link" data-scroll-target="#daten-anschauen">Daten anschauen</a></li>
-  <li><a href="#deskriptive-analysen" id="toc-deskriptive-analysen" class="nav-link" data-scroll-target="#deskriptive-analysen">Deskriptive Analysen</a></li>
-  <li><a href="#datensatz-aufteilen" id="toc-datensatz-aufteilen" class="nav-link" data-scroll-target="#datensatz-aufteilen">Datensatz aufteilen</a></li>
+  <li><a href="#iris-datensatz" id="toc-iris-datensatz" class="nav-link" data-scroll-target="#iris-datensatz">Iris Datensatz</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -309,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Der Datensatz ist direkt im Package <code>datasets</code> integriert. Um allerdings zu lernen, wie wir Daten bspw. aus <code>.csv</code> einlesen, haben wir den Datensatz nochmal als einzelne Datei vorbereitet. Diese können wir hier herunterladen:</p>
-<p><a href="#dnldts11229" onclick="fetch('data:text/csv;base64,IiIsIlNlcGFsLkxlbmd0aCIsIlNlcGFsLldpZHRoIiwiUGV0YWwuTGVuZ3RoIiwiUGV0YWwuV2lkdGgiLCJTcGVjaWVzIgoiMSIsNS4xLDMuNSwxLjQsMC4yLCJzZXRvc2EiCiIyIiw0LjksMywxLjQsMC4yLCJzZXRvc2EiCiIzIiw0LjcsMy4yLDEuMywwLjIsInNldG9zYSIKIjQiLDQuNiwzLjEsMS41LDAuMiwic2V0b3NhIgoiNSIsNSwzLjYsMS40LDAuMiwic2V0b3NhIgoiNiIsNS40LDMuOSwxLjcsMC40LCJzZXRvc2EiCiI3Iiw0LjYsMy40LDEuNCwwLjMsInNldG9zYSIKIjgiLDUsMy40LDEuNSwwLjIsInNldG9zYSIKIjkiLDQuNCwyLjksMS40LDAuMiwic2V0b3NhIgoiMTAiLDQuOSwzLjEsMS41LDAuMSwic2V0b3NhIgoiMTEiLDUuNCwzLjcsMS41LDAuMiwic2V0b3NhIgoiMTIiLDQuOCwzLjQsMS42LDAuMiwic2V0b3NhIgoiMTMiLDQuOCwzLDEuNCwwLjEsInNldG9zYSIKIjE0Iiw0LjMsMywxLjEsMC4xLCJzZXRvc2EiCiIxNSIsNS44LDQsMS4yLDAuMiwic2V0b3NhIgoiMTYiLDUuNyw0LjQsMS41LDAuNCwic2V0b3NhIgoiMTciLDUuNCwzLjksMS4zLDAuNCwic2V0b3NhIgoiMTgiLDUuMSwzLjUsMS40LDAuMywic2V0b3NhIgoiMTkiLDUuNywzLjgsMS43LDAuMywic2V0b3NhIgoiMjAiLDUuMSwzLjgsMS41LDAuMywic2V0b3NhIgoiMjEiLDUuNCwzLjQsMS43LDAuMiwic2V0b3NhIgoiMjIiLDUuMSwzLjcsMS41LDAuNCwic2V0b3NhIgoiMjMiLDQuNiwzLjYsMSwwLjIsInNldG9zYSIKIjI0Iiw1LjEsMy4zLDEuNywwLjUsInNldG9zYSIKIjI1Iiw0LjgsMy40LDEuOSwwLjIsInNldG9zYSIKIjI2Iiw1LDMsMS42LDAuMiwic2V0b3NhIgoiMjciLDUsMy40LDEuNiwwLjQsInNldG9zYSIKIjI4Iiw1LjIsMy41LDEuNSwwLjIsInNldG9zYSIKIjI5Iiw1LjIsMy40LDEuNCwwLjIsInNldG9zYSIKIjMwIiw0LjcsMy4yLDEuNiwwLjIsInNldG9zYSIKIjMxIiw0LjgsMy4xLDEuNiwwLjIsInNldG9zYSIKIjMyIiw1LjQsMy40LDEuNSwwLjQsInNldG9zYSIKIjMzIiw1LjIsNC4xLDEuNSwwLjEsInNldG9zYSIKIjM0Iiw1LjUsNC4yLDEuNCwwLjIsInNldG9zYSIKIjM1Iiw0LjksMy4xLDEuNSwwLjIsInNldG9zYSIKIjM2Iiw1LDMuMiwxLjIsMC4yLCJzZXRvc2EiCiIzNyIsNS41LDMuNSwxLjMsMC4yLCJzZXRvc2EiCiIzOCIsNC45LDMuNiwxLjQsMC4xLCJzZXRvc2EiCiIzOSIsNC40LDMsMS4zLDAuMiwic2V0b3NhIgoiNDAiLDUuMSwzLjQsMS41LDAuMiwic2V0b3NhIgoiNDEiLDUsMy41LDEuMywwLjMsInNldG9zYSIKIjQyIiw0LjUsMi4zLDEuMywwLjMsInNldG9zYSIKIjQzIiw0LjQsMy4yLDEuMywwLjIsInNldG9zYSIKIjQ0Iiw1LDMuNSwxLjYsMC42LCJzZXRvc2EiCiI0NSIsNS4xLDMuOCwxLjksMC40LCJzZXRvc2EiCiI0NiIsNC44LDMsMS40LDAuMywic2V0b3NhIgoiNDciLDUuMSwzLjgsMS42LDAuMiwic2V0b3NhIgoiNDgiLDQuNiwzLjIsMS40LDAuMiwic2V0b3NhIgoiNDkiLDUuMywzLjcsMS41LDAuMiwic2V0b3NhIgoiNTAiLDUsMy4zLDEuNCwwLjIsInNldG9zYSIKIjUxIiw3LDMuMiw0LjcsMS40LCJ2ZXJzaWNvbG9yIgoiNTIiLDYuNCwzLjIsNC41LDEuNSwidmVyc2ljb2xvciIKIjUzIiw2LjksMy4xLDQuOSwxLjUsInZlcnNpY29sb3IiCiI1NCIsNS41LDIuMyw0LDEuMywidmVyc2ljb2xvciIKIjU1Iiw2LjUsMi44LDQuNiwxLjUsInZlcnNpY29sb3IiCiI1NiIsNS43LDIuOCw0LjUsMS4zLCJ2ZXJzaWNvbG9yIgoiNTciLDYuMywzLjMsNC43LDEuNiwidmVyc2ljb2xvciIKIjU4Iiw0LjksMi40LDMuMywxLCJ2ZXJzaWNvbG9yIgoiNTkiLDYuNiwyLjksNC42LDEuMywidmVyc2ljb2xvciIKIjYwIiw1LjIsMi43LDMuOSwxLjQsInZlcnNpY29sb3IiCiI2MSIsNSwyLDMuNSwxLCJ2ZXJzaWNvbG9yIgoiNjIiLDUuOSwzLDQuMiwxLjUsInZlcnNpY29sb3IiCiI2MyIsNiwyLjIsNCwxLCJ2ZXJzaWNvbG9yIgoiNjQiLDYuMSwyLjksNC43LDEuNCwidmVyc2ljb2xvciIKIjY1Iiw1LjYsMi45LDMuNiwxLjMsInZlcnNpY29sb3IiCiI2NiIsNi43LDMuMSw0LjQsMS40LCJ2ZXJzaWNvbG9yIgoiNjciLDUuNiwzLDQuNSwxLjUsInZlcnNpY29sb3IiCiI2OCIsNS44LDIuNyw0LjEsMSwidmVyc2ljb2xvciIKIjY5Iiw2LjIsMi4yLDQuNSwxLjUsInZlcnNpY29sb3IiCiI3MCIsNS42LDIuNSwzLjksMS4xLCJ2ZXJzaWNvbG9yIgoiNzEiLDUuOSwzLjIsNC44LDEuOCwidmVyc2ljb2xvciIKIjcyIiw2LjEsMi44LDQsMS4zLCJ2ZXJzaWNvbG9yIgoiNzMiLDYuMywyLjUsNC45LDEuNSwidmVyc2ljb2xvciIKIjc0Iiw2LjEsMi44LDQuNywxLjIsInZlcnNpY29sb3IiCiI3NSIsNi40LDIuOSw0LjMsMS4zLCJ2ZXJzaWNvbG9yIgoiNzYiLDYuNiwzLDQuNCwxLjQsInZlcnNpY29sb3IiCiI3NyIsNi44LDIuOCw0LjgsMS40LCJ2ZXJzaWNvbG9yIgoiNzgiLDYuNywzLDUsMS43LCJ2ZXJzaWNvbG9yIgoiNzkiLDYsMi45LDQuNSwxLjUsInZlcnNpY29sb3IiCiI4MCIsNS43LDIuNiwzLjUsMSwidmVyc2ljb2xvciIKIjgxIiw1LjUsMi40LDMuOCwxLjEsInZlcnNpY29sb3IiCiI4MiIsNS41LDIuNCwzLjcsMSwidmVyc2ljb2xvciIKIjgzIiw1LjgsMi43LDMuOSwxLjIsInZlcnNpY29sb3IiCiI4NCIsNiwyLjcsNS4xLDEuNiwidmVyc2ljb2xvciIKIjg1Iiw1LjQsMyw0LjUsMS41LCJ2ZXJzaWNvbG9yIgoiODYiLDYsMy40LDQuNSwxLjYsInZlcnNpY29sb3IiCiI4NyIsNi43LDMuMSw0LjcsMS41LCJ2ZXJzaWNvbG9yIgoiODgiLDYuMywyLjMsNC40LDEuMywidmVyc2ljb2xvciIKIjg5Iiw1LjYsMyw0LjEsMS4zLCJ2ZXJzaWNvbG9yIgoiOTAiLDUuNSwyLjUsNCwxLjMsInZlcnNpY29sb3IiCiI5MSIsNS41LDIuNiw0LjQsMS4yLCJ2ZXJzaWNvbG9yIgoiOTIiLDYuMSwzLDQuNiwxLjQsInZlcnNpY29sb3IiCiI5MyIsNS44LDIuNiw0LDEuMiwidmVyc2ljb2xvciIKIjk0Iiw1LDIuMywzLjMsMSwidmVyc2ljb2xvciIKIjk1Iiw1LjYsMi43LDQuMiwxLjMsInZlcnNpY29sb3IiCiI5NiIsNS43LDMsNC4yLDEuMiwidmVyc2ljb2xvciIKIjk3Iiw1LjcsMi45LDQuMiwxLjMsInZlcnNpY29sb3IiCiI5OCIsNi4yLDIuOSw0LjMsMS4zLCJ2ZXJzaWNvbG9yIgoiOTkiLDUuMSwyLjUsMywxLjEsInZlcnNpY29sb3IiCiIxMDAiLDUuNywyLjgsNC4xLDEuMywidmVyc2ljb2xvciIKIjEwMSIsNi4zLDMuMyw2LDIuNSwidmlyZ2luaWNhIgoiMTAyIiw1LjgsMi43LDUuMSwxLjksInZpcmdpbmljYSIKIjEwMyIsNy4xLDMsNS45LDIuMSwidmlyZ2luaWNhIgoiMTA0Iiw2LjMsMi45LDUuNiwxLjgsInZpcmdpbmljYSIKIjEwNSIsNi41LDMsNS44LDIuMiwidmlyZ2luaWNhIgoiMTA2Iiw3LjYsMyw2LjYsMi4xLCJ2aXJnaW5pY2EiCiIxMDciLDQuOSwyLjUsNC41LDEuNywidmlyZ2luaWNhIgoiMTA4Iiw3LjMsMi45LDYuMywxLjgsInZpcmdpbmljYSIKIjEwOSIsNi43LDIuNSw1LjgsMS44LCJ2aXJnaW5pY2EiCiIxMTAiLDcuMiwzLjYsNi4xLDIuNSwidmlyZ2luaWNhIgoiMTExIiw2LjUsMy4yLDUuMSwyLCJ2aXJnaW5pY2EiCiIxMTIiLDYuNCwyLjcsNS4zLDEuOSwidmlyZ2luaWNhIgoiMTEzIiw2LjgsMyw1LjUsMi4xLCJ2aXJnaW5pY2EiCiIxMTQiLDUuNywyLjUsNSwyLCJ2aXJnaW5pY2EiCiIxMTUiLDUuOCwyLjgsNS4xLDIuNCwidmlyZ2luaWNhIgoiMTE2Iiw2LjQsMy4yLDUuMywyLjMsInZpcmdpbmljYSIKIjExNyIsNi41LDMsNS41LDEuOCwidmlyZ2luaWNhIgoiMTE4Iiw3LjcsMy44LDYuNywyLjIsInZpcmdpbmljYSIKIjExOSIsNy43LDIuNiw2LjksMi4zLCJ2aXJnaW5pY2EiCiIxMjAiLDYsMi4yLDUsMS41LCJ2aXJnaW5pY2EiCiIxMjEiLDYuOSwzLjIsNS43LDIuMywidmlyZ2luaWNhIgoiMTIyIiw1LjYsMi44LDQuOSwyLCJ2aXJnaW5pY2EiCiIxMjMiLDcuNywyLjgsNi43LDIsInZpcmdpbmljYSIKIjEyNCIsNi4zLDIuNyw0LjksMS44LCJ2aXJnaW5pY2EiCiIxMjUiLDYuNywzLjMsNS43LDIuMSwidmlyZ2luaWNhIgoiMTI2Iiw3LjIsMy4yLDYsMS44LCJ2aXJnaW5pY2EiCiIxMjciLDYuMiwyLjgsNC44LDEuOCwidmlyZ2luaWNhIgoiMTI4Iiw2LjEsMyw0LjksMS44LCJ2aXJnaW5pY2EiCiIxMjkiLDYuNCwyLjgsNS42LDIuMSwidmlyZ2luaWNhIgoiMTMwIiw3LjIsMyw1LjgsMS42LCJ2aXJnaW5pY2EiCiIxMzEiLDcuNCwyLjgsNi4xLDEuOSwidmlyZ2luaWNhIgoiMTMyIiw3LjksMy44LDYuNCwyLCJ2aXJnaW5pY2EiCiIxMzMiLDYuNCwyLjgsNS42LDIuMiwidmlyZ2luaWNhIgoiMTM0Iiw2LjMsMi44LDUuMSwxLjUsInZpcmdpbmljYSIKIjEzNSIsNi4xLDIuNiw1LjYsMS40LCJ2aXJnaW5pY2EiCiIxMzYiLDcuNywzLDYuMSwyLjMsInZpcmdpbmljYSIKIjEzNyIsNi4zLDMuNCw1LjYsMi40LCJ2aXJnaW5pY2EiCiIxMzgiLDYuNCwzLjEsNS41LDEuOCwidmlyZ2luaWNhIgoiMTM5Iiw2LDMsNC44LDEuOCwidmlyZ2luaWNhIgoiMTQwIiw2LjksMy4xLDUuNCwyLjEsInZpcmdpbmljYSIKIjE0MSIsNi43LDMuMSw1LjYsMi40LCJ2aXJnaW5pY2EiCiIxNDIiLDYuOSwzLjEsNS4xLDIuMywidmlyZ2luaWNhIgoiMTQzIiw1LjgsMi43LDUuMSwxLjksInZpcmdpbmljYSIKIjE0NCIsNi44LDMuMiw1LjksMi4zLCJ2aXJnaW5pY2EiCiIxNDUiLDYuNywzLjMsNS43LDIuNSwidmlyZ2luaWNhIgoiMTQ2Iiw2LjcsMyw1LjIsMi4zLCJ2aXJnaW5pY2EiCiIxNDciLDYuMywyLjUsNSwxLjksInZpcmdpbmljYSIKIjE0OCIsNi41LDMsNS4yLDIsInZpcmdpbmljYSIKIjE0OSIsNi4yLDMuNCw1LjQsMi4zLCJ2aXJnaW5pY2EiCiIxNTAiLDUuOSwzLDUuMSwxLjgsInZpcmdpbmljYSI=').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts46163" onclick="fetch('data:text/csv;base64,IiIsIlNlcGFsLkxlbmd0aCIsIlNlcGFsLldpZHRoIiwiUGV0YWwuTGVuZ3RoIiwiUGV0YWwuV2lkdGgiLCJTcGVjaWVzIgoiMSIsNS4xLDMuNSwxLjQsMC4yLCJzZXRvc2EiCiIyIiw0LjksMywxLjQsMC4yLCJzZXRvc2EiCiIzIiw0LjcsMy4yLDEuMywwLjIsInNldG9zYSIKIjQiLDQuNiwzLjEsMS41LDAuMiwic2V0b3NhIgoiNSIsNSwzLjYsMS40LDAuMiwic2V0b3NhIgoiNiIsNS40LDMuOSwxLjcsMC40LCJzZXRvc2EiCiI3Iiw0LjYsMy40LDEuNCwwLjMsInNldG9zYSIKIjgiLDUsMy40LDEuNSwwLjIsInNldG9zYSIKIjkiLDQuNCwyLjksMS40LDAuMiwic2V0b3NhIgoiMTAiLDQuOSwzLjEsMS41LDAuMSwic2V0b3NhIgoiMTEiLDUuNCwzLjcsMS41LDAuMiwic2V0b3NhIgoiMTIiLDQuOCwzLjQsMS42LDAuMiwic2V0b3NhIgoiMTMiLDQuOCwzLDEuNCwwLjEsInNldG9zYSIKIjE0Iiw0LjMsMywxLjEsMC4xLCJzZXRvc2EiCiIxNSIsNS44LDQsMS4yLDAuMiwic2V0b3NhIgoiMTYiLDUuNyw0LjQsMS41LDAuNCwic2V0b3NhIgoiMTciLDUuNCwzLjksMS4zLDAuNCwic2V0b3NhIgoiMTgiLDUuMSwzLjUsMS40LDAuMywic2V0b3NhIgoiMTkiLDUuNywzLjgsMS43LDAuMywic2V0b3NhIgoiMjAiLDUuMSwzLjgsMS41LDAuMywic2V0b3NhIgoiMjEiLDUuNCwzLjQsMS43LDAuMiwic2V0b3NhIgoiMjIiLDUuMSwzLjcsMS41LDAuNCwic2V0b3NhIgoiMjMiLDQuNiwzLjYsMSwwLjIsInNldG9zYSIKIjI0Iiw1LjEsMy4zLDEuNywwLjUsInNldG9zYSIKIjI1Iiw0LjgsMy40LDEuOSwwLjIsInNldG9zYSIKIjI2Iiw1LDMsMS42LDAuMiwic2V0b3NhIgoiMjciLDUsMy40LDEuNiwwLjQsInNldG9zYSIKIjI4Iiw1LjIsMy41LDEuNSwwLjIsInNldG9zYSIKIjI5Iiw1LjIsMy40LDEuNCwwLjIsInNldG9zYSIKIjMwIiw0LjcsMy4yLDEuNiwwLjIsInNldG9zYSIKIjMxIiw0LjgsMy4xLDEuNiwwLjIsInNldG9zYSIKIjMyIiw1LjQsMy40LDEuNSwwLjQsInNldG9zYSIKIjMzIiw1LjIsNC4xLDEuNSwwLjEsInNldG9zYSIKIjM0Iiw1LjUsNC4yLDEuNCwwLjIsInNldG9zYSIKIjM1Iiw0LjksMy4xLDEuNSwwLjIsInNldG9zYSIKIjM2Iiw1LDMuMiwxLjIsMC4yLCJzZXRvc2EiCiIzNyIsNS41LDMuNSwxLjMsMC4yLCJzZXRvc2EiCiIzOCIsNC45LDMuNiwxLjQsMC4xLCJzZXRvc2EiCiIzOSIsNC40LDMsMS4zLDAuMiwic2V0b3NhIgoiNDAiLDUuMSwzLjQsMS41LDAuMiwic2V0b3NhIgoiNDEiLDUsMy41LDEuMywwLjMsInNldG9zYSIKIjQyIiw0LjUsMi4zLDEuMywwLjMsInNldG9zYSIKIjQzIiw0LjQsMy4yLDEuMywwLjIsInNldG9zYSIKIjQ0Iiw1LDMuNSwxLjYsMC42LCJzZXRvc2EiCiI0NSIsNS4xLDMuOCwxLjksMC40LCJzZXRvc2EiCiI0NiIsNC44LDMsMS40LDAuMywic2V0b3NhIgoiNDciLDUuMSwzLjgsMS42LDAuMiwic2V0b3NhIgoiNDgiLDQuNiwzLjIsMS40LDAuMiwic2V0b3NhIgoiNDkiLDUuMywzLjcsMS41LDAuMiwic2V0b3NhIgoiNTAiLDUsMy4zLDEuNCwwLjIsInNldG9zYSIKIjUxIiw3LDMuMiw0LjcsMS40LCJ2ZXJzaWNvbG9yIgoiNTIiLDYuNCwzLjIsNC41LDEuNSwidmVyc2ljb2xvciIKIjUzIiw2LjksMy4xLDQuOSwxLjUsInZlcnNpY29sb3IiCiI1NCIsNS41LDIuMyw0LDEuMywidmVyc2ljb2xvciIKIjU1Iiw2LjUsMi44LDQuNiwxLjUsInZlcnNpY29sb3IiCiI1NiIsNS43LDIuOCw0LjUsMS4zLCJ2ZXJzaWNvbG9yIgoiNTciLDYuMywzLjMsNC43LDEuNiwidmVyc2ljb2xvciIKIjU4Iiw0LjksMi40LDMuMywxLCJ2ZXJzaWNvbG9yIgoiNTkiLDYuNiwyLjksNC42LDEuMywidmVyc2ljb2xvciIKIjYwIiw1LjIsMi43LDMuOSwxLjQsInZlcnNpY29sb3IiCiI2MSIsNSwyLDMuNSwxLCJ2ZXJzaWNvbG9yIgoiNjIiLDUuOSwzLDQuMiwxLjUsInZlcnNpY29sb3IiCiI2MyIsNiwyLjIsNCwxLCJ2ZXJzaWNvbG9yIgoiNjQiLDYuMSwyLjksNC43LDEuNCwidmVyc2ljb2xvciIKIjY1Iiw1LjYsMi45LDMuNiwxLjMsInZlcnNpY29sb3IiCiI2NiIsNi43LDMuMSw0LjQsMS40LCJ2ZXJzaWNvbG9yIgoiNjciLDUuNiwzLDQuNSwxLjUsInZlcnNpY29sb3IiCiI2OCIsNS44LDIuNyw0LjEsMSwidmVyc2ljb2xvciIKIjY5Iiw2LjIsMi4yLDQuNSwxLjUsInZlcnNpY29sb3IiCiI3MCIsNS42LDIuNSwzLjksMS4xLCJ2ZXJzaWNvbG9yIgoiNzEiLDUuOSwzLjIsNC44LDEuOCwidmVyc2ljb2xvciIKIjcyIiw2LjEsMi44LDQsMS4zLCJ2ZXJzaWNvbG9yIgoiNzMiLDYuMywyLjUsNC45LDEuNSwidmVyc2ljb2xvciIKIjc0Iiw2LjEsMi44LDQuNywxLjIsInZlcnNpY29sb3IiCiI3NSIsNi40LDIuOSw0LjMsMS4zLCJ2ZXJzaWNvbG9yIgoiNzYiLDYuNiwzLDQuNCwxLjQsInZlcnNpY29sb3IiCiI3NyIsNi44LDIuOCw0LjgsMS40LCJ2ZXJzaWNvbG9yIgoiNzgiLDYuNywzLDUsMS43LCJ2ZXJzaWNvbG9yIgoiNzkiLDYsMi45LDQuNSwxLjUsInZlcnNpY29sb3IiCiI4MCIsNS43LDIuNiwzLjUsMSwidmVyc2ljb2xvciIKIjgxIiw1LjUsMi40LDMuOCwxLjEsInZlcnNpY29sb3IiCiI4MiIsNS41LDIuNCwzLjcsMSwidmVyc2ljb2xvciIKIjgzIiw1LjgsMi43LDMuOSwxLjIsInZlcnNpY29sb3IiCiI4NCIsNiwyLjcsNS4xLDEuNiwidmVyc2ljb2xvciIKIjg1Iiw1LjQsMyw0LjUsMS41LCJ2ZXJzaWNvbG9yIgoiODYiLDYsMy40LDQuNSwxLjYsInZlcnNpY29sb3IiCiI4NyIsNi43LDMuMSw0LjcsMS41LCJ2ZXJzaWNvbG9yIgoiODgiLDYuMywyLjMsNC40LDEuMywidmVyc2ljb2xvciIKIjg5Iiw1LjYsMyw0LjEsMS4zLCJ2ZXJzaWNvbG9yIgoiOTAiLDUuNSwyLjUsNCwxLjMsInZlcnNpY29sb3IiCiI5MSIsNS41LDIuNiw0LjQsMS4yLCJ2ZXJzaWNvbG9yIgoiOTIiLDYuMSwzLDQuNiwxLjQsInZlcnNpY29sb3IiCiI5MyIsNS44LDIuNiw0LDEuMiwidmVyc2ljb2xvciIKIjk0Iiw1LDIuMywzLjMsMSwidmVyc2ljb2xvciIKIjk1Iiw1LjYsMi43LDQuMiwxLjMsInZlcnNpY29sb3IiCiI5NiIsNS43LDMsNC4yLDEuMiwidmVyc2ljb2xvciIKIjk3Iiw1LjcsMi45LDQuMiwxLjMsInZlcnNpY29sb3IiCiI5OCIsNi4yLDIuOSw0LjMsMS4zLCJ2ZXJzaWNvbG9yIgoiOTkiLDUuMSwyLjUsMywxLjEsInZlcnNpY29sb3IiCiIxMDAiLDUuNywyLjgsNC4xLDEuMywidmVyc2ljb2xvciIKIjEwMSIsNi4zLDMuMyw2LDIuNSwidmlyZ2luaWNhIgoiMTAyIiw1LjgsMi43LDUuMSwxLjksInZpcmdpbmljYSIKIjEwMyIsNy4xLDMsNS45LDIuMSwidmlyZ2luaWNhIgoiMTA0Iiw2LjMsMi45LDUuNiwxLjgsInZpcmdpbmljYSIKIjEwNSIsNi41LDMsNS44LDIuMiwidmlyZ2luaWNhIgoiMTA2Iiw3LjYsMyw2LjYsMi4xLCJ2aXJnaW5pY2EiCiIxMDciLDQuOSwyLjUsNC41LDEuNywidmlyZ2luaWNhIgoiMTA4Iiw3LjMsMi45LDYuMywxLjgsInZpcmdpbmljYSIKIjEwOSIsNi43LDIuNSw1LjgsMS44LCJ2aXJnaW5pY2EiCiIxMTAiLDcuMiwzLjYsNi4xLDIuNSwidmlyZ2luaWNhIgoiMTExIiw2LjUsMy4yLDUuMSwyLCJ2aXJnaW5pY2EiCiIxMTIiLDYuNCwyLjcsNS4zLDEuOSwidmlyZ2luaWNhIgoiMTEzIiw2LjgsMyw1LjUsMi4xLCJ2aXJnaW5pY2EiCiIxMTQiLDUuNywyLjUsNSwyLCJ2aXJnaW5pY2EiCiIxMTUiLDUuOCwyLjgsNS4xLDIuNCwidmlyZ2luaWNhIgoiMTE2Iiw2LjQsMy4yLDUuMywyLjMsInZpcmdpbmljYSIKIjExNyIsNi41LDMsNS41LDEuOCwidmlyZ2luaWNhIgoiMTE4Iiw3LjcsMy44LDYuNywyLjIsInZpcmdpbmljYSIKIjExOSIsNy43LDIuNiw2LjksMi4zLCJ2aXJnaW5pY2EiCiIxMjAiLDYsMi4yLDUsMS41LCJ2aXJnaW5pY2EiCiIxMjEiLDYuOSwzLjIsNS43LDIuMywidmlyZ2luaWNhIgoiMTIyIiw1LjYsMi44LDQuOSwyLCJ2aXJnaW5pY2EiCiIxMjMiLDcuNywyLjgsNi43LDIsInZpcmdpbmljYSIKIjEyNCIsNi4zLDIuNyw0LjksMS44LCJ2aXJnaW5pY2EiCiIxMjUiLDYuNywzLjMsNS43LDIuMSwidmlyZ2luaWNhIgoiMTI2Iiw3LjIsMy4yLDYsMS44LCJ2aXJnaW5pY2EiCiIxMjciLDYuMiwyLjgsNC44LDEuOCwidmlyZ2luaWNhIgoiMTI4Iiw2LjEsMyw0LjksMS44LCJ2aXJnaW5pY2EiCiIxMjkiLDYuNCwyLjgsNS42LDIuMSwidmlyZ2luaWNhIgoiMTMwIiw3LjIsMyw1LjgsMS42LCJ2aXJnaW5pY2EiCiIxMzEiLDcuNCwyLjgsNi4xLDEuOSwidmlyZ2luaWNhIgoiMTMyIiw3LjksMy44LDYuNCwyLCJ2aXJnaW5pY2EiCiIxMzMiLDYuNCwyLjgsNS42LDIuMiwidmlyZ2luaWNhIgoiMTM0Iiw2LjMsMi44LDUuMSwxLjUsInZpcmdpbmljYSIKIjEzNSIsNi4xLDIuNiw1LjYsMS40LCJ2aXJnaW5pY2EiCiIxMzYiLDcuNywzLDYuMSwyLjMsInZpcmdpbmljYSIKIjEzNyIsNi4zLDMuNCw1LjYsMi40LCJ2aXJnaW5pY2EiCiIxMzgiLDYuNCwzLjEsNS41LDEuOCwidmlyZ2luaWNhIgoiMTM5Iiw2LDMsNC44LDEuOCwidmlyZ2luaWNhIgoiMTQwIiw2LjksMy4xLDUuNCwyLjEsInZpcmdpbmljYSIKIjE0MSIsNi43LDMuMSw1LjYsMi40LCJ2aXJnaW5pY2EiCiIxNDIiLDYuOSwzLjEsNS4xLDIuMywidmlyZ2luaWNhIgoiMTQzIiw1LjgsMi43LDUuMSwxLjksInZpcmdpbmljYSIKIjE0NCIsNi44LDMuMiw1LjksMi4zLCJ2aXJnaW5pY2EiCiIxNDUiLDYuNywzLjMsNS43LDIuNSwidmlyZ2luaWNhIgoiMTQ2Iiw2LjcsMyw1LjIsMi4zLCJ2aXJnaW5pY2EiCiIxNDciLDYuMywyLjUsNSwxLjksInZpcmdpbmljYSIKIjE0OCIsNi41LDMsNS4yLDIsInZpcmdpbmljYSIKIjE0OSIsNi4yLDMuNCw1LjQsMi4zLCJ2aXJnaW5pY2EiCiIxNTAiLDUuOSwzLDUuMSwxLjgsInZpcmdpbmljYSI=').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -317,51 +300,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       a.download = 'file.csv'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-primary downloadthis  btn" id="dnldts11229"><i class="bi bi-filetype-csv"></i> Iris Datensatz </button></a></p>
-<section id="exkurs-trennzeichengetrennte-textdateien-csv" class="level3">
-<h3 class="anchored" data-anchor-id="exkurs-trennzeichengetrennte-textdateien-csv">Exkurs: Trennzeichengetrennte Textdateien &amp; CSV</h3>
-<p><code>.csv</code> ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/img/csv.png" class="img-fluid figure-img" width="600"></p>
-<p></p><figcaption class="figure-caption">.csv in einem Texteditor (hier Sublime Text)</figcaption><p></p>
-</figure>
-</div>
-<p>Wir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das <code>,</code>) voneinander getrennt sind. Strings werden mit <code>"</code> abgespeichert. Die erste Zeile beschreibt die Spaltennamen.</p>
-</section>
-</section>
-<section id="daten-einlesen" class="level2">
-<h2 class="anchored" data-anchor-id="daten-einlesen">Daten einlesen</h2>
-<p>Nun wissen wir also, wie <code>.csv</code> Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"assets/datasets/iris.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Die Funktion <code>read.csv</code> liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (<code>,</code>) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei <code>.csv</code> oft mit Semikolon (<code>;</code>) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).</p>
-<blockquote class="blockquote">
-<p>Mac User:innen aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann <code>alt</code> bzw. <code>option</code> drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.</p>
-</blockquote>
-<p>Wenn alles geklappt hat, sollte <code>dataset</code> rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+        });"><button class="btn btn-primary downloadthis  btn" id="dnldts46163"><i class="bi bi-filetype-csv"></i> Iris Datensatz </button></a></p>
 
+<!---
+### Exkurs: Trennzeichengetrennte Textdateien & CSV
+
+`.csv` ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:
+
+![.csv in einem Texteditor (hier Sublime Text)](assets/img/csv.png){fig-align="center" width="600"}
+
+Wir sehen, dass die Daten einfach hintereinander per Text in der Datei gespeichert sind, und mit einem Trennzeichen (in diesem Fall das `,`) voneinander getrennt sind. Strings werden mit `"` abgespeichert. Die erste Zeile beschreibt die Spaltennamen.
+
+## Daten einlesen
+
+Nun wissen wir also, wie `.csv` Dateien funktionieren. Fangen wir also an, die Daten in R-einzulesen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset <- read.csv("assets/datasets/iris.csv")
+```
+:::
+
+
+Die Funktion `read.csv` liest die Dateien ein. Als Parameter müssen wir lediglich den Pfad zur Datei angeben. In unserem Fall handelt es sich um einen relativen Pfad - absolute Pfade würden auch funktionieren. In unserem Fall ist die Datei wir wir wissen mit Komma (`,`) getrennt, daher brauchen wir nichts weiter als Parameter zu übergeben. Achtung: Das deutsche Excel speichert Dateien bei `.csv` oft mit Semikolon (`;`) als Trennzeichen ab (aufrund des Kommas als Dezimaltrennzeichen).
+
+> Mac User:innen aufgepasst: Wenn ihr im Finder mit der rechten Maustaste auf eine Datei klickt, und dann `alt` bzw. `option` drückt, könnt ihr direkt den Pfad zur Datei in eure Zwischenablage kopieren. Das eignet sich hier bspw. besonders gut.
+
+Wenn alles geklappt hat, sollte `dataset` rechts in unserem Environment auftauchen. Schauen wir es uns also an. Hierzu können wir entweder rechts oben auf das Objekt klicken, damit es sich im Viewer öffnet, oder wir schauen es uns hier an:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset
+```
+
+::: {.cell-output-display}
+
+`````{=html}
 <div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
+  <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["X"],"name":[1],"type":["int"],"align":["right"]},{"label":["Sepal.Length"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"5.1","3":"3.5","4":"1.4","5":"0.2","6":"setosa"},{"1":"2","2":"4.9","3":"3.0","4":"1.4","5":"0.2","6":"setosa"},{"1":"3","2":"4.7","3":"3.2","4":"1.3","5":"0.2","6":"setosa"},{"1":"4","2":"4.6","3":"3.1","4":"1.5","5":"0.2","6":"setosa"},{"1":"5","2":"5.0","3":"3.6","4":"1.4","5":"0.2","6":"setosa"},{"1":"6","2":"5.4","3":"3.9","4":"1.7","5":"0.4","6":"setosa"},{"1":"7","2":"4.6","3":"3.4","4":"1.4","5":"0.3","6":"setosa"},{"1":"8","2":"5.0","3":"3.4","4":"1.5","5":"0.2","6":"setosa"},{"1":"9","2":"4.4","3":"2.9","4":"1.4","5":"0.2","6":"setosa"},{"1":"10","2":"4.9","3":"3.1","4":"1.5","5":"0.1","6":"setosa"},{"1":"11","2":"5.4","3":"3.7","4":"1.5","5":"0.2","6":"setosa"},{"1":"12","2":"4.8","3":"3.4","4":"1.6","5":"0.2","6":"setosa"},{"1":"13","2":"4.8","3":"3.0","4":"1.4","5":"0.1","6":"setosa"},{"1":"14","2":"4.3","3":"3.0","4":"1.1","5":"0.1","6":"setosa"},{"1":"15","2":"5.8","3":"4.0","4":"1.2","5":"0.2","6":"setosa"},{"1":"16","2":"5.7","3":"4.4","4":"1.5","5":"0.4","6":"setosa"},{"1":"17","2":"5.4","3":"3.9","4":"1.3","5":"0.4","6":"setosa"},{"1":"18","2":"5.1","3":"3.5","4":"1.4","5":"0.3","6":"setosa"},{"1":"19","2":"5.7","3":"3.8","4":"1.7","5":"0.3","6":"setosa"},{"1":"20","2":"5.1","3":"3.8","4":"1.5","5":"0.3","6":"setosa"},{"1":"21","2":"5.4","3":"3.4","4":"1.7","5":"0.2","6":"setosa"},{"1":"22","2":"5.1","3":"3.7","4":"1.5","5":"0.4","6":"setosa"},{"1":"23","2":"4.6","3":"3.6","4":"1.0","5":"0.2","6":"setosa"},{"1":"24","2":"5.1","3":"3.3","4":"1.7","5":"0.5","6":"setosa"},{"1":"25","2":"4.8","3":"3.4","4":"1.9","5":"0.2","6":"setosa"},{"1":"26","2":"5.0","3":"3.0","4":"1.6","5":"0.2","6":"setosa"},{"1":"27","2":"5.0","3":"3.4","4":"1.6","5":"0.4","6":"setosa"},{"1":"28","2":"5.2","3":"3.5","4":"1.5","5":"0.2","6":"setosa"},{"1":"29","2":"5.2","3":"3.4","4":"1.4","5":"0.2","6":"setosa"},{"1":"30","2":"4.7","3":"3.2","4":"1.6","5":"0.2","6":"setosa"},{"1":"31","2":"4.8","3":"3.1","4":"1.6","5":"0.2","6":"setosa"},{"1":"32","2":"5.4","3":"3.4","4":"1.5","5":"0.4","6":"setosa"},{"1":"33","2":"5.2","3":"4.1","4":"1.5","5":"0.1","6":"setosa"},{"1":"34","2":"5.5","3":"4.2","4":"1.4","5":"0.2","6":"setosa"},{"1":"35","2":"4.9","3":"3.1","4":"1.5","5":"0.2","6":"setosa"},{"1":"36","2":"5.0","3":"3.2","4":"1.2","5":"0.2","6":"setosa"},{"1":"37","2":"5.5","3":"3.5","4":"1.3","5":"0.2","6":"setosa"},{"1":"38","2":"4.9","3":"3.6","4":"1.4","5":"0.1","6":"setosa"},{"1":"39","2":"4.4","3":"3.0","4":"1.3","5":"0.2","6":"setosa"},{"1":"40","2":"5.1","3":"3.4","4":"1.5","5":"0.2","6":"setosa"},{"1":"41","2":"5.0","3":"3.5","4":"1.3","5":"0.3","6":"setosa"},{"1":"42","2":"4.5","3":"2.3","4":"1.3","5":"0.3","6":"setosa"},{"1":"43","2":"4.4","3":"3.2","4":"1.3","5":"0.2","6":"setosa"},{"1":"44","2":"5.0","3":"3.5","4":"1.6","5":"0.6","6":"setosa"},{"1":"45","2":"5.1","3":"3.8","4":"1.9","5":"0.4","6":"setosa"},{"1":"46","2":"4.8","3":"3.0","4":"1.4","5":"0.3","6":"setosa"},{"1":"47","2":"5.1","3":"3.8","4":"1.6","5":"0.2","6":"setosa"},{"1":"48","2":"4.6","3":"3.2","4":"1.4","5":"0.2","6":"setosa"},{"1":"49","2":"5.3","3":"3.7","4":"1.5","5":"0.2","6":"setosa"},{"1":"50","2":"5.0","3":"3.3","4":"1.4","5":"0.2","6":"setosa"},{"1":"51","2":"7.0","3":"3.2","4":"4.7","5":"1.4","6":"versicolor"},{"1":"52","2":"6.4","3":"3.2","4":"4.5","5":"1.5","6":"versicolor"},{"1":"53","2":"6.9","3":"3.1","4":"4.9","5":"1.5","6":"versicolor"},{"1":"54","2":"5.5","3":"2.3","4":"4.0","5":"1.3","6":"versicolor"},{"1":"55","2":"6.5","3":"2.8","4":"4.6","5":"1.5","6":"versicolor"},{"1":"56","2":"5.7","3":"2.8","4":"4.5","5":"1.3","6":"versicolor"},{"1":"57","2":"6.3","3":"3.3","4":"4.7","5":"1.6","6":"versicolor"},{"1":"58","2":"4.9","3":"2.4","4":"3.3","5":"1.0","6":"versicolor"},{"1":"59","2":"6.6","3":"2.9","4":"4.6","5":"1.3","6":"versicolor"},{"1":"60","2":"5.2","3":"2.7","4":"3.9","5":"1.4","6":"versicolor"},{"1":"61","2":"5.0","3":"2.0","4":"3.5","5":"1.0","6":"versicolor"},{"1":"62","2":"5.9","3":"3.0","4":"4.2","5":"1.5","6":"versicolor"},{"1":"63","2":"6.0","3":"2.2","4":"4.0","5":"1.0","6":"versicolor"},{"1":"64","2":"6.1","3":"2.9","4":"4.7","5":"1.4","6":"versicolor"},{"1":"65","2":"5.6","3":"2.9","4":"3.6","5":"1.3","6":"versicolor"},{"1":"66","2":"6.7","3":"3.1","4":"4.4","5":"1.4","6":"versicolor"},{"1":"67","2":"5.6","3":"3.0","4":"4.5","5":"1.5","6":"versicolor"},{"1":"68","2":"5.8","3":"2.7","4":"4.1","5":"1.0","6":"versicolor"},{"1":"69","2":"6.2","3":"2.2","4":"4.5","5":"1.5","6":"versicolor"},{"1":"70","2":"5.6","3":"2.5","4":"3.9","5":"1.1","6":"versicolor"},{"1":"71","2":"5.9","3":"3.2","4":"4.8","5":"1.8","6":"versicolor"},{"1":"72","2":"6.1","3":"2.8","4":"4.0","5":"1.3","6":"versicolor"},{"1":"73","2":"6.3","3":"2.5","4":"4.9","5":"1.5","6":"versicolor"},{"1":"74","2":"6.1","3":"2.8","4":"4.7","5":"1.2","6":"versicolor"},{"1":"75","2":"6.4","3":"2.9","4":"4.3","5":"1.3","6":"versicolor"},{"1":"76","2":"6.6","3":"3.0","4":"4.4","5":"1.4","6":"versicolor"},{"1":"77","2":"6.8","3":"2.8","4":"4.8","5":"1.4","6":"versicolor"},{"1":"78","2":"6.7","3":"3.0","4":"5.0","5":"1.7","6":"versicolor"},{"1":"79","2":"6.0","3":"2.9","4":"4.5","5":"1.5","6":"versicolor"},{"1":"80","2":"5.7","3":"2.6","4":"3.5","5":"1.0","6":"versicolor"},{"1":"81","2":"5.5","3":"2.4","4":"3.8","5":"1.1","6":"versicolor"},{"1":"82","2":"5.5","3":"2.4","4":"3.7","5":"1.0","6":"versicolor"},{"1":"83","2":"5.8","3":"2.7","4":"3.9","5":"1.2","6":"versicolor"},{"1":"84","2":"6.0","3":"2.7","4":"5.1","5":"1.6","6":"versicolor"},{"1":"85","2":"5.4","3":"3.0","4":"4.5","5":"1.5","6":"versicolor"},{"1":"86","2":"6.0","3":"3.4","4":"4.5","5":"1.6","6":"versicolor"},{"1":"87","2":"6.7","3":"3.1","4":"4.7","5":"1.5","6":"versicolor"},{"1":"88","2":"6.3","3":"2.3","4":"4.4","5":"1.3","6":"versicolor"},{"1":"89","2":"5.6","3":"3.0","4":"4.1","5":"1.3","6":"versicolor"},{"1":"90","2":"5.5","3":"2.5","4":"4.0","5":"1.3","6":"versicolor"},{"1":"91","2":"5.5","3":"2.6","4":"4.4","5":"1.2","6":"versicolor"},{"1":"92","2":"6.1","3":"3.0","4":"4.6","5":"1.4","6":"versicolor"},{"1":"93","2":"5.8","3":"2.6","4":"4.0","5":"1.2","6":"versicolor"},{"1":"94","2":"5.0","3":"2.3","4":"3.3","5":"1.0","6":"versicolor"},{"1":"95","2":"5.6","3":"2.7","4":"4.2","5":"1.3","6":"versicolor"},{"1":"96","2":"5.7","3":"3.0","4":"4.2","5":"1.2","6":"versicolor"},{"1":"97","2":"5.7","3":"2.9","4":"4.2","5":"1.3","6":"versicolor"},{"1":"98","2":"6.2","3":"2.9","4":"4.3","5":"1.3","6":"versicolor"},{"1":"99","2":"5.1","3":"2.5","4":"3.0","5":"1.1","6":"versicolor"},{"1":"100","2":"5.7","3":"2.8","4":"4.1","5":"1.3","6":"versicolor"},{"1":"101","2":"6.3","3":"3.3","4":"6.0","5":"2.5","6":"virginica"},{"1":"102","2":"5.8","3":"2.7","4":"5.1","5":"1.9","6":"virginica"},{"1":"103","2":"7.1","3":"3.0","4":"5.9","5":"2.1","6":"virginica"},{"1":"104","2":"6.3","3":"2.9","4":"5.6","5":"1.8","6":"virginica"},{"1":"105","2":"6.5","3":"3.0","4":"5.8","5":"2.2","6":"virginica"},{"1":"106","2":"7.6","3":"3.0","4":"6.6","5":"2.1","6":"virginica"},{"1":"107","2":"4.9","3":"2.5","4":"4.5","5":"1.7","6":"virginica"},{"1":"108","2":"7.3","3":"2.9","4":"6.3","5":"1.8","6":"virginica"},{"1":"109","2":"6.7","3":"2.5","4":"5.8","5":"1.8","6":"virginica"},{"1":"110","2":"7.2","3":"3.6","4":"6.1","5":"2.5","6":"virginica"},{"1":"111","2":"6.5","3":"3.2","4":"5.1","5":"2.0","6":"virginica"},{"1":"112","2":"6.4","3":"2.7","4":"5.3","5":"1.9","6":"virginica"},{"1":"113","2":"6.8","3":"3.0","4":"5.5","5":"2.1","6":"virginica"},{"1":"114","2":"5.7","3":"2.5","4":"5.0","5":"2.0","6":"virginica"},{"1":"115","2":"5.8","3":"2.8","4":"5.1","5":"2.4","6":"virginica"},{"1":"116","2":"6.4","3":"3.2","4":"5.3","5":"2.3","6":"virginica"},{"1":"117","2":"6.5","3":"3.0","4":"5.5","5":"1.8","6":"virginica"},{"1":"118","2":"7.7","3":"3.8","4":"6.7","5":"2.2","6":"virginica"},{"1":"119","2":"7.7","3":"2.6","4":"6.9","5":"2.3","6":"virginica"},{"1":"120","2":"6.0","3":"2.2","4":"5.0","5":"1.5","6":"virginica"},{"1":"121","2":"6.9","3":"3.2","4":"5.7","5":"2.3","6":"virginica"},{"1":"122","2":"5.6","3":"2.8","4":"4.9","5":"2.0","6":"virginica"},{"1":"123","2":"7.7","3":"2.8","4":"6.7","5":"2.0","6":"virginica"},{"1":"124","2":"6.3","3":"2.7","4":"4.9","5":"1.8","6":"virginica"},{"1":"125","2":"6.7","3":"3.3","4":"5.7","5":"2.1","6":"virginica"},{"1":"126","2":"7.2","3":"3.2","4":"6.0","5":"1.8","6":"virginica"},{"1":"127","2":"6.2","3":"2.8","4":"4.8","5":"1.8","6":"virginica"},{"1":"128","2":"6.1","3":"3.0","4":"4.9","5":"1.8","6":"virginica"},{"1":"129","2":"6.4","3":"2.8","4":"5.6","5":"2.1","6":"virginica"},{"1":"130","2":"7.2","3":"3.0","4":"5.8","5":"1.6","6":"virginica"},{"1":"131","2":"7.4","3":"2.8","4":"6.1","5":"1.9","6":"virginica"},{"1":"132","2":"7.9","3":"3.8","4":"6.4","5":"2.0","6":"virginica"},{"1":"133","2":"6.4","3":"2.8","4":"5.6","5":"2.2","6":"virginica"},{"1":"134","2":"6.3","3":"2.8","4":"5.1","5":"1.5","6":"virginica"},{"1":"135","2":"6.1","3":"2.6","4":"5.6","5":"1.4","6":"virginica"},{"1":"136","2":"7.7","3":"3.0","4":"6.1","5":"2.3","6":"virginica"},{"1":"137","2":"6.3","3":"3.4","4":"5.6","5":"2.4","6":"virginica"},{"1":"138","2":"6.4","3":"3.1","4":"5.5","5":"1.8","6":"virginica"},{"1":"139","2":"6.0","3":"3.0","4":"4.8","5":"1.8","6":"virginica"},{"1":"140","2":"6.9","3":"3.1","4":"5.4","5":"2.1","6":"virginica"},{"1":"141","2":"6.7","3":"3.1","4":"5.6","5":"2.4","6":"virginica"},{"1":"142","2":"6.9","3":"3.1","4":"5.1","5":"2.3","6":"virginica"},{"1":"143","2":"5.8","3":"2.7","4":"5.1","5":"1.9","6":"virginica"},{"1":"144","2":"6.8","3":"3.2","4":"5.9","5":"2.3","6":"virginica"},{"1":"145","2":"6.7","3":"3.3","4":"5.7","5":"2.5","6":"virginica"},{"1":"146","2":"6.7","3":"3.0","4":"5.2","5":"2.3","6":"virginica"},{"1":"147","2":"6.3","3":"2.5","4":"5.0","5":"1.9","6":"virginica"},{"1":"148","2":"6.5","3":"3.0","4":"5.2","5":"2.0","6":"virginica"},{"1":"149","2":"6.2","3":"3.4","4":"5.4","5":"2.3","6":"virginica"},{"1":"150","2":"5.9","3":"3.0","4":"5.1","5":"1.8","6":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-</div>
-</div>
-<p>Wie wir sehen gibt es mehrere Spalten für die Länge und Breite der Blätter (e.g., <code>Sepal.Length</code>), sowie eine Spalte mit der Spezies (<code>Species</code>).</p>
-<p>Werfen wir nun einen genaueren Blick in die Daten.</p>
-</section>
-<section id="daten-anschauen" class="level2">
-<h2 class="anchored" data-anchor-id="daten-anschauen">Daten anschauen</h2>
-<p>Um schnell einen Überblick über die Daten zu bekommen, eignet sich die <code>summary()</code> Funktion:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       X           Sepal.Length    Sepal.Width     Petal.Length  
+`````
+
+:::
+:::
+
+
+Wie wir sehen gibt es mehrere Spalten für die Länge und Breite der Blätter (e.g., `Sepal.Length`), sowie eine Spalte mit der Spezies (`Species`).
+
+Werfen wir nun einen genaueren Blick in die Daten.
+
+## Daten anschauen
+
+Um schnell einen Überblick über die Daten zu bekommen, eignet sich die `summary()` Funktion:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+summary(dataset)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+       X           Sepal.Length    Sepal.Width     Petal.Length  
  Min.   :  1.00   Min.   :4.300   Min.   :2.000   Min.   :1.000  
  1st Qu.: 38.25   1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
  Median : 75.50   Median :5.800   Median :3.000   Median :4.350  
@@ -374,18 +381,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Median :1.300   Mode  :character  
  Mean   :1.199                     
  3rd Qu.:1.800                     
- Max.   :2.500                     </code></pre>
-</div>
-</div>
-<p>Hier sehen wir direkt deskriptive Werte wie Minimum, Maximum oder Median für jede einzelne Spalte. Für die Spalte <code>Species</code> sehen wir allerdings lediglich, dass diese als character gespeichert ist, wenngleich es sich eigentlich um einen Faktor handelt, da wir ja bereits wissen, dass es drei Spezies gibt. Das können wir ändern:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dataset<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Führen wir nun den Code erneut aus, sehen wir die entsprechenden Faktorlevel bzw. Ausprägungen und die jeweiligen Datenpunkte pro Ausprägung:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       X           Sepal.Length    Sepal.Width     Petal.Length  
+ Max.   :2.500                     
+```
+:::
+:::
+
+
+Hier sehen wir direkt deskriptive Werte wie Minimum, Maximum oder Median für jede einzelne Spalte. Für die Spalte `Species` sehen wir allerdings lediglich, dass diese als character gespeichert ist, wenngleich es sich eigentlich um einen Faktor handelt, da wir ja bereits wissen, dass es drei Spezies gibt. Das können wir ändern:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset$Species <- as.factor(dataset$Species)
+```
+:::
+
+
+Führen wir nun den Code erneut aus, sehen wir die entsprechenden Faktorlevel bzw. Ausprägungen und die jeweiligen Datenpunkte pro Ausprägung:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+summary(dataset)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+       X           Sepal.Length    Sepal.Width     Petal.Length  
  Min.   :  1.00   Min.   :4.300   Min.   :2.000   Min.   :1.000  
  1st Qu.: 38.25   1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600  
  Median : 75.50   Median :5.800   Median :3.000   Median :4.350  
@@ -398,82 +422,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Median :1.300   virginica :50  
  Mean   :1.199                  
  3rd Qu.:1.800                  
- Max.   :2.500                  </code></pre>
-</div>
-</div>
-<p>Das Gleiche würden wir sehen, wenn wir mit der Funktion <code>levels</code> die Ausprägungen für die entsprechende Spalte abfragen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(dataset<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "setosa"     "versicolor" "virginica" </code></pre>
-</div>
-</div>
-</section>
-<section id="deskriptive-analysen" class="level2">
-<h2 class="anchored" data-anchor-id="deskriptive-analysen">Deskriptive Analysen</h2>
-<p>Strenggenommen hat uns die <code>summary()</code> Funktion bereits viele interessante Werte für alle Spalten gegeben. Falls wir dies aber für eine einzelne Spalte machen wollen, können wir dies natürlich auch tun:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.843333</code></pre>
-</div>
-</div>
-<p>Wie wir sehen, kann die <code>mean()</code> Funktion mit einer Spalte eines Dataframes (über den <code>$</code>-Operator ausgewählt) arbeiten, und gibt uns den entsprechenden Mittelwert aus. Gleich verhält es sich mit der Standardabweichung:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(dataset<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8280661</code></pre>
-</div>
-</div>
-<p>Wie wir in der ersten Seminarstunde bereits gesagt haben, bietet R als Statistiksoftware natürlich eine Vielzahl eingebauter Standard-Funktionen. So können wir etwa auch gleich die Korrelation zwischen <code>Sepal.Width</code> und <code>Sepal.Length</code> berechnen…</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dataset<span class="sc">$</span>Sepal.Length,dataset<span class="sc">$</span>Sepal.Width, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1175698</code></pre>
-</div>
-</div>
-<p>… oder die Quantile ausgeben lassen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dataset<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0%  25%  50%  75% 100% 
- 4.3  5.1  5.8  6.4  7.9 </code></pre>
-</div>
-</div>
-<p>Das sind natürlich alles nur Beispiele der im <code>base</code> Package enthaltenen Funktionen - alle weiteren können wir bspw. in der <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html">Dokumentation</a> oder über <code>help(base)</code> finden.</p>
-</section>
-<section id="datensatz-aufteilen" class="level2">
-<h2 class="anchored" data-anchor-id="datensatz-aufteilen">Datensatz aufteilen</h2>
-<p>Angenommen, wir wollen die Spalte <code>Species</code> von den anderen Spalten trennen, und in einem separaten Aufgabenblatt abspeichern. Dies können wir über die <code>$</code> und <code>&lt;-</code> Operatoren machen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dataset_species <span class="ot">&lt;-</span> dataset<span class="sc">$</span>Species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Dies speichert die entsprechende Spalte als Objekt <code>dataset_species</code> in unserem Environment. Dies geschieht als Vektor des Typs <code>factor</code>. Die Länge des Vektors entspricht natürlich der Anzahl an Observations:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(dataset_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 150</code></pre>
-</div>
-</div>
-<p>Nun wollen wir einen Schritt weitergehen, und nicht nur einzelne Spalten extrahieren, sondern unseren Datensatz auf Basis gewisser Kriterien filtern, bzw. ein Subset bilden. Base R bietet dafür die <code>subset()</code> Funktion. Deren Syntax ist folgendermaßen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset_filtered <span class="ot">&lt;-</span> <span class="fu">subset</span>(dataset, Sepal.Width <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Wir definieren das betreffende Objekt <code>dataset</code>, sowie die Spalte, nach der wir filtern wollen (<code>Sepal.Width</code>) und unsere Bedingung (&gt; 3).</p>
-<p>Wir wollen aber noch weiter spezifizieren. Angenommen, wir wollen, dass zusätzlich nur Blumen der Spezies <code>setosa</code> im Datensatz enthalten sind, und wir nur die Spalten <code>Sepal.Width</code> und <code>Sepal.Length</code> betrachten wollen:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dataset_filtered2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(dataset, Sepal.Width <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> Species <span class="sc">==</span> <span class="st">"setosa"</span>,<span class="at">select =</span> <span class="fu">c</span>(Sepal.Width,Sepal.Length,Species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Der obige Befehl hat das Objekt <code>dataset_filtered2</code> erzeugt, welches die entsprechenden Filterungen beinhaltet.</p>
-<p>Wir haben nun also gelernt, wie wir sogenannte <em>Subsets</em> von Dataframes auf Basis von Variablenausprägungen und Spalten erzeugen können, und diese enstprechend in unserem Environment speichern können.</p>
-<p>Wenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: <strong>Wie können wir den Überblick behalten?</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/img/overload.png" class="img-fluid figure-img" width="800"></p>
-<p></p><figcaption class="figure-caption"><span style="text-align: center">How the author imagines Environment overload</span></figcaption><p></p>
-</figure>
-</div>
-<p>Dabei, sowie bei vielen anderen Dingen die mit <strong>Data Wrangling</strong> zu tun haben, hilft uns das <code>dplyr</code> package. Dazu auf der <a href="./datawrangling_dplyr.html">nächsten Seite</a> mehr.</p>
+ Max.   :2.500                  
+```
+:::
+:::
+
+
+Das Gleiche würden wir sehen, wenn wir mit der Funktion `levels` die Ausprägungen für die entsprechende Spalte abfragen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+levels(dataset$Species)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] "setosa"     "versicolor" "virginica" 
+```
+:::
+:::
+
+
+## Deskriptive Analysen
+
+Strenggenommen hat uns die `summary()` Funktion bereits viele interessante Werte für alle Spalten gegeben. Falls wir dies aber für eine einzelne Spalte machen wollen, können wir dies natürlich auch tun:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+mean(dataset$Sepal.Length)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] 5.843333
+```
+:::
+:::
+
+
+Wie wir sehen, kann die `mean()` Funktion mit einer Spalte eines Dataframes (über den `$`-Operator ausgewählt) arbeiten, und gibt uns den entsprechenden Mittelwert aus. Gleich verhält es sich mit der Standardabweichung:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+sd(dataset$Sepal.Length)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] 0.8280661
+```
+:::
+:::
+
+
+Wie wir in der ersten Seminarstunde bereits gesagt haben, bietet R als Statistiksoftware natürlich eine Vielzahl eingebauter Standard-Funktionen. So können wir etwa auch gleich die Korrelation zwischen `Sepal.Width` und `Sepal.Length` berechnen...
+
+
+::: {.cell}
+
+```{.r .cell-code}
+cor(dataset$Sepal.Length,dataset$Sepal.Width, method = "pearson")
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] -0.1175698
+```
+:::
+:::
+
+
+... oder die Quantile ausgeben lassen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+quantile(dataset$Sepal.Length)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+  0%  25%  50%  75% 100% 
+ 4.3  5.1  5.8  6.4  7.9 
+```
+:::
+:::
+
+
+Das sind natürlich alles nur Beispiele der im `base` Package enthaltenen Funktionen - alle weiteren können wir bspw. in der [Dokumentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) oder über `help(base)` finden.
+
+## Datensatz aufteilen
+
+Angenommen, wir wollen die Spalte `Species` von den anderen Spalten trennen, und in einem separaten Aufgabenblatt abspeichern. Dies können wir über die `$` und `<-` Operatoren machen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset_species <- dataset$Species
+```
+:::
+
+
+Dies speichert die entsprechende Spalte als Objekt `dataset_species` in unserem Environment. Dies geschieht als Vektor des Typs `factor`. Die Länge des Vektors entspricht natürlich der Anzahl an Observations:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+length(dataset_species)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[1] 150
+```
+:::
+:::
+
+
+Nun wollen wir einen Schritt weitergehen, und nicht nur einzelne Spalten extrahieren, sondern unseren Datensatz auf Basis gewisser Kriterien filtern, bzw. ein Subset bilden. Base R bietet dafür die `subset()` Funktion. Deren Syntax ist folgendermaßen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset_filtered <- subset(dataset, Sepal.Width > 3)
+```
+:::
+
+
+Wir definieren das betreffende Objekt `dataset`, sowie die Spalte, nach der wir filtern wollen (`Sepal.Width`) und unsere Bedingung (\> 3).
+
+Wir wollen aber noch weiter spezifizieren. Angenommen, wir wollen, dass zusätzlich nur Blumen der Spezies `setosa` im Datensatz enthalten sind, und wir nur die Spalten `Sepal.Width` und `Sepal.Length` betrachten wollen:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+dataset_filtered2 <- subset(dataset, Sepal.Width > 3 & Species == "setosa",select = c(Sepal.Width,Sepal.Length,Species))
+```
+:::
+
+
+Der obige Befehl hat das Objekt `dataset_filtered2` erzeugt, welches die entsprechenden Filterungen beinhaltet.
+
+Wir haben nun also gelernt, wie wir sogenannte *Subsets* von Dataframes auf Basis von Variablenausprägungen und Spalten erzeugen können, und diese enstprechend in unserem Environment speichern können.
+
+Wenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstellen, wie dieses nach einer R-Session aussehen könnte, stellt sich vielleicht eine Frage: **Wie können wir den Überblick behalten?**
+
+![[How the author imagines Environment overload]{style="text-align: center"}](assets/img/overload.png){fig-align="center" width="800"}
+
+Dabei, sowie bei vielen anderen Dingen die mit **Data Wrangling** zu tun haben, hilft uns das `dplyr` package. Dazu auf der [nächsten Seite](datawrangling_dplyr.qmd) mehr.
+
+-->
 
 
 </section>
