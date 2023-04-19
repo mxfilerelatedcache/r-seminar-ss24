@@ -35,6 +35,7 @@ Der Datensatz, mit dem wir nun arbeiten, nennt sich `flights`. Unter diesem Name
 Hinweis: Speichert euch bei den folgenden Aufgaben eure Änderungen an `flights` in Objekten mit einem anderen Namen, damit ihr - falls etwas schief geht - immer wieder auf das Original zurückgreifen könnt.
 
 ```{r}
+#| eval: false
 # Nur mal zum Anschauen:
 flights
 ```

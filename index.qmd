@@ -11,4 +11,14 @@ editor: visual
 
 # Seminar Medienbasierte Wissenskonstruktion: R
 
-Hier werden ab dem 12.04. mehr Infos stehen.
+## Seminar\[1\] \<- Basics
+
+Die Folien sind hier zu finden.
+
+## Seminar\[2\] \<- Data Wrangling, Desriptives & Visualisierung
+
+-   [Base R](datawrangling_base.qmd)
+
+-   [Data Wrangling mit `dplyr`](datawrangling_dplyr.qmd)
+
+-   [Data visualisation mit `ggplot2`](dataviz_ggplot2.qmd)
