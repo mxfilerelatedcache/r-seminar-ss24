@@ -120,6 +120,6 @@ Gestaltet den Plot aus Aufgabe 7 oder 8 ästhetischer, indem ihr
 
 ### Aufgabe 10 \[1 Punkt\]
 
-Recherchiert geom_jitter und beschreibt in eigenen Worten, was die Funktion macht und in welchen Fällen sie besonders nützlich ist.
+Recherchiert `geom_jitter` und beschreibt in eigenen Worten, was die Funktion macht und in welchen Fällen sie besonders nützlich ist.
 
 *Antwort hier:*
