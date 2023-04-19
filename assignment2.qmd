@@ -1,0 +1,125 @@
+---
+title: "Hausaufgabe 2: Deskriptives"
+author: "Kira Wolff & Simon Krukowski"
+---
+
+# Beschreibung
+
+Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen. Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.
+
+### Punkte
+
+Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als **\[Bonus\]** markiert sind, geben keine Punkte.
+
+### Für Experten
+
+Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als **\[Für Experten\]** markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).
+
+### Abgabe
+
+Um eure Hausaufgabe abzugeben, ladet diese bitte als `.qmd` Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. `hausaufgabe2_simon_krukowski.qmd`, und schreibt hier in der Datei oben bei `author` euren Namen rein.
+
+# Aufgaben
+
+### Aufgabe 1 \[1 Punkt\]
+
+Am Anfang von fast jedem R-Code aktiviert man erst mal die notwendigen Packages und lädt den relevanten Datensatz. Wir schauen uns hier einen Datensatz aus dem Package `nycflights13` an. Installiert und aktiviert dementsprechend die Packages `nycflights13`, `dplyr` und `ggplot2.` (Denkt auch daran, welche Packages ihr installieren und welche vielleicht nur aktivieren müsst..)
+
+```{r}
+# Hier Lösung einfügen
+
+```
+
+Der Datensatz, mit dem wir nun arbeiten, nennt sich `flights`. Unter diesem Namen könnt ihr ihn nach erfolgreicher Aktivierung von `nycflights13` finden. Er enthält alle Flüge, die im Jahr 2013 in New York losgeflogen sind. Mehr Informationen zu den Variablen könnt ihr über die Hilfefunktion bekommen.
+
+Hinweis: Speichert euch bei den folgenden Aufgaben eure Änderungen an `flights` in Objekten mit einem anderen Namen, damit ihr - falls etwas schief geht - immer wieder auf das Original zurückgreifen könnt.
+
+```{r}
+# Nur mal zum Anschauen:
+flights
+```
+
+### Aufgabe 2 \[1 Punkt\]
+
+Ergänzt `flights` um eine weitere Spalte, in der die Verspätungen bei Ankunft und Abflug (`arr_delay` und `dep_delay`) miteinander verrechnet werden. Gestaltet den Code so, dass ihr auch bei späteren Aufgaben auf die Spalte zugreifen könntet.
+
+Verwendet die Pipe und die euch bekannten `dplyr`-Befehle.
+
+```{r}
+# Hier Code zur Lösung eintragen
+
+```
+
+### Aufgabe 3 \[1 Punkt\]
+
+Sortiert flights so, dass ihr einmal die geringste und einmal die größte Verspätung bei Ankunftszeit entnehmen könnt.
+
+```{r}
+# Hier Code zur Lösung eintragen
+
+
+```
+
+### Aufgabe 4 \[1 Punkt\]
+
+Wie interpretiert ihr die Ergebnisse aus Aufgabe 3?
+
+*Antwort hier:*
+
+### Aufgabe 5 \[1 Punkt\]
+
+Für welche Variablen eignet sich `group_by` typischerweise bei einer "klassischen" Komedia-Studie; wofür hättet ihr sie beispielsweise bei eurer Bachelorarbeit verwenden können?
+
+*Antwort hier:*
+
+### Aufgabe 6 \[1 Punkt\]
+
+Erstellt mittels summarize eine Tabelle, in der für jeden Monat der die durchschnittliche Distanz (Spalte `distance`) der Flüge und ihre Standardabweichungen angegeben werden.
+
+Verwendet die Pipe und die euch bekannten `dplyr`-Befehle.
+
+```{r}
+# Hier Code als Antwort eintragen
+
+```
+
+### Aufgabe 7 \[1 Punkt\]
+
+Verwendet die in Aufgabe 6 erstellte Tabelle, um mit `ggplot` und `geom_point` einen Plot zu erstellen, in dem auf der x-Achse die Monate und auf der y-Achse die durchschnittliche Distanz zu sehen ist.
+
+```{r}
+# Hier Code als Antwort eintragen
+
+```
+
+### Aufgabe 8 \[1 Punkt\]
+
+**\[für Experten\]**
+
+Fügt dem Plot aus Aufgabe 7 außerdem Standardabweichungen mithilfe von `geom_errorbar()` hinzu. (Hinweis: Alles, was ihr für den Input bei geom_errobar() benötigt, befindet sich bereits in der Tabelle von Aufgabe 6)
+
+```{r}
+# Hier Code als Antwort eintragen
+
+```
+
+### Aufgabe 9 \[1 Punkt\]
+
+Gestaltet den Plot aus Aufgabe 7 oder 8 ästhetischer, indem ihr
+
+-   einen Titel hinzufügt
+
+-   die Farbe der Punkte zu eurer Lieblingsfarbe verändert
+
+-   die Achsen beschriftet
+
+```{r}
+# Hier Code als Antwort einfügen
+
+```
+
+### Aufgabe 10 \[1 Punkt\]
+
+Recherchiert `geom_jitter` und beschreibt in eigenen Worten, was die Funktion macht und in welchen Fällen sie besonders nützlich ist.
+
+*Antwort hier:*
