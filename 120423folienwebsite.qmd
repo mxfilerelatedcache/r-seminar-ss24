@@ -1,5 +1,5 @@
 ---
-title: "Folien der ersten Sitzung"
+title: "Organisatorisches & R Basics (12.04.)"
 ---
 
 # Organisatorisches
