@@ -1,25 +1,8 @@
 ---
-title: "Untitled"
+title: "Folien der ersten Sitzung"
 ---
 
-
-## Vorstellungsrunde
-
-Verteilung Vorwissen
-
-![](unnamed-chunk-12-1.png){fig-align="center" width="800"}
-
-## Vorstellungsrunde
-
-Vorwissen Programmiersprachen
-
-![](unnamed-chunk-18-1.png){fig-align="left" width="800"}
-
-## Vorstellungsrunde
-
-Erwartungen ans Seminar
-
-![](unnamed-chunk-20-1.png){fig-align="left" width="800"}
+# Organisatorisches
 
 ## Ziele des Seminars
 
@@ -35,7 +18,6 @@ Erwartungen ans Seminar
 -   Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
 -   Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)
-
 
 ## Prüfungsleistung
 
@@ -57,6 +39,22 @@ Erwartungen ans Seminar
 
 Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.
 
+## Vorstellungsrunde
+
+Verteilung Vorwissen
+
+![](unnamed-chunk-12-1.png){fig-align="center" width="800"}
+
+Vorwissen Programmiersprachen
+
+![](unnamed-chunk-18-1.png){fig-align="left" width="800"}
+
+Erwartungen ans Seminar
+
+![](unnamed-chunk-20-1.png){fig-align="left" width="800"}
+
+# R Grundlagen
+
 ## Was ist R?
 
 -   Programmiersprache (und -oberfläche) für statistische Berechnungen und Grafiken
@@ -64,10 +62,9 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 -   große Community, die ständig Funktionen erweitert und bei Problemen hilft
 -   R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher
 
-## User Interface 
+## User Interface
 
 ![](.R.png){width="700" height="600"}
-
 
 -   oben links: Code
 
@@ -79,14 +76,12 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 -   unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht
 
-
 ## Code erstellen + ausführen
 
 -   *Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)*
 -   In dem File ist nur die Zeile ohne `#`ausführbarer Code. Wie hier geschehen, lassen sich mit `#` Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
 -   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
 -   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
-
 
 ```{r echo=T, eval = FALSE}
 # Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R
@@ -102,14 +97,13 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 ## .R vs. Quarto
 
 -   R's Standardformat sind .R-Dateien
+
 -   Für "echte Arbeit" mit R sind Quarto-Dokumente meistens nützlicher:
+
     -   ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,...)
     -   ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)
     -   ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll
     -   Auswertung & Bericht können somit im gleichen Dokument geschehen
-    -   Diese Präsentation ist auch in R entstanden!
-
-## .R vs. Quarto
 
 ![](Asset%201vs.png){fig-align="center"}
 
@@ -191,9 +185,6 @@ ergebnis
 -   Objekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich...)
 -   *Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!*
 -   *Was passiert, wenn man den gleichen Objektnamen erneut verwendet?*
-
-## Objekte
-
 -   Warum ist Objekte erstellen wichtig?
     -   Für R ist jeder Output sonst "flüchtig": Es wird nicht wirklich etwas verändert
     -   Zwischenergebnisse überprüfen
@@ -265,8 +256,6 @@ help(mean)
 
 -   Man kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig
 
-## Packages
-
 -   *Installiert und aktiviert das Package `psych` (Erinnerung: `install.packages()`& `library()`)*
 
 -   *Wendet die Hilfefunktion `help()` auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt*
@@ -312,8 +301,6 @@ help(package=psych)
     -   Können pro Spalte unterschiedliche Datentypen beinhalten
 
     -   Standardformat, wenn man von extern Daten in R reinlädt
-
-## Datentypen
 
 Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:
 
@@ -378,8 +365,6 @@ umfrage[3, "geschlecht"]
 #| echo: true
 umfrage$geschlecht
 ```
-
-## Bestimmte Daten abrufen
 
 -   Um alles anzeigen zu lassen, kann man die Koordinate "leer" lassen
 

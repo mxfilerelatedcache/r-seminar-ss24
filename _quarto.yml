@@ -21,7 +21,7 @@ website:
       - section: "Basics"
         contents:
           - installation.qmd
-          - folien/120423 - Website.qmd
+          - "folien/120423 - Website.qmd""
       - section: "Data Wrangling & Visualisierung"
         contents:
           - datawrangling_base.qmd
