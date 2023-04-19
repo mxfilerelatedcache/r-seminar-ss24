@@ -131,5 +131,19 @@
     "title": "Wrangling mit dplyr",
     "section": "Fazit",
     "text": "Fazit\ndplyr bringt eine einfach verständliche Grammatik mit sich, die uns hilft, uns auf das wesentliche zu konzentrieren: die Daten. Im nächsten Kapitel werden wir lernen, wie wir diese Daten visualiseren können, um sie noch besser zu verstehen."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Seminar Medienbasierte Wissenskonstruktion: R - Website",
+    "section": "",
+    "text": "Seminar Medienbasierte Wissenskonstruktion: R\nHier werden ab dem 12.04. mehr Infos stehen."
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Download & Installation von R",
+    "section": "",
+    "text": "In Folgenden erklären wir, wie ihr euch R und RStudio herunterladen könnt. Zwar gibt es im Web einige How-Tos und Tutorials, wir wollen euch an dieser Stelle der Vollständigkeit halber aber nochmal vermitteln, wie genau ihr euch die Software installiert und was es dabei zu beachten gibt. Falls während der Installation Fragen aufkommen, meldet euch gerne per Mail bei uns (simon.krukowski@stud.uni-due.de) oder schaut einfach im Web nach How-Tos/Troubleshooting. Das ist generell auch eine gute Idee beim Thema R, Programmieren & Datenanalyse - mehr dazu erfahrt ihr dann im Seminar.\n\nÜberblick\nDa dein Computer R als Programmiersprache nicht von selbst versteht, musst du R zunächst installieren. Sobald du R installiert hast, kannst du es theoretisch benutzen, und Daten damit auswerten. Hierbei ist wichtig zu differenzieren, dass du R zwar in der Kommandozeile/Terminal verwenden kannst, dies aber wenig intuitiv ist. Links in Figure 1 ist bspw. zu sehen, wir wir R in der Kommandozeile nutzen.\n\n\n\nFigure 1: R & Rstudio\n\n\nTrotzdem ist das wenig intuitiv. Daher bietet es sich an, eine IDE (Entwicklungsumgebung, siehe hier) zu benutzen. Die populärste IDE dafür ist RStudio. Im Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in diesem Notebook.\n\n\nDownload & Installation\nStarten wir also mit dem Download. Besuche folgende Website:\n\n\n\nFigure 2: posit.co\n\n\nWenn du dem Link folgst, wirst du auf die offzielle Seite von R (CRAN) weitergeleitet, und kannst dir dort die für dein System richtige Version auswählen:\n\n\n\nFigure 3: CRAN\n\n\nIn unserem Fall haben wir einen Mac, und wählen den entsprechenden Link aus. Auf der folgenden Seite gibt es viele verschiedene Links, hier ist es wichtig den bei latest release und für euer System richtigen zu nehmen (in unserem Fall Intel Mac).\n\n\n\nFigure 4: CRAN\n\n\nNach dem Download könnt ihr den Installer ausführen und voilà - ihr habt R installiert! Da bei uns R schon installiert ist gibt es hier leider keinen Screenshot.\nTheoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu posit.co und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):\n\n\n\nFigure 5: posit.co\n\n\nJe nach System unterscheidet sich hier die Installation etwas, aber am Ende sollte RStudio bei dir installiert sein. Öffnet also R, und es sollte etwa wie folgt aussehen:\n\n\n\nFigure 6: So sollte RStudio aussehen\n\n\n\n\nR-Skripte ausführen\nAls erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript zunächst herunter:\n R Skript \nÖffnet das Skript durch einen Doppelklick mit RStudio und führt es aus. Wenn ihr alles richtig gemacht habt, sollte etwas in der Konsole erscheinen. Diesen Output werden wir in der ersten Seminarstunde besprechen.\n\n\nTroubleshooting\nHaben sich bei der Installation Probleme ergeben? Meldet euch gerne per Mail an simon.krukowski@stud.uni-due.de."
   }
 ]
