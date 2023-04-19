@@ -39,7 +39,6 @@ Der Datensatz ist direkt im Package `datasets` integriert. Um allerdings zu lern
 
 {{< downloadthis assets/datasets/iris.csv label="Iris Datensatz" icon=filetype-csv type=primary class=btn >}}
 
-<!---
 ### Exkurs: Trennzeichengetrennte Textdateien & CSV
 
 `.csv` ist ein typisches Datenformat, aus dem wir mit R Daten einlesen können. Wenn wir die Datei mit einem Textbearbeitungsprogramm öffnen, sehen wir, wie die Daten dort strukturiert sind:
@@ -161,5 +160,3 @@ Wenn wir nun allerdings einen Blick in unser Environment werfen, und uns vorstel
 ![[How the author imagines Environment overload]{style="text-align: center"}](assets/img/overload.png){fig-align="center" width="800"}
 
 Dabei, sowie bei vielen anderen Dingen die mit **Data Wrangling** zu tun haben, hilft uns das `dplyr` package. Dazu auf der [nächsten Seite](datawrangling_dplyr.qmd) mehr.
-
--->
