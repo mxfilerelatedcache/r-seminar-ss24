@@ -43,15 +43,15 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 Verteilung Vorwissen
 
-![](unnamed-chunk-12-1.png){fig-align="center" width="800"}
+![](folien/unnamed-chunk-12-1.png){fig-align="center" width="800"}
 
 Vorwissen Programmiersprachen
 
-![](unnamed-chunk-18-1.png){fig-align="left" width="800"}
+![](folien/unnamed-chunk-18-1.png){fig-align="left" width="800"}
 
 Erwartungen ans Seminar
 
-![](unnamed-chunk-20-1.png){fig-align="left" width="800"}
+![](folien/unnamed-chunk-20-1.png){fig-align="left" width="800"}
 
 # R Grundlagen
 
@@ -64,7 +64,7 @@ Erwartungen ans Seminar
 
 ## User Interface
 
-![](.R.png){width="700" height="600"}
+![](folien/.R.png){width="700" height="600"}
 
 -   oben links: Code
 
@@ -107,7 +107,8 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
 
 ![](Asset%201vs.png){fig-align="center"}
 
-## Quarto - Dokument aufsetzen
+## Quarto
+### Dokument aufsetzen
 
 -   *Erstellt ein Quarto-Dokument über File \> New File \> Quarto Document*
 -   Im auftauchenden Fenster könnt ihr einstellen:
@@ -115,7 +116,7 @@ print("Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386")
     -   gewünschtes Output-Format (hier: html)
     -   womit das Quarto-Dokument gerendert werden soll (hier: knitr)
 
-## Quarto - im Dokument
+### Im Dokument
 
 -   Der Kasten oben heißt "YAML-header" - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)
 -   Im Feld darunter kann Text geschrieben und formatiert werden
@@ -276,7 +277,7 @@ help(help) # Inception!
 help(package=psych)
 ```
 
-## Datentypen
+## Datentypen I
 
 -   Basic:
 
@@ -305,9 +306,11 @@ help(package=psych)
 Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:
 
 ```{r echo=F}
+#| echo: F
+#| warning: F
 library(tidyverse)
 library(readr)
-umfrage <- read_csv("dataset1.csv") %>% 
+umfrage <- read_csv("folien/dataset1.csv") %>% 
   select(id, age, sex, r_knowledge, r_knowledge_amount, r_problems, programming_knowledge, hopes_perc) %>% 
   mutate(id = id,
          alter = age,
@@ -378,7 +381,7 @@ umfrage[ , "geschlecht"]
 umfrage[ , ]
 ```
 
-## Datentypen
+## Datentypen II
 
 -   R erkennt häufig von selbst, welcher Datentyp gemeint ist
 -   Häufig ist es aber sinnvoll, noch mal "von Hand" zu überprüfen und/oder den richtigen Datentyp festzulegen

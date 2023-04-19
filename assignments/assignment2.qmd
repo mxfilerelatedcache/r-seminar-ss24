@@ -5,7 +5,9 @@ author: "Kira Wolff & Simon Krukowski"
 
 # Beschreibung
 
-Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen. Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.
+Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.
+
+Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.
 
 ### Punkte
 
