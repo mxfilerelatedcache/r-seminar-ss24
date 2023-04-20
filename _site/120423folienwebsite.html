@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Medienbasierte Wissenskonstruktion mit R - Folien der ersten Sitzung</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Organisatorisches &amp; R Basics (12.04.)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Folien der ersten Sitzung</h1>
+      <h1 class="quarto-secondary-nav-title">Organisatorisches &amp; R Basics (12.04.)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -199,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./120423folienwebsite.html" class="sidebar-item-text sidebar-link active">Folien der ersten Sitzung</a>
+  <a href="./120423folienwebsite.html" class="sidebar-item-text sidebar-link active">Organisatorisches &amp; R Basics (12.04.)</a>
   </div>
 </li>
       </ul>
@@ -251,18 +251,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#user-interface" id="toc-user-interface" class="nav-link" data-scroll-target="#user-interface">User Interface</a></li>
   <li><a href="#code-erstellen-ausführen" id="toc-code-erstellen-ausführen" class="nav-link" data-scroll-target="#code-erstellen-ausführen">Code erstellen + ausführen</a></li>
   <li><a href="#r-vs.-quarto" id="toc-r-vs.-quarto" class="nav-link" data-scroll-target="#r-vs.-quarto">.R vs.&nbsp;Quarto</a></li>
-  <li><a href="#quarto---dokument-aufsetzen" id="toc-quarto---dokument-aufsetzen" class="nav-link" data-scroll-target="#quarto---dokument-aufsetzen">Quarto - Dokument aufsetzen</a></li>
-  <li><a href="#quarto---im-dokument" id="toc-quarto---im-dokument" class="nav-link" data-scroll-target="#quarto---im-dokument">Quarto - im Dokument</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a>
+  <ul class="collapse">
+  <li><a href="#dokument-aufsetzen" id="toc-dokument-aufsetzen" class="nav-link" data-scroll-target="#dokument-aufsetzen">Dokument aufsetzen</a></li>
+  <li><a href="#im-dokument" id="toc-im-dokument" class="nav-link" data-scroll-target="#im-dokument">Im Dokument</a></li>
+  </ul></li>
+  <li><a href="#quarto-1" id="toc-quarto-1" class="nav-link" data-scroll-target="#quarto-1">Quarto</a></li>
   <li><a href="#rechenoperatoren" id="toc-rechenoperatoren" class="nav-link" data-scroll-target="#rechenoperatoren">(Rechen)Operatoren</a></li>
   <li><a href="#objekte" id="toc-objekte" class="nav-link" data-scroll-target="#objekte">Objekte</a></li>
   <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a></li>
   <li><a href="#hilfe-in-r" id="toc-hilfe-in-r" class="nav-link" data-scroll-target="#hilfe-in-r">Hilfe in R</a></li>
   <li><a href="#hilfe-außerhalb-von-r" id="toc-hilfe-außerhalb-von-r" class="nav-link" data-scroll-target="#hilfe-außerhalb-von-r">Hilfe außerhalb von R</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#datentypen" id="toc-datentypen" class="nav-link" data-scroll-target="#datentypen">Datentypen</a></li>
+  <li><a href="#datentypen-i" id="toc-datentypen-i" class="nav-link" data-scroll-target="#datentypen-i">Datentypen I</a></li>
   <li><a href="#bestimmte-daten-abrufen" id="toc-bestimmte-daten-abrufen" class="nav-link" data-scroll-target="#bestimmte-daten-abrufen">Bestimmte Daten abrufen</a></li>
-  <li><a href="#datentypen-1" id="toc-datentypen-1" class="nav-link" data-scroll-target="#datentypen-1">Datentypen</a></li>
+  <li><a href="#datentypen-ii" id="toc-datentypen-ii" class="nav-link" data-scroll-target="#datentypen-ii">Datentypen II</a></li>
   <li><a href="#neue-daten-erstellen" id="toc-neue-daten-erstellen" class="nav-link" data-scroll-target="#neue-daten-erstellen">Neue Daten erstellen</a></li>
   <li><a href="#unterschiede-zu-anderen-programmiersprachen" id="toc-unterschiede-zu-anderen-programmiersprachen" class="nav-link" data-scroll-target="#unterschiede-zu-anderen-programmiersprachen">Unterschiede zu anderen Programmiersprachen</a></li>
   </ul></li>
@@ -274,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Folien der ersten Sitzung</h1>
+<h1 class="title d-none d-lg-block">Organisatorisches &amp; R Basics (12.04.)</h1>
 </div>
 
 
@@ -363,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="user-interface" class="level2">
 <h2 class="anchored" data-anchor-id="user-interface">User Interface</h2>
-<p><img src=".R.png" width="700" height="600"></p>
+<p><img src="folien/.R.png" width="700" height="600"></p>
 <ul>
 <li><p>oben links: Code</p></li>
 <li><p>unten links: Konsole - ausgeführter Code und Output</p>
@@ -412,8 +415,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="quarto---dokument-aufsetzen" class="level2">
-<h2 class="anchored" data-anchor-id="quarto---dokument-aufsetzen">Quarto - Dokument aufsetzen</h2>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<section id="dokument-aufsetzen" class="level3">
+<h3 class="anchored" data-anchor-id="dokument-aufsetzen">Dokument aufsetzen</h3>
 <ul>
 <li><em>Erstellt ein Quarto-Dokument über File &gt; New File &gt; Quarto Document</em></li>
 <li>Im auftauchenden Fenster könnt ihr einstellen:
@@ -424,8 +429,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </section>
-<section id="quarto---im-dokument" class="level2">
-<h2 class="anchored" data-anchor-id="quarto---im-dokument">Quarto - im Dokument</h2>
+<section id="im-dokument" class="level3">
+<h3 class="anchored" data-anchor-id="im-dokument">Im Dokument</h3>
 <ul>
 <li>Der Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)</li>
 <li>Im Feld darunter kann Text geschrieben und formatiert werden
@@ -443,8 +448,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau</li>
 </ul>
 </section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+</section>
+<section id="quarto-1" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-1">Quarto</h2>
 <ul>
 <li><em>Erstellt zwei Code-Chunks</em></li>
 <li><em>Fügt bei einem der Chunks in die erste Zeile <code>#| echo: TRUE</code></em></li>
@@ -590,8 +596,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package=</span>psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="datentypen" class="level2">
-<h2 class="anchored" data-anchor-id="datentypen">Datentypen</h2>
+<section id="datentypen-i" class="level2">
+<h2 class="anchored" data-anchor-id="datentypen-i">Datentypen I</h2>
 <ul>
 <li><p>Basic:</p>
 <ul>
@@ -612,6 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Paket 'tidyverse' wurde unter R Version 4.2.3 erstellt</code></pre>
 </div>
@@ -652,19 +659,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-New names:
-Rows: 4 Columns: 11
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (2): sex, r_problems
-dbl  (5): ...1, id, lastpage, age, hopes_perc
-lgl  (3): r_knowledge, r_knowledge_amount, programming_knowledge
-dttm (1): submitdate
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>umfrage <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"folien/dataset1.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age, sex, r_knowledge, r_knowledge_amount, r_problems, programming_knowledge, hopes_perc) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> id,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">alter =</span> age,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">geschlecht =</span> <span class="fu">as.factor</span>(sex),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">r.vorwissen =</span> r_knowledge,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">r.wieviel.vorwissen =</span> r_knowledge_amount,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">r.probleme =</span> <span class="fu">as.character</span>(r_problems),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">programmier.vorwissen =</span> programming_knowledge,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">r_knowledge =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">r_knowledge_amount =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">r_problems =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">programming_knowledge =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">hopes_perc =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+Rows: 4 Columns: 11
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(2): sex, r_problems dbl (5): ...1, id, lastpage, age, hopes_perc lgl (3):
+r_knowledge, r_knowledge_amount, programming_knowledge dttm (1): submitdate
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>umfrage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
      id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
@@ -697,7 +722,7 @@ dttm (1): submitdate
 <li>In eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   geschlecht
@@ -709,7 +734,7 @@ dttm (1): submitdate
 <li>Statt Zahlen können auch Spaltennamen benutzt werden</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   geschlecht
@@ -721,7 +746,7 @@ dttm (1): submitdate
 <li>Spalten lassen sich auch direkt über <code>$</code> ansprechen.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &lt;NA&gt;   female female male  
 Levels: female male</code></pre>
@@ -731,7 +756,7 @@ Levels: female male</code></pre>
 <li>Um alles anzeigen zu lassen, kann man die Koordinate “leer” lassen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 1
   geschlecht
@@ -743,7 +768,7 @@ Levels: female male</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
      id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
@@ -756,8 +781,8 @@ Levels: female male</code></pre>
 </div>
 </div>
 </section>
-<section id="datentypen-1" class="level2">
-<h2 class="anchored" data-anchor-id="datentypen-1">Datentypen</h2>
+<section id="datentypen-ii" class="level2">
+<h2 class="anchored" data-anchor-id="datentypen-ii">Datentypen II</h2>
 <ul>
 <li>R erkennt häufig von selbst, welcher Datentyp gemeint ist</li>
 <li>Häufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen</li>
@@ -766,8 +791,8 @@ Levels: female male</code></pre>
 <li><code>as.numeric()</code> usw. nutzen, um den Datentyp zu verändern</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="neue-daten-erstellen" class="level2">
@@ -777,8 +802,8 @@ Levels: female male</code></pre>
 <li>Kombiniert alle aufgezählten Objekte</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 5</code></pre>
 </div>
@@ -788,8 +813,8 @@ Levels: female male</code></pre>
 <li>Im Output erkennt man Strings auch an den Anführungszeichen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "hallo"</code></pre>
 </div>

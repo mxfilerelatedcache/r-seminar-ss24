@@ -562,35 +562,35 @@
   {
     "objectID": "120423folienwebsite.html",
     "href": "120423folienwebsite.html",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "",
     "text": "Daten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten\nEinblick in Breite und Tiefe, die R bietet\nGrundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)\n\n\n\n\n\n7-8 Sitzungen, die jeweils 3h dauern\n\nMittagspause?\n\n31.05 vrsl. letzte, kürzere Sitzung\nInhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten\ninnerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis\nWebsite für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)\n\n\n\n\n\nWöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte\n\nAbgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung\nwerden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus\nAbgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt\nEinzelarbeit (Plagiatscheck)\nWir laden nach Abgabe “Musterlösung” hoch\n\n1x Hausaufgabe vorstellen (unbenotet)\nBericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen\n\nEs gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.\n\n\n\nVerteilung Vorwissen\n\n\n\n\n\nVorwissen Programmiersprachen\n\n\n\n\n\nErwartungen ans Seminar"
   },
   {
     "objectID": "120423folienwebsite.html#was-ist-r",
     "href": "120423folienwebsite.html#was-ist-r",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Was ist R?",
     "text": "Was ist R?\n\nProgrammiersprache (und -oberfläche) für statistische Berechnungen und Grafiken\nopen-source & kostenlos\ngroße Community, die ständig Funktionen erweitert und bei Problemen hilft\nR Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher"
   },
   {
     "objectID": "120423folienwebsite.html#user-interface",
     "href": "120423folienwebsite.html#user-interface",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "User Interface",
     "text": "User Interface\n\n\noben links: Code\nunten links: Konsole - ausgeführter Code und Output\n\nhier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden\n\noben rechts: u.a. Environment - welche Objekte und Daten exisitieren\nunten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht"
   },
   {
     "objectID": "120423folienwebsite.html#code-erstellen-ausführen",
     "href": "120423folienwebsite.html#code-erstellen-ausführen",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Code erstellen + ausführen",
     "text": "Code erstellen + ausführen\n\nÖffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)\nIn dem File ist nur die Zeile ohne #ausführbarer Code. Wie hier geschehen, lassen sich mit # Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER drückt\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n\n# Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R\n\n# Satz in Konsole printen:\nprint(paste0(\"Ich habe \",R.version$version.string,\" und RStudio v\",rstudioapi::versionInfo()$version))\n\n\n\n[1] \"Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386\""
   },
   {
     "objectID": "120423folienwebsite.html#r-vs.-quarto",
     "href": "120423folienwebsite.html#r-vs.-quarto",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": ".R vs. Quarto",
     "text": ".R vs. Quarto\n\nR’s Standardformat sind .R-Dateien\nFür “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:\n\nermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)\nermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll\nAuswertung & Bericht können somit im gleichen Dokument geschehen"
   },
@@ -611,49 +611,49 @@
   {
     "objectID": "120423folienwebsite.html#quarto",
     "href": "120423folienwebsite.html#quarto",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Quarto",
-    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nFügt beim anderen Chunk in die erste Zeile #| echo: FALSE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\nOutput ohne Code:\n\n4+5\n\n[1] 9\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\nReiner Text:\n4+5"
+    "text": "Quarto\n\nDokument aufsetzen\n\nErstellt ein Quarto-Dokument über File > New File > Quarto Document\nIm auftauchenden Fenster könnt ihr einstellen:\n\nTitel & AutorIn des Dokuments\ngewünschtes Output-Format (hier: html)\nwomit das Quarto-Dokument gerendert werden soll (hier: knitr)\n\n\n\n\nIm Dokument\n\nDer Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)\nIm Feld darunter kann Text geschrieben und formatiert werden\n\nSource: Format lässt sich über bestimmte Zeichen einstellen\nVisual: Format lässt sich über Markieren + Auswählen einstellen\n\nCode kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)\nIm grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen\n\n“Vorschau” über den Play-Button\nÜber #| am Zeilenbeginn lässt sich einstellen, was mit Code + Output beim Rendern passieren soll\n\nÜber “Render” wird das Dokument in das Zielformat umgewandelt\nIn den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau"
   },
   {
     "objectID": "120423folienwebsite.html#rechenoperatoren",
     "href": "120423folienwebsite.html#rechenoperatoren",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "(Rechen)Operatoren",
     "text": "(Rechen)Operatoren\n\nDezimaltrennzeichen: Punkt . , nicht Komma ,\n+ - * /\nExponent: ^\nlogisch gleich: ==\nlogisch ungleich: !=\nlogisches und: &\nlogisches oder: |\nlogisches exklusives oder: xor\nnicht: !"
   },
   {
     "objectID": "120423folienwebsite.html#objekte",
     "href": "120423folienwebsite.html#objekte",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Objekte",
     "text": "Objekte\n\nAnstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern\nKonzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll\n\n\nergebnis <- 3+5\n\n\nR führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!\nObjekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt\n\n\nergebnis\n\n[1] 8\n\n\n\nR ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!\nObjekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)\nErstellt selbst eine Rechenaufgabe und speichert sie als Objekt!\nWas passiert, wenn man den gleichen Objektnamen erneut verwendet?\nWarum ist Objekte erstellen wichtig?\n\nFür R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert\nZwischenergebnisse überprüfen\nParameter festlegen\nFlüchtigkeitsfehler vermeiden\nuvm.\n\nShortcut für <- : ALT+-\nPfeil in die andere Richtung -> und Gleichheitszeichen = funktionieren nicht bzw. sollten nicht verwendet werden!"
   },
   {
     "objectID": "120423folienwebsite.html#funktionen",
     "href": "120423folienwebsite.html#funktionen",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Funktionen",
     "text": "Funktionen\n\nMithilfe von Funktionen lassen sich Objekte/Daten bearbeiten\nBeispiel: round(3.45, digits = 1) rundet 3.45 auf die erste Nachkommastelle\n\nam Anfang steht der Name der Funktion (auch hier: case-sensitive)\ndie Argumente der Funktion werden von runden Klammern eingerahmt\nArgumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll\nsie folgen der Syntax Argument = Angabe\nArgumente werden durch Komma getrennt\nmanche Argumente sind zwingend notwendig, viele aber optional\ndie Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. round(3.45, 1) (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)"
   },
   {
     "objectID": "120423folienwebsite.html#hilfe-in-r",
     "href": "120423folienwebsite.html#hilfe-in-r",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Hilfe in R",
     "text": "Hilfe in R\n\nÜber help(Funktion) wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen\n\ngenauso funktioniert ?Funktion\nauf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)\n\nFindet mit der Hilfe-Funktion heraus, was mean() macht und welche Argumente es hat\n\n\n?mean\n#oder\nhelp(mean)"
   },
   {
     "objectID": "120423folienwebsite.html#hilfe-außerhalb-von-r",
     "href": "120423folienwebsite.html#hilfe-außerhalb-von-r",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Hilfe außerhalb von R",
     "text": "Hilfe außerhalb von R\n\nFehlermeldungen lesen und versuchen, Problem zu verstehen\ndas Internet!\n\nFehlermeldung bei Google einfügen und Links durchsuchen\nStack Overflow\nStatt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen\n\nDanach: Lösung für sich dokumentieren"
   },
   {
     "objectID": "120423folienwebsite.html#packages",
     "href": "120423folienwebsite.html#packages",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Packages",
     "text": "Packages\n\nFrisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen\nDurch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig\nIm Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind\nNeue Packages lassen sich mit install.packages(\"package-name\") installieren und mit library(package-name) aktivieren (auf die Anführungszeichen achten!)\nMan kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig\nInstalliert und aktiviert das Package psych (Erinnerung: install.packages()& library())\nWendet die Hilfefunktion help() auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt\nSchaut euch mit dem neuen Wissen an, welche Funktionen das Package psych beinhaltet\n\n\n# Installieren\ninstall.packages(\"psych\")\n# Aktivieren\nlibrary(psych)\n\n# Mehr über help() herausfinden\nhelp(help) # Inception!\n# Aha, das Argument \"package\" kann mir weiterhelfen!\n\n# Über psych informieren\nhelp(package=psych)"
   },
@@ -667,7 +667,7 @@
   {
     "objectID": "120423folienwebsite.html#bestimmte-daten-abrufen",
     "href": "120423folienwebsite.html#bestimmte-daten-abrufen",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Bestimmte Daten abrufen",
     "text": "Bestimmte Daten abrufen\n\nIn eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben\n\n\numfrage[2,3] # zeigt den Wert der zweiten Zeile und dritten Spalte\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nStatt Zahlen können auch Spaltennamen benutzt werden\n\n\numfrage[3, \"geschlecht\"]\n\n# A tibble: 1 × 1\n  geschlecht\n  <fct>     \n1 female    \n\n\n\nSpalten lassen sich auch direkt über $ ansprechen.\n\n\numfrage$geschlecht\n\n[1] <NA>   female female male  \nLevels: female male\n\n\n\nUm alles anzeigen zu lassen, kann man die Koordinate “leer” lassen\n\n\numfrage[ , \"geschlecht\"]\n\n# A tibble: 4 × 1\n  geschlecht\n  <fct>     \n1 <NA>      \n2 female    \n3 female    \n4 male      \n\n\n\numfrage[ , ]\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen"
   },
@@ -681,15 +681,43 @@
   {
     "objectID": "120423folienwebsite.html#neue-daten-erstellen",
     "href": "120423folienwebsite.html#neue-daten-erstellen",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Neue Daten erstellen",
     "text": "Neue Daten erstellen\n\nVektoren: c()\nKombiniert alle aufgezählten Objekte\n\n\nvektor <- c(1,3,5)\nvektor\n\n[1] 1 3 5\n\n\n\nStrings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.\nIm Output erkennt man Strings auch an den Anführungszeichen\n\n\nstring <- \"hallo\"\nstring\n\n[1] \"hallo\""
   },
   {
     "objectID": "120423folienwebsite.html#unterschiede-zu-anderen-programmiersprachen",
     "href": "120423folienwebsite.html#unterschiede-zu-anderen-programmiersprachen",
-    "title": "Folien der ersten Sitzung",
+    "title": "Organisatorisches & R Basics (12.04.)",
     "section": "Unterschiede zu anderen Programmiersprachen",
     "text": "Unterschiede zu anderen Programmiersprachen\n\nkeine Unterscheidung zwischen integer und double\nverwendet keine Pointer\ntendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut"
+  },
+  {
+    "objectID": "120423folienwebsite.html#quarto-1",
+    "href": "120423folienwebsite.html#quarto-1",
+    "title": "Organisatorisches & R Basics (12.04.)",
+    "section": "Quarto",
+    "text": "Quarto\n\nErstellt zwei Code-Chunks\nFügt bei einem der Chunks in die erste Zeile #| echo: TRUE\nFügt beim anderen Chunk in die erste Zeile #| echo: FALSE\nSchreibt in den Text- und in die Code-Bereiche 4+5\nRendert das Dokument\n\nOutput ohne Code:\n\n4+5\n\n[1] 9\n\n\nOutput mit Code:\n\n4+5\n\n[1] 9\n\n\nReiner Text:\n4+5"
+  },
+  {
+    "objectID": "120423folienwebsite.html#datentypen-i",
+    "href": "120423folienwebsite.html#datentypen-i",
+    "title": "Organisatorisches & R Basics (12.04.)",
+    "section": "Datentypen I",
+    "text": "Datentypen I\n\nBasic:\n\nnumeric: Zahlen (integer, double)\ncharacter: Buchstabenfolgen (strings)\nfactor: z.B. Faktorstufen eines Faktors\nlogical: TRUE, FALSE (vgl. 1 & 0)\n\nVektor: eindimensionale “Aufzählung” von Elementen\nMatrix: ein- bis zweidimensionale Aufzählung von Elementen\nArray: beliebig-dimensionale Aufzählung von Elementen\nListe: kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)\nDataframe, Tibble: Spezifische Formate, um Datensätze darzustellen\n\nKönnen pro Spalte unterschiedliche Datentypen beinhalten\nStandardformat, wenn man von extern Daten in R reinlädt\n\n\nDer Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:\n\nlibrary(tidyverse)\n\nWarning: Paket 'tidyverse' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'ggplot2' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'tibble' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'tidyr' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'readr' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'purrr' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'dplyr' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'stringr' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'forcats' wurde unter R Version 4.2.3 erstellt\n\n\nWarning: Paket 'lubridate' wurde unter R Version 4.2.3 erstellt\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.1     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n\nlibrary(readr)\numfrage <- read_csv(\"folien/dataset1.csv\") %>% \n  select(id, age, sex, r_knowledge, r_knowledge_amount, r_problems, programming_knowledge, hopes_perc) %>% \n  mutate(id = id,\n         alter = age,\n         geschlecht = as.factor(sex),\n         r.vorwissen = r_knowledge,\n         r.wieviel.vorwissen = r_knowledge_amount,\n         r.probleme = as.character(r_problems),\n         programmier.vorwissen = programming_knowledge,\n         age = NULL,\n         sex = NULL,\n         r_knowledge = NULL,\n         r_knowledge_amount = NULL,\n         r_problems = NULL,\n         programming_knowledge = NULL,\n         hopes_perc = NULL)\n\nNew names:\nRows: 4 Columns: 11\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(2): sex, r_problems dbl (5): ...1, id, lastpage, age, hopes_perc lgl (3):\nr_knowledge, r_knowledge_amount, programming_knowledge dttm (1): submitdate\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -> `...1`\n\numfrage\n\n# A tibble: 4 × 7\n     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹\n  <dbl> <dbl> <fct>      <lgl>       <lgl>               <chr>      <lgl>       \n1     1    NA <NA>       NA          NA                  <NA>       FALSE       \n2     2    12 female     TRUE        TRUE                Test       TRUE        \n3     3    19 female     TRUE        TRUE                kp         TRUE        \n4     4    20 male       TRUE        TRUE                problemz   TRUE        \n# … with abbreviated variable name ¹​programmier.vorwissen\n\n\n\n\nZeile: Ein Tibble mit diesen Dimensionen wird angezeigt\n\n\nZeile: Spaltennamen\n\n\nZeile: Datentypen\n\nfolgende Zeilen: Daten\nin der Konsole werden Daten meistens nur gekürzt angezeigt\nÜber view(daten) öffnet sich eine Tabellenübersicht"
+  },
+  {
+    "objectID": "120423folienwebsite.html#datentypen-ii",
+    "href": "120423folienwebsite.html#datentypen-ii",
+    "title": "Organisatorisches & R Basics (12.04.)",
+    "section": "Datentypen II",
+    "text": "Datentypen II\n\nR erkennt häufig von selbst, welcher Datentyp gemeint ist\nHäufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen\ntypeof() um den Datentyp zu erfragen\nis.numeric() / is.factor() / is.logical() / is.character() um einen bestimmten Datentyp zu testen\nas.numeric() usw. nutzen, um den Datentyp zu verändern\n\n\numfrage$r.probleme <- as.factor(umfrage$r.probleme)\n# Die umgewandelte Spalte überschreibt die alte Spalte!"
+  },
+  {
+    "objectID": "assignments/assignment2.html",
+    "href": "assignments/assignment2.html",
+    "title": "Hausaufgabe 2: Deskriptives",
+    "section": "",
+    "text": "Beschreibung\nDiese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.\nFalls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.\n\nPunkte\nFür jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als [Bonus] markiert sind, geben keine Punkte.\n\n\nFür Experten\nManche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als [Für Experten] markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).\n\n\nAbgabe\nUm eure Hausaufgabe abzugeben, ladet diese bitte als .qmd Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. hausaufgabe2_simon_krukowski.qmd, und schreibt hier in der Datei oben bei author euren Namen rein.\n\n\n\nAufgaben\n\nAufgabe 1 [1 Punkt]\nAm Anfang von fast jedem R-Code aktiviert man erst mal die notwendigen Packages und lädt den relevanten Datensatz. Wir schauen uns hier einen Datensatz aus dem Package nycflights13 an. Installiert und aktiviert dementsprechend die Packages nycflights13, dplyr und ggplot2. (Denkt auch daran, welche Packages ihr installieren und welche vielleicht nur aktivieren müsst..)\n\n# Hier Lösung einfügen\n\nDer Datensatz, mit dem wir nun arbeiten, nennt sich flights. Unter diesem Namen könnt ihr ihn nach erfolgreicher Aktivierung von nycflights13 finden. Er enthält alle Flüge, die im Jahr 2013 in New York losgeflogen sind. Mehr Informationen zu den Variablen könnt ihr über die Hilfefunktion bekommen.\nHinweis: Speichert euch bei den folgenden Aufgaben eure Änderungen an flights in Objekten mit einem anderen Namen, damit ihr - falls etwas schief geht - immer wieder auf das Original zurückgreifen könnt.\n\n# Nur mal zum Anschauen:\nflights\n\n\n\nAufgabe 2 [1 Punkt]\nErgänzt flights um eine weitere Spalte, in der die Verspätungen bei Ankunft und Abflug (arr_delay und dep_delay) miteinander verrechnet werden. Gestaltet den Code so, dass ihr auch bei späteren Aufgaben auf die Spalte zugreifen könntet.\nVerwendet die Pipe und die euch bekannten dplyr-Befehle.\n\n# Hier Code zur Lösung eintragen\n\n\n\nAufgabe 3 [1 Punkt]\nSortiert flights so, dass ihr einmal die geringste und einmal die größte Verspätung bei Ankunftszeit entnehmen könnt.\n\n# Hier Code zur Lösung eintragen\n\n\n\nAufgabe 4 [1 Punkt]\nWie interpretiert ihr die Ergebnisse aus Aufgabe 3?\nAntwort hier:\n\n\nAufgabe 5 [1 Punkt]\nFür welche Variablen eignet sich group_by typischerweise bei einer “klassischen” Komedia-Studie; wofür hättet ihr sie beispielsweise bei eurer Bachelorarbeit verwenden können?\nAntwort hier:\n\n\nAufgabe 6 [1 Punkt]\nErstellt mittels summarize eine Tabelle, in der für jeden Monat der die durchschnittliche Distanz (Spalte distance) der Flüge und ihre Standardabweichungen angegeben werden.\nVerwendet die Pipe und die euch bekannten dplyr-Befehle.\n\n# Hier Code als Antwort eintragen\n\n\n\nAufgabe 7 [1 Punkt]\nVerwendet die in Aufgabe 6 erstellte Tabelle, um mit ggplot und geom_point einen Plot zu erstellen, in dem auf der x-Achse die Monate und auf der y-Achse die durchschnittliche Distanz zu sehen ist.\n\n# Hier Code als Antwort eintragen\n\n\n\nAufgabe 8 [1 Punkt]\n[für Experten]\nFügt dem Plot aus Aufgabe 7 außerdem Standardabweichungen mithilfe von geom_errorbar() hinzu. (Hinweis: Alles, was ihr für den Input bei geom_errobar() benötigt, befindet sich bereits in der Tabelle von Aufgabe 6)\n\n# Hier Code als Antwort eintragen\n\n\n\nAufgabe 9 [1 Punkt]\nGestaltet den Plot aus Aufgabe 7 oder 8 ästhetischer, indem ihr\n\neinen Titel hinzufügt\ndie Farbe der Punkte zu eurer Lieblingsfarbe verändert\ndie Achsen beschriftet\n\n\n# Hier Code als Antwort einfügen\n\n\n\nAufgabe 10 [1 Punkt]\nRecherchiert geom_jitter und beschreibt in eigenen Worten, was die Funktion macht und in welchen Fällen sie besonders nützlich ist.\nAntwort hier:"
   }
 ]
