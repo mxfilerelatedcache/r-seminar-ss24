@@ -2,7 +2,7 @@
 title: "analysis_priorknowledge"
 author: "Simon Krukowski"
 execute:
-  freeze: true
+  eval: false
 ---
 
 ```{r}
@@ -19,6 +19,7 @@ This is the corresponding quarto file for our analyses regarding the prior-exist
 First we want to import the data:
 
 ```{r}
+#| eval: false
 dataset <- read.csv("/Users/simonkrukowski/Downloads/results-survey368965-6.csv")
 ```
 
