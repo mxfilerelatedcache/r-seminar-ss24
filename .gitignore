@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 
-_site/search.json
 
 /.quarto/
+/_site/
