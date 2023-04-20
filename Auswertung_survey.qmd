@@ -1,6 +1,8 @@
 ---
 title: "analysis_priorknowledge"
 author: "Simon Krukowski"
+execute:
+  freeze: true
 ---
 
 ```{r}
