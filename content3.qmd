@@ -1,0 +1,217 @@
+---
+title: "Inferenzstatistik in R"
+author: "Kira Wolff & Simon Krukowski"
+format: html
+editor: visual
+---
+
+```{r packages}
+library(tidyverse)
+library(rstatix)
+```
+
+# Statistik
+
+## Voraussetzungen
+
+### Normalverteilung
+
+```{r}
+# Base
+shapiro.test(Spalte) # 3-5000
+
+# Rstatix
+data %>% 
+  shapiro_test(Variable)
+
+```
+
+density plot
+
+qq-plot: https://ggplot2.tidyverse.org/reference/geom_qq.html
+
+### Varianzhomogenität
+
+### Heteroskedastizität
+
+## Gruppenvergleiche
+
+### t-Test
+
+Ziel: zwei Gruppen vergleichen
+
+Voraussetzungen:
+
+-   kontinuierliche Daten für AV; dichotome Variable für Gruppenzuordnung
+
+-   Normalverteilung
+
+-   Varianzhomogenität
+
+#### Base
+
+```{r}
+t.test(AV ~ group, data)
+t.test(Spalte1, Spalte2)
+t.test(Spalte, mu)
+```
+
+Fragen: abhängige Daten? gerichteter t-Test?
+
+-\> Argumente & Dokumentation durchschauen
+
+#### Rstatix
+
+```{r}
+data %>% 
+  t_test(numeric ~ categorial)
+```
+
+Unterschied:
+
+-   Liste vs. tibble (im environment zeigen)
+
+-   base: Zusatzinfos - Zuordnung, Verständnis
+
+-   Rstatix:
+
+-   Unterschied ist nicht per se, dass Pipe verwendet werden kann! Geht bei viel base auch, aber nicht immer garantiert. rstatix ist dafür gemacht
+
+#### nonparametrisch
+
+Reminder: Wenn Voraussetzungen nicht erfüllt
+
+```{r}
+# Base
+wilcox.test()
+
+# rstatix
+data %>% 
+  wilcox_test(kontinuierlich ~ kategorial)
+```
+
+## 
+
+### ANOVA
+
+```{r anova data}
+chick <- ChickWeight
+```
+
+```{r anova}
+#base
+chick.aov <- aov(weight ~ Diet, chick)
+summary(chick.aov)
+
+#funktioniert nicht:
+
+#chick %>% 
+#  aov(weight ~ Diet) %>% 
+#  summary()
+
+
+#rstatix
+## Schreibweise 1
+chick %>%
+  filter(Time == 21) %>% 
+  anova_test(weight ~ Diet)
+
+##Schreibweise 2
+chick %>%
+  filter(Time == 21) %>% 
+  anova_test(dv = weight,
+             between = Diet)
+```
+
+aov = analysis of variances
+
+summary() erklären
+
+```{r post-hoc}
+# base
+
+# rstatix
+chick %>%
+  filter(Time == 21) %>% 
+  tukey_hsd(weight ~ Diet)
+
+# möglicher Input: aov, lm, formula -> nicht an anova_test dranhängen
+# gibt auch andere für andere Zwecke
+```
+
+boxplot
+
+balken mit fehlern
+
+Messwiederholung
+
+Kovariate
+
+Plot mit Sternchen?
+
+nonparametrisch: kruskal-wallis
+
+was macht anova()
+
+Weitere Alternative: ezANOVA, oneway.test
+
+## Zusammenhänge
+
+### Korrelation
+
+```{r corr para}
+# r base
+
+# rstatix
+cor_test
+```
+
+```{r corr nonpara}
+cor_test(method = "Spearman") # Kendall
+```
+
+nonparametrisch
+
+### Regression
+
+einfach
+
+multiple
+
+Messwiederholung
+
+Kovariate/Moderator
+
+## Chi²
+
+```{r}
+# Base
+chisq.test(Spalte1, Spalte2)
+
+# rstatix
+data %>% 
+  table() # noch testen
+  chisq_test()
+```
+
+get_summary_stats() usw.
+
+add_significance() usw.
+
+https://epirhandbook.com/en/simple-statistical-tests.html
+
+https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
+
+# Quarto Bericht
+
+-   Tabelle knitten
+
+-   Variablen im Fließtext
+
+-   Bibliographie
+
+-   Chunks benennen für Übersicht
+
+-   Chunk Optionen
+
+-   Formatieren für APA Report
