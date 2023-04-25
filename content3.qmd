@@ -12,15 +12,38 @@ library(rstatix)
 
 # Statistik
 
+Hier beschäftigen wir uns mit den grundlegenden inferenzstatistischen Verfahren, die ihr aus den Bachelor-Vorlesungen Statistik 1 und 2 kennt.
+
+Das ist natürlich nur ein kleiner Einblick in die statistischen Verfahren, die mit R möglich sind. Es soll euch aber schon mal ein Gefühl für den grundlegenden Aufbau der Funktionen geben, sodass ihr ohne große Probleme auch andere Verfahren benutzen könnt. In vielen Fällen kommt man mit den grundlegenden Verfahren hier auch schon relativ weit.
+
+## Die Qual der Wahl
+
+Ähnlich wie ihr letzte Woche die Unterschiede zwischen base R und dplyr kennengelernt habt, gibt es auch für die inferenzstatistischen Verfahren verschiedene Packages und Funktionen, und damit Vorgehensweisen.
+
+Grundsätzlich gibt es hier keine richtigen oder falschen Packages, stattdessen hängt es vom Kontext ab. Manche Packages ermöglichen ziemlich komplexe Analysen, und um sich die als Möglichkeit offen zu lassen, kann es sich lohnen, auch direkt die "einfachen" Analysen eines Projekts damit zu rechnen, damit die verschiedenen Analysen kompatibler miteinander sind. Manche Packages sind von der Syntax möglichst eingängig gestaltet, sodass man als Anfänger besser abgeholt wird. Wiederum andere bieten die gleichen Funktionen, verwenden aber leicht unterschiedliche Berechnungsmethoden, da die Methoden für verschiedene Kontexte verschieden robust sind.
+
+Meistens macht es Sinn mit dem, was man kennt (bzw. was ihr hier kennenlernt), anzufangen. Wenn sich dann eine Datensituation ergibt, die komplexer ist, lässt sich immer noch im Internet recherchieren, welches Package/welche Funktion vielleicht besser geeignet sind. Die Hürde wird dann weniger euer R-Wissen sein, sondern eher euer allgemeines Statistik-Wissen. Unserer Erfahrung nach verbringt man eher mehr Zeit mit der Recherche von statistischen Methoden statt R-Funktionen.
+
+Wie machen wir es hier? Wir zeigen euch die Funktionen von base R und vom Package `rstatix`, welches bewusst so gestaltet ist, damit es gut mit der Pipe und den dplyr-Funktionen funktioniert.
+
 ## Voraussetzungen
+
+Wie ihr wisst, gibt es für die sogennannten parametrischen Testverfahren bestimmte Voraussetzungen, die die Daten erfüllen sollten, damit die Tests anwendbar sind und die Auswertung angemessen. Vorbildlich wie wir sind, schauen wir uns diese Tests für die Voraussetzungen zuerst an.
 
 ### Normalverteilung
 
+Kurve zeigen
+
 ```{r}
-# Base
+plot(dnorm, xlim=c(-3,3))
+
+```
+
+```{r}
+# base
 shapiro.test(Spalte) # 3-5000
 
-# Rstatix
+# rstatix
 data %>% 
   shapiro_test(Variable)
 
@@ -32,7 +55,16 @@ qq-plot: https://ggplot2.tidyverse.org/reference/geom_qq.html
 
 ### Varianzhomogenität
 
+```{r}
+data %>% 
+  levene_test(variable)
+```
+
 ### Heteroskedastizität
+
+Ausreißer?
+
+identify_outliers()
 
 ## Gruppenvergleiche
 
@@ -40,31 +72,61 @@ qq-plot: https://ggplot2.tidyverse.org/reference/geom_qq.html
 
 Ziel: zwei Gruppen vergleichen
 
-Voraussetzungen:
+Datenstruktur: kontinuierliche abhängige Variable & dichotome Gruppenvariable
 
--   kontinuierliche Daten für AV; dichotome Variable für Gruppenzuordnung
+Zur Veranschaulichung verwenden wir hier den Datensatz `ToothGrowth`: Hier wurde der Zahnwachstum von Meerschweinchen in Abhängigkeit von verabreichtem Vitamin C untersucht. Die Stichprobe besteht aus 60 Meerschweinchen und sowohl die Verabreichungsmethode (Orangensaft vs. Ascorbinsäure) als auch die Vitamin C-Dosis (0.5, 1 oder 2mg pro Tag) wurden variiert. Da wir beim t-Test nur mit zwei Gruppen arbeiten können, schauen wir uns jetzt nur die Unterschiede durch die Verabreichungsmethode an.
 
--   Normalverteilung
+```{r ttest data}
+summary(ToothGrowth)
 
--   Varianzhomogenität
+ToothGrowth %>% 
+  get_summary_stats()
 
-#### Base
-
-```{r}
-t.test(AV ~ group, data)
-t.test(Spalte1, Spalte2)
-t.test(Spalte, mu)
+tooth <- ToothGrowth %>% 
+            mutate(dose = as.factor(dose))
 ```
 
-Fragen: abhängige Daten? gerichteter t-Test?
-
--\> Argumente & Dokumentation durchschauen
-
-#### Rstatix
+#### Funktionsaufbau
 
 ```{r}
+#| eval=F
+
+# Base: Format 1
+t.test(AV ~ group, data)
+
+# Base: Format 2
+t.test(daten$group1, daten$group2)
+
+# rstatix
 data %>% 
-  t_test(numeric ~ categorial)
+  t_test(AV ~ group)
+```
+
+Die Tilde `~` ist das Zeichen in R, um einen Zusammenhang, eine Abhängigkeit oder ein Modell zu symbolisieren.
+
+Natürlich gibt es mit Argumenten Möglichkeiten um
+
+-   einen t-Test für eine Stichprobe durchzuführen: z.B. `mu = 100`
+
+-   einen t-Test für abhängige Stichproben durchzuführen: `paired = TRUE`
+
+-   einen gerichteten t-Test durchzuführen: z.B. `alternative = "less"`
+
+-   bei nicht vorliegender Varianzhomogenität stattdessen den Welch-Test anzuwenden: `var.equal = FALSE`
+
+#### Funktionsanwendung
+
+```{r}
+# Base: Format 1
+t.base <- t.test(len ~ supp, tooth, var.equal = TRUE)
+t.base
+
+# rstatix
+t.rstatix <- tooth %>% 
+                t_test(len ~ supp,var.equal = TRUE)
+t.rstatix
+
+# Normalerweise würde ich die Ergebnisse nicht als Objekte speichern, dient hier nur der Demonstration.
 ```
 
 Unterschied:
@@ -73,79 +135,89 @@ Unterschied:
 
 -   base: Zusatzinfos - Zuordnung, Verständnis
 
--   Rstatix:
+-   rstatix: Formatierung als Tabelle
 
--   Unterschied ist nicht per se, dass Pipe verwendet werden kann! Geht bei viel base auch, aber nicht immer garantiert. rstatix ist dafür gemacht
+-   rstatix garantiert pipe-Kompatibilität, funktioniert bei Base-Funktionen nicht immer (aber manchmal)
 
-#### nonparametrisch
+#### Nonparametrisch: Wilcoxon Rank Sum Test
 
-Reminder: Wenn Voraussetzungen nicht erfüllt
+Reminder: Wenn Voraussetzungen nicht erfüllt sein sollten.
 
 ```{r}
 # Base
-wilcox.test()
+wilcox.test(len ~ supp, tooth)
 
 # rstatix
-data %>% 
-  wilcox_test(kontinuierlich ~ kategorial)
+tooth %>% 
+  wilcox_test(len ~ supp)
 ```
-
-## 
 
 ### ANOVA
 
-```{r anova data}
-chick <- ChickWeight
-```
+Ziel: Zwei oder mehr Gruppen vergleichen.
+
+Wir können hier bei den Meerschweinchendaten bleiben, da die Dosis-Variable drei Faktorstufen hat.
 
 ```{r anova}
 #base
-chick.aov <- aov(weight ~ Diet, chick)
-summary(chick.aov)
+tooth.aov <- aov(len ~ dose, tooth)
+summary(tooth.aov)
+
 
 #funktioniert nicht:
 
-#chick %>% 
-#  aov(weight ~ Diet) %>% 
+#tooth %>% 
+#  aov(len ~ dose) %>% 
 #  summary()
 
 
 #rstatix
 ## Schreibweise 1
-chick %>%
-  filter(Time == 21) %>% 
-  anova_test(weight ~ Diet)
+tooth %>%
+  anova_test(len ~ dose)
 
-##Schreibweise 2
-chick %>%
-  filter(Time == 21) %>% 
-  anova_test(dv = weight,
-             between = Diet)
+## Schreibweise 2
+tooth %>%
+  anova_test(dv = len,
+             between = dose)
 ```
 
-aov = analysis of variances
+Die Funktion `aov()` steht natürlich für "analysis of variances". Die Funktion gibt uns nicht direkt das Ergebnis, was wir von einer ANOVA erwarten, sondern fittet (="baut") erst mal nur das Modell. Wenn wir das ANOVA-Modell auswerten wollen, müssen wir uns das aov-Ergebnis über `summary()` zusammenfassen lassen.
 
-summary() erklären
+Die Funktion `anova_test()` gibt uns direkt das erwartete Ergebnis aus. Innerhalb der Funktion gibt es zwei mögliche Schreibweisen, um das Modell zu spezifizieren: Entweder über die Tilde, oder indem wir Rollen der Variablen separat über die Argumente spezifizieren.
+
+#### Komplexere Modelle
+
+Komplexere Modelle mit mehreren Faktoren lassen sich natürlich auch realisieren. Dafür ein neues Beispiel:
+
+```{r}
+ChickWeight
+```
+
+Messwiederholung
+
+Kovariate
+
+#### Post Hoc Test
+
+Wenn eine ANOVA signifikant wird, interessiert uns meistens noch, welche/r der Mittelwertsunterschiede dafür verantwortlich ist. Im Bezug auf unser Meerschweinchen-Beispiel hängt der Zahnwachstum offensichtlich von der Dosis ab, aber bisher wissen wir nicht, ob die höchste Dosis zu mehr Wachstum als die anderen beiden führt, oder ob sich alle signifikant voneinander unterscheiden, oder ob es nur einen Unterschied im Bezug zur niedrigsten Dosis gibt usw.
 
 ```{r post-hoc}
 # base
 
 # rstatix
-chick %>%
-  filter(Time == 21) %>% 
-  tukey_hsd(weight ~ Diet)
+tooth %>%
+  tukey_hsd(len ~ dose)
 
 # möglicher Input: aov, lm, formula -> nicht an anova_test dranhängen
 # gibt auch andere für andere Zwecke
 ```
 
+Die Funktion `tukey_hsd` erlaubt als Input entweder eine Formel (wie hier) oder das Ergebnis von `aov()` oder `lm()`. Der Output von `anova_test()` funktioniert hier nicht als Input!
+
 boxplot
 
 balken mit fehlern
-
-Messwiederholung
-
-Kovariate
 
 Plot mit Sternchen?
 
@@ -159,20 +231,62 @@ Weitere Alternative: ezANOVA, oneway.test
 
 ### Korrelation
 
+Ziel: Zusammenhang zwischen zwei Variablen feststellen
+
+Datenstruktur: Zwei kontinuierliche Variablen
+
+```{r daten korr}
+Orange
+```
+
 ```{r corr para}
 # r base
+Orange
+cor(Orange$age)
 
 # rstatix
 cor_test
 ```
 
+#### Nonparametrisch: Spearman & Kendall
+
+Nonparametrische Korrelationsberechnungen lassen sich über das Argument `method` spezifizieren.
+
 ```{r corr nonpara}
-cor_test(method = "Spearman") # Kendall
+cor_test(method = "Spearman") # oder auch Kendall
 ```
 
-nonparametrisch
-
 ### Regression
+
+Ziele:
+
+-   Gruppenunterschiede feststellen
+
+-   Werte vorhersagen
+
+-   relevante Prädiktoren für eine bestimmte abhängige Variable identifizieren
+
+Datenstruktur: kontinuierliche abhängige Variable & kategoriale/kontinuierliche Prädiktoren
+
+Hier haben wir als Datenbeispiel den Datensatz swiss, in dem die Fertilität der Population der 47 französisch-sprachigen Provinzen in der Schweiz erfasst wurde. Die weiteren Variablen:
+
+-   `Agriculture`: % of males involved in agriculture as occupation
+
+-   `Examination`: % draftees receiving highest mark on army examination
+
+-   `Education`: % education beyond primary school for draftees
+
+-   `Catholic`: % \'catholic\' (as opposed to \'protestant\')
+
+-   `Infant.Mortality`: live births who live less than 1 year
+
+```{r}
+swiss
+```
+
+```{r}
+summary(lm(Fertility ~ Agriculture + Examination + Education + Catholic, swiss))
+```
 
 einfach
 
@@ -181,6 +295,10 @@ multiple
 Messwiederholung
 
 Kovariate/Moderator
+
+Modellvergleich anova = hierarchisch (Kontrast zu Gewichten)
+
+update()
 
 ## Chi²
 
@@ -201,6 +319,10 @@ add_significance() usw.
 https://epirhandbook.com/en/simple-statistical-tests.html
 
 https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
+
+-   Orange: Baum, Alter, Umfang
+
+-   ToothGrowth: Zahnlänge, supplement type, dose in mg
 
 # Quarto Bericht
 
