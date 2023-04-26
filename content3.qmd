@@ -41,8 +41,9 @@ plot(dnorm, xlim=c(-3,3))
 ```
 
 ```{r}
+#| eval: FALSE
 # base
-shapiro.test(Spalte) # 3-5000
+shapiro.test(Spalte)
 
 # rstatix
 data %>% 
@@ -51,7 +52,7 @@ data %>%
 
 Der Shapiro-Wilk Test testet, ob die Daten signifikant von einer Normalverteilung abweichen. Wenn er signifikant wird, sind die Daten also nicht normalverteilt.
 
-Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk Test, da er dann tendenziell zu schnell signifikant wird, obwohl die Daten einigermaßen normalverteilt sind. Daher bietet es sich an, ab ca. n \> 50 stattdessen einen QQ-Plot anzuschauen.
+Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk Test, da er dann tendenziell zu schnell signifikant wird, obwohl die Daten einigermaßen normalverteilt sind. Daher bietet es sich an, ab ca. n \> 50 stattdessen einen QQ-Plot anzuschauen. Ab n \> 5000 würde der Test nicht mehr ausgeführt werden.
 
 ```{r}
 # normalverteilte Werte erzeugen
@@ -61,6 +62,10 @@ vec.norm <- rnorm(1000, mean = 0, sd=1)
 ggplot()+
   geom_qq(aes(sample=vec.norm))+
   theme_minimal()
+```
+
+```{r}
+shapiro.test(vec.norm)
 ```
 
 Bei einem QQ-Plot werden die Werte, die wir testen, standardisiert und dann gegen die "echte" Standardnormalverteilung geplottet. Wenn unsere Daten perfekt (standard)normalverteilt wären, würde sich eine perfekte 45°-Gerade ergeben. Unsere künstlichen Daten oben sind auf jeden Fall nah genug an der "perfekten Gerade" dran.
@@ -76,14 +81,13 @@ ggplot(flights)+
 
 ### Varianzhomogenität
 
+Bei der Varianzhomogenität geht es darum, dass unterschiedliche Gruppen bezüglich einer Variable die in etwa gleiche Varianz haben.
+
 ```{r}
+#| eval: FALSE
 # rstatix
-leveneTest(len ~ supp, tooth)
-
-flights %>% 
-  levene_test(y = arr_delay, group = month)
-
-levene_test(flights, arr_delay ~ month)
+data %>% 
+  levene_test(abhängigeVariable ~ Gruppe)
 ```
 
 ## Gruppenvergleiche
@@ -104,6 +108,12 @@ ToothGrowth %>%
 
 tooth <- ToothGrowth %>% 
             mutate(dose = as.factor(dose))
+```
+
+```{r}
+ggplot(tooth)+
+  geom_boxplot(aes(x=dose, y=len))+
+  theme_minimal()
 ```
 
 #### Funktionsaufbau
@@ -258,7 +268,8 @@ Noch mehr Faktoren/Variablen lassen sich über c() verknüpfen, z.B. `between = 
 Wenn eine ANOVA signifikant wird, interessiert uns meistens noch, welche/r der Mittelwertsunterschiede dafür verantwortlich ist. Im Bezug auf unser Meerschweinchen-Beispiel hängt der Zahnwachstum offensichtlich von der Dosis ab, aber bisher wissen wir nicht, ob die höchste Dosis zu mehr Wachstum als die anderen beiden führt, oder ob sich alle signifikant voneinander unterscheiden, oder ob es nur einen Unterschied im Bezug zur niedrigsten Dosis gibt usw.
 
 ```{r post-hoc}
-# base
+# aus packages stats
+TukeyHSD(tooth.aov)
 
 # rstatix
 tooth %>%
@@ -267,19 +278,16 @@ tooth %>%
 
 Die Funktion `tukey_hsd` erlaubt als Input entweder eine Formel (wie hier) oder das Ergebnis von `aov()` oder `lm()`. Der Output von `anova_test()` funktioniert hier nicht als Input!
 
-boxplot
+#### Nonparametrisch: Kruskal-Wallis Rank Sum Test
 
-balken mit fehlern
+```{r}
+# base
+kruskal.test(tooth, len ~ dose)
 
-Plot mit Sternchen?
-
-nonparametrisch: kruskal-wallis, posthoc dunn_test()
-
-was macht anova()
-
-Weitere Alternative: ezANOVA, oneway.test
-
-Kontraste
+# rstatix
+tooth %>% 
+  kruskal_test(len ~ dose)
+```
 
 ## Zusammenhänge
 
@@ -365,7 +373,7 @@ summary(swiss.lm)
 #   lm(Fertility ~ Agriculture)
 ```
 
-Mit diesem Output können wir feststellen, welche Prädiktoren signifikant mit der Fertilität zusammenhängen, kontrolliert für die anderen Prädiktoren. Auch hier sehen wir wieder: `lm()` baut nur das Modell, erst `summary()` wertet es aus. In dem Fall gibt es kein Äquivalent von rstatix.
+Mit diesem Output können wir feststellen, welche Prädiktoren signifikant mit der Fertilität zusammenhängen, kontrolliert für die anderen Prädiktoren. Auch hier sehen wir wieder: `lm()` baut nur das Modell, erst `summary()` wertet es aus. In dem Fall gibt es kein Äquivalent von `rstatix`.
 
 Wie oben erwähnt, kann ein anderes mögliches Ziel einer Regression sein, das Regressionsmodell mit dem besten Fit zu den Daten herauszufinden, also nur Prädiktoren nach dem Prinzip "so viel wie nötig, so wenig wie möglich" im finalen Modell zu behalten. Dafür werden mehrere Regressionsgleichungen bezüglich ihrer Varianzaufklärung miteinander verglichen.
 
@@ -387,40 +395,8 @@ Ansonsten lassen sich Messwiederholungen genauso wie in der "Formelschreibweise"
 
 Interaktionen können wir in die Formel durch `*` oder `:` einbauen: `Fertility ~ Education*Catholic`
 
-## Chi²
+## Andere Ressourcen:
 
-```{r}
-# Base
-chisq.test(Spalte1, Spalte2)
+-   Überblick über `rstatx`-Funktionen: https://rpkgs.datanovia.com/rstatix/
 
-# rstatix
-data %>% 
-  table() # noch testen
-  chisq_test()
-```
-
-get_summary_stats() usw.
-
-add_significance() usw.
-
-https://epirhandbook.com/en/simple-statistical-tests.html
-
-https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
-
--   Orange: Baum, Alter, Umfang
-
--   ToothGrowth: Zahnlänge, supplement type, dose in mg
-
-# Quarto Bericht
-
--   Tabelle knitten
-
--   Variablen im Fließtext
-
--   Bibliographie
-
--   Chunks benennen für Übersicht
-
--   Chunk Optionen
-
--   Formatieren für APA Report
+-   Liste von Datasets, die direkt in base R abrufbar sind: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html
