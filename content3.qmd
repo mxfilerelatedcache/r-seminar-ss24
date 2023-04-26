@@ -6,8 +6,12 @@ editor: visual
 ---
 
 ```{r packages}
+#| warning: FALSE
 library(tidyverse)
 library(rstatix)
+library(ggplot2)
+library(car)
+library(nycflights13)
 ```
 
 # Statistik
@@ -32,11 +36,8 @@ Wie ihr wisst, gibt es für die sogennannten parametrischen Testverfahren bestim
 
 ### Normalverteilung
 
-Kurve zeigen
-
 ```{r}
 plot(dnorm, xlim=c(-3,3))
-
 ```
 
 ```{r}
@@ -46,25 +47,44 @@ shapiro.test(Spalte) # 3-5000
 # rstatix
 data %>% 
   shapiro_test(Variable)
-
 ```
 
-density plot
+Der Shapiro-Wilk Test testet, ob die Daten signifikant von einer Normalverteilung abweichen. Wenn er signifikant wird, sind die Daten also nicht normalverteilt.
 
-qq-plot: https://ggplot2.tidyverse.org/reference/geom_qq.html
+Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk Test, da er dann tendenziell zu schnell signifikant wird, obwohl die Daten einigermaßen normalverteilt sind. Daher bietet es sich an, ab ca. n \> 50 stattdessen einen QQ-Plot anzuschauen.
+
+```{r}
+# normalverteilte Werte erzeugen
+vec.norm <- rnorm(1000, mean = 0, sd=1)
+
+# QQ-Plot
+ggplot()+
+  geom_qq(aes(sample=vec.norm))+
+  theme_minimal()
+```
+
+Bei einem QQ-Plot werden die Werte, die wir testen, standardisiert und dann gegen die "echte" Standardnormalverteilung geplottet. Wenn unsere Daten perfekt (standard)normalverteilt wären, würde sich eine perfekte 45°-Gerade ergeben. Unsere künstlichen Daten oben sind auf jeden Fall nah genug an der "perfekten Gerade" dran.
+
+Hier noch ein Beispiel, in dem die Daten nicht normalverteilt sind:
+
+```{r}
+# Daten aus nycflights13 package
+ggplot(flights)+
+  geom_qq(aes(sample=air_time))+
+  theme_minimal()
+```
 
 ### Varianzhomogenität
 
 ```{r}
-data %>% 
-  levene_test(variable)
+# rstatix
+leveneTest(len ~ supp, tooth)
+
+flights %>% 
+  levene_test(y = arr_delay, group = month)
+
+levene_test(flights, arr_delay ~ month)
 ```
-
-### Heteroskedastizität
-
-Ausreißer?
-
-identify_outliers()
 
 ## Gruppenvergleiche
 
@@ -104,7 +124,7 @@ data %>%
 
 Die Tilde `~` ist das Zeichen in R, um einen Zusammenhang, eine Abhängigkeit oder ein Modell zu symbolisieren.
 
-Natürlich gibt es mit Argumenten Möglichkeiten um
+Natürlich gibt es innerhalb von `t.test()/t_test()` mit Argumenten Möglichkeiten um
 
 -   einen t-Test für eine Stichprobe durchzuführen: z.B. `mu = 100`
 
@@ -129,7 +149,7 @@ t.rstatix
 # Normalerweise würde ich die Ergebnisse nicht als Objekte speichern, dient hier nur der Demonstration.
 ```
 
-Unterschied:
+Unterschied zwischen base und rstatix:
 
 -   Liste vs. tibble (im environment zeigen)
 
@@ -138,6 +158,8 @@ Unterschied:
 -   rstatix: Formatierung als Tabelle
 
 -   rstatix garantiert pipe-Kompatibilität, funktioniert bei Base-Funktionen nicht immer (aber manchmal)
+
+Euch wird im Laufe der kommenden Funktionen auffallen, dass die `rstatix` Funktionen netterweise fast immer exakt so heißen wie die `base` Funktionen, nur das statt `.` ein `_` verwendet wird: `t.test()` vs. `t_test()`
 
 #### Nonparametrisch: Wilcoxon Rank Sum Test
 
@@ -163,7 +185,6 @@ Wir können hier bei den Meerschweinchendaten bleiben, da die Dosis-Variable dre
 tooth.aov <- aov(len ~ dose, tooth)
 summary(tooth.aov)
 
-
 #funktioniert nicht:
 
 #tooth %>% 
@@ -180,23 +201,57 @@ tooth %>%
 tooth %>%
   anova_test(dv = len,
              between = dose)
+
+
+# Hybrid aus base und rstatix
+anova_summary(tooth.aov)
 ```
 
 Die Funktion `aov()` steht natürlich für "analysis of variances". Die Funktion gibt uns nicht direkt das Ergebnis, was wir von einer ANOVA erwarten, sondern fittet (="baut") erst mal nur das Modell. Wenn wir das ANOVA-Modell auswerten wollen, müssen wir uns das aov-Ergebnis über `summary()` zusammenfassen lassen.
 
 Die Funktion `anova_test()` gibt uns direkt das erwartete Ergebnis aus. Innerhalb der Funktion gibt es zwei mögliche Schreibweisen, um das Modell zu spezifizieren: Entweder über die Tilde, oder indem wir Rollen der Variablen separat über die Argumente spezifizieren.
 
-#### Komplexere Modelle
-
-Komplexere Modelle mit mehreren Faktoren lassen sich natürlich auch realisieren. Dafür ein neues Beispiel:
-
 ```{r}
-ChickWeight
+# Hybrid aus base und rstatix
+anova_summary(tooth.aov)
 ```
 
-Messwiederholung
+`anova_summary()` kann Outputs von `aov()` verwerten und verpackt sie in das praktische dataframe-Format, das wir von `anova_test()` schon kennen.
 
-Kovariate
+#### Komplexere Modelle
+
+Komplexere Modelle mit mehreren Faktoren lassen sich natürlich auch realisieren. Dafür ein neues Beispiel: Im Datensatz `ChickWeight` wurde das Gewicht von Küken seit Geburt getrackt. Es sind verschiedene Messzeitpunkte und die Art der Ernährung enthalten.
+
+```{r}
+ChickWeight %>% 
+  summary()
+
+view(ChickWeight)
+```
+
+Hier schauen wir uns direkt nur `rstatix` an, da das die eindeutig angenehmere Umsetzung ist.
+
+```{r}
+# rstatix
+# Schreibweise 1
+ChickWeight %>% 
+  anova_test(weight ~ Diet + Time + Error(Chick/Time))
+
+# Schreibweise 2
+ChickWeight %>% 
+  anova_test(dv = weight,
+             between = Diet,
+             within = Time,
+             wid = Chick)
+```
+
+Bei Daten mit Messwiederholung müssen wir spezifizieren, welcher Faktor mehrmals gemessen wurde und an welcher Variable erkannt wird, welche Messungen zu welchem "Probanden" gehören. In der Formelschreibweise lässt sich das durch den Term `Error(ProbandenID/wiederholterFaktor`) ausdrücken. In der Argumentschreibweise spezifizieren wir `within = wiederholterFaktor` und `wid = ProbandenID`
+
+`anova_test()` testet netterweise die Sphärizität direkt mit. Wenn der Mauchly-Test signifikant wird, müssen wir die messwiederholten Faktoren (hier: Time und die Interaktion Diet:Time) im unteren Abschnitt des Outputs interpretieren. Die Spalten mit "GG" sind dabei korrigiert nach Greenhouse-Geisser, die Spalten mit "HF" nach Huynh-Feldt.
+
+Kovariaten können wir in `anova_test()` über das Argument `covariate =` einfügen, so wie bei `dv =`, `between =` usw.
+
+Noch mehr Faktoren/Variablen lassen sich über c() verknüpfen, z.B. `between = c(Diet, Species)`
 
 #### Post Hoc Test
 
@@ -208,9 +263,6 @@ Wenn eine ANOVA signifikant wird, interessiert uns meistens noch, welche/r der M
 # rstatix
 tooth %>%
   tukey_hsd(len ~ dose)
-
-# möglicher Input: aov, lm, formula -> nicht an anova_test dranhängen
-# gibt auch andere für andere Zwecke
 ```
 
 Die Funktion `tukey_hsd` erlaubt als Input entweder eine Formel (wie hier) oder das Ergebnis von `aov()` oder `lm()`. Der Output von `anova_test()` funktioniert hier nicht als Input!
@@ -221,11 +273,13 @@ balken mit fehlern
 
 Plot mit Sternchen?
 
-nonparametrisch: kruskal-wallis
+nonparametrisch: kruskal-wallis, posthoc dunn_test()
 
 was macht anova()
 
 Weitere Alternative: ezANOVA, oneway.test
+
+Kontraste
 
 ## Zusammenhänge
 
@@ -235,25 +289,41 @@ Ziel: Zusammenhang zwischen zwei Variablen feststellen
 
 Datenstruktur: Zwei kontinuierliche Variablen
 
+Als Beispiel haben wir den `cars` Datensatz, der Geschwindigkeit und Bremsweg von Autos enthält.
+
 ```{r daten korr}
-Orange
+get_summary_stats(cars)
+
+ggplot(cars)+
+  geom_point(aes(speed, dist))+
+  theme_minimal()
 ```
 
-```{r corr para}
+```{r corr}
 # r base
-Orange
-cor(Orange$age)
+cor(cars$speed, cars$dist)
 
 # rstatix
-cor_test
+cars %>% 
+  cor_test(speed, dist)
+
+# psych
+library(psych)
+corr.test(cars$speed, cars$dist)
 ```
+
+Base R kann Korrelationen berechnen, hat aber standardmäßig keinen Test auf Signifikanz enthalten. Hier wird der Nutzen von rstatix besonders deutlich.
+
+Als Ergänzung noch die Funktion `corr.test()` aus dem `psych` Package.
 
 #### Nonparametrisch: Spearman & Kendall
 
 Nonparametrische Korrelationsberechnungen lassen sich über das Argument `method` spezifizieren.
 
 ```{r corr nonpara}
-cor_test(method = "Spearman") # oder auch Kendall
+#| eval = FALSE
+data %>% 
+  cor_test(method = "Spearman") # oder auch Kendall
 ```
 
 ### Regression
@@ -266,6 +336,8 @@ Ziele:
 
 -   relevante Prädiktoren für eine bestimmte abhängige Variable identifizieren
 
+-   Modell mit bestem Fit finden
+
 Datenstruktur: kontinuierliche abhängige Variable & kategoriale/kontinuierliche Prädiktoren
 
 Hier haben wir als Datenbeispiel den Datensatz swiss, in dem die Fertilität der Population der 47 französisch-sprachigen Provinzen in der Schweiz erfasst wurde. Die weiteren Variablen:
@@ -276,7 +348,7 @@ Hier haben wir als Datenbeispiel den Datensatz swiss, in dem die Fertilität der
 
 -   `Education`: % education beyond primary school for draftees
 
--   `Catholic`: % \'catholic\' (as opposed to \'protestant\')
+-   `Catholic`: % 'catholic' (as opposed to 'protestant')
 
 -   `Infant.Mortality`: live births who live less than 1 year
 
@@ -285,20 +357,35 @@ swiss
 ```
 
 ```{r}
-summary(lm(Fertility ~ Agriculture + Examination + Education + Catholic, swiss))
+swiss.lm <- lm(Fertility ~ Agriculture + Examination + Education + Catholic, swiss)
+summary(swiss.lm)
+
+#funktioniert nicht:
+# swiss %>% 
+#   lm(Fertility ~ Agriculture)
 ```
 
-einfach
+Mit diesem Output können wir feststellen, welche Prädiktoren signifikant mit der Fertilität zusammenhängen, kontrolliert für die anderen Prädiktoren. Auch hier sehen wir wieder: `lm()` baut nur das Modell, erst `summary()` wertet es aus. In dem Fall gibt es kein Äquivalent von rstatix.
 
-multiple
+Wie oben erwähnt, kann ein anderes mögliches Ziel einer Regression sein, das Regressionsmodell mit dem besten Fit zu den Daten herauszufinden, also nur Prädiktoren nach dem Prinzip "so viel wie nötig, so wenig wie möglich" im finalen Modell zu behalten. Dafür werden mehrere Regressionsgleichungen bezüglich ihrer Varianzaufklärung miteinander verglichen.
 
-Messwiederholung
+```{r}
+# Modelle bauen
+swiss.lm1 <- lm(Fertility ~ 1, swiss)
+swiss.lm2 <- update(swiss.lm1, ~. + Education)
+swiss.lm3 <- update(swiss.lm2, ~. + Catholic)
 
-Kovariate/Moderator
+# Modelle vergleichen
+anova(swiss.lm1, swiss.lm2, swiss.lm3)
+```
 
-Modellvergleich anova = hierarchisch (Kontrast zu Gewichten)
+Mithilfe der Funktion `update()` können wir uns sparen, das bisherige Modell noch mal komplett einzutippen. Sie funktioniert nach dem Prinzip `update(altes Modell, neues Modell)`. Mit `~.` kürzen wir das alte Modell ab, danach ergänzen wir neue Prädiktoren und/oder Interaktionen.
 
-update()
+Die Funktion `anova()` ist potentiell verwirrend: Wir rechnen hier offensichtlich keine ANOVA, wie wir sie weiter oben kennengelernt haben. Wir führen allerdings schon eine "Analyse der Varianzen" durch - nur beziehen sich die Varianzen auf jeweils die aufgeklärte Varianz der Regressionsmodelle. `anova()` kann als Input nur "fitted model objects" verwerten, also bereits erstellte Modelle, und gibt als Output einen Vergleich dieser Modelle.
+
+Ansonsten lassen sich Messwiederholungen genauso wie in der "Formelschreibweise" der ANOVA über `+ Error(ProbandenID/messwiederholteVariable)` spezifizieren.
+
+Interaktionen können wir in die Formel durch `*` oder `:` einbauen: `Fertility ~ Education*Catholic`
 
 ## Chi²
 
