@@ -1,0 +1,152 @@
+---
+title: "using_quarto"
+author: "Simon Krukowski"
+---
+
+# Berichte in Quarto
+
+Wir haben nun kennengelernt, wie wir mit Hilfe statistischer Analysen Daten mit R auswerten können. Dabei haben wir die Ergebnisse direkt in R ausgewertet - im Output der jeweiligen Chunks. Doch was ist, wenn dir unsere Ergbenisse mit anderen Teilen wollen? Nicht jede:r hat R & R-Studio installiert, und kann ganz einfach unsere `.qmd` Dateien öffnen. Daher ist es wichtig, sich mit dem Bereitstellen von wissenschaftlichen Ergebnissen zu beschäftigen.
+
+Zwar haben wir in der ersten Sitzung kurz kennengelernt, wie Quarto mit seinen Chunks & HTML Output funktioniert, diese Sitzung soll allerdings dazu dienen, dieses Wissen zu festigen. Dabei wollen wir verschiedene Möglichkeiten zeigen, wie wir Ergebnisse in verschiedener Art und Weise vermitteln können. Dabei ist die Art der Darbietung, auf die wir uns fokussieren `html`. Zwar ist der Export in `.docx` und `.pdf` ebenfalls möglich, diesen wollen wir aber euch aber nur zum Schluss kurz zeigen.
+
+# Spotlight Chunk Options
+
+Wir haben bereits kurz kennengelernt, was die Options zu Beginn eines Chunks (bspw. `#| eval: false` ) bewirken. Das wollen wir uns nun nochmal genauer anschauen.
+
+## Packages & Quarto-Rendering
+
+Ihr solltet mittlerweise wissen, wir ihr Packages sowohl installiert als auch aktiviert. Doch was ist, wenn ihr euer Quarto Dokument für die Übergabe bspw. an eine Dozentin/Vorgesetzte rendern wollt?
+
+> Frage: Wir würdet ihr dann vorgehen?
+
+Hierbei kann es passieren, dass Quarto beim Rendern bspw. folgende Fehlermeldung schmeißt:
+
+> Error: could not find function "%\>%"
+
+Etwaige Fehlermeldungen können immer mal passieren, und zu Anfang ganz schön für Verwirrung sorgen.
+
+> Frage: Was ist hier passiert?
+
+Da wir das package `dplyr`, in dem der Pipe-Operator `%>%` vorhanden ist, nicht aktiviert haben, weiß Quarto nicht, wie es diesen interpretieren muss. Dabei ist es auch egal, ob ihr das entsprechende Package in euer laufenden R-Session bereits aktiviert habt: Wenn es um das Rendern geht, könnt ihr jedes Quarto-Dokument als in-sich geschlossenes System betrachten - daher ist es nötig, alle notwendigen Packages zu aktivieren.
+
+> Frage: Was für eine Vorgehensweise bietet sich dafür an?
+
+Daher bietet es sich an, **gleich zu Beginn** des Dokuments einen Basis "Konfigurations-/Packagechunk" zu erstellen, in dem ihr alle wichtigen Dinge definiert. Die Position ist relevant, da Quarto das Dokument ja von oben nach unten rendert, und somit die Packages zunächst aktiviert werden müssen, bevor deren Funktionen verwendet werden können.
+
+Dieser könnte dann etwa so aussehen:
+
+```{r}
+library(tidyverse)
+library(rstatix)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+Natürlich wollen wir nicht immer, dass das dann aber gleich auch das erste ist, was eine potenzielle Rezipientin unseres Berichts sieht.
+
+> Frage: Wie können wir sicherstellen, dass dieser Chunk im finalen Bericht nicht angezeigt wird?
+
+```{r}
+#| include: false
+library(tidyverse)
+library(rstatix)
+library(datasets)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+Perfekt! Wir haben nun alles was wir brauchen, ohne dass man sieht, was wir gemacht haben.
+
+## Kurzer Exkurs: Packages : : explizit machen
+
+Es soll vorkommen, dass ein wissenschaftlicher Quarto-Bericht ganz schön lang wird, und über mehrere Wochen/Monate hinweg erstellt wird, bevor er dann gerendert wird. Da kann es sein, dass wir uns gar nicht mehr so gut erinnern können, was wir alles für Packages verwendet haben. Dagegen gibt es zwei Möglichkeiten:
+
+Entweder, ihr aktiviert ganz bewusst jedes mal, wenn ihr ein besonderes Package verwendet (bspw. `wesanderson`), dieses im jeweiligen Chunk - denn doppeltes Aktivieren von Packages (im Gegensatz zu `install.packages()` ist erstmal nicht weiter problematisch:
+
+```{r}
+library(wesanderson)
+
+iris %>% 
+  ggplot()+
+  geom_density(aes(x=Sepal.Width,fill=Species)) +
+  scale_fill_manual(values=wes_palette("GrandBudapest1",type="discrete"))+
+  theme_classic()
+```
+
+Ihr könnt Packages aber auch explizit nutzen über den `::` Operator. Gleicher Chunk Output wie oben kann dann ohne `library()` erreicht werden:
+
+```{r}
+iris %>% 
+  ggplot()+
+  geom_density(aes(x=Sepal.Width,fill=Species)) +
+  scale_fill_manual(values=wesanderson::wes_palette("GrandBudapest1",type="discrete"))+
+  theme_classic()
+```
+
+## Chunk Options 
+
+### #\| eval
+
+Wir wollen nun die verschiedenen Chunk-Options etwas beleuchten. Fangen wir mit dem relevantesten an, `eval`. Angenommen, wir wollen uns für den eben benutzten `ToothGrowth` Datensatz kurz die Summary anschauen, wollen diese aber nicht in unserem Bericht integrieren. Dann können wir das so tun über `#| eval: false` in der ersten Zeile des Chunks tun. Achtet auf die Leerstelle nach dem `|` ! RStudio sollte euch hier die versch. Options vorschlagen (bspw. `true`):
+
+```{r}
+#| eval: false
+summary(ToothGrowth)
+```
+
+Im final gerenderten Dokument sollte der obige Chunk nicht angezeigt sein.
+
+### #\| include
+
+Je nach Art des Berichts (simples Zeigen der Ergebnisse vs. zeigen der Ergebnisse + Code) kann es sinnvoll sein, **auch den Code** zu zeigen. Dabei ist es wichtig zu verstehen, dass der Code **per default** angezeigt wird. Wenn wir nun wollen, dass dieser für einzelne Chunks ausgeblendet wird, können wir `#| include: false` verwenden:
+
+```{r}
+#| include: false
+summary(ToothGrowth)
+```
+
+Natürlich können wir mehere dieser Optionen kombineren (als einzelne Zeilen).
+
+### #\| output
+
+Manchmal wollen wir auch nur den Code ausführen, **ohne die Ergebnisse zu zeigen**. Dabei hilft die `#| output` Option:
+
+```{r}
+#| output: false
+summary(ToothGrowth)
+```
+
+### #\| warning
+
+Wenn wir bspw. Packages aktivieren, kann es oft zu Warnungen kommen, welche im finalen Bericht unschön sind. Dabei kann `#| warning` helfen:
+
+```{r}
+#| warning: false
+library(dplyr)
+```
+
+Manchmal kann es auch sein, dass wir Probleme dabei haben, einen Chunk auszuführen und nicht gleich wissen, wo das Problem ist. Um Dokumente trotzdem zu rendern, gibt es zwei Möglichkeiten: `#| error` und `#| eval` :
+
+### #\| error
+
+```{r}
+#| error: false
+
+2+"2"
+```
+
+### #\| include
+
+```{r}
+#| include: false
+
+2+"2"
+```
+
+Außerdem gibt es eine Vielzahl weiterer Optionen für bspw. das Anzeigen von Figures etc. Diese könnt ihr hier einsehen:
+
+```{r}
+
+```
