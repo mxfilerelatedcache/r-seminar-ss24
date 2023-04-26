@@ -1,0 +1,80 @@
+---
+title: "Hausaufgabe 2: Deskriptives"
+author: "Kira Wolff & Simon Krukowski"
+---
+
+# Beschreibung
+
+Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.
+
+Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.
+
+### Punkte
+
+Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als **\[Bonus\]** markiert sind, geben keine Punkte.
+
+### Für Experten
+
+Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als **\[Für Experten\]** markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).
+
+### Abgabe
+
+Um eure Hausaufgabe abzugeben, ladet diese bitte als `.qmd` Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. `hausaufgabe2_simon_krukowski.qmd`, und schreibt hier in der Datei oben bei `author` euren Namen rein.
+
+# Aufgaben
+
+### Aufgabe 1 \[1 Punkt\]
+
+-> Packages aktivieren
+-> Datensatz einlesen
+-> Farbpalette von colorhunt.co definieren
+-> warnings = false
+-> include = false
+
+### Aufgabe 2 \[1 Punkt\]
+
+-> Datensatz anschauen, Idee bekommen
+-> df-print: paged damit es nicer aussieht
+
+### Aufgabe 3 \[1 Punkt\]
+
+->Voraussetzung prüfen -\> Normalverteilungstest -\> Welche Methode ist die angemessene?
+
+### Aufgabe 4 \[1 Punkt\]
+
+-\> t-Test -\> Sicherstellen dass das Format der Daten das richtige ist -\> vllt. numeric als Kodierung, as.factor() nötig -\> gerichtet
+
+### Aufgabe 5 \[1 Punkt\]
+
+-\> Andere Spalte/anderer Datensatz. Keine Normalverteilung? Was tun? -\> Wilcoxon Rank Sum Test
+
+### Aufgabe 6 \[1 Punkt\]
+
+-> Anova mit CO2 und Messwiederholung
+-> Long/Wide?
+```{r}
+datasets::CO2
+```
+
+### Aufgabe 7 \[1 Punkt\]
+
+-> Boxplot?
+-> Palette verwenden
+
+
+### Aufgabe 8 \[1 Punkt\]
+
+-> Bivariates Streudiagramm
+-> geom_Smooth um Zusammenhang darzustellen
+-> Korrelation rechnen
+
+### Aufgabe 9 \[1 Punkt\]
+
+-> Unterschied zwischen Gruppen? Einfärben
+-> Einführung dieser Variable als weiterer Prädiktor im Modell
+
+### Aufgabe 10 \[1 Punkt\]
+
+-> Berichtet die Ergebnisse der Regression, mit r2 und df etc. (ohne irgendwelche packages wie Stargazer)
+-> Bonus: nutzt paste0
+
