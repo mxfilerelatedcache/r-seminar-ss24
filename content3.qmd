@@ -41,8 +41,9 @@ plot(dnorm, xlim=c(-3,3))
 ```
 
 ```{r}
+#| eval: FALSE
 # base
-shapiro.test(Spalte) # 3-5000
+shapiro.test(Spalte)
 
 # rstatix
 data %>% 
@@ -51,7 +52,7 @@ data %>%
 
 Der Shapiro-Wilk Test testet, ob die Daten signifikant von einer Normalverteilung abweichen. Wenn er signifikant wird, sind die Daten also nicht normalverteilt.
 
-Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk Test, da er dann tendenziell zu schnell signifikant wird, obwohl die Daten einigermaßen normalverteilt sind. Daher bietet es sich an, ab ca. n \> 50 stattdessen einen QQ-Plot anzuschauen.
+Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk Test, da er dann tendenziell zu schnell signifikant wird, obwohl die Daten einigermaßen normalverteilt sind. Daher bietet es sich an, ab ca. n \> 50 stattdessen einen QQ-Plot anzuschauen. Ab n \> 5000 würde der Test nicht mehr ausgeführt werden.
 
 ```{r}
 # normalverteilte Werte erzeugen
@@ -61,6 +62,10 @@ vec.norm <- rnorm(1000, mean = 0, sd=1)
 ggplot()+
   geom_qq(aes(sample=vec.norm))+
   theme_minimal()
+```
+
+```{r}
+shapiro.test(vec.norm)
 ```
 
 Bei einem QQ-Plot werden die Werte, die wir testen, standardisiert und dann gegen die "echte" Standardnormalverteilung geplottet. Wenn unsere Daten perfekt (standard)normalverteilt wären, würde sich eine perfekte 45°-Gerade ergeben. Unsere künstlichen Daten oben sind auf jeden Fall nah genug an der "perfekten Gerade" dran.
