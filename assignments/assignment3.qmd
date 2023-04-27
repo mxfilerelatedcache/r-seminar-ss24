@@ -34,11 +34,7 @@ Außerdem kann es hilfreich sein, dort direkt eine Farbpalette (bspw. mit 4 Farb
 Stellt außerdem sicher, dass der Chunk keine Warnungen anzeigt beim rendern (hint: chunk-options).
 
 ```{r}
-#| warning: false
 
-library(datarium)
-dataset <- genderweight
-palette <- c("#8B1874","#B71375","#FC4F00","#F79540")
 ```
 
 ### Aufgabe 2 \[1 Punkt\]
@@ -46,11 +42,7 @@ palette <- c("#8B1874","#B71375","#FC4F00","#F79540")
 Schaut euch den Datensatz an, um ein Gefühl dafür zu bekommen. Gebt euch dazu wahlweise den Datensatz selbst, oder bspw. gruppierte Outputs über `dplyr` an. Wir wollen, dass die Tabellenoutputs nicht im default Format dargestellt werden. Stellt das entsprechend im YAML Header ein.
 
 ```{r}
-dataset %>% 
-  group_by(group) %>% 
-  summarise(mean(weight))
 
-dataset
 ```
 
 ### Aufgabe 3 \[1 Punkt\]
@@ -58,10 +50,7 @@ dataset
 Prüft nun die Variable `weight` auf Normalverteilung. Macht das wahlweise über einen Test, oder ein Diagramm:
 
 ```{r}
-dataset %>% 
-  ggplot()+
-    geom_qq(aes(sample=weight))+
-    theme_minimal()
+
 ```
 
 Ist die Variable normalverteilt? Begründe kurz:
@@ -73,7 +62,7 @@ Ist die Variable normalverteilt? Begründe kurz:
 Unabhängig davon, was wir gerade herausgefunden haben, entscheiden wir uns dazu, einen t-Test zu rechnen, und die Mittelwerte von `weight` miteinander zu vergleichen. Wir haben die Vermutung, dass Männer ein höheres Gewicht haben. Berücksichtigt das und rechnet den Test (hint: gerichtetes Testen). Was kommt heraus?
 
 ```{r}
-t.test(weight ~ group, dataset, alternative = "less")
+
 ```
 
 *Antwort hier*
@@ -97,7 +86,7 @@ Angenommen, wir hätten in der Zwischenzeit herausgefunden, dass die Variable `w
 -\> Anova mit CO2 und Messwiederholung -\> Long/Wide?
 
 ```{r}
-datasets::CO2
+
 ```
 
 ### Aufgabe 7 \[1 Punkt\]
@@ -113,16 +102,13 @@ Wir interessieren uns nun auch für Zusammenhänge zwischen Daten. Dazu schauen 
 -   Eine Regressionsgrade (hint: `geom_smooth()` ist euer Freund)
 
 ```{r}
-iris %>% 
-  ggplot(aes(x=Sepal.Length,y=Sepal.Width)) +
-  geom_point()+
-  geom_smooth(method="lm")
+
 ```
 
 Rechnet auch eine Pearson-Korrelation zwischen den beiden Variablen:
 
 ```{r}
-cor(iris$Sepal.Length,iris$Sepal.Width)
+
 ```
 
 Was lässt sich über den Zusammenhang der beiden Variablen sagen?
@@ -134,16 +120,13 @@ Was lässt sich über den Zusammenhang der beiden Variablen sagen?
 Wir haben nun die Annahme, dass die Spezies der Pflanzen außerdem einen Einfluss auf den Zusammenhang zwischen den beiden Variablen hat. Dazu sollt ihr zunächst die Punkte in Abhängigkeit von `Species` einfärben:
 
 ```{r}
-iris %>% 
-  ggplot(aes(x=Sepal.Length,y=Sepal.Width)) +
-  geom_point(aes(color=Species))+
-  geom_smooth(method="lm")
+
 ```
 
 Wir haben nun das Gefühl, dass ein Zusammenhang zwischen den beiden Variablen besteht und uns dazu entschieden, ein Regressionsmodell zu berechnen, in dem wir `Sepal.Length` als abhängige Variable haben, sowie `Species` und `Sepal.Width` als Prädiktoren. Berechnet ein solches Modell und speichert es als `model`:
 
 ```{r}
-model <- lm(Sepal.Length ~ Sepal.Width + Species, iris)
+
 ```
 
 ### Aufgabe 10 \[1 Punkt\]
@@ -151,7 +134,7 @@ model <- lm(Sepal.Length ~ Sepal.Width + Species, iris)
 Nun wollen wir die Ergebnisse der Regressionsanalyse entsprechend berichten. Aus Übungsgründen sollt ihr dabei auf Packages wie `stargazer()` verzichten. Ihr habt im Seminar inline-Code gelernt. Verwendet diesen, um die Ergebnisse entsprechend zu berichten. Dazu bietet es sich an, den Output von `summary()` in einem Objekt zu speichern, und dann auf die Werte zuzugreifen. Denkt dran: über den `$` Operator sowie `['variable']` könnt ihr auf einzelne Werte zugreifen.
 
 ```{r}
-sum <- summary(model)
+
 ```
 
 Ergänzt also die F-Statistik in folgendem Satz:
@@ -162,4 +145,4 @@ Ergänzt also die F-Statistik in folgendem Satz:
 
 Was macht die `paste0` Funktion und könnte man die obige Lösung damit vereinfachen?
 
--\> Berichtet die Ergebnisse der Regression, mit r2 und df etc. (ohne irgendwelche packages wie Stargazer) -\> Bonus: nutzt paste0
+
