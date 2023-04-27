@@ -1,5 +1,5 @@
 ---
-title: "using_quarto"
+title: "Berichte in Quarto"
 author: "Simon Krukowski"
 ---
 
@@ -85,7 +85,7 @@ iris %>%
   theme_classic()
 ```
 
-## Chunk Options 
+## Chunk Options
 
 ### #\| eval
 
@@ -131,23 +131,207 @@ Manchmal kann es auch sein, dass wir Probleme dabei haben, einen Chunk auszufüh
 
 ### #\| error
 
+Sollte ein error entstehen ohne den Code zu unterbrechen ist das eine gute Wahl:
+
 ```{r}
+#| eval: false
 #| error: false
 #| eval: false
 
 2+"2"
 ```
 
-### #\| include
+### #\| eval
 
 ```{r}
-#| include: false
+#| eval: false
 
 2+"2"
 ```
 
-Außerdem gibt es eine Vielzahl weiterer Optionen für bspw. das Anzeigen von Figures etc. Diese könnt ihr hier einsehen:
+Außerdem gibt es eine Vielzahl weiterer Optionen für bspw. das Anzeigen von Figures etc. Diese könnt ihr auf [**posit.co**](https://quarto.org/docs/computations/execution-options.html) einsehen.
+
+## #\| results
+
+Ihr könnt auch entscheiden, wie die results aussehen sollen. Manchmal kann es bspw. hilfreich sein, diese so wie sie sind darzustellen. Das könnt ihr über die Option machen:
+
+`#| results: asis`
+
+# Outputs
+
+## Tabellen
+
+Im Rahmen der Regression habt ihr das `swiss` Package kennengelernt. Üblicherweise würden wir uns die Daten zunächst anschauen bzw. wollen, dass unsere Rezipientinnen diese anschauen können. Standardmäßig rendert Quarto Tabellen allerdings etwas unschön:
 
 ```{r}
+swiss
+```
 
+Eine Lösung dafür sind die Optionen `df-print` im YAML Header. Hierfür gibt es die Optionen:
+
+-   `default`
+
+-   `kable`
+
+-   `tibble`
+
+-   `paged`
+
+Diese könnt ihr dann entsprechend oben definieren:
+
+```{r}
+#| eval: false
+---
+title: "Berichte in Quarto"
+author: "Simon Krukowski"
+df-print: paged
+---
+```
+
+Angenommen, wir wollen das gesamte Ergebnis eines t-Tests direkt berichten. Hierfür bietet sich das `rstatix` package an, da dieses den Output direkt als `tibble` speichert. Zeigen wir uns also den t-Test für `ToothGrowth` an:
+
+```{r}
+ToothGrowth %>% 
+  mutate(dose = as.factor(dose)) %>% 
+  t_test(len ~ supp,var.equal = TRUE)
+```
+
+> Frage: Probiert die verschiedenen Funktionen aus. Wie unterscheiden sich die Outputs?
+
+Je nach Option solltet ihr nun verschieden-gestylte Tabellen Output sehen. Am besten ihr benutzt die, die euch am besten gefällt.
+
+## In-Text Variablen
+
+Manchmal wollt ihr im Fließtext Ergebnisse beschreiben, dabei aber flexibel bleiben und diese nicht "fest" in den Text schreiben. Auch das ist mit Quarto möglich.
+
+Angenommen, wir wollen den Koeffizient für `Agriculture` unseres eben gerechneten Regressionsmodells im Text beschreiben:
+
+```{r}
+# Erneut rechnen just to be safe
+swiss.lm <- lm(Fertility ~ Agriculture + Examination + Education + Catholic, swiss)
+```
+
+Über `` `r `` können wir (im Source Editor) in-text ausführbaren Code integrieren. Um den Wert zu bekommen, müssen wir folgendes machen:
+
+```{r}
+swiss.lm$coefficients['Agriculture']
+```
+
+Und der finale Satz könnte dann so aussehen:
+
+> Für unser Regressionsmodeel ergeben sich die Koeffizienten `r round(swiss.lm$coefficients['Agriculture'],3)` für Agriculture, (...)
+
+Wir sehen also, dass wir auch im Text selbst Variablen anzeigen können.
+
+# Statische Figures & Tabellen
+
+Machmal kann es auch vorkommen, dass wir statische Dinge in unseren Bericht integrieren wollen. So könnte man bspw. zur Veranschaulichung von Konzepten Bilder einfügen. Das könnt ihr in RStudio ganz einfach im Visual Editor über das kleine Bild oben machen, und dann entsprechend die Einstellungen anpassen (die Grafik hier wurde natürlich über Quarto/RStudio eingebettet)
+
+![](assets/img/chooseimage.png){fig-align="center" width="800"}
+
+Die Einstellungen, die ihr über das GUI eingebt, werden eigentlich nur übernommen und in markdown code überführt, im obigen Fall bspw:
+
+> `![](assets/img/chooseimage.png){fig-align="center" width="800"}`
+
+Ihr seht, dass wir mit `css` Keywords die Eigenschaften (e.g., "center) übergeben.
+
+\
+Manchmal kann es auch vorkommen, dass wir Tabellen haben, die wir gar nicht dynamisch erstellt haben, sondern die wir manuell eingeben wollen. Dafür müssen wir natürlich nicht extra ein R-Objekt erstellen, welches wir dann darstellen, sondern wir können es nach folgender Syntax direkt im Text-Teil in Quarto eingeben. Die Syntax sieht wie folgt aus:
+
+```{r}
+#| eval: false
+
+| default | left-aligned | right-aligned | centered |
+|---------|:-----|------:|:------:|
+| student1| 12   |    12 |   12   |
+| student2| 123  |   123 |  123   |
+| student3| 1    |     1 |   1    |
+
+: Demonstration of pipe table syntax
+```
+
+Über den `:` Operator könnt ihr bspw. das alignment innerhalb der Zellen angeben. Solch eine Markdown-Table Syntax kann bspw. über [Online Editoren](https://tablesgenerator.com/markdown_tables) erstellt werden.
+
+So sieht das Ganze dann aus:
+
+| default  | left-aligned | right-aligned | centered |
+|----------|:-------------|--------------:|:--------:|
+| student1 |              |            12 |    12    |
+| student2 | 123          |           123 |   123    |
+| student3 | 1            |             1 |    1     |
+
+: Demonstration of pipe table syntax
+
+Ihr könntet diese Dinge aber auch bspw. über den Visual Editor in RStudio lösen.
+
+# Überblick behalten
+
+Vielleicht habt ihr beim Rendern bereits eine ähnliche Fehlermeldung bekommen:
+
+> > error occurred in unnamed-chunk-128 (...)
+
+Falls wir uns nun um diesen Fehler kümmern wollten, so wüssten wir natürlich erstmal nicht, welcher der betroffene Chunk ist. Daher bietet es sich an, die Chunks gleich zu benennen. Dies geht...
+
+`{r chunk_name}`
+
+...am Anfang des Chunks.
+
+# Zitationen
+
+Ihr könnt auch direkt in Quarto zitieren. Dazu müsst ihr lediglich eure Referenzen als `.bib` vorliegen haben, und diese dann oben im YAML-Header eingeben:
+
+```{r}
+#| eval: false
+---
+title: "Berichte in Quarto"
+author: "Simon Krukowski"
+df-print: paged
+bibliography: "assets/bibliographies/references.bib"
+---
+```
+
+Ihr könnt auch euer R-Studio mit verschiedenen Bibliotheken (bspw. Zotero) verknüpfen, und dann auf alle Quellen dort zugreifen.
+
+# Publikationsbereite Outputs
+
+Manchmal wollen wir direkt aus R unsere Outputs in einem Format haben, das quasi publikationsbereit ist. In Abhängigkeit des wissenschaftlichen Hintergrundes gibt es da natürlich verschiedene Guidelines, wir orientieren uns hier an den für Komedia-Studierende relevanten APA Guidelines.
+
+Angenommen, ihr habt einen Datensatz wie `ToothGrowth` und wollt diesen im deskriptiven Teil eurer Arbeit berichten. Je nachdem, was ihr in `df-print` definiert habt, könnte so ein table zwar in Ordnung aussehen:
+
+```{r}
+ToothGrowth
+```
+
+So richtig optimal ist das aber nicht. Hier kann das `stargazer()` package sehr hilfreich sein. Schauen wir uns eine solche Tabelle für das `attitude` dataset an. Dabei ist die Chunk-Option `#| results: asis`.
+
+```{r}
+#| results: asis
+stargazer::stargazer(attitude,type = "html")
+```
+
+> Frage: Was fällt auf?
+
+Über die Option `summary = FALSE` könnt ihr summaries ausschalten, bspw. wenn ihr eh eine Ergebnistabelle aus einem T-Test habt:
+
+```{r}
+#| results: asis
+ToothGrowth %>% 
+  mutate(dose = as.factor(dose)) %>% 
+  t_test(len ~ supp,var.equal = TRUE) %>% 
+  stargazer::stargazer(type = "html",summary = F)
+```
+
+Und was ist mit komplexeren Modellen oder Regressionen? Hier kann die manuelle Darstellung sehr aufwändig sein. Aber auch hier lässt uns `stargazer()` nicht im Stich:
+
+```{r}
+#| results: asis
+swiss.lm %>% stargazer::stargazer(type="html")
+```
+
+## Und LaTeX?
+
+Solltet ihr mit LaTeX bspw. über Overleaf arbeiten, so ist `stargazer` sogar noch besser geeignet. Die default Einstellung ist, euch den entsprechenden LaTeX geben:
+
+```{r}
+swiss.lm %>% stargazer::stargazer()
 ```
