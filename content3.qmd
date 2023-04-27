@@ -43,11 +43,11 @@ plot(dnorm, xlim=c(-3,3))
 ```{r}
 #| eval: FALSE
 # base
-shapiro.test(Spalte)
+shapiro.test(Daten$Spalte)
 
 # rstatix
 data %>% 
-  shapiro_test(Variable)
+  shapiro_test(Spalte)
 ```
 
 Der Shapiro-Wilk Test testet, ob die Daten signifikant von einer Normalverteilung abweichen. Wenn er signifikant wird, sind die Daten also nicht normalverteilt.
@@ -77,6 +77,14 @@ Hier noch ein Beispiel, in dem die Daten nicht normalverteilt sind:
 ggplot(flights)+
   geom_qq(aes(sample=air_time))+
   theme_minimal()
+
+flights
+
+ggplot(flights)+
+  geom_qq(aes(sample=dep_delay))+
+  theme_minimal()
+
+hist(flights$dep_delay)
 ```
 
 ### Varianzhomogenität
@@ -88,6 +96,11 @@ Bei der Varianzhomogenität geht es darum, dass unterschiedliche Gruppen bezügl
 # rstatix
 data %>% 
   levene_test(abhängigeVariable ~ Gruppe)
+
+flights %>% 
+  levene_test(dep_delay ~ factor(month))
+
+
 ```
 
 ## Gruppenvergleiche
@@ -103,6 +116,8 @@ Zur Veranschaulichung verwenden wir hier den Datensatz `ToothGrowth`: Hier wurde
 ```{r ttest data}
 summary(ToothGrowth)
 
+view(ToothGrowth)
+
 ToothGrowth %>% 
   get_summary_stats()
 
@@ -112,7 +127,7 @@ tooth <- ToothGrowth %>%
 
 ```{r}
 ggplot(tooth)+
-  geom_boxplot(aes(x=dose, y=len))+
+  geom_boxplot(aes(x=supp, y=len))+
   theme_minimal()
 ```
 
@@ -161,7 +176,7 @@ t.rstatix
 
 Unterschied zwischen base und rstatix:
 
--   Liste vs. tibble (im environment zeigen)
+-   Liste vs. tibble
 
 -   base: Zusatzinfos - Zuordnung, Verständnis
 
@@ -268,7 +283,7 @@ Noch mehr Faktoren/Variablen lassen sich über c() verknüpfen, z.B. `between = 
 Wenn eine ANOVA signifikant wird, interessiert uns meistens noch, welche/r der Mittelwertsunterschiede dafür verantwortlich ist. Im Bezug auf unser Meerschweinchen-Beispiel hängt der Zahnwachstum offensichtlich von der Dosis ab, aber bisher wissen wir nicht, ob die höchste Dosis zu mehr Wachstum als die anderen beiden führt, oder ob sich alle signifikant voneinander unterscheiden, oder ob es nur einen Unterschied im Bezug zur niedrigsten Dosis gibt usw.
 
 ```{r post-hoc}
-# aus packages stats
+# base
 TukeyHSD(tooth.aov)
 
 # rstatix
@@ -348,7 +363,7 @@ Ziele:
 
 Datenstruktur: kontinuierliche abhängige Variable & kategoriale/kontinuierliche Prädiktoren
 
-Hier haben wir als Datenbeispiel den Datensatz swiss, in dem die Fertilität der Population der 47 französisch-sprachigen Provinzen in der Schweiz erfasst wurde. Die weiteren Variablen:
+Hier haben wir als Datenbeispiel den Datensatz `swiss`, in dem die Fertilität der Population der 47 französisch-sprachigen Provinzen in der Schweiz erfasst wurde. Die weiteren Variablen:
 
 -   `Agriculture`: % of males involved in agriculture as occupation
 

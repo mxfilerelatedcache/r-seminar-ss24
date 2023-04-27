@@ -27,7 +27,9 @@ website:
           - datawrangling_base.qmd
           - datawrangling_dplyr.qmd
           - dataviz_ggplot2.qmd
-
+      - section: "Inferenzstatistik & Berichten"
+        contents:
+          - content3.qmd
 format:
   html:
     theme: cosmo
