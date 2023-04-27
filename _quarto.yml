@@ -30,6 +30,7 @@ website:
       - section: "Inferenzstatistik & Berichten"
         contents:
           - content3.qmd
+          - quarto_reports.qmd
 format:
   html:
     theme: cosmo

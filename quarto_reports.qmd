@@ -1,6 +1,7 @@
 ---
 title: "Berichte in Quarto"
 author: "Simon Krukowski"
+df-print: paged
 ---
 
 # Berichte in Quarto
@@ -18,6 +19,8 @@ Wir haben bereits kurz kennengelernt, was die Options zu Beginn eines Chunks (bs
 Ihr solltet mittlerweise wissen, wir ihr Packages sowohl installiert als auch aktiviert. Doch was ist, wenn ihr euer Quarto Dokument für die Übergabe bspw. an eine Dozentin/Vorgesetzte rendern wollt?
 
 > Frage: Wir würdet ihr dann vorgehen?
+>
+> Antwort: Das Dokument rendern!
 
 Hierbei kann es passieren, dass Quarto beim Rendern bspw. folgende Fehlermeldung schmeißt:
 
@@ -26,16 +29,21 @@ Hierbei kann es passieren, dass Quarto beim Rendern bspw. folgende Fehlermeldung
 Etwaige Fehlermeldungen können immer mal passieren, und zu Anfang ganz schön für Verwirrung sorgen.
 
 > Frage: Was ist hier passiert?
+>
+> Antwort: WIr haben vergessen, alle Packages zu aktivieren
 
 Da wir das package `dplyr`, in dem der Pipe-Operator `%>%` vorhanden ist, nicht aktiviert haben, weiß Quarto nicht, wie es diesen interpretieren muss. Dabei ist es auch egal, ob ihr das entsprechende Package in euer laufenden R-Session bereits aktiviert habt: Wenn es um das Rendern geht, könnt ihr jedes Quarto-Dokument als in-sich geschlossenes System betrachten - daher ist es nötig, alle notwendigen Packages zu aktivieren.
 
 > Frage: Was für eine Vorgehensweise bietet sich dafür an?
+>
+> Antwort: Zu Beginn ein "Info-Chunk" definieren.
 
 Daher bietet es sich an, **gleich zu Beginn** des Dokuments einen Basis "Konfigurations-/Packagechunk" zu erstellen, in dem ihr alle wichtigen Dinge definiert. Die Position ist relevant, da Quarto das Dokument ja von oben nach unten rendert, und somit die Packages zunächst aktiviert werden müssen, bevor deren Funktionen verwendet werden können.
 
 Dieser könnte dann etwa so aussehen:
 
 ```{r}
+#| warning: FALSE
 library(tidyverse)
 library(rstatix)
 
@@ -46,6 +54,8 @@ palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F
 Natürlich wollen wir nicht immer, dass das dann aber gleich auch das erste ist, was eine potenzielle Rezipientin unseres Berichts sieht.
 
 > Frage: Wie können wir sicherstellen, dass dieser Chunk im finalen Bericht nicht angezeigt wird?
+>
+> Antwort: Wir können zu Beginn in den Chunk Optionen über `#|` einstellen, dass er nicht angezeigt (aber ausgeführt) wird.
 
 ```{r}
 #| include: false
@@ -136,7 +146,6 @@ Sollte ein error entstehen ohne den Code zu unterbrechen ist das eine gute Wahl:
 ```{r}
 #| eval: false
 #| error: false
-#| eval: false
 
 2+"2"
 ```
