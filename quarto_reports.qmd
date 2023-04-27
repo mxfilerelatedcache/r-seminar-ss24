@@ -136,7 +136,6 @@ Sollte ein error entstehen ohne den Code zu unterbrechen ist das eine gute Wahl:
 ```{r}
 #| eval: false
 #| error: false
-#| eval: false
 
 2+"2"
 ```
