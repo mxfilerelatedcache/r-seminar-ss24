@@ -56,7 +56,7 @@ Je größer die Stichprobe ist, desto schlechter funktioniert der Shapiro-Wilk T
 
 ```{r}
 # normalverteilte Werte erzeugen
-vec.norm <- rnorm(1000, mean = 0, sd=1)
+vec.norm <- rnorm(100, mean = 0, sd=1)
 
 # QQ-Plot
 ggplot()+
