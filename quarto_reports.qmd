@@ -133,6 +133,7 @@ Manchmal kann es auch sein, dass wir Probleme dabei haben, einen Chunk auszufüh
 
 ```{r}
 #| error: false
+#| eval: false
 
 2+"2"
 ```
