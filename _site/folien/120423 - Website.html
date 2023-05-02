@@ -242,6 +242,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -647,46 +652,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyverse' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'ggplot2' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tibble' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'readr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'purrr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'dplyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'stringr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'forcats' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'lubridate' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.0
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
 New names:
 Rows: 4 Columns: 11
 ── Column specification ────────────────────────────────────────────────────────
@@ -701,13 +676,13 @@ dttm (1): submitdate
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
-     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme
-  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;     
-1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;      
-2     2    12 female     TRUE        TRUE                Test      
-3     3    19 female     TRUE        TRUE                kp        
-4     4    20 male       TRUE        TRUE                problemz  
-# ℹ 1 more variable: programmier.vorwissen &lt;lgl&gt;</code></pre>
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
 </div>
 </div>
 <ul>
@@ -731,7 +706,7 @@ dttm (1): submitdate
 <li>In eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   geschlecht
@@ -743,7 +718,7 @@ dttm (1): submitdate
 <li>Statt Zahlen können auch Spaltennamen benutzt werden</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   geschlecht
@@ -755,7 +730,7 @@ dttm (1): submitdate
 <li>Spalten lassen sich auch direkt über <code>$</code> ansprechen.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &lt;NA&gt;   female female male  
 Levels: female male</code></pre>
@@ -768,7 +743,7 @@ Levels: female male</code></pre>
 <li>Um alles anzeigen zu lassen, kann man die Koordinate “leer” lassen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 1
   geschlecht
@@ -780,16 +755,16 @@ Levels: female male</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
-     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme
-  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;     
-1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;      
-2     2    12 female     TRUE        TRUE                Test      
-3     3    19 female     TRUE        TRUE                kp        
-4     4    20 male       TRUE        TRUE                problemz  
-# ℹ 1 more variable: programmier.vorwissen &lt;lgl&gt;</code></pre>
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
 </div>
 </div>
 </section>
@@ -803,8 +778,8 @@ Levels: female male</code></pre>
 <li><code>as.numeric()</code> usw. nutzen, um den Datentyp zu verändern</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="neue-daten-erstellen" class="level2">
@@ -814,8 +789,8 @@ Levels: female male</code></pre>
 <li>Kombiniert alle aufgezählten Objekte</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 5</code></pre>
 </div>
@@ -825,8 +800,8 @@ Levels: female male</code></pre>
 <li>Im Output erkennt man Strings auch an den Anführungszeichen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "hallo"</code></pre>
 </div>

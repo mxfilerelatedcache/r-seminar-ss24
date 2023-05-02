@@ -1,0 +1,57 @@
+---
+title: "Base R"
+subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+bibliography: "assets/bibliographies/analysis1.bib"
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+# Fragebogenstudien mit Limesurvey
+
+## Überblick
+
+![](assets/img/limesurvey.png){fig-align="center" width="1000"}
+
+In der letzten Woche habt ihr kennengelernt, wie wir mit R ganz einfach statistische Verfahren anwenden können, um relevante Fragestellungen zu beantworten. Dabei habt ihr sowohl gelernt, wie ihr einfache deskriptive Analysen macht, als auch komplexere, inferenzstatistische Methoden anwendet. Zuletzt habt ihr dann noch gelernt, wie ihr eure Ergebnisse in einem Bericht "publizierfähig" speichern könnt.
+
+In dieser Woche soll es darum gehen, diese Fähigkeiten mit denen aus den vorigen Wochen zu verknüpfen, und gemeinsam an einem konkreten Beispiel zu arbeiten. Dabei wollen wir mit einem Datensatz arbeiten, wie ihr ihn auch erhalten könntet, wenn ihr bspw. mit Limesurvey arbeitet.
+
+## Hintergrund
+
+Zunächst soll es hier aber ein wenig um den Datensatz bzw. die Studie gehen, die wir untersuchen. Der Datensatz ist ein Auszug aus einer Studie, die im Rahmen einer Abschlussarbeit erhoben wurde. Dabei ging es darum, den Einfluss verschiedener Faktoren auf das selbstregulierte Lernen (SRL) während der Corona-Pandemie zu untersuchen.
+
+![](assets/img/ma_model.png){fig-align="center" width="1000"}
+
+Konkret ging es darum, die empfundenen **Herausforderungen** beim selbstregulierten Lernen entsprechend zu erfassen und herauszufinden, inwiefern diese durch individuelle Faktorenwie **Gewissenhaftigkeit** bzw. situative Faktoren wie die **Lernumgebung** beeinflusst werden.
+
+Bei der Studie handelte es sich um eine Fragebogenstudie mit kleineren Tests, und die abhängige Variable (SRL-Herausforderungen) sowie die unabhängigen Variablen bzw. Prädiktoren (**Gewissenhaftigkeit**/**Lernumgebung**) wurden mittels Fragebögen erhoben. Diese wollen wir uns nun kurz anschauen.
+
+### SRL-Herausforderungen
+
+Der Fragebogen basierte auf einem angepassten Fragebogen zu Herausforderungen beim kollaborativen Lernen @spang2020. Er umfasst 96 Items mit 32 Facetten, abgebildet auf einer 5-stufigen Likert Skala von (1 = kein Problem bis 5 = großes Problem). Hier sieht man ein paar Beispiele sowie im Hintergrund die Facetten:
+
+![](assets/img/srl_questionnaire.png){fig-align="center" width="1000"}
+
+### Gewissenhaftigkeit 
+
+Gewissenhaftigkeit (engl. *conscientiousness*) wurde erfasst mittels einer Subskala des deutschen Big-Five Inventorys (BFI-2) @danner2019. Hier gab es 12 Items, die auf einer 6-Punkte Likert Skala von (1 = nicht wahr, 6 = wahr) beantwortet werden konnten. Beispielitems waren:
+
+-   „Ich bleibe an einer Aufgabe dran, bis sie erledigt ist."
+
+-   „Ich bin eher der chaotische Typ, mache selten sauber."
