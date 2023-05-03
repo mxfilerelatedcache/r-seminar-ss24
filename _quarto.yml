@@ -32,7 +32,8 @@ website:
           - content3.qmd
           - quarto_reports.qmd
       - section: "Konkrete Anwendungsfälle"
-          -analysis1.qmd
+        contents:
+          - analysis1.qmd
 format:
   html:
     theme: cosmo

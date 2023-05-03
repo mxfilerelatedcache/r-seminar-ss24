@@ -2,6 +2,7 @@
 title: "Untitled"
 subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
 author: "Kira Wolff"
+eval: false
 ---
 
 ```{r}
