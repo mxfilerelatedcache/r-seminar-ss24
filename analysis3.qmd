@@ -1,0 +1,137 @@
+---
+title: "Untitled"
+subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
+author: "Kira Wolff"
+---
+
+```{r}
+library(tidyverse)
+library(ggpubr)
+```
+
+# Fragebogenstudien mit LimeSurvey
+
+## Inferenzstatistische Analyse
+
+Jetzt, wo die Daten vorbereitet sind und wir sie besser kennen, können wir uns mit unserer eigentlichen Fragestellung beschäftigen: Werden die empfundenen Herausforderungen von Persönlichkeits- und Umgebungsfaktoren beeinflusst?
+
+Im Detail handelt es sich bei den Herauforderungen um:
+
+-   Metakognition `P_Metakognition`
+
+-   Motivation `P_Motivation`
+
+-   Verständnis `P_Verständnis`
+
+-   Probleme insgesamt `Probleme_gesamt`
+
+Als Persönlichkeitsfaktor schauen wir uns die Gewissenhaftigkeit der Big Five an.
+
+Für die Umgebungsfaktoren haben wir einen Gesamtscore berechnet, der Ablenkbarkeit, Getrenntheit und Komfort berücksichtigt.
+
+Konkret wollen wir untersuchen, inwiefern die einzelnen Herausforderungen von Gewissenhaftigkeit, Umgebung und deren Interaktion beeinflusst werden.
+
+Was rechnen wir dafür?
+
+Welche Voraussetzungen müssen wir testen?
+
+### 
+
+-   Führt die Regressionsanalysen durch und testet vorher auch die Voraussetzungen.
+
+### Voraussetzung Multikollinearität
+
+Bei Regressionen ist es wichtig, dass die einzelnen Prädiktoren nicht zu hoch miteinander korrelieren.
+
+```{r Multikollinearität}
+
+data %>% 
+  cor_test(suboptimal_study, gh_SQ007)
+```
+
+### Regressionen
+
+```{r Regressionen}
+
+# AV 1
+lm1 <- lm(P_Metakognition ~ suboptimal_study*gewissenhaftigkeit, data)
+summary(lm1)
+
+# AV 2
+lm2 <- lm(P_Motivation ~ suboptimal_study*gewissenhaftigkeit, data)
+summary(lm2)
+
+# AV 3
+lm3 <- lm(P_Verständnis ~ suboptimal_study*gewissenhaftigkeit, data)
+summary(lm3)
+
+# AV 4
+lm4 <- lm(Probleme_gesamt ~ suboptimal_study*gewissenhaftigkeit, data)
+summary(lm4)
+```
+
+### Voraussetzung Normalverteilung
+
+Bei einer Regression muss nicht die Normalverteilung der einzelnen Variablen, sondern der Fehler der Regression getestet werden. Es geht also um die Abweichung der wahren Werte von unseren vorhergesagten Werten. Wenn diese normalverteilt sind,
+
+```{r}
+shapiro.test(lm1$residuals)
+
+shapiro.test(lm2$residuals)
+
+shapiro.test(lm3$residuals)
+
+shapiro.test(lm4$residuals)
+```
+
+## Interaktionsdiagramme
+
+Wir wollen die Zusammenhänge jetzt noch visuell darstellen, indem wir Interaktionsdiagramme erstellen. Da wir zwei kontinuierliche Prädiktoren verwendet haben, können wir für eine bessere Visualisierung mithilfe eines Mediansplit einen der Prädiktoren umwandeln in eine kategoriale Variable: Werte, die geringer sind als der Median, haben die Ausprägung "niedrig"; Werte, die höher sind als der Median, haben die Ausprägung "hoch".
+
+-   Berechnet eine neue Variable, die entsprechend dem Median zwei Faktorstufen hatx
+
+-   Erstellt Interaktionsplots zu jeder der Regressionen
+
+-   Benutzt `ggarrange()` aus ggpubr, um alle vier Plots in einem Plot darzustellen
+
+### Variable umwandeln
+
+```{r}
+data$gewiss.median <- ifelse(data$gewissenhaftigkeit <= median(data$gewissenhaftigkeit, na.rm=T), "low", "high")
+```
+
+### Separate Plots erstellen
+
+```{r}
+plot1 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+  geom_jitter()+
+  geom_smooth(method="lm", se=F)+
+  theme_minimal()
+
+plot2 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+  geom_jitter()+
+  geom_smooth(method="lm", se=F)+
+  theme_minimal()
+
+plot3 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+  geom_jitter()+
+  geom_smooth(method="lm", se=F)+
+  theme_minimal()
+
+plot4 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+  geom_jitter()+
+  geom_smooth(method="lm", se=F)+
+  theme_minimal()
+```
+
+### Plots zusammenfügen
+
+Wenn wir mehrere Plots in der gleichen Grafik darstellen wollen, können wir das mit `ggarrange()` aus dem `ggpubr` Package umsetzen.
+
+```{r}
+ggarrange(plot1, plot2, plot3, plot4, 
+          ncol=2, nrow=2,
+          common.legend =T)
+```
+
+Theoretisch hätten wir hier auch die schon erwähnten `facet_wrap()` oder `facet_grid()` verwenden können. Dazu hätten wir unsere Daten allerdings umstrukturieren müssen, sodass wir anhand einer kategoriellen Variable spezifizieren können, welche Daten in welchen Plot gehören. Diese Alternative funktioniert allerdings auch nur solange, wie wir den gleichen Plot-Type und die gleichen Variablen für alle Subplots verwenden wollen. Sobald wir verschiedene Plots darstellen wollen, müssen wir auf `ggarrange` zurückgreifen. In vielen Fällen spricht allerdings auch nichts dagegen, die Plots einfach separat zu lassen.
