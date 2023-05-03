@@ -1,0 +1,38 @@
+---
+title: "Nice to Know"
+subtitle: "Seminar[1:n] <- Data Wrangling, Desriptives & Visualisierung"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+---
+
+### geom_bar()
+
+Im Beispiel oben haben wir `geom_bar()` bereits angewandt. Hier wollen wir etwas variieren, und ein paar Parameter zeigen. Angenommen, wir wollen, dass die Balken nicht gestapelt, sondern nebeneinander sind. Das geht über `position_dodge()` .
+
+```{r}
+#| eval: false
+ggplot(data=dataset)+
+  geom_bar(aes(x=Sepal.Width, fill=Species),
+           position = position_dodge2())+
+  ylab("Prevalence")+
+  xlab("Width of Sepal")+
+  ggtitle("Sepal width of Iris Flower for each Species")
+```
+
+In diesem Fall ist das nicht wirklich hilfreich.
+
+Dort hatten wir allerdings nur eine Variable, die für das Mapping wichtig war. Die Anzahl an Beobachtungen hat `ggplot` für uns übernommen, und diese intern als `y`-Variable berechnet. Doch was ist, wenn wir die Anzahl pro Gruppe wie unteren Beispiel bereits berechnet haben? (bspw. durch unsere neu-erlernten `dplyr`-Skills)
+
+```{r}
+#| eval: false
+dataset %>% 
+  group_by(Species,Sepal.Width) %>% 
+  summarise(count=n()) %>% # wir können dplyr output auch direkt in ein ggplot objekt pipen
+  ggplot()+ # der data= parameter wird dann nicht mehr benötigt
+    geom_bar(aes(x=Sepal.Width,y=count,fill=Species))
+```
