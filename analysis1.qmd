@@ -1,5 +1,5 @@
 ---
-title: "Base R"
+title: "Studien & Limesurvey"
 subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
 author: "Simon Krukowski"
 format:
@@ -22,7 +22,7 @@ palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffff
 palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
 ```
 
-# Fragebogenstudien mit Limesurvey
+# Konkrete Anwendungsfälle: Studien & Limesurvey
 
 ## Überblick
 
@@ -161,6 +161,7 @@ Bevor wir die Fragebögen verwenden können, müssen wir natürlich erst deren G
 > Frage: Berechnet Cronbachs Alpha für die 7 Items des Lernumgebungsfragebogens (`sl_SQ001` etc.). Was fällt auf?
 
 ```{r}
+#| output: false
 dataset %>%
  select(sl_SQ001,
         sl_SQ002,
@@ -194,6 +195,7 @@ dataset <- dataset %>%
 Ein neuer Blick auf Cronbachs α verrät, dass unser Umkodieren etwas bewirkt hat, die Fehlermeldung ist verschwunden und der Wert hat sich verbessert.
 
 ```{r}
+#| output: false
 dataset %>%
  select(sl_SQ001,
         sl_SQ002,
@@ -209,6 +211,7 @@ dataset %>%
 Um hier nicht zu tief in Test- und Fragebogenkonstruktion abzutauchen, hier nur als kleiner Exkurs: Das package `sjPlot` kann uns dabei helfen, wichtige Eigenschaften über die Items zu gewinnen, bevor wir Cronbachs α berechnen. Dazu gehören die Itemschwierigkeit (`item difficulty`) und die Trennschärfe der Items (`item discrimination`). Der einfache Befehl `tab_itemscale()` gibt uns gleich ein publizierfähiges Plot:
 
 ```{r}
+#| output: asis
 dataset %>%
  select(sl_SQ001,
         sl_SQ002,
@@ -224,6 +227,7 @@ Wir können sehen, dass die Itemschwierigkeit bei den meisten Items nahe 0.50 is
 Durch eine exploratorische Faktoranalyse, welche wir hier nicht rechnen werden, wurde herausgefunden, dass nicht alle Items unser Konzept **suboptimale Lernumgebung** gut vorhersagen. Daher haben wir uns entschieden, die folgenden Items zu nehmen: `sl_SQ002`, `sl_SQ003`, `sl_SQ005` und `sl_SQ007`. Diese bilden einen Faktor ab, weshalb es nun auch Sinn ergibt hierfür Cronbachs α zu berechnen:
 
 ```{r}
+#| output: false
 dataset %>% 
   select(sl_SQ002,
   sl_SQ003,
@@ -272,7 +276,7 @@ dataset %>%
 
 Wie zu sehen, erhalten wir dieselben Mittelwerte für unsere Skala, wie oben.
 
-> ## Aufgabe: Subskalen für Gewissenhaftigkeit
+## Aufgabe: Subskalen für Gewissenhaftigkeit
 
 Nun wollen wir auch die Subskalen nach dem oben gezeigten Prinzip für unser Konstrukt **Gewissenhaftigkeit** prüfen. Dazu haben wir alles was wir brauchen:
 
@@ -310,4 +314,8 @@ dataset %>%
          gh_fleiss = rowMeans(across(c(gh_SQ002,gh_SQ004,gh_SQ007))),
          gh_verlaesslichkeit = rowMeans(across(c(gh_SQ003,gh_SQ005,gh_SQ008))),
          gewissenhaftigkeit = rowMeans(across(c(gh_ordnungsliebe,gh_fleiss,gh_verlaesslichkeit)))) -> dataset
+```
+
+```{r}
+write.csv(dataset, "dataset_srl_challenges_wrangled.csv")
 ```
