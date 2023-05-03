@@ -45,8 +45,8 @@ Bei Regressionen ist es wichtig, dass die einzelnen Prädiktoren nicht zu hoch m
 
 ```{r Multikollinearität}
 
-data %>% 
-  cor_test(suboptimal_study, gh_SQ007)
+dataset %>% 
+  cor_test(suboptimal_study, gewissenhaftigkeit)
 ```
 
 ### Regressionen
