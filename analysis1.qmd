@@ -287,3 +287,27 @@ Nun wollen wir auch die Subskalen nach dem oben gezeigten Prinzip für unser Kon
     -   Namen der negativ-kodierten Items
 
 Nutzt also die Informationen und eure neu-erlenten Skills, um nun die entsprechenden Subskalen (plot-twist: es sind mehr als eine) **zu berechnen** (als Mittelwerte). Gebt auch Cronbach's α für die einzelnen Subskalen an.
+
+```{r}
+#| include: false
+dataset %>% 
+  mutate(across(c(gh_SQ001,
+                  gh_SQ009,
+                  gh_SQ002,
+                  gh_SQ004,
+                  gh_SQ005,
+                  gh_SQ011),
+                function(x) case_when(x==1 ~ 5,
+                                      x==2 ~ 4,
+                                      x==3 ~ 3,
+                                      x==4 ~ 2,
+                                      x==5 ~ 1))) -> dataset
+
+
+
+dataset %>% 
+  mutate(gh_ordnungsliebe = rowMeans(across(c(gh_SQ001,gh_SQ006,gh_SQ009))),
+         gh_fleiss = rowMeans(across(c(gh_SQ002,gh_SQ004,gh_SQ007))),
+         gh_verlaesslichkeit = rowMeans(across(c(gh_SQ003,gh_SQ005,gh_SQ008))),
+         gewissenhaftigkeit = rowMeans(across(c(gh_ordnungsliebe,gh_fleiss,gh_verlaesslichkeit)))) -> dataset
+```
