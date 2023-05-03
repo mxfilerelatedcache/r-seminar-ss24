@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Medienbasierte Wissenskonstruktion mit R - R Basics - 12.04.23</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Infos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Kontakt</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">R Basics - 12.04.23</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#vorstellungsrunde" id="toc-vorstellungsrunde" class="nav-link active" data-scroll-target="#vorstellungsrunde">Vorstellungsrunde</a></li>
+  <li><a href="#vorstellungsrunde-1" id="toc-vorstellungsrunde-1" class="nav-link" data-scroll-target="#vorstellungsrunde-1">Vorstellungsrunde</a></li>
+  <li><a href="#vorstellungsrunde-2" id="toc-vorstellungsrunde-2" class="nav-link" data-scroll-target="#vorstellungsrunde-2">Vorstellungsrunde</a></li>
+  <li><a href="#ziele-des-seminars" id="toc-ziele-des-seminars" class="nav-link" data-scroll-target="#ziele-des-seminars">Ziele des Seminars</a></li>
+  <li><a href="#zeitplan" id="toc-zeitplan" class="nav-link" data-scroll-target="#zeitplan">Zeitplan</a></li>
+  <li><a href="#prüfungsleistung" id="toc-prüfungsleistung" class="nav-link" data-scroll-target="#prüfungsleistung">Prüfungsleistung</a></li>
+  <li><a href="#was-ist-r" id="toc-was-ist-r" class="nav-link" data-scroll-target="#was-ist-r">Was ist R?</a></li>
+  <li><a href="#user-interface" id="toc-user-interface" class="nav-link" data-scroll-target="#user-interface">User Interface</a></li>
+  <li><a href="#code-erstellen-ausführen" id="toc-code-erstellen-ausführen" class="nav-link" data-scroll-target="#code-erstellen-ausführen">Code erstellen + ausführen</a></li>
+  <li><a href="#r-vs.-quarto" id="toc-r-vs.-quarto" class="nav-link" data-scroll-target="#r-vs.-quarto">.R vs.&nbsp;Quarto</a></li>
+  <li><a href="#r-vs.-quarto-1" id="toc-r-vs.-quarto-1" class="nav-link" data-scroll-target="#r-vs.-quarto-1">.R vs.&nbsp;Quarto</a></li>
+  <li><a href="#quarto---dokument-aufsetzen" id="toc-quarto---dokument-aufsetzen" class="nav-link" data-scroll-target="#quarto---dokument-aufsetzen">Quarto - Dokument aufsetzen</a></li>
+  <li><a href="#quarto---im-dokument" id="toc-quarto---im-dokument" class="nav-link" data-scroll-target="#quarto---im-dokument">Quarto - im Dokument</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#rechenoperatoren" id="toc-rechenoperatoren" class="nav-link" data-scroll-target="#rechenoperatoren">(Rechen)Operatoren</a></li>
+  <li><a href="#objekte" id="toc-objekte" class="nav-link" data-scroll-target="#objekte">Objekte</a></li>
+  <li><a href="#objekte-1" id="toc-objekte-1" class="nav-link" data-scroll-target="#objekte-1">Objekte</a></li>
+  <li><a href="#funktionen" id="toc-funktionen" class="nav-link" data-scroll-target="#funktionen">Funktionen</a></li>
+  <li><a href="#hilfe-in-r" id="toc-hilfe-in-r" class="nav-link" data-scroll-target="#hilfe-in-r">Hilfe in R</a></li>
+  <li><a href="#hilfe-außerhalb-von-r" id="toc-hilfe-außerhalb-von-r" class="nav-link" data-scroll-target="#hilfe-außerhalb-von-r">Hilfe außerhalb von R</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#packages-1" id="toc-packages-1" class="nav-link" data-scroll-target="#packages-1">Packages</a></li>
+  <li><a href="#datentypen" id="toc-datentypen" class="nav-link" data-scroll-target="#datentypen">Datentypen</a></li>
+  <li><a href="#datentypen-1" id="toc-datentypen-1" class="nav-link" data-scroll-target="#datentypen-1">Datentypen</a></li>
+  <li><a href="#bestimmte-daten-abrufen" id="toc-bestimmte-daten-abrufen" class="nav-link" data-scroll-target="#bestimmte-daten-abrufen">Bestimmte Daten abrufen</a></li>
+  <li><a href="#bestimmte-daten-abrufen-1" id="toc-bestimmte-daten-abrufen-1" class="nav-link" data-scroll-target="#bestimmte-daten-abrufen-1">Bestimmte Daten abrufen</a></li>
+  <li><a href="#datentypen-2" id="toc-datentypen-2" class="nav-link" data-scroll-target="#datentypen-2">Datentypen</a></li>
+  <li><a href="#neue-daten-erstellen" id="toc-neue-daten-erstellen" class="nav-link" data-scroll-target="#neue-daten-erstellen">Neue Daten erstellen</a></li>
+  <li><a href="#unterschiede-zu-anderen-programmiersprachen" id="toc-unterschiede-zu-anderen-programmiersprachen" class="nav-link" data-scroll-target="#unterschiede-zu-anderen-programmiersprachen">Unterschiede zu anderen Programmiersprachen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">R Basics - 12.04.23</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="vorstellungsrunde" class="level2">
+<h2 class="anchored" data-anchor-id="vorstellungsrunde">Vorstellungsrunde</h2>
+<p>Verteilung Vorwissen</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="unnamed-chunk-12-1.png" class="img-fluid figure-img" width="800"></p>
+</figure>
+</div>
+</section>
+<section id="vorstellungsrunde-1" class="level2">
+<h2 class="anchored" data-anchor-id="vorstellungsrunde-1">Vorstellungsrunde</h2>
+<p>Vorwissen Programmiersprachen</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="unnamed-chunk-18-1.png" class="img-fluid figure-img" width="800"></p>
+</figure>
+</div>
+</section>
+<section id="vorstellungsrunde-2" class="level2">
+<h2 class="anchored" data-anchor-id="vorstellungsrunde-2">Vorstellungsrunde</h2>
+<p>Erwartungen ans Seminar</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="unnamed-chunk-20-1.png" class="img-fluid figure-img" width="800"></p>
+</figure>
+</div>
+</section>
+<section id="ziele-des-seminars" class="level2">
+<h2 class="anchored" data-anchor-id="ziele-des-seminars">Ziele des Seminars</h2>
+<ul>
+<li>Daten einlesen, bearbeiten, grafisch darstellen und statistisch auswerten</li>
+<li>Einblick in Breite und Tiefe, die R bietet</li>
+<li>Grundlagen schaffen, auf die ihr selbstständig aufbauen könnt (z.B. für Masterarbeit oder eigene Projekte)</li>
+</ul>
+</section>
+<section id="zeitplan" class="level2">
+<h2 class="anchored" data-anchor-id="zeitplan">Zeitplan</h2>
+<ul>
+<li>7-8 Sitzungen, die jeweils 3h dauern
+<ul>
+<li>Mittagspause?</li>
+</ul></li>
+<li>31.05 vrsl. letzte, kürzere Sitzung</li>
+<li>Inhaltlich: Basics, Deskriptives, Inferenzstatistik, Auswertung von Forschungsdaten</li>
+<li>innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis</li>
+<li>Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)</li>
+</ul>
+</section>
+<section id="prüfungsleistung" class="level2">
+<h2 class="anchored" data-anchor-id="prüfungsleistung">Prüfungsleistung</h2>
+<ul>
+<li><p>Wöchentliche “Hausaufgaben”: Wiederholen und erweitern das im Seminar Gelernte</p>
+<ul>
+<li><p>Abgabe per Moodle spätestens am Sonntag vor der nächsten Sitzung</p></li>
+<li><p>werden benotet, am Ende per Durchschnitt zusammengefasst und machen gemeinsam 50% der Note aus</p></li>
+<li><p>Abgabe mit der schlechtesten Benotung wird aus der Durchschnittsberechnung entfernt</p></li>
+<li><p>Einzelarbeit (Plagiatscheck)</p></li>
+<li><p>Wir laden nach Abgabe “Musterlösung” hoch</p></li>
+</ul></li>
+<li><p>1x Hausaufgabe vorstellen (unbenotet)</p></li>
+<li><p>Bericht zu (neuem) Datensatz einreichen (50% der Note) - mehr Infos folgen</p></li>
+</ul>
+<p>Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch die Prüfungsleistungen dann leichter fallen werden.</p>
+</section>
+<section id="was-ist-r" class="level2">
+<h2 class="anchored" data-anchor-id="was-ist-r">Was ist R?</h2>
+<ul>
+<li>Programmiersprache (und -oberfläche) für statistische Berechnungen und Grafiken</li>
+<li>open-source &amp; kostenlos</li>
+<li>große Community, die ständig Funktionen erweitert und bei Problemen hilft</li>
+<li>R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher</li>
+</ul>
+</section>
+<section id="user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="user-interface">User Interface</h2>
+<p><img src=".R.png" class="absolute" data-top="100" data-right="0" width="700" height="600"></p>
+<ul>
+<li><p>oben links: Code</p></li>
+<li><p>unten links: Konsole - ausgeführter Code und Output</p>
+<ul>
+<li>hier lässt sich auch Code eintippen, dieser kann allerdings nicht gespeichert werden</li>
+</ul></li>
+<li><p>oben rechts: u.a. Environment - welche Objekte und Daten exisitieren</p></li>
+<li><p>unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht</p></li>
+</ul>
+</section>
+<section id="code-erstellen-ausführen" class="level2">
+<h2 class="anchored" data-anchor-id="code-erstellen-ausführen">Code erstellen + ausführen</h2>
+<ul>
+<li><em>Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)</em></li>
+<li>In dem File ist nur die Zeile ohne <code>#</code>ausführbarer Code. Wie hier geschehen, lassen sich mit <code>#</code> Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll</li>
+<li><em>Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und <strong>STRG+ENTER</strong> drückt</em></li>
+<li>Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Satz in Konsole printen:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Ich habe "</span>,R.version<span class="sc">$</span>version.string,<span class="st">" und RStudio v"</span>,rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()<span class="sc">$</span>version))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Ich habe R version 4.2.1 (2022-06-23 ucrt) und RStudio v2023.3.0.386"</code></pre>
+</div>
+</div>
+</section>
+<section id="r-vs.-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="r-vs.-quarto">.R vs.&nbsp;Quarto</h2>
+<ul>
+<li>R’s Standardformat sind .R-Dateien</li>
+<li>Für “echte Arbeit” mit R sind Quarto-Dokumente meistens nützlicher:
+<ul>
+<li>ermöglichen Export/Rendern in andere Dateiformate (html, pdf, docx, pptx,…)</li>
+<li>ermöglichen neben Code-Abschnitte auch Text-Abschnitte, die formatiert werden können (wie LaTeX)</li>
+<li>ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll</li>
+<li>Auswertung &amp; Bericht können somit im gleichen Dokument geschehen</li>
+<li>Diese Präsentation ist auch in R entstanden!</li>
+</ul></li>
+</ul>
+</section>
+<section id="r-vs.-quarto-1" class="level2">
+<h2 class="anchored" data-anchor-id="r-vs.-quarto-1">.R vs.&nbsp;Quarto</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Asset 1vs.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="quarto---dokument-aufsetzen" class="level2">
+<h2 class="anchored" data-anchor-id="quarto---dokument-aufsetzen">Quarto - Dokument aufsetzen</h2>
+<ul>
+<li><em>Erstellt ein Quarto-Dokument über File &gt; New File &gt; Quarto Document</em></li>
+<li>Im auftauchenden Fenster könnt ihr einstellen:
+<ul>
+<li>Titel &amp; AutorIn des Dokuments</li>
+<li>gewünschtes Output-Format (hier: html)</li>
+<li>womit das Quarto-Dokument gerendert werden soll (hier: knitr)</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto---im-dokument" class="level2">
+<h2 class="anchored" data-anchor-id="quarto---im-dokument">Quarto - im Dokument</h2>
+<ul>
+<li>Der Kasten oben heißt “YAML-header” - dort sind die Rendereinstellungen (Titel, Speicherort, Format, Schriftgröße usw.)</li>
+<li>Im Feld darunter kann Text geschrieben und formatiert werden
+<ul>
+<li>Source: Format lässt sich über bestimmte Zeichen einstellen</li>
+<li>Visual: Format lässt sich über Markieren + Auswählen einstellen</li>
+</ul></li>
+<li>Code kann man nur innerhalb von Chunks einfügen (oben rechts auf das grün unterlegte C klicken oder STRG+ALT+I)</li>
+<li>Im grau unterlegten Kästchen lässt sich “normaler” R-Code schreiben und ausführen
+<ul>
+<li>“Vorschau” über den Play-Button</li>
+<li>Über <code>#|</code> am Zeilenbeginn lässt sich einstellen, was mit Code + Output beim Rendern passieren soll</li>
+</ul></li>
+<li>Über “Render” wird das Dokument in das Zielformat umgewandelt</li>
+<li>In den meisten Fällen rendert man nur gegen Ende und nutzt während der Analyse die Chunk-Vorschau</li>
+</ul>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<ul>
+<li><em>Erstellt zwei Code-Chunks</em></li>
+<li><em>Fügt bei einem der Chunks in die erste Zeile <code>#| echo: TRUE</code></em></li>
+<li><em>Fügt beim anderen Chunk in die erste Zeile <code>#| echo: FALSE</code></em></li>
+<li><em>Schreibt in den Text- und in die Code-Bereiche <code>4+5</code></em></li>
+<li><em>Rendert das Dokument</em></li>
+</ul>
+<p>Output ohne Code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Output mit Code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Reiner Text:</p>
+<p>4+5</p>
+</section>
+<section id="rechenoperatoren" class="level2">
+<h2 class="anchored" data-anchor-id="rechenoperatoren">(Rechen)Operatoren</h2>
+<ul>
+<li>Dezimaltrennzeichen: Punkt <code>.</code> , nicht Komma <code>,</code></li>
+<li><code>+ - * /</code></li>
+<li>Exponent: <code>^</code></li>
+<li>logisch gleich: <code>==</code></li>
+<li>logisch ungleich: <code>!=</code></li>
+<li>logisches und: <code>&amp;</code></li>
+<li>logisches oder: <code>|</code></li>
+<li>logisches exklusives oder: <code>xor</code></li>
+<li>nicht: <code>!</code></li>
+</ul>
+</section>
+<section id="objekte" class="level2">
+<h2 class="anchored" data-anchor-id="objekte">Objekte</h2>
+<ul>
+<li>Anstatt nur Code durchzuführen und das Ergebnis in der Konsole abzulesen, können wir auch alles mögliche als Objekte speichern</li>
+<li>Konzept: links mit Objektname beginnen, dann den Zuweisungsoperator und anschließend das, was als Objekt gespeichert werden soll</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ergebnis <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>R führt den Code rechts vom Pfeil aus - das Objekt ist “8”, nicht “3+5”!</li>
+<li>Objekte lassen sich abrufen, indem man ihren Namen schreibt und ausführt</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ergebnis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<ul>
+<li>R ist case-sensitive, d.h. Groß-und Kleinschreibung muss übereinstimmen!</li>
+<li>Objekte lassen sich auch oben rechts im Environment einsehen (wird aber irgendwann unübersichtlich…)</li>
+<li><em>Erstellt selbst eine Rechenaufgabe und speichert sie als Objekt!</em></li>
+<li><em>Was passiert, wenn man den gleichen Objektnamen erneut verwendet?</em></li>
+</ul>
+</section>
+<section id="objekte-1" class="level2">
+<h2 class="anchored" data-anchor-id="objekte-1">Objekte</h2>
+<ul>
+<li>Warum ist Objekte erstellen wichtig?
+<ul>
+<li>Für R ist jeder Output sonst “flüchtig”: Es wird nicht wirklich etwas verändert</li>
+<li>Zwischenergebnisse überprüfen</li>
+<li>Parameter festlegen</li>
+<li>Flüchtigkeitsfehler vermeiden</li>
+<li>uvm.</li>
+</ul></li>
+<li>Shortcut für <code>&lt;-</code> : ALT+-</li>
+<li>Pfeil in die andere Richtung <code>-&gt;</code> und Gleichheitszeichen <code>=</code> funktionieren nicht bzw. sollten nicht verwendet werden!</li>
+</ul>
+</section>
+<section id="funktionen" class="level2">
+<h2 class="anchored" data-anchor-id="funktionen">Funktionen</h2>
+<ul>
+<li><p>Mithilfe von Funktionen lassen sich Objekte/Daten bearbeiten</p></li>
+<li><p>Beispiel: <code>round(3.45, digits = 1)</code> rundet 3.45 auf die erste Nachkommastelle</p>
+<ul>
+<li><p>am Anfang steht der Name der Funktion (auch hier: case-sensitive)</p></li>
+<li><p>die Argumente der Funktion werden von <u>runden</u> Klammern eingerahmt</p></li>
+<li><p>Argumente sind bspw. die Daten, auf die die Funktion angewendet werden soll, aber auch weitere Einstellungen der Funktion, z.B. auf wie viele Nachkommastellen gerundet werden soll</p></li>
+<li><p>sie folgen der Syntax <code>Argument = Angabe</code></p></li>
+<li><p>Argumente werden durch Komma getrennt</p></li>
+<li><p>manche Argumente sind zwingend notwendig, viele aber optional</p></li>
+<li><p>die Argumente einer Funktion haben eine bestimmte Reihenfolge, daher kann man den Argumentnamen häufig weglassen, z.B. <code>round(3.45, 1)</code> (solange man die Funktion noch nicht gut kennt, oder auch um den Überblick zu behalten, besser die Argumente explizit nennen)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="hilfe-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="hilfe-in-r">Hilfe in R</h2>
+<ul>
+<li><p>Über <code>help(Funktion)</code> wird die Hilfeseite/Dokumentation der Funktion “Funktion” aufgerufen</p>
+<ul>
+<li><p>genauso funktioniert <code>?Funktion</code></p></li>
+<li><p>auf der Hilfeseite stehen mögliche Argumente, ihre Reihenfolge und in welchem Format das Argument angegeben wird (wird eine Zahl oder ein Wort erwartet?)</p></li>
+</ul></li>
+<li><p><em>Findet mit der Hilfe-Funktion heraus, was <code>mean()</code> macht und welche Argumente es hat</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#oder</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="hilfe-außerhalb-von-r" class="level2">
+<h2 class="anchored" data-anchor-id="hilfe-außerhalb-von-r">Hilfe außerhalb von R</h2>
+<ul>
+<li><p>Fehlermeldungen lesen und versuchen, Problem zu verstehen</p></li>
+<li><p>das Internet!</p>
+<ul>
+<li><p>Fehlermeldung bei Google einfügen und Links durchsuchen</p></li>
+<li><p>Stack Overflow</p></li>
+<li><p>Statt selbst eine Frage einreichen zu müssen findet sich fast immer ein Thread mit dem gleichen/ähnlichen Problem und möglichen Lösungen</p></li>
+</ul></li>
+<li><p>Danach: Lösung für sich dokumentieren</p></li>
+</ul>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<ul>
+<li><p>Frisch nach der Installation besteht R aus Base R und einigen wenigen Erweiterungen</p></li>
+<li><p>Durch die Installation von weiteren Paketen/Packages lassen sich die Funktionen fast beliebig erweitern: Jedes Package enthält Funktionen und/oder Datensätze, meistens zu bestimmten Analysen, mehr oder weniger nischig</p></li>
+<li><p>Im Fenster unten rechts unter “Packages” könnt ihr sehen, welche Packages schon installiert und/oder aktiviert sind</p></li>
+<li><p>Neue Packages lassen sich mit <code>install.packages("package-name")</code> installieren und mit <code>library(package-name)</code> aktivieren (auf die Anführungszeichen achten!)</p></li>
+<li><p>Man kann neue Funktionen auch selbst schreiben, das ist aber meistens nur in Sonderfällen notwendig</p></li>
+</ul>
+</section>
+<section id="packages-1" class="level2">
+<h2 class="anchored" data-anchor-id="packages-1">Packages</h2>
+<ul>
+<li><p><em>Installiert und aktiviert das Package <code>psych</code> (Erinnerung: <code>install.packages()</code>&amp; <code>library()</code>)</em></p></li>
+<li><p><em>Wendet die Hilfefunktion <code>help()</code> auf sich selbst an, um herauszufinden, wie ihr mit ihr Informationen über Packages bekommt</em></p></li>
+<li><p><em>Schaut euch mit dem neuen Wissen an, welche Funktionen das Package <code>psych</code> beinhaltet</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installieren</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"psych"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Aktivieren</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Mehr über help() herausfinden</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(help) <span class="co"># Inception!</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Aha, das Argument "package" kann mir weiterhelfen!</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Über psych informieren</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package=</span>psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datentypen" class="level2">
+<h2 class="anchored" data-anchor-id="datentypen">Datentypen</h2>
+<ul>
+<li><p>Basic:</p>
+<ul>
+<li><p><strong>numeric:</strong> Zahlen (integer, double)</p></li>
+<li><p><strong>character:</strong> Buchstabenfolgen (strings)</p></li>
+<li><p><strong>factor:</strong> z.B. Faktorstufen eines Faktors</p></li>
+<li><p><strong>logical:</strong> TRUE, FALSE (vgl. 1 &amp; 0)</p></li>
+</ul></li>
+<li><p><strong>Vektor:</strong> eindimensionale “Aufzählung” von Elementen</p></li>
+<li><p><strong>Matrix:</strong> ein- bis zweidimensionale Aufzählung von Elementen</p></li>
+<li><p><strong>Array:</strong> beliebig-dimensionale Aufzählung von Elementen</p></li>
+<li><p><strong>Liste:</strong> kann verschiedene Datentypen und Strukturen enthalten (z.B. Ergebnis einer ANOVA)</p></li>
+<li><p><strong>Dataframe</strong>, <strong>Tibble</strong>: Spezifische Formate, um Datensätze darzustellen</p>
+<ul>
+<li><p>Können pro Spalte unterschiedliche Datentypen beinhalten</p></li>
+<li><p>Standardformat, wenn man von extern Daten in R reinlädt</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="datentypen-1" class="level2">
+<h2 class="anchored" data-anchor-id="datentypen-1">Datentypen</h2>
+<p>Der Datensatz aus der Umfrage sieht als Vorschau in der Konsole so aus:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.0
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+New names:
+Rows: 4 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): sex, r_problems
+dbl  (5): ...1, id, lastpage, age, hopes_perc
+lgl  (3): r_knowledge, r_knowledge_amount, programming_knowledge
+dttm (1): submitdate
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
+</div>
+</div>
+<ul>
+<li><ol type="1">
+<li>Zeile: Ein Tibble mit diesen Dimensionen wird angezeigt</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Zeile: Spaltennamen</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>Zeile: Datentypen</li>
+</ol></li>
+<li><p>folgende Zeilen: Daten</p></li>
+<li><p>in der Konsole werden Daten meistens nur gekürzt angezeigt</p></li>
+<li><p>Über <code>view(daten)</code> öffnet sich eine Tabellenübersicht</p></li>
+</ul>
+</section>
+<section id="bestimmte-daten-abrufen" class="level2">
+<h2 class="anchored" data-anchor-id="bestimmte-daten-abrufen">Bestimmte Daten abrufen</h2>
+<ul>
+<li>In eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 female    </code></pre>
+</div>
+</div>
+<ul>
+<li>Statt Zahlen können auch Spaltennamen benutzt werden</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 female    </code></pre>
+</div>
+</div>
+<ul>
+<li>Spalten lassen sich auch direkt über <code>$</code> ansprechen.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &lt;NA&gt;   female female male  
+Levels: female male</code></pre>
+</div>
+</div>
+</section>
+<section id="bestimmte-daten-abrufen-1" class="level2">
+<h2 class="anchored" data-anchor-id="bestimmte-daten-abrufen-1">Bestimmte Daten abrufen</h2>
+<ul>
+<li>Um alles anzeigen zu lassen, kann man die Koordinate “leer” lassen</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 1
+  geschlecht
+  &lt;fct&gt;     
+1 &lt;NA&gt;      
+2 female    
+3 female    
+4 male      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
+  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
+1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
+2     2    12 female     TRUE        TRUE                Test       TRUE        
+3     3    19 female     TRUE        TRUE                kp         TRUE        
+4     4    20 male       TRUE        TRUE                problemz   TRUE        
+# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
+</div>
+</div>
+</section>
+<section id="datentypen-2" class="level2">
+<h2 class="anchored" data-anchor-id="datentypen-2">Datentypen</h2>
+<ul>
+<li>R erkennt häufig von selbst, welcher Datentyp gemeint ist</li>
+<li>Häufig ist es aber sinnvoll, noch mal “von Hand” zu überprüfen und/oder den richtigen Datentyp festzulegen</li>
+<li><code>typeof()</code> um den Datentyp zu erfragen</li>
+<li><code>is.numeric()</code> / <code>is.factor()</code> / <code>is.logical()</code> / <code>is.character()</code> um einen bestimmten Datentyp zu testen</li>
+<li><code>as.numeric()</code> usw. nutzen, um den Datentyp zu verändern</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="neue-daten-erstellen" class="level2">
+<h2 class="anchored" data-anchor-id="neue-daten-erstellen">Neue Daten erstellen</h2>
+<ul>
+<li>Vektoren: <code>c()</code></li>
+<li>Kombiniert alle aufgezählten Objekte</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5</code></pre>
+</div>
+</div>
+<ul>
+<li>Strings müssen in Anführungszeichen gesetzt werden, damit R sie nicht mit Objekten verwechselt.</li>
+<li>Im Output erkennt man Strings auch an den Anführungszeichen</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hallo"</code></pre>
+</div>
+</div>
+</section>
+<section id="unterschiede-zu-anderen-programmiersprachen" class="level2">
+<h2 class="anchored" data-anchor-id="unterschiede-zu-anderen-programmiersprachen">Unterschiede zu anderen Programmiersprachen</h2>
+<ul>
+<li>keine Unterscheidung zwischen integer und double</li>
+<li>verwendet keine Pointer</li>
+<li>tendenziell: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
