@@ -1,0 +1,94 @@
+---
+title: "Base R"
+subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+bibliography: "assets/bibliographies/analysis1.bib"
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+
+dataset <- read.csv("dataset_srl_challenges.csv")
+```
+
+# Fragebogenstudien mit Limesurvey
+
+## Deskriptive Analysen
+
+Wir haben nun also den Datensatz bereinigt, Items zu Summen- bzw. meanscores zusammengefasst, sowie deren interne Konsistenz berichtet. Super! Der nächste Schritt in unserer Analyse wäre üblicherweise, mittels deskriptiver Analysen eine Idee von unseren Daten zu bekommen. Das machen wir gleich mal:
+
+### Stichprobe
+
+Natürlich haben wir die Basis-Informationen zu unserer Stichprobe, wie Alter, Geschlecht, etc.
+
+> Frage: Wie können wir das gut berichten?
+
+```{r}
+dataset %>% 
+  group_by(dmSex) %>% 
+  summarise(age=mean(dmAge),n=n())
+```
+
+Falls wir unseren Output direkt in einem publikationsfähigen Table haben wollen, können wir dies mit `stargazer()` tun:
+
+```{r}
+#| output: asis
+dataset %>% 
+  group_by(dmSex) %>% 
+  summarise(age=mean(dmAge),n=n()) %>% 
+  stargazer::stargazer(type = "html",summary = F)
+```
+
+### Fragebögen
+
+In wissenschaftlichen Arbeiten ist es üblich, immer auch gleich die `mean()` bzw. `sd()` values mitzuberichten. Machen wir das also für unsere eben gebildeten Skalen.
+
+### Suboptimal Study
+
+```{r}
+dataset %>% 
+  summarise(across(c(sl_SQ002,
+  sl_SQ003,
+  sl_SQ005,
+  sl_SQ007),list(mean=mean,sd=sd)))
+```
+
+### Gewissenhaftigkeit
+
+```{r}
+scales_conscientiousness <- list(gh_ordnungsliebe = c("-gh_SQ001", "gh_SQ006", "-gh_SQ009"),
+                                 gh_fleiss = c("-gh_SQ002", "-gh_SQ004", "gh_SQ007", "gh_SQ010"),
+                                 gh_verlaesslichkeit = c("gh_SQ003", "-gh_SQ005", "gh_SQ008", "-gh_SQ011"))
+
+
+```
+
+### SRL-Probleme
+
+Unser 90-Items Fragebogen, zu dem wir glücklicherweise schon die Meanscores haben, bietet sich aufgrund der Größe eher weniger zur numerischen Darstellung an. Hier wollen wir lieber visuell die Werte zeigen. Doch wie machen wir das? Ein kurzer Blick in den Datensatz verrät, dass es einige Subskalen gibt:
+
+```{r}
+dataset %>% 
+  select(starts_with("p"))
+```
+
+Angenommen, wir wollten aber nun die Mittelwerte sowie Standardabweichungen (bspw. über `geom_bar()` und `geom_errorbar()`) für alle diese Spalten berechnen - wie würden wir da vorgehen? Das leitet zu einem weiteren wichtigen Konzept über: Das **long** vs. **wide** Format von Daten.
+
+## Reshaping data
+
+```{r}
+
+```
