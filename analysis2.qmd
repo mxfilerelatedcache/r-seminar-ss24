@@ -59,21 +59,22 @@ In wissenschaftlichen Arbeiten ist es üblich, immer auch gleich die `mean()` bz
 ### Suboptimal Study
 
 ```{r}
+#| eval: false
 dataset %>% 
   summarise(across(c(sl_SQ002,
   sl_SQ003,
   sl_SQ005,
-  sl_SQ007),list(mean=mean,sd=sd)))
+  sl_SQ007),list(mean=mean,sd=sd)),total=mean(suboptimal_study),total=sd(suboptimal_study))
 ```
 
 ### Gewissenhaftigkeit
 
 ```{r}
-scales_conscientiousness <- list(gh_ordnungsliebe = c("-gh_SQ001", "gh_SQ006", "-gh_SQ009"),
-                                 gh_fleiss = c("-gh_SQ002", "-gh_SQ004", "gh_SQ007", "gh_SQ010"),
-                                 gh_verlaesslichkeit = c("gh_SQ003", "-gh_SQ005", "gh_SQ008", "-gh_SQ011"))
-
-
+#| eval: false
+dataset %>% 
+  summarise(across(c(gh_ordnungsliebe,
+  gh_fleiss,
+  gh_verlaesslichkeit),list(mean=mean,sd=sd)),total=mean(gewissenhaftigkeit),total=sd(gewissenhaftigkeit))
 ```
 
 ### SRL-Probleme
@@ -82,13 +83,79 @@ Unser 90-Items Fragebogen, zu dem wir glücklicherweise schon die Meanscores hab
 
 ```{r}
 dataset %>% 
-  select(starts_with("p"))
+  select(starts_with("P",ignore.case=F),-Probleme_gesamt)
 ```
 
 Angenommen, wir wollten aber nun die Mittelwerte sowie Standardabweichungen (bspw. über `geom_bar()` und `geom_errorbar()`) für alle diese Spalten berechnen - wie würden wir da vorgehen? Das leitet zu einem weiteren wichtigen Konzept über: Das **long** vs. **wide** Format von Daten.
 
 ## Reshaping data
 
-```{r}
+Normalerweise sind Daten in einem Format angeordnet, das dem folgendem entspricht:
 
+```{r}
+#| echo: false
+df <- data.frame(rbind(c(1,2,3,4),c(5,6,7,8)))
+names(df) <- c("other","variable1","variable2","variable3")
+
+df
+```
+
+> Frage: Wenn wir nun allerdings die Variablen `variable1`, `variable2` und `variable3` in einem Plot darstellen wollten, was wäre das Problem?
+
+```{r}
+#| eval: false
+
+df %>% 
+  ggplot()+
+  geom_bar(aes(x=?,y=?))
+```
+
+Das Problem ist, dass die Variablen als einzelne Spalten vorhanden sind, das hilft uns bei der Visualisierung mit `ggplot` nicht weiter. Die Daten befinden sich im `long` Format. Für viele Analysen bietet sich aber das `wide` Format viel besser an. Hier ein Beispiel, wie das `wide` Format im oben genannten Dataframe aussieht:
+
+```{r}
+#| echo: false
+df %>% 
+  tidyr::pivot_longer(cols=variable1:variable3)
+```
+
+Somit können wir viel einfacher mit `ggplot` weiterarbeiten:
+
+```{r}
+#| eval: false
+
+df %>% 
+  ggplot() %>% 
+  geom_bar(aes(x=name,y=value))
+```
+
+Dieses sogenannte "schmelzen" des Dataframes ermöglicht uns die Funktion `pivot_longer` aus dem `tidyr` Package. Dessen Syntax ist relativ einfach:
+
+```{r}
+#| eval: false
+
+df %>% 
+  pivot_longer(cols=variable1:variable3)
+```
+
+Hierbei bleibt die Variable, die nicht bei `cols=` übergeben wird, automatisch als ID Variable.
+
+Machen wir das also mit unserem Datensatz, um die verschiedenen Subskalen für Probleme zu visualisieren:
+
+```{r}
+dataset %>% 
+  select(starts_with("P",ignore.case=F),-Probleme_gesamt) %>% 
+  tidyr::pivot_longer(cols=P_Verständnis:P_Ressouren_Technik)
+```
+
+Nun können wir ganz einfach weiterarbeiten mit `ggplot`.
+
+> Frage: Probieren wir doch mal ein Violin-Plot aus!
+
+```{r}
+#| eval: false
+dataset %>% 
+  select(starts_with("P",ignore.case=F),-Probleme_gesamt) %>% 
+  tidyr::pivot_longer(cols=P_Verständnis:P_Ressouren_Technik) %>% 
+  ggplot()+
+  geom_violin(aes(x=name,y=value,fill=name))
 ```
