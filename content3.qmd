@@ -3,6 +3,8 @@ title: "Inferenzstatistik in R"
 author: "Kira Wolff & Simon Krukowski"
 format: html
 editor: visual
+execute:
+  freeze: true
 ---
 
 ```{r packages}

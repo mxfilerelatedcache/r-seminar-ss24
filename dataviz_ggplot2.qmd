@@ -8,6 +8,8 @@ format:
     code-summary: "Show code"
     df-print: paged
 editor: visual
+execute:
+  freeze: true
 ---
 
 ```{r}

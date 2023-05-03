@@ -34,6 +34,8 @@ website:
       - section: "Konkrete Anwendungsfälle"
         contents:
           - analysis1.qmd
+          - analysis2.qmd
+          - analysis3.qmd
 format:
   html:
     theme: cosmo
