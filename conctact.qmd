@@ -1,0 +1,29 @@
+---
+title: "Kontakt"
+author: "Simon Krukowski, Kira Wolff"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+editor: visual
+---
+
+# Kontakt
+
+Falls ihr Probleme oder Fragen habt, meldet euch gerne.
+
+## Simon Krukowski
+
+E-Mail: simon.krukowski\@uni-due.de
+
+Raum: Uni Duisburg-Essen, Campus Duisburg, LE 616
+
+Telefon: +49 203 379 / 4143
+
+## Kira Wolff
+
+E-Mail: kira.wolff\@uni-due.de
+
+Raum: Uni Duisburg-Essen, Campus Duisburg, LE 623
+
+Telefon: +49 203 379 / 4761

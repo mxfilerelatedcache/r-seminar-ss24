@@ -124,30 +124,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basics</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Basics</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
   </div>
 </li>
           <li class="sidebar-item">
-  120423folienwebsite.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data Wrangling &amp; Visualisierung</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Data Wrangling &amp; Visualisierung</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
@@ -167,12 +169,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Inferenzstatistik &amp; Berichten</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Inferenzstatistik &amp; Berichten</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
@@ -187,25 +189,25 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Konkrete Anwendungsfälle</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Anwendung: Fragebögen</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis1.html" class="sidebar-item-text sidebar-link">Studien &amp; Limesurvey</a>
+  <a href="./analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis2.html" class="sidebar-item-text sidebar-link">Base R</a>
+  <a href="./analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analysis3.html" class="sidebar-item-text sidebar-link">Untitled</a>
+  <a href="./analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
   </div>
 </li>
       </ul>
@@ -223,6 +225,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#seminar1---basics" id="toc-seminar1---basics" class="nav-link" data-scroll-target="#seminar1---basics">Seminar[1] &lt;- Basics</a></li>
   <li><a href="#seminar2---data-wrangling-desriptives-visualisierung" id="toc-seminar2---data-wrangling-desriptives-visualisierung" class="nav-link" data-scroll-target="#seminar2---data-wrangling-desriptives-visualisierung">Seminar[2] &lt;- Data Wrangling, Desriptives &amp; Visualisierung</a></li>
+  <li><a href="#seminar3---inferenzstatistik-berichten" id="toc-seminar3---inferenzstatistik-berichten" class="nav-link" data-scroll-target="#seminar3---inferenzstatistik-berichten">Seminar[3] &lt;- Inferenzstatistik &amp; Berichten</a></li>
+  <li><a href="#seminar4---konkrete-anwendungsfälle-studien-limesurvey" id="toc-seminar4---konkrete-anwendungsfälle-studien-limesurvey" class="nav-link" data-scroll-target="#seminar4---konkrete-anwendungsfälle-studien-limesurvey">Seminar[4] &lt;- Konkrete Anwendungsfälle: Studien &amp; Limesurvey</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -255,6 +259,12 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="seminar-medienbasierte-wissenskonstruktion-r" class="level1">
 <h1>Seminar Medienbasierte Wissenskonstruktion: R</h1>
+<p>Herzlich willkommen auf unserer seminarbegleitenden Website. Hier findet ihr die Seminarskripte (i.e., im Seminar verwendete <code>.qmd</code> Dateien), Lösungen der Übungsblätter sowie weitere, hilfreiche Informationen.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/img/welcome.png" class="img-fluid figure-img" width="1000"></p>
+</figure>
+</div>
 <section id="seminar1---basics" class="level2">
 <h2 class="anchored" data-anchor-id="seminar1---basics">Seminar[1] &lt;- Basics</h2>
 <p>Die Folien sind hier zu finden.</p>
@@ -265,6 +275,21 @@ ul.task-list li input[type="checkbox"] {
 <li><p><a href="./datawrangling_base.html">Base R</a></p></li>
 <li><p><a href="./datawrangling_dplyr.html">Data Wrangling mit <code>dplyr</code></a></p></li>
 <li><p><a href="./dataviz_ggplot2.html">Data visualisation mit <code>ggplot2</code></a></p></li>
+</ul>
+</section>
+<section id="seminar3---inferenzstatistik-berichten" class="level2">
+<h2 class="anchored" data-anchor-id="seminar3---inferenzstatistik-berichten">Seminar[3] &lt;- Inferenzstatistik &amp; Berichten</h2>
+<ul>
+<li><p><a href="./content3.html">Inferenzstatistik in R</a></p></li>
+<li><p><a href="./quarto_reports.html">Berichte in R</a></p></li>
+</ul>
+</section>
+<section id="seminar4---konkrete-anwendungsfälle-studien-limesurvey" class="level2">
+<h2 class="anchored" data-anchor-id="seminar4---konkrete-anwendungsfälle-studien-limesurvey">Seminar[4] &lt;- Konkrete Anwendungsfälle: Studien &amp; Limesurvey</h2>
+<ul>
+<li><p><a href="./analysis1.html">Skalen erstellen mit mutate() und across()</a></p></li>
+<li><p><a href="./analysis2.html">Deskr. Auswertung &amp; Wide/Long-Format</a></p></li>
+<li><p><a href="./analysis3.html">Inferenzstatistische Analyse</a></p></li>
 </ul>
 
 
