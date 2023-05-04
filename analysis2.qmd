@@ -1,5 +1,5 @@
 ---
-title: "Base R"
+title: "Wide/long Format"
 subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
 author: "Simon Krukowski"
 format:
@@ -124,7 +124,6 @@ Somit können wir viel einfacher mit `ggplot` weiterarbeiten:
 
 ```{r}
 #| eval: false
-
 df %>% 
   tidyr::pivot_longer(cols=variable1:variable3) %>% 
   ggplot() +

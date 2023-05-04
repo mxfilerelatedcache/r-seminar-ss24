@@ -1,13 +1,16 @@
 ---
-title: "Untitled"
+title: "Inferenzstatistische Analyse"
 subtitle: "Seminar[4] <- Konkrete Anwendungsfälle: Studien & Limesurvey"
 author: "Kira Wolff"
-eval: false
 ---
 
 ```{r}
+#| warning: false
 library(tidyverse)
 library(ggpubr)
+library(rstatix)
+
+dataset <- read.csv("dataset_srl_challenges_wrangled.csv")
 ```
 
 # Fragebogenstudien mit LimeSurvey
@@ -36,9 +39,7 @@ Was rechnen wir dafür?
 
 Welche Voraussetzungen müssen wir testen?
 
-### 
-
--   Führt die Regressionsanalysen durch und testet vorher auch die Voraussetzungen.
+> Führt die Regressionsanalysen durch und testet vorher auch die Voraussetzungen.
 
 ### Voraussetzung Multikollinearität
 
@@ -55,19 +56,19 @@ dataset %>%
 ```{r Regressionen}
 
 # AV 1
-lm1 <- lm(P_Metakognition ~ suboptimal_study*gewissenhaftigkeit, data)
+lm1 <- lm(P_Metakognition ~ suboptimal_study*gewissenhaftigkeit, dataset)
 summary(lm1)
 
 # AV 2
-lm2 <- lm(P_Motivation ~ suboptimal_study*gewissenhaftigkeit, data)
+lm2 <- lm(P_Motivation ~ suboptimal_study*gewissenhaftigkeit, dataset)
 summary(lm2)
 
 # AV 3
-lm3 <- lm(P_Verständnis ~ suboptimal_study*gewissenhaftigkeit, data)
+lm3 <- lm(P_Verständnis ~ suboptimal_study*gewissenhaftigkeit, dataset)
 summary(lm3)
 
 # AV 4
-lm4 <- lm(Probleme_gesamt ~ suboptimal_study*gewissenhaftigkeit, data)
+lm4 <- lm(Probleme_gesamt ~ suboptimal_study*gewissenhaftigkeit, dataset)
 summary(lm4)
 ```
 
@@ -98,28 +99,28 @@ Wir wollen die Zusammenhänge jetzt noch visuell darstellen, indem wir Interakti
 ### Variable umwandeln
 
 ```{r}
-data$gewiss.median <- ifelse(data$gewissenhaftigkeit <= median(data$gewissenhaftigkeit, na.rm=T), "low", "high")
+dataset$gewiss.median <- ifelse(dataset$gewissenhaftigkeit <= median(dataset$gewissenhaftigkeit, na.rm=T), "low", "high")
 ```
 
 ### Separate Plots erstellen
 
 ```{r}
-plot1 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+plot1 <- ggplot(dataset, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
   geom_jitter()+
   geom_smooth(method="lm", se=F)+
   theme_minimal()
 
-plot2 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+plot2 <- ggplot(dataset, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
   geom_jitter()+
   geom_smooth(method="lm", se=F)+
   theme_minimal()
 
-plot3 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+plot3 <- ggplot(dataset, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
   geom_jitter()+
   geom_smooth(method="lm", se=F)+
   theme_minimal()
 
-plot4 <- ggplot(data, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
+plot4 <- ggplot(dataset, aes(gh_SQ007,hsf1_KIZ01, color=gewiss.median))+
   geom_jitter()+
   geom_smooth(method="lm", se=F)+
   theme_minimal()

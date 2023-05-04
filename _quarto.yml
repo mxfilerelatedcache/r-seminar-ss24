@@ -17,11 +17,12 @@ website:
     logo: "assets/img/logo_ude.png"
     style: "docked"
     search: true
+    collapse-level: 1
     contents:
       - section: "Basics"
         contents:
           - installation.qmd
-          - 120423folienwebsite.qmd
+          - intro.qmd
       - section: "Data Wrangling & Visualisierung"
         contents:
           - datawrangling_base.qmd
@@ -31,7 +32,7 @@ website:
         contents:
           - content3.qmd
           - quarto_reports.qmd
-      - section: "Konkrete Anwendungsfälle"
+      - section: "Anwendung: Fragebögen"
         contents:
           - analysis1.qmd
           - analysis2.qmd

@@ -1,7 +1,11 @@
 ---
-title: "R Basics - 12.04.23"
-format: 
-  html
+title: "Introduction & R-Basics"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
 ---
 
 ## Vorstellungsrunde
@@ -37,7 +41,6 @@ Erwartungen ans Seminar
 -   innerhalb der Sitzung: abwechselnd Blöcke von Theorie + Praxis
 -   Website für Präsentationsinhalte, Lösungen, Cheatsheets usw. (selbst Notizen machen lohnt sich auch!)
 
-
 ## Prüfungsleistung
 
 -   Wöchentliche "Hausaufgaben": Wiederholen und erweitern das im Seminar Gelernte
@@ -65,10 +68,9 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 -   große Community, die ständig Funktionen erweitert und bei Problemen hilft
 -   R Studio ist die meistgenutzte Benutzeroberfläche und macht die Handhabung einfacher
 
-## User Interface 
+## User Interface
 
 ![](.R.png){.absolute top="100" right="0" width="700" height="600"}
-
 
 -   oben links: Code
 
@@ -80,14 +82,12 @@ Es gibt keine Anwesenheitspflicht, wir empfehlen aber immer da zu sein, da euch 
 
 -   unten rechts: Dateizugriff, Plotanzeige, Hilfeanzeige, Package-Übersicht
 
-
 ## Code erstellen + ausführen
 
 -   *Öffnet das File das ihr auf der Seite mit unseren Installationstips heruntergeladen habt (vielleicht ist es auch noch offen)*
 -   In dem File ist nur die Zeile ohne `#`ausführbarer Code. Wie hier geschehen, lassen sich mit `#` Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll
 -   *Führt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und **STRG+ENTER** drückt*
 -   Über das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt
-
 
 ```{r echo=T, eval = FALSE}
 # Erstes Skript zum Seminar Medienbasierte Wissenskonstruktion: R

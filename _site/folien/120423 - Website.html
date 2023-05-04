@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Medienbasierte Wissenskonstruktion mit R - R Basics - 12.04.23</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Introduction &amp; R-Basics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,6 +122,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -161,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">R Basics - 12.04.23</h1>
+      <h1 class="quarto-secondary-nav-title">Introduction &amp; R-Basics</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -186,30 +189,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basics</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Basics</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
   </div>
 </li>
           <li class="sidebar-item">
-  120423folienwebsite.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">R Basics - 12.04.23</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data Wrangling &amp; Visualisierung</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Data Wrangling &amp; Visualisierung</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
@@ -229,12 +234,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Inferenzstatistik &amp; Berichten</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Inferenzstatistik &amp; Berichten</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
@@ -249,15 +254,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Konkrete Anwendungsfälle</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Konkrete Anwendungsfälle</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../analysis1.html" class="sidebar-item-text sidebar-link">Studien &amp; Limesurvey</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis2.html" class="sidebar-item-text sidebar-link">Base R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis3.html" class="sidebar-item-text sidebar-link">Untitled</a>
   </div>
 </li>
       </ul>
@@ -308,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">R Basics - 12.04.23</h1>
+<h1 class="title d-none d-lg-block">Introduction &amp; R-Basics</h1>
 </div>
 
 
@@ -687,15 +702,13 @@ dttm (1): submitdate
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 7
-     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
-  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
-1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
-2     2    12 female     TRUE        TRUE                Test       TRUE        
-3     3    19 female     TRUE        TRUE                kp         TRUE        
-4     4    20 male       TRUE        TRUE                problemz   TRUE        
-# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["alter"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["geschlecht"],"name":[3],"type":["fct"],"align":["left"]},{"label":["r.vorwissen"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["r.wieviel.vorwissen"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["r.probleme"],"name":[6],"type":["chr"],"align":["left"]},{"label":["programmier.vorwissen"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"FALSE"},{"1":"2","2":"12","3":"female","4":"TRUE","5":"TRUE","6":"Test","7":"TRUE"},{"1":"3","2":"19","3":"female","4":"TRUE","5":"TRUE","6":"kp","7":"TRUE"},{"1":"4","2":"20","3":"male","4":"TRUE","5":"TRUE","6":"problemz","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <ul>
@@ -719,31 +732,35 @@ dttm (1): submitdate
 <li>In eckigen Klammern nach dem Objektnamen lassen sich die “Koordinaten” angeben</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  geschlecht
-  &lt;fct&gt;     
-1 female    </code></pre>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">2</span>,<span class="dv">3</span>] <span class="co"># zeigt den Wert der zweiten Zeile und dritten Spalte</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["geschlecht"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"female"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <ul>
 <li>Statt Zahlen können auch Spaltennamen benutzt werden</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  geschlecht
-  &lt;fct&gt;     
-1 female    </code></pre>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>umfrage[<span class="dv">3</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["geschlecht"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"female"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <ul>
 <li>Spalten lassen sich auch direkt über <code>$</code> ansprechen.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>geschlecht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &lt;NA&gt;   female female male  
 Levels: female male</code></pre>
@@ -756,28 +773,25 @@ Levels: female male</code></pre>
 <li>Um alles anzeigen zu lassen, kann man die Koordinate “leer” lassen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 1
-  geschlecht
-  &lt;fct&gt;     
-1 &lt;NA&gt;      
-2 female    
-3 female    
-4 male      </code></pre>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["geschlecht"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"NA"},{"1":"female"},{"1":"female"},{"1":"male"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 7
-     id alter geschlecht r.vorwissen r.wieviel.vorwissen r.probleme programmie…¹
-  &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;       &lt;lgl&gt;               &lt;chr&gt;      &lt;lgl&gt;       
-1     1    NA &lt;NA&gt;       NA          NA                  &lt;NA&gt;       FALSE       
-2     2    12 female     TRUE        TRUE                Test       TRUE        
-3     3    19 female     TRUE        TRUE                kp         TRUE        
-4     4    20 male       TRUE        TRUE                problemz   TRUE        
-# … with abbreviated variable name ¹​programmier.vorwissen</code></pre>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>umfrage[ , ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["alter"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["geschlecht"],"name":[3],"type":["fct"],"align":["left"]},{"label":["r.vorwissen"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["r.wieviel.vorwissen"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["r.probleme"],"name":[6],"type":["chr"],"align":["left"]},{"label":["programmier.vorwissen"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"FALSE"},{"1":"2","2":"12","3":"female","4":"TRUE","5":"TRUE","6":"Test","7":"TRUE"},{"1":"3","2":"19","3":"female","4":"TRUE","5":"TRUE","6":"kp","7":"TRUE"},{"1":"4","2":"20","3":"male","4":"TRUE","5":"TRUE","6":"problemz","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -791,8 +805,8 @@ Levels: female male</code></pre>
 <li><code>as.numeric()</code> usw. nutzen, um den Datentyp zu verändern</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>umfrage<span class="sc">$</span>r.probleme <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(umfrage<span class="sc">$</span>r.probleme)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die umgewandelte Spalte überschreibt die alte Spalte!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="neue-daten-erstellen" class="level2">
@@ -802,8 +816,8 @@ Levels: female male</code></pre>
 <li>Kombiniert alle aufgezählten Objekte</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>vektor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 5</code></pre>
 </div>
@@ -813,8 +827,8 @@ Levels: female male</code></pre>
 <li>Im Output erkennt man Strings auch an den Anführungszeichen</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>string <span class="ot">&lt;-</span> <span class="st">"hallo"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "hallo"</code></pre>
 </div>
