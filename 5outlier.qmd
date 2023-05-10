@@ -1,0 +1,66 @@
+---
+title: "5outlier"
+author: "Kira Wolff"
+---
+
+# Ausreißeranalyse
+
+-   Extreme Werte - können Analysen beeinflussen (Korrelation - Bild zeigen)
+
+-   Bisher übersprungen, macht man aber bei gründlicher statistischer Analyse auch
+
+-   Finden heißt nicht rausschmeißen, aber gut zu wissen dass da und eventuell Vergleich mit und ohne, oder Einfluss berechnen
+
+-   zwei Gründe: Messfehler oder echter Extremwert
+
+-   min(), max(), range()
+
+-   histogramm (hist oder geom_histogramm)
+
+-   boxplot (boxplot oder geom_boxplot)
+
+    -   min, med, max, 1+3 quartil, mögliche ausreißer (nach q0.25+1.5\*IQR)
+
+    -   boxplot.stats()\$out
+
+    -   Kombination mit which(data\$var %in% out)
+
+-   quantile(data\$var, grenze) -\> welche Wert sind extrem, z.B. perzentil 2.5 & 97.5 oder 1 & 99 oder 5 & 95
+
+    -   auch wieder which()
+
+-   Standardisieren mit scale()
+
+    -   -2/2: selten
+
+    -   -3/3: sehr selten
+
+    -   3.29: 1/1000
+
+-   Tests:
+
+    -   grubbs.test \[outliers\]
+
+        -   test höchsten Wert, Nullhypothese: kein Outlier
+
+        -   NV Voraussetzung (ohne Wert)
+
+        -   niedrigster Wert: opposite =T
+
+    -   dixon.test \[outliers\]
+
+        -   für kleines sample size (n\<= 25); max 30
+
+        -   für einzelnen extremen Wert
+
+    -   für mehr Werte: anderen extremwert erst removen (filter())
+
+    -   rosnerTest \[EnvStats\]
+
+        -   mehrere auf einmal
+
+        -   für große samples n\>20
+
+        -   rosnerTest(data, k= expec out)
+
+        -   \$all.stats
