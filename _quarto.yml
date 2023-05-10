@@ -33,11 +33,16 @@ website:
         contents:
           - content3.qmd
           - quarto_reports.qmd
-      - section: "Anwendung: Fragebögen"
+      - section: "Anwendung: Fragebögen I"
         contents:
           - analysis1.qmd
           - analysis2.qmd
           - analysis3.qmd
+      - section: "Anwendung: Fragebögen II"
+        contents: 
+          - 5join.qmd
+          - 5outlier.qmd
+          - 5factorplot.qmd
 format:
   html:
     theme: cosmo
