@@ -1,6 +1,8 @@
 ---
 title: "5outlier"
 author: "Kira Wolff"
+execute: 
+  eval: false
 ---
 
 ```{r}

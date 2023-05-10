@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Anwendung: Fragebögen</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Anwendung: Fragebögen I</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -274,6 +274,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Anwendung: Fragebögen II</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
   </div>
 </li>
       </ul>
@@ -394,26 +419,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Es soll vorkommen, dass ein wissenschaftlicher Quarto-Bericht ganz schön lang wird, und über mehrere Wochen/Monate hinweg erstellt wird, bevor er dann gerendert wird. Da kann es sein, dass wir uns gar nicht mehr so gut erinnern können, was wir alles für Packages verwendet haben. Dagegen gibt es zwei Möglichkeiten:</p>
 <p>Entweder, ihr aktiviert ganz bewusst jedes mal, wenn ihr ein besonderes Package verwendet (bspw. <code>wesanderson</code>), dieses im jeweiligen Chunk - denn doppeltes Aktivieren von Packages (im Gegensatz zu <code>install.packages()</code> ist erstmal nicht weiter problematisch:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">fill=</span>Species)) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">wes_palette</span>(<span class="st">"GrandBudapest1"</span>,<span class="at">type=</span><span class="st">"discrete"</span>))<span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Paket 'wesanderson' wurde unter R Version 4.2.3 erstellt</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">fill=</span>Species)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">wes_palette</span>(<span class="st">"GrandBudapest1"</span>,<span class="at">type=</span><span class="st">"discrete"</span>))<span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="quarto_reports_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="quarto_reports_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Ihr könnt Packages aber auch explizit nutzen über den <code>::</code> Operator. Gleicher Chunk Output wie oben kann dann ohne <code>library()</code> erreicht werden:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">fill=</span>Species)) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span>wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"GrandBudapest1"</span>,<span class="at">type=</span><span class="st">"discrete"</span>))<span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width,<span class="at">fill=</span>Species)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span>wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"GrandBudapest1"</span>,<span class="at">type=</span><span class="st">"discrete"</span>))<span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="quarto_reports_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="quarto_reports_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -423,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="eval">#| eval</h3>
 <p>Wir wollen nun die verschiedenen Chunk-Options etwas beleuchten. Fangen wir mit dem relevantesten an, <code>eval</code>. Angenommen, wir wollen uns für den eben benutzten <code>ToothGrowth</code> Datensatz kurz die Summary anschauen, wollen diese aber nicht in unserem Bericht integrieren. Dann können wir das so tun über <code>#| eval: false</code> in der ersten Zeile des Chunks tun. Achtet auf die Leerstelle nach dem <code>|</code> ! RStudio sollte euch hier die versch. Options vorschlagen (bspw. <code>true</code>):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Im final gerenderten Dokument sollte der obige Chunk nicht angezeigt sein.</p>
 </section>
@@ -436,14 +463,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="output">#| output</h3>
 <p>Manchmal wollen wir auch nur den Code ausführen, <strong>ohne die Ergebnisse zu zeigen</strong>. Dabei hilft die <code>#| output</code> Option:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="warning" class="level3">
 <h3 class="anchored" data-anchor-id="warning">#| warning</h3>
 <p>Wenn wir bspw. Packages aktivieren, kann es oft zu Warnungen kommen, welche im finalen Bericht unschön sind. Dabei kann <code>#| warning</code> helfen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Manchmal kann es auch sein, dass wir Probleme dabei haben, einen Chunk auszuführen und nicht gleich wissen, wo das Problem ist. Um Dokumente trotzdem zu rendern, gibt es zwei Möglichkeiten: <code>#| error</code> und <code>#| eval</code> :</p>
 </section>
@@ -451,13 +478,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="error">#| error</h3>
 <p>Sollte ein error entstehen ohne den Code zu unterbrechen ist das eine gute Wahl:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="st">"2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="st">"2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="eval-1" class="level3">
 <h3 class="anchored" data-anchor-id="eval-1">#| eval</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="st">"2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="st">"2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Außerdem gibt es eine Vielzahl weiterer Optionen für bspw. das Anzeigen von Figures etc. Diese könnt ihr auf <a href="https://quarto.org/docs/computations/execution-options.html"><strong>posit.co</strong></a> einsehen.</p>
 </section>
@@ -474,7 +501,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="tabellen">Tabellen</h2>
 <p>Im Rahmen der Regression habt ihr das <code>swiss</code> Package kennengelernt. Üblicherweise würden wir uns die Daten zunächst anschauen bzw. wollen, dass unsere Rezipientinnen diese anschauen können. Standardmäßig rendert Quarto Tabellen allerdings etwas unschön:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>swiss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>swiss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -493,17 +520,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Diese könnt ihr dann entsprechend oben definieren:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Berichte in Quarto"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Simon Krukowski"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Berichte in Quarto"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Simon Krukowski"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Angenommen, wir wollen das gesamte Ergebnis eines t-Tests direkt berichten. Hierfür bietet sich das <code>rstatix</code> package an, da dieses den Output direkt als <code>tibble</code> speichert. Zeigen wir uns also den t-Test für <code>ToothGrowth</code> an:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(len <span class="sc">~</span> supp,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(len <span class="sc">~</span> supp,<span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -523,12 +550,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Manchmal wollt ihr im Fließtext Ergebnisse beschreiben, dabei aber flexibel bleiben und diese nicht “fest” in den Text schreiben. Auch das ist mit Quarto möglich.</p>
 <p>Angenommen, wir wollen den Koeffizient für <code>Agriculture</code> unseres eben gerechneten Regressionsmodells im Text beschreiben:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erneut rechnen just to be safe</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Agriculture <span class="sc">+</span> Examination <span class="sc">+</span> Education <span class="sc">+</span> Catholic, swiss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erneut rechnen just to be safe</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fertility <span class="sc">~</span> Agriculture <span class="sc">+</span> Examination <span class="sc">+</span> Education <span class="sc">+</span> Catholic, swiss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Über <code>`r</code> können wir (im Source Editor) in-text ausführbaren Code integrieren. Um den Wert zu bekommen, müssen wir folgendes machen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>swiss.lm<span class="sc">$</span>coefficients[<span class="st">'Agriculture'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>swiss.lm<span class="sc">$</span>coefficients[<span class="st">'Agriculture'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Agriculture 
  -0.2206455 </code></pre>
@@ -557,13 +584,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br>
 Manchmal kann es auch vorkommen, dass wir Tabellen haben, die wir gar nicht dynamisch erstellt haben, sondern die wir manuell eingeben wollen. Dafür müssen wir natürlich nicht extra ein R-Objekt erstellen, welches wir dann darstellen, sondern wir können es nach folgender Syntax direkt im Text-Teil in Quarto eingeben. Die Syntax sieht wie folgt aus:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span> default <span class="sc">|</span> left<span class="sc">-</span>aligned <span class="sc">|</span> right<span class="sc">-</span>aligned <span class="sc">|</span> centered <span class="sc">|</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">---------</span><span class="er">|:</span><span class="sc">-----</span><span class="er">|</span><span class="sc">------</span><span class="er">:|:</span><span class="sc">------</span><span class="er">:|</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student1<span class="sc">|</span> <span class="dv">12</span>   <span class="sc">|</span>    <span class="dv">12</span> <span class="sc">|</span>   <span class="dv">12</span>   <span class="sc">|</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student2<span class="sc">|</span> <span class="dv">123</span>  <span class="sc">|</span>   <span class="dv">123</span> <span class="sc">|</span>  <span class="dv">123</span>   <span class="sc">|</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student3<span class="sc">|</span> <span class="dv">1</span>    <span class="sc">|</span>     <span class="dv">1</span> <span class="sc">|</span>   <span class="dv">1</span>    <span class="sc">|</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="er">:</span> Demonstration of pipe table syntax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span> default <span class="sc">|</span> left<span class="sc">-</span>aligned <span class="sc">|</span> right<span class="sc">-</span>aligned <span class="sc">|</span> centered <span class="sc">|</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">---------</span><span class="er">|:</span><span class="sc">-----</span><span class="er">|</span><span class="sc">------</span><span class="er">:|:</span><span class="sc">------</span><span class="er">:|</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student1<span class="sc">|</span> <span class="dv">12</span>   <span class="sc">|</span>    <span class="dv">12</span> <span class="sc">|</span>   <span class="dv">12</span>   <span class="sc">|</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student2<span class="sc">|</span> <span class="dv">123</span>  <span class="sc">|</span>   <span class="dv">123</span> <span class="sc">|</span>  <span class="dv">123</span>   <span class="sc">|</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> student3<span class="sc">|</span> <span class="dv">1</span>    <span class="sc">|</span>     <span class="dv">1</span> <span class="sc">|</span>   <span class="dv">1</span>    <span class="sc">|</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="er">:</span> Demonstration of pipe table syntax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Über den <code>:</code> Operator könnt ihr bspw. das alignment innerhalb der Zellen angeben. Solch eine Markdown-Table Syntax kann bspw. über <a href="https://tablesgenerator.com/markdown_tables">Online Editoren</a> erstellt werden.</p>
 <p>So sieht das Ganze dann aus:</p>
@@ -616,12 +643,12 @@ Manchmal kann es auch vorkommen, dass wir Tabellen haben, die wir gar nicht dyna
 <h1>Zitationen</h1>
 <p>Ihr könnt auch direkt in Quarto zitieren. Dazu müsst ihr lediglich eure Referenzen als <code>.bib</code> vorliegen haben, und diese dann oben im YAML-Header eingeben:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Berichte in Quarto"</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Simon Krukowski"</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> <span class="st">"assets/bibliographies/references.bib"</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Berichte in Quarto"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Simon Krukowski"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> <span class="st">"assets/bibliographies/references.bib"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ihr könnt auch euer R-Studio mit verschiedenen Bibliotheken (bspw. Zotero) verknüpfen, und dann auf alle Quellen dort zugreifen.</p>
 </section>
@@ -630,7 +657,7 @@ Manchmal kann es auch vorkommen, dass wir Tabellen haben, die wir gar nicht dyna
 <p>Manchmal wollen wir direkt aus R unsere Outputs in einem Format haben, das quasi publikationsbereit ist. In Abhängigkeit des wissenschaftlichen Hintergrundes gibt es da natürlich verschiedene Guidelines, wir orientieren uns hier an den für Komedia-Studierende relevanten APA Guidelines.</p>
 <p>Angenommen, ihr habt einen Datensatz wie <code>ToothGrowth</code> und wollt diesen im deskriptiven Teil eurer Arbeit berichten. Je nachdem, was ihr in <code>df-print</code> definiert habt, könnte so ein table zwar in Ordnung aussehen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -641,7 +668,7 @@ Manchmal kann es auch vorkommen, dass wir Tabellen haben, die wir gar nicht dyna
 </div>
 </div>
 <p>So richtig optimal ist das aber nicht. Hier kann das <code>stargazer()</code> package sehr hilfreich sein. Schauen wir uns eine solche Tabelle für das <code>attitude</code> dataset an. Dabei ist die Chunk-Option <code>#| results: asis</code>.</p>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(attitude,<span class="at">type =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(attitude,<span class="at">type =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <table style="text-align:center">
 <tbody><tr>
@@ -822,10 +849,10 @@ advance
 <p>Frage: Was fällt auf?</p>
 </blockquote>
 <p>Über die Option <code>summary = FALSE</code> könnt ihr summaries ausschalten, bspw. wenn ihr eh eine Ergebnistabelle aus einem T-Test habt:</p>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(len <span class="sc">~</span> supp,<span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  stargazer<span class="sc">::</span><span class="fu">stargazer</span>(<span class="at">type =</span> <span class="st">"html"</span>,<span class="at">summary =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(len <span class="sc">~</span> supp,<span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  stargazer<span class="sc">::</span><span class="fu">stargazer</span>(<span class="at">type =</span> <span class="st">"html"</span>,<span class="at">summary =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <table style="text-align:center">
 <tbody><tr>
@@ -900,7 +927,7 @@ c(df = 58)
 
 </tbody></table>
 <p>Und was ist mit komplexeren Modellen oder Regressionen? Hier kann die manuelle Darstellung sehr aufwändig sein. Aber auch hier lässt uns <code>stargazer()</code> nicht im Stich:</p>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="sc">%&gt;%</span> stargazer<span class="sc">::</span><span class="fu">stargazer</span>(<span class="at">type=</span><span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="sc">%&gt;%</span> stargazer<span class="sc">::</span><span class="fu">stargazer</span>(<span class="at">type=</span><span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <table style="text-align:center">
 <tbody><tr>
@@ -1098,11 +1125,11 @@ F Statistic
 <h2 class="anchored" data-anchor-id="und-latex">Und LaTeX?</h2>
 <p>Solltet ihr mit LaTeX bspw. über Overleaf arbeiten, so ist <code>stargazer</code> sogar noch besser geeignet. Die default Einstellung ist, euch den entsprechenden LaTeX geben:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="sc">%&gt;%</span> stargazer<span class="sc">::</span><span class="fu">stargazer</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>swiss.lm <span class="sc">%&gt;%</span> stargazer<span class="sc">::</span><span class="fu">stargazer</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Thu, May 04, 2023 - 12:08:26
+% Date and time: Mi, Mai 10, 2023 - 09:50:04
 \begin{table}[!htbp] \centering 
   \caption{} 
   \label{} 

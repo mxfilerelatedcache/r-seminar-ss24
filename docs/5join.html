@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kira Wolff &amp; Simon Krukowski">
+<meta name="author" content="Kira Wolff">
 
-<title>Medienbasierte Wissenskonstruktion mit R - Hausaufgabe 2: Deskriptives</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Zusammenhängende Dataframes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,22 +87,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -124,7 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R</span>
     </a>
   </div>
@@ -144,15 +144,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page">
+    <a class="nav-link active" href="./index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html">
+    <a class="nav-link" href="./contact.html">
  <span class="menu-text">Kontakt</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ntn.html">
+    <a class="nav-link" href="./ntn.html">
  <span class="menu-text">Nice to Know</span></a>
   </li>  
 </ul>
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Hausaufgabe 2: Deskriptives</h1>
+      <h1 class="quarto-secondary-nav-title">Zusammenhängende Dataframes</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -174,8 +174,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -195,12 +195,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
   </div>
 </li>
       </ul>
@@ -215,17 +215,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
+  <a href="./datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
+  <a href="./datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
+  <a href="./dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
   </div>
 </li>
       </ul>
@@ -240,12 +240,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
+  <a href="./content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
+  <a href="./quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
   </div>
 </li>
       </ul>
@@ -260,42 +260,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
+  <a href="./analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
+  <a href="./analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
+  <a href="./analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Anwendung: Fragebögen II</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Anwendung: Fragebögen II</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  <a href="./5join.html" class="sidebar-item-text sidebar-link active">Zusammenhängende Dataframes</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
+  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
+  <a href="./5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
   </div>
 </li>
       </ul>
@@ -309,24 +309,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#beschreibung" id="toc-beschreibung" class="nav-link active" data-scroll-target="#beschreibung">Beschreibung</a>
+  <li><a href="#verknüpfung-von-dataframes" id="toc-verknüpfung-von-dataframes" class="nav-link active" data-scroll-target="#verknüpfung-von-dataframes">Verknüpfung von Dataframes</a>
   <ul class="collapse">
-  <li><a href="#punkte" id="toc-punkte" class="nav-link" data-scroll-target="#punkte">Punkte</a></li>
-  <li><a href="#für-experten" id="toc-für-experten" class="nav-link" data-scroll-target="#für-experten">Für Experten</a></li>
-  <li><a href="#abgabe" id="toc-abgabe" class="nav-link" data-scroll-target="#abgabe">Abgabe</a></li>
-  </ul></li>
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
-  <ul class="collapse">
-  <li><a href="#aufgabe-1-1-punkt" id="toc-aufgabe-1-1-punkt" class="nav-link" data-scroll-target="#aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-2-1-punkt" id="toc-aufgabe-2-1-punkt" class="nav-link" data-scroll-target="#aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-3-1-punkt" id="toc-aufgabe-3-1-punkt" class="nav-link" data-scroll-target="#aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-4-1-punkt" id="toc-aufgabe-4-1-punkt" class="nav-link" data-scroll-target="#aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-5-1-punkt" id="toc-aufgabe-5-1-punkt" class="nav-link" data-scroll-target="#aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-6-1-punkt" id="toc-aufgabe-6-1-punkt" class="nav-link" data-scroll-target="#aufgabe-6-1-punkt">Aufgabe 6 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-7-1-punkt" id="toc-aufgabe-7-1-punkt" class="nav-link" data-scroll-target="#aufgabe-7-1-punkt">Aufgabe 7 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-8-1-punkt" id="toc-aufgabe-8-1-punkt" class="nav-link" data-scroll-target="#aufgabe-8-1-punkt">Aufgabe 8 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-9-1-punkt" id="toc-aufgabe-9-1-punkt" class="nav-link" data-scroll-target="#aufgabe-9-1-punkt">Aufgabe 9 [1 Punkt]</a></li>
-  <li><a href="#aufgabe-10-1-punkt" id="toc-aufgabe-10-1-punkt" class="nav-link" data-scroll-target="#aufgabe-10-1-punkt">Aufgabe 10 [1 Punkt]</a></li>
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe">Aufgabe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -336,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Hausaufgabe 2: Deskriptives</h1>
+<h1 class="title d-none d-lg-block">Zusammenhängende Dataframes</h1>
 </div>
 
 
@@ -346,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kira Wolff &amp; Simon Krukowski </p>
+             <p>Kira Wolff </p>
           </div>
   </div>
     
@@ -357,102 +342,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="beschreibung" class="level1">
-<h1>Beschreibung</h1>
-<p>Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.</p>
-<p>Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.</p>
-<section id="punkte" class="level3">
-<h3 class="anchored" data-anchor-id="punkte">Punkte</h3>
-<p>Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als <strong>[Bonus]</strong> markiert sind, geben keine Punkte.</p>
-</section>
-<section id="für-experten" class="level3">
-<h3 class="anchored" data-anchor-id="für-experten">Für Experten</h3>
-<p>Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als <strong>[Für Experten]</strong> markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).</p>
-</section>
-<section id="abgabe" class="level3">
-<h3 class="anchored" data-anchor-id="abgabe">Abgabe</h3>
-<p>Um eure Hausaufgabe abzugeben, ladet diese bitte als <code>.qmd</code> Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. <code>hausaufgabe2_simon_krukowski.qmd</code>, und schreibt hier in der Datei oben bei <code>author</code> euren Namen rein.</p>
-</section>
-</section>
-<section id="aufgaben" class="level1">
-<h1>Aufgaben</h1>
-<section id="aufgabe-1-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</h3>
-<p>Am Anfang von fast jedem R-Code aktiviert man erst mal die notwendigen Packages und lädt den relevanten Datensatz. Wir schauen uns hier einen Datensatz aus dem Package <code>nycflights13</code> an. Installiert und aktiviert dementsprechend die Packages <code>nycflights13</code>, <code>dplyr</code> und <code>ggplot2.</code> (Denkt auch daran, welche Packages ihr installieren und welche vielleicht nur aktivieren müsst..)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Lösung einfügen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset_srl_challenges_wrangled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Der Datensatz, mit dem wir nun arbeiten, nennt sich <code>flights</code>. Unter diesem Namen könnt ihr ihn nach erfolgreicher Aktivierung von <code>nycflights13</code> finden. Er enthält alle Flüge, die im Jahr 2013 in New York losgeflogen sind. Mehr Informationen zu den Variablen könnt ihr über die Hilfefunktion bekommen.</p>
-<p>Hinweis: Speichert euch bei den folgenden Aufgaben eure Änderungen an <code>flights</code> in Objekten mit einem anderen Namen, damit ihr - falls etwas schief geht - immer wieder auf das Original zurückgreifen könnt.</p>
+<section id="verknüpfung-von-dataframes" class="level1">
+<h1>Verknüpfung von Dataframes</h1>
+<p>Wir haben jetzt also ein neues dataframe, in dem die Arbeitsgedächtnisdaten enthalten sind. Natürlich wollen wir diese Daten am liebsten mit den restlichen Daten aus dem Fragebogen verknüpfen, damit uns für eine Auswertung alle Variablen zur Verfügung stehen. Welche Möglichkeit kennt ihr schon, zwei Dataframes miteinander zu verknüpfen?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nur mal zum Anschauen:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bisheriges Wissen:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data.verknüpft <span class="ot">&lt;-</span> <span class="fu">cbind</span>(daten1, daten2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="aufgabe-2-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</h3>
-<p>Ergänzt <code>flights</code> um eine weitere Spalte, in der die Verspätungen bei Ankunft und Abflug (<code>arr_delay</code> und <code>dep_delay</code>) miteinander verrechnet werden. Gestaltet den Code so, dass ihr auch bei späteren Aufgaben auf die Spalte zugreifen könntet.</p>
-<p>Verwendet die Pipe und die euch bekannten <code>dplyr</code>-Befehle.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code zur Lösung eintragen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aufgabe-3-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</h3>
-<p>Sortiert flights so, dass ihr einmal die geringste und einmal die größte Verspätung bei Ankunftszeit entnehmen könnt.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code zur Lösung eintragen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aufgabe-4-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</h3>
-<p>Wie interpretiert ihr die Ergebnisse aus Aufgabe 3?</p>
-<p><em>Antwort hier:</em></p>
-</section>
-<section id="aufgabe-5-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</h3>
-<p>Für welche Variablen eignet sich <code>group_by</code> typischerweise bei einer “klassischen” Komedia-Studie; wofür hättet ihr sie beispielsweise bei eurer Bachelorarbeit verwenden können?</p>
-<p><em>Antwort hier:</em></p>
-</section>
-<section id="aufgabe-6-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-6-1-punkt">Aufgabe 6 [1 Punkt]</h3>
-<p>Erstellt mittels summarize eine Tabelle, in der für jeden Monat der die durchschnittliche Distanz (Spalte <code>distance</code>) der Flüge und ihre Standardabweichungen angegeben werden.</p>
-<p>Verwendet die Pipe und die euch bekannten <code>dplyr</code>-Befehle.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code als Antwort eintragen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aufgabe-7-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-7-1-punkt">Aufgabe 7 [1 Punkt]</h3>
-<p>Verwendet die in Aufgabe 6 erstellte Tabelle, um mit <code>ggplot</code> und <code>geom_point</code> einen Plot zu erstellen, in dem auf der x-Achse die Monate und auf der y-Achse die durchschnittliche Distanz zu sehen ist.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code als Antwort eintragen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aufgabe-8-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-8-1-punkt">Aufgabe 8 [1 Punkt]</h3>
-<p><strong>[für Experten]</strong></p>
-<p>Fügt dem Plot aus Aufgabe 7 außerdem Standardabweichungen mithilfe von <code>geom_errorbar()</code> hinzu. (Hinweis: Alles, was ihr für den Input bei geom_errobar() benötigt, befindet sich bereits in der Tabelle von Aufgabe 6)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code als Antwort eintragen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="aufgabe-9-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-9-1-punkt">Aufgabe 9 [1 Punkt]</h3>
-<p>Gestaltet den Plot aus Aufgabe 7 oder 8 ästhetischer, indem ihr</p>
+<p>Wann könnte diese Variante zu Problem führen bzw. zu einfach gedacht sein?</p>
 <ul>
-<li><p>einen Titel hinzufügt</p></li>
-<li><p>die Farbe der Punkte zu eurer Lieblingsfarbe verändert</p></li>
-<li><p>die Achsen beschriftet</p></li>
+<li><p>Wenn die Zuordnung von Zeile und Proband nicht in beiden Dataframes identisch ist</p></li>
+<li><p>Wenn beide Dataframes- nicht die gleiche Zeilenlänge haben, weil es z.B. nicht Daten zu allen Probanden gibt</p></li>
+</ul>
+<p>Sinnvoller ist es daher, die Passung der Datenframes zu überprüfen bzw. zu garantieren. In base R gibt es dafür bspw. <code>match()</code>. Schaut euch mal die Dokumentation/Hilfe dafür an.</p>
+<blockquote class="blockquote">
+<p><code>match(x, table, …)</code> <code>match</code> returns a vector of the positions of (first) matches of its first argument in its second.</p>
+</blockquote>
+<p>Es wird also ein Vektor mit einem anderen Vektor verglichen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">"abc"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="st">"abc"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(vec1, vec2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Woraus besteht der Output?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Der Output gibt an, welche Elemente aus dem ersten Vektor im zweiten Vektor vorkommen, indem er 1) die Elemente des ersten Vektors schrittweise durchgeht und 2) für in beiden Vektoren vorkommende Elemente die Position des Elements im zweiten Vektor notiert. Er gibt <u>nicht</u> an, wie die Elemente “heißen”.</p>
+<p>Was können wir damit anfangen?</p>
+<p>Wir können es als Index nutzen, der uns angibt, welche Zeilen wir mit welchen matchen dürfen. Nach dem Prinzip: “Für das erste Element aus <code>vec1</code> nimm bitte das dritte Element aus <code>vec2</code>”. Wir wenden den Index also auf die Spalte mit der Variable an, die wir übertragen wollen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis: Die Werte von var aus data2, sortiert in der Reihenfolge, in der sie für data1 sinnvoll sind.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># richtige Übertragung auf data1:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">newvar =</span> data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jetzt enthält data1 die Daten aus data2$var, aber garantiert in der richtigen Reihenfolge</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>match()</code> ist praktisch, benötigt allerdings Schreibaufwand bzw. Konzentration bei der Umsetzung. Außerdem ist es in der Form nur auf eine Variable beschränkt.</p>
+<p>Natürlich hat <code>dplyr</code> wieder etwas angenehmeres für uns: <code>left_join()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(data2, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hier werden alle Variablen aus data2 in data1 ergänzt, gematcht nach der id-Spalte, die hier in beiden Datensätzen verwendet wurde. Sollten die ID-Spalten unterscheidlich heißen, lässt sich das über <code>by = c("a" = "b")</code> ausgleichen</p>
+<p><code>left_join()</code> ist die Standardfunktion, um die Daten aus zwei Datensätzen miteinander zu verknüpfen, es gibt allerdings außerdem noch <code>right_join()</code>, <code>inner_join()</code> und <code>full_join()</code>.</p>
+<p>Schaut euch die Dokumentation/Hilfe an und versucht den Unterschied mal in eigenen Worten zu erklären. Wann kann uns welche Funktion nützen?</p>
+<ul>
+<li><p><code>inner_join()</code>: Das Ergebnis enthält nur Zeilen, deren ID in beiden Datensätzen vorkommt.<br>
+Beispiel: Ich habe zwei separate Studien gemacht und mich interessieren nur noch die Probanden, die an beiden Studien teilgenommen haben. Ich möchte die erhobenen Variablen aus beiden Studien zusammenführen. Zeilen von Probanden, die nur an einer Studie teilgenommen haben, können also wegfallen.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://r4ds.had.co.nz/relational-data.html"><img src=".\assets/img/inner_join.png" class="img-fluid figure-img" width="450"></a></p>
+<p></p><figcaption class="figure-caption">Abbildungen aus R for Data Science (Wickham &amp; Grolemund 2017)</figcaption><p></p>
+</figure>
+</div></li>
+<li><p><code>full_join()</code>: Das Ergebnis enthält alle Zeilen aus beiden Datensätzen, wobei die nach ID zueinander passenden Zeilen natürlich kombiniert wurden.<br>
+Beispiel: Ich habe verschiedene LimeSurvey-Umfragen zu verschiedenen Zeitpunkten für eine Langzeitstudie gemacht. Manche Probanden haben nur an T1 teilgenommen, andere nur an T2, manche an beiden. Ich möchte natürlich alle Probanden behalten, auch wenn manche bei einigen Variablen dann Lücken zeigen. Alle Zeilen aus beiden Studien sollen behalten werden.</p>
+<p><img src=".\assets/img/full_join.png" class="img-fluid" width="450"></p></li>
+<li><p><code>left_join()</code>: Das Ergebnis enthält alle Zeilen aus dem ersten Datensatz und passende aus dem zweiten Datensatz.<br>
+Beispiel: In meiner Studie wurde Stress bei DiabetikerInnen gemessen. Viele der DiabetikerInnen haben bereits an einer anderen Studie teilgenommen, bei der die medizinischen Daten noch genauer erhoben wurden. Ich möchte davon alles, was meine Studie ergänzen kann, übernehmen. Der Stress-Datensatz soll dabei natürlich komplett erhalten bleiben. Zeilen von Probanden aus der anderen Studie, die nicht an der Stress-Studie teilgenommen haben, interessieren mich aber nicht.</p>
+<p><img src=".\assets/img/left_join.png" class="img-fluid" width="450"></p></li>
+<li><p><code>right_join()</code>: Das Ergebnis enthält alle Zeilen aus dem zweiten Datensatz und passende aus dem ersten Datensatz.</p>
+<p><img src=".\assets/img/right_join.png" class="img-fluid" width="450"><br>
+Mit <code>left_join()</code> und <code>right_join()</code> lässt sich also prinzipiell das Gleiche erreichen, wenn man die Datensätze an die passende Stelle setzt. Für welche Option man sich entscheidet hängt also vor allem davon ab, ob vor dem Joinen noch Datawrangling notwendig ist, z.B. wenn ich aus meinem ergänzenden Datensatz nur bestimmte Spalten übernehmen will:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier Code als Antwort einfügen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, var3, var4) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(data1, <span class="at">by=</span><span class="st">"ID"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output besteht aus data1 (+ Erweiterungen)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="aufgabe-10-1-punkt" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe-10-1-punkt">Aufgabe 10 [1 Punkt]</h3>
-<p>Recherchiert <code>geom_jitter</code> und beschreibt in eigenen Worten, was die Funktion macht und in welchen Fällen sie besonders nützlich ist.</p>
-<p><em>Antwort hier:</em></p>
+<section id="aufgabe" class="level2">
+<h2 class="anchored" data-anchor-id="aufgabe">Aufgabe</h2>
+<p>Jetzt, wo ihr die Theorie von left_join() kennengelernt habt, könnt ihr es auch selbst anwenden für unsere dataframes.</p>
+<div class="cell">
+
+</div>
 
 
 </section>

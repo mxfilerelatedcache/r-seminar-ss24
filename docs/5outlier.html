@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Simon Krukowski">
+<meta name="author" content="Kira Wolff">
 
-<title>Medienbasierte Wissenskonstruktion mit R - Deskriptives</title>
+<title>Medienbasierte Wissenskonstruktion mit R - 5outlier</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Deskriptives</h1>
+      <h1 class="quarto-secondary-nav-title">5outlier</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -277,12 +277,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Anwendung: Fragebögen II</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Anwendung: Fragebögen II</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
@@ -290,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
+  <a href="./5outlier.html" class="sidebar-item-text sidebar-link active">5outlier</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -309,13 +309,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-wrangling-visualisierung" id="toc-data-wrangling-visualisierung" class="nav-link active" data-scroll-target="#data-wrangling-visualisierung">Data Wrangling &amp; Visualisierung</a>
+  <li><a href="#ausreißeranalyse" id="toc-ausreißeranalyse" class="nav-link active" data-scroll-target="#ausreißeranalyse">Ausreißeranalyse</a>
   <ul class="collapse">
-  <li><a href="#themensammlung" id="toc-themensammlung" class="nav-link" data-scroll-target="#themensammlung">Themensammlung</a></li>
-  </ul></li>
-  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a>
-  <ul class="collapse">
-  <li><a href="#einlesen-von-daten" id="toc-einlesen-von-daten" class="nav-link" data-scroll-target="#einlesen-von-daten">Einlesen von Daten</a></li>
+  <li><a href="#grafische-ausreißersuche" id="toc-grafische-ausreißersuche" class="nav-link" data-scroll-target="#grafische-ausreißersuche">Grafische Ausreißersuche</a></li>
+  <li><a href="#ausreißersuche-mit-base-r" id="toc-ausreißersuche-mit-base-r" class="nav-link" data-scroll-target="#ausreißersuche-mit-base-r">Ausreißersuche mit base R</a></li>
+  <li><a href="#ausreißersuche-mit-dafür-designten-packages" id="toc-ausreißersuche-mit-dafür-designten-packages" class="nav-link" data-scroll-target="#ausreißersuche-mit-dafür-designten-packages">Ausreißersuche mit dafür designten Packages</a></li>
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe">Aufgabe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -325,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Deskriptives</h1>
+<h1 class="title d-none d-lg-block">5outlier</h1>
 </div>
 
 
@@ -335,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Simon Krukowski </p>
+             <p>Kira Wolff </p>
           </div>
   </div>
     
@@ -346,74 +345,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="data-wrangling-visualisierung" class="level1">
-<h1>Data Wrangling &amp; Visualisierung</h1>
-<section id="themensammlung" class="level2">
-<h2 class="anchored" data-anchor-id="themensammlung">Themensammlung</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(outliers)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnvStats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="ausreißeranalyse" class="level1">
+<h1>Ausreißeranalyse</h1>
+<p>In diesem Abschnitt machen wir noch mal einen kurzen Ausflug in die Statistik und schauen uns die Ausreißeranalyse an.</p>
+<p>Ausreißer sind Werte, die im Vergleich zu den restlichen Ausprägungen der Variable extrem hoch oder niedrig sind. Damit können einzelne Datenpunkte einen großen Einfluss auf Analysen und Ergebnisse nehmen.</p>
+<p>Der Mittelwert ist beispielsweise sehr ausreißerempfindlich:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) <span class="co"># Mittelwert der Zahlen 1 bis 50: 25.5</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">1000</span>)) <span class="co"># Mittelwert der Zahlen 1 bis 50 und Ausreißer 1000: 44.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Bei einer gründlichen statistischen Analyse gehört dazu, dass man sich neben den rein deskriptiven Eigenschaften der Variablen auch anschaut, ob es pro Variable Ausreißer gibt. Wenn man diese identifizieren kann, gibt es zwei Fragen: Warum ist es ein Ausreißer? Wie gehe ich damit um?</p>
+<p>Im Prinzip gibt es zwei Möglichkeiten, warum ein Ausreißer existiert: Entweder es handelt sich um einen Messfehler, weil bspw. ein Komma falsch gesetzt wurde; oder es ist ein echter Extremwert, der zwar selten ist, aber genauso existieren kann. Der größte Mann, der je gelebt hat, Robert Wadlow, war mit seinen 2.72m auf jeden Fall ein Ausreißer, trotzdem war seine Größe ja real und valide.</p>
+<p>Auf die zweite Frage, wie man mit Ausreißern/Extremwerten umgeht, gibt es keine allgemeingültige Antwort. Einfach entfernen darf man sie nicht. Die sauberste Lösung ist meistens, Analysen einmal mit und einmal ohne Extremwerte durchzuführen und zu schauen, ob sich die Ergebnisse denn wirklich ändern. Es gibt auch andere Ansätze, z.B. den Extremwert mit dem Mittelwert der Variable zu ersetzen, aber die genaue Vorgehensweise muss man von Fall zu Fall entscheiden und führt hier zu weit.</p>
+<p>Wir setzen hier den Fokus darauf, die Ausreißer erst einmal zu identifizieren</p>
+<section id="grafische-ausreißersuche" class="level2">
+<h2 class="anchored" data-anchor-id="grafische-ausreißersuche">Grafische Ausreißersuche</h2>
+<p>Hier bieten sich zwei Plots an, die ihr schon kennt: Histogramme und Boxplots</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(dmAge))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(dmAge))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Im Boxplot werden potentielle Ausreißer mit den Punkten dargestellt, wenn sie das “IQR Kriterium” überschreiten. IQR steht für interquartile range, also Abstand zwischen dem ersten und zweiten Quantil. Das erste Quantil ist die Zahl, unter dem 25% der Werte liegen und das dritte Quantil die Zahl, über der 25% der Werte liegen. Von diesen Quantilgrenzen aus geht man noch mal weiter um 1.5*IQR in beide Richtungen. Die Werte, die dann immer noch nicht im Bereich liegen, sind die potentiellen Ausreißer.</p>
+</section>
+<section id="ausreißersuche-mit-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="ausreißersuche-mit-base-r">Ausreißersuche mit base R</h2>
+<p>Das IQR-Kriterium lässt sich natürlich nicht nur im Boxplot anwenden, sondern auch selbst berechnen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grenzen bestimmen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">2</span>]<span class="sc">-</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">4</span>]<span class="sc">+</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge) </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Probanden identifizieren, die Grenzen überschreiten</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dmAge <span class="sc">&lt;</span> low <span class="sc">|</span> dmAge <span class="sc">&gt;</span> high) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Netterweise gibt es auch eine Funktion zu den Daten hinter einem Boxplot, mit der wir die Werte der potentiellen Ausreißer direkt genannt bekommen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)<span class="sc">$</span>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hier werden uns nur leider nicht direkt die Probanden-IDs oder Zeilennummern mitgeliefert. Dabei kann uns aber die Funktion <code>which()</code> und der <code>%in%</code>-Operator helfen, die auch allgemein nützlich sind, immer wenn es darum geht, bestimmte Werte in einer Tabelle wiederzufinden.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Elemente des Alter-Vektors entsprechen einem der Elemente aus dem out-Vektor?</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Zeilen-Indices entsprechen diese Übereinstimmungen?</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ähnlich wie match(): Indices!</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Indices im Datensatz anwenden</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>dataset[<span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ein weiterer Ansatz kann sein, die Daten mit <code>scale()</code> zu standardisieren und dann zu überprüfen, welche Werte die Grenzen überschreiten, welche gemäß der Standardnormalverteilung wie folgt definiert sind:</p>
 <ul>
-<li><p>Dataframes</p>
-<ul>
-<li><p>einlesen</p></li>
-<li><p>damit arbeiten</p></li>
-</ul></li>
-<li><p>Deskriptive Analyse</p>
-<ul>
-<li><p>mean/sd/sum für einzelne Spalten</p></li>
-<li><p>Datensatz aufteilen (i.e., subset)</p></li>
-<li><p>Aufzeigen, was das Problem ist ⇒ Überleitung zu Dplyr</p></li>
-</ul></li>
-<li><p>Dplyr</p>
-<ul>
-<li><p>Einleitung</p></li>
-<li><p>Syntax (i.e., Konzept von Pipes)</p></li>
-<li><p>Beispiele</p></li>
-<li><p>Aufteilen des Datensatzes</p></li>
-</ul></li>
-<li><p>ggplot</p>
-<ul>
-<li><p>Einleitung</p></li>
-<li><p>Syntax (i.e., Konzept von Pipes)</p></li>
-<li><p>Beispiele</p></li>
-<li><p>Bar Plot</p></li>
-<li><p>Line Plot</p></li>
-</ul></li>
+<li><p>außerhalb von -2 oder 2: selten</p></li>
+<li><p>außerhalb von -3 oder 3: sehr selten</p></li>
 </ul>
 <div class="cell">
-<details>
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>palette1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#648fff"</span>,<span class="st">"#785ef0"</span>,<span class="st">"#dc267f"</span>,<span class="st">"#fe6100"</span>,<span class="st">"#ffb000"</span>,<span class="st">"#000000"</span>,<span class="st">"#ffffff"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>palette2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#CC79A7"</span>,<span class="st">"#D55E00"</span>,<span class="st">"#0072B2"</span>,<span class="st">"#F0E442"</span>,<span class="st">"#009E73"</span>,<span class="st">"#56B4E9"</span>,<span class="st">"#E69F00"</span>,<span class="st">"#000000"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age.sc =</span> <span class="fu">scale</span>(dmAge)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age.sc <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">|</span> age.sc <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="data-wrangling" class="level1">
-<h1>Data Wrangling</h1>
-<p>In der letzten Woche habt ihr kennengelernt, wie R &amp; RStudio aufgebaut sind, wie die R-Syntax funktioniert, und was es für Datentypen &amp; Funktionen gibt. In dieser Sitzung wollen wir darauf aufbauen und konkreter mit Daten arbeiten. Dabei werden zwei Packages eine große Rolle spielen: <a href="https://dplyr.tidyverse.org"><code>dyplr</code></a> und <a href="https://ggplot2.tidyverse.org"><code>ggplot2</code></a>.</p>
-<section id="einlesen-von-daten" class="level2">
-<h2 class="anchored" data-anchor-id="einlesen-von-daten">Einlesen von Daten</h2>
-<p>Beginnen wir also zunächst damit, Daten in R einzulesen. Wir werden heute mit dem <code>iris</code> Datensatz arbeiten, einem berühmten Datensatz von R.A. Fisher aus dem Jahr 1936, in dem verschiedene Eigenschaften in Bezug auf die Blütengröße verschiedener Spezies der Blume <em>Iris</em> enthalten sind (siehe <a href="https://www.comp.tmu.ac.jp/morbier/R/Fisher-1936-Ann._Eugen.pdf">hier</a>).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://www.datacamp.com/tutorial/machine-learning-in-r"><img src="assets/img/irises.png" class="img-fluid figure-img" width="700"></a></p>
-<p></p><figcaption class="figure-caption">Sources: Wikipedia ([Iris Versicolor](https://de.wikipedia.org/wiki/Verschiedenfarbige_Schwertlilie#/media/Datei:Iris_versicolor_1.jpg), [Iris Setosa](https://en.wikipedia.org/wiki/Iris_setosa#/media/File:Irissetosa1.jpg), [Iris Virginica](https://en.wikipedia.org/wiki/Iris_virginica#/media/File:Iris_virginica_2.jpg))</figcaption><p></p>
-</figure>
-</div>
-<p>Im Zentrum des Datensatzes steht die Größe der verschiedenen Blatttypen für die jeweilige Spezies. Dabei gibt es die Blatttypen <code>Sepal</code> und <code>Petal</code>. Die folgende Grafik verdeutlicht das etwas:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/img/iris_sepal_petal.png" class="img-fluid figure-img" width="500"></p>
-</figure>
-</div>
+<section id="ausreißersuche-mit-dafür-designten-packages" class="level2">
+<h2 class="anchored" data-anchor-id="ausreißersuche-mit-dafür-designten-packages">Ausreißersuche mit dafür designten Packages</h2>
+<p>Neben diesen deskriptiven Ansätzen gibt es auch Signifikanz-Tests für die Ausreißeranalyse, die uns angeben, ob der extremste Wert ein Ausreißer ist oder nicht. Die hier vorgestellten basieren alle auf der Grundannahme, dass die Variable (abgesehen von den Ausreißern) normalverteilt ist.</p>
+<p>Der <code>grubbs.test()</code> kommt aus dem <code>outlier</code>-Package.</p>
 <div class="cell">
-<details>
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datasets<span class="sc">::</span>iri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge, <span class="at">opposite =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Der <code>dixon.test()</code> ebenso. Er eignet sich besonders gut für kleine samples mit maximal n = 30.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data.small <span class="ot">&lt;-</span> dataset[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge, <span class="at">opposite=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Wie man sieht, testen beide Tests immer nur einen Wert auf einmal. Allerdings konnten wir unserem Boxplot ja entnehmen, dass nicht nur der höchste Wert ein potentieller Ausreißer ist. Die Lösung dafür ist entweder, den Test zu wiederholen mit einem Datensatz, in dem der bereits identifizierte Ausreißer entfernt wurde, oder einen alternativen Test zu benutzen: <code>rosnerTest()</code> aus dem <code>EnvStats</code>-Package.</p>
+<p>Wichtig zu beachten ist dabei, dass dieser Test sich eher für große Samples (n&gt;20) eignet. Außerdem müssen wir spezifizieren, wie viele potentielle Ausreißer wir erwarten. Standardmäßig werden drei Werte getestet. Wir können uns gut am Boxplot von vorhin orientieren.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)<span class="sc">$</span>all.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="aufgabe" class="level2">
+<h2 class="anchored" data-anchor-id="aufgabe">Aufgabe</h2>
+<p>Führt selbst eine Ausreißeranalyse für eine beliebige andere kontinuierliche Variable aus unserem Datensatz durch.</p>
+<p>Zur Übersicht:</p>
+<ul>
+<li><p>Plots mit <code>boxplot</code>, <code>geom_boxplot</code>, <code>hist</code>, <code>geom_histogram</code></p></li>
+<li><p>Wertebereich definieren mit <code>quantile</code>, <code>IQR</code>, <code>boxplots.stats</code></p></li>
+<li><p>Ausreißer testen mit <code>grubb.test</code>, <code>dixon.test</code>, <code>rosnerTest</code></p></li>
+<li><p>evtl. unterstützende Funktionen: <code>which</code>, <code>%in%</code></p></li>
+</ul>
 
 
 </section>
