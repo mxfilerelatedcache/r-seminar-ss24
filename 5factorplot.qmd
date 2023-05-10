@@ -216,3 +216,31 @@ Zur Übersicht:
 -   Fasst die Faktorstufen bei Bedarf zusammen mit `fct_collapse`, `fct_lump_min`, `fct_lump_prop,` `facet_lump_n` und/oder `facet_lump_lowfreq`
 
 -   Sortiert die Faktoren angemessen mit `fct_infreq`, `fct_relevel`, `fct_reorder` und/oder `fct_rev`
+
+```{r}
+#| echo: false
+
+dataset %>% 
+  mutate(dmLivingSit = fct_recode(dmLivingSit,
+                                   "eigene Wohnung" = "eigeneWohnung",
+                                   "Partner/Kind" = "PartnerKind",
+                                   "Wohnheim-\nAppartment." = "WohnheimAppartment",
+                                   "Wohnheim-\nZimmer" = "WohnheimZimmer")) %>%
+  group_by(dmLivingSit) %>% 
+  summarize(mean.study = mean(suboptimal_study),
+            sd.study = sd(suboptimal_study),
+            n = n()) %>% 
+  ggplot(aes(x=fct_relevel(fct_rev(fct_reorder(dmLivingSit, mean.study)), "Sonstiges", after=Inf), mean.study))+
+    geom_errorbar(aes(ymin=mean.study-sd.study, ymax=mean.study+sd.study), width=0.1, alpha=0.3)+
+  geom_point(color = "#537188", size=3)+
+  theme_minimal()+
+  ggtitle("Lernort in Abhängigkeit von Wohnsituation")+
+  xlab("Wohnsituation")+
+  ylab("Wie ungünstig ist der Lernort?")
+
+# Was ist alles drin?
+# fct_recode
+# fct_reorder
+# fct_rev
+# fct_relevel
+```

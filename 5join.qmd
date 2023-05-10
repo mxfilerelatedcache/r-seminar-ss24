@@ -11,7 +11,7 @@ library(tidyverse)
 dataset <- read.csv("dataset_srl_challenges_wrangled.csv")
 ```
 
-## Verknüpfung von Dataframes
+# Verknüpfung von Dataframes
 
 Wir haben jetzt also ein neues dataframe, in dem die Arbeitsgedächtnisdaten enthalten sind. Natürlich wollen wir diese Daten am liebsten mit den restlichen Daten aus dem Fragebogen verknüpfen, damit uns für eine Auswertung alle Variablen zur Verfügung stehen. Welche Möglichkeit kennt ihr schon, zwei Dataframes miteinander zu verknüpfen?
 
@@ -26,7 +26,7 @@ Wann könnte diese Variante zu Problem führen bzw. zu einfach gedacht sein?
 
 -   Wenn beide Dataframes- nicht die gleiche Zeilenlänge haben, weil es z.B. nicht Daten zu allen Probanden gibt
 
-Sinnvoller ist es daher, die Passung der Datenframes zu überprüfen bzw. zu garantieren. In base R gibt es dafür bspw. match(). Schaut euch mal die Dokumentation/Hilfe dafür an.
+Sinnvoller ist es daher, die Passung der Datenframes zu überprüfen bzw. zu garantieren. In base R gibt es dafür bspw. `match()`. Schaut euch mal die Dokumentation/Hilfe dafür an.
 
 > `match(x, table, …)`
 > `match` returns a vector of the positions of (first) matches of its first argument in its second.
@@ -97,4 +97,16 @@ data2 %>%
   select(ID, var3, var4) %>% 
   right_join(data1, by="ID")
 # Output besteht aus data1 (+ Erweiterungen)
+```
+
+## Aufgabe
+
+Jetzt, wo ihr die Theorie von left_join() kennengelernt habt, könnt ihr es auch selbst anwenden für unsere dataframes.
+
+```{r}
+#| echo: false
+wm <-  read.csv("C:/Users/WIMI/OneDrive - Universitaet Duisburg-Essen/Dokumente/PsychMeth/Lehre/_SoSe 2023/R Masterseminar/offline/id_wmc_PCU.csv")
+
+data.joined <- dataset %>% 
+  left_join(wm, by = "id")
 ```

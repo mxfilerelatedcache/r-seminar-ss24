@@ -3,64 +3,152 @@ title: "5outlier"
 author: "Kira Wolff"
 ---
 
-# Ausreißeranalyse
+```{r}
+library(tidyverse)
+library(outliers)
+library(EnvStats)
+```
 
--   Extreme Werte - können Analysen beeinflussen (Korrelation - Bild zeigen)
+#  Ausreißeranalyse
 
--   Bisher übersprungen, macht man aber bei gründlicher statistischer Analyse auch
+In diesem Abschnitt machen wir noch mal einen kurzen Ausflug in die Statistik und schauen uns die Ausreißeranalyse an.
 
--   Finden heißt nicht rausschmeißen, aber gut zu wissen dass da und eventuell Vergleich mit und ohne, oder Einfluss berechnen
+Ausreißer sind Werte, die im Vergleich zu den restlichen Ausprägungen der Variable extrem hoch oder niedrig sind. Damit können einzelne Datenpunkte einen großen Einfluss auf Analysen und Ergebnisse nehmen.
 
--   zwei Gründe: Messfehler oder echter Extremwert
+Der Mittelwert ist beispielsweise sehr ausreißerempfindlich:
 
--   min(), max(), range()
+```{r}
+mean(1:50) # Mittelwert der Zahlen 1 bis 50: 25.5
 
--   histogramm (hist oder geom_histogramm)
+mean(c(1:50, 1000)) # Mittelwert der Zahlen 1 bis 50 und Ausreißer 1000: 44.6
+```
 
--   boxplot (boxplot oder geom_boxplot)
+Bei einer gründlichen statistischen Analyse gehört dazu, dass man sich neben den rein deskriptiven Eigenschaften der Variablen auch anschaut, ob es pro Variable Ausreißer gibt. Wenn man diese identifizieren kann, gibt es zwei Fragen: Warum ist es ein Ausreißer? Wie gehe ich damit um?
 
-    -   min, med, max, 1+3 quartil, mögliche ausreißer (nach q0.25+1.5\*IQR)
+Im Prinzip gibt es zwei Möglichkeiten, warum ein Ausreißer existiert: Entweder es handelt sich um einen Messfehler, weil bspw. ein Komma falsch gesetzt wurde; oder es ist ein echter Extremwert, der zwar selten ist, aber genauso existieren kann. Der größte Mann, der je gelebt hat, Robert Wadlow, war mit seinen 2.72m auf jeden Fall ein Ausreißer, trotzdem war seine Größe ja real und valide.
 
-    -   boxplot.stats()\$out
+Auf die zweite Frage, wie man mit Ausreißern/Extremwerten umgeht, gibt es keine allgemeingültige Antwort. Einfach entfernen darf man sie nicht. Die sauberste Lösung ist meistens, Analysen einmal mit und einmal ohne Extremwerte durchzuführen und zu schauen, ob sich die Ergebnisse denn wirklich ändern. Es gibt auch andere Ansätze, z.B. den Extremwert mit dem Mittelwert der Variable zu ersetzen, aber die genaue Vorgehensweise muss man von Fall zu Fall entscheiden und führt hier zu weit.
 
-    -   Kombination mit which(data\$var %in% out)
+Wir setzen hier den Fokus darauf, die Ausreißer erst einmal zu identifizieren
 
--   quantile(data\$var, grenze) -\> welche Wert sind extrem, z.B. perzentil 2.5 & 97.5 oder 1 & 99 oder 5 & 95
+## Grafische Ausreißersuche
 
-    -   auch wieder which()
+Hier bieten sich zwei Plots an, die ihr schon kennt: Histogramme und Boxplots
 
--   Standardisieren mit scale()
+```{r}
+# Base
+hist(dataset$dmAge)
 
-    -   -2/2: selten
+boxplot(dataset$dmAge)
 
-    -   -3/3: sehr selten
 
-    -   3.29: 1/1000
+# ggplot
+ggplot(dataset)+
+  geom_histogram(aes(dmAge))
 
--   Tests:
+ggplot(dataset)+
+  geom_boxplot(aes(dmAge))
 
-    -   grubbs.test \[outliers\]
+```
 
-        -   test höchsten Wert, Nullhypothese: kein Outlier
+Im Boxplot werden potentielle Ausreißer mit den Punkten dargestellt, wenn sie das "IQR Kriterium" überschreiten. IQR steht für interquartile range, also Abstand zwischen dem ersten und zweiten Quantil. Das erste Quantil ist die Zahl, unter dem 25% der Werte liegen und das dritte Quantil die Zahl, über der 25% der Werte liegen. Von diesen Quantilgrenzen aus geht man noch mal weiter um 1.5\*IQR in beide Richtungen. Die Werte, die dann immer noch nicht im Bereich liegen, sind die potentiellen Ausreißer.
 
-        -   NV Voraussetzung (ohne Wert)
+## Ausreißersuche mit base R
 
-        -   niedrigster Wert: opposite =T
+Das IQR-Kriterium lässt sich natürlich nicht nur im Boxplot anwenden, sondern auch selbst berechnen.
 
-    -   dixon.test \[outliers\]
+```{r}
+# Grenzen bestimmen
+low <- quantile(dataset$dmAge)[2]-1.5*IQR(dataset$dmAge)
+high <- quantile(dataset$dmAge)[4]+1.5*IQR(dataset$dmAge) 
 
-        -   für kleines sample size (n\<= 25); max 30
+# Probanden identifizieren, die Grenzen überschreiten
+dataset %>% 
+  filter(dmAge < low | dmAge > high) %>% 
+  select(dmAge, everything())
+```
 
-        -   für einzelnen extremen Wert
+Netterweise gibt es auch eine Funktion zu den Daten hinter einem Boxplot, mit der wir die Werte der potentiellen Ausreißer direkt genannt bekommen:
 
-    -   für mehr Werte: anderen extremwert erst removen (filter())
+```{r}
+boxplot.stats(dataset$dmAge)
 
-    -   rosnerTest \[EnvStats\]
+out <- boxplot.stats(dataset$dmAge)$out
+```
 
-        -   mehrere auf einmal
+Hier werden uns nur leider nicht direkt die Probanden-IDs oder Zeilennummern mitgeliefert. Dabei kann uns aber die Funktion `which()` und der `%in%`-Operator helfen, die auch allgemein nützlich sind, immer wenn es darum geht, bestimmte Werte in einer Tabelle wiederzufinden.
 
-        -   für große samples n\>20
+```{r}
+# Welche Elemente des Alter-Vektors entsprechen einem der Elemente aus dem out-Vektor?
+dataset$dmAge %in% out
 
-        -   rosnerTest(data, k= expec out)
+# Welche Zeilen-Indices entsprechen diese Übereinstimmungen?
+which(dataset$dmAge %in% out)
+# Ähnlich wie match(): Indices!
 
-        -   \$all.stats
+# Indices im Datensatz anwenden
+dataset[which(dataset$dmAge %in% out),]
+```
+
+Ein weiterer Ansatz kann sein, die Daten mit `scale()` zu standardisieren und dann zu überprüfen, welche Werte die Grenzen überschreiten, welche gemäß der Standardnormalverteilung wie folgt definiert sind:
+
+-   außerhalb von -2 oder 2: selten
+
+-   außerhalb von -3 oder 3: sehr selten
+
+```{r}
+dataset %>% 
+  mutate(age.sc = scale(dmAge)) %>%
+  filter(age.sc > 3 | age.sc < -3) %>% 
+  select(dmAge, everything())
+```
+
+## Ausreißersuche mit dafür designten Packages
+
+Neben diesen deskriptiven Ansätzen gibt es auch Signifikanz-Tests für die Ausreißeranalyse, die uns angeben, ob der extremste Wert ein Ausreißer ist oder nicht. Die hier vorgestellten basieren alle auf der Grundannahme, dass die Variable (abgesehen von den Ausreißern) normalverteilt ist.
+
+Der `grubbs.test()` kommt aus dem `outlier`-Package.
+
+```{r}
+# höchsten Wert testen
+grubbs.test(dataset$dmAge)
+
+# niedrigsten Wert testen
+grubbs.test(dataset$dmAge, opposite = T)
+```
+
+Der `dixon.test()` ebenso. Er eignet sich besonders gut für kleine samples mit maximal n = 30.
+
+```{r}
+data.small <- dataset[1:20,]
+
+# höchsten Wert testen
+dixon.test(data.small$dmAge)
+
+# niedrigsten Wert testen
+dixon.test(data.small$dmAge, opposite=T)
+```
+
+Wie man sieht, testen beide Tests immer nur einen Wert auf einmal. Allerdings konnten wir unserem Boxplot ja entnehmen, dass nicht nur der höchste Wert ein potentieller Ausreißer ist. Die Lösung dafür ist entweder, den Test zu wiederholen mit einem Datensatz, in dem der bereits identifizierte Ausreißer entfernt wurde, oder einen alternativen Test zu benutzen: `rosnerTest()` aus dem `EnvStats`-Package.
+
+Wichtig zu beachten ist dabei, dass dieser Test sich eher für große Samples (n\>20) eignet. Außerdem müssen wir spezifizieren, wie viele potentielle Ausreißer wir erwarten. Standardmäßig werden drei Werte getestet. Wir können uns gut am Boxplot von vorhin orientieren.
+
+```{r}
+rosnerTest(dataset$dmAge, k=7)
+
+rosnerTest(dataset$dmAge, k=7)$all.stats
+```
+
+## Aufgabe
+
+Führt selbst eine Ausreißeranalyse für eine beliebige andere kontinuierliche Variable aus unserem Datensatz durch.
+
+Zur Übersicht:
+
+-   Plots mit `boxplot`, `geom_boxplot`, `hist`, `geom_histogram`
+
+-   Wertebereich definieren mit `quantile`, `IQR`, `boxplots.stats`
+
+-   Ausreißer testen mit `grubb.test`, `dixon.test`, `rosnerTest`
+
+-   evtl. unterstützende Funktionen: `which`, `%in%`
