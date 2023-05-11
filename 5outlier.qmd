@@ -1,11 +1,13 @@
 ---
-title: "5outlier"
+title: "Ausreißeranalyse"
 author: "Kira Wolff"
 execute: 
   eval: false
 ---
 
 ```{r}
+#| echo: false
+#| warning: false
 library(tidyverse)
 library(outliers)
 library(EnvStats)

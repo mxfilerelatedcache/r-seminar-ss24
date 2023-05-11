@@ -4,6 +4,8 @@ author: "Kira Wolff"
 ---
 
 ```{r}
+#| echo: false
+#| warning: false
 library(tidyverse)
 
 dataset <- read.csv("dataset_srl_challenges_wrangled.csv")
@@ -49,7 +51,7 @@ dataset %>%
   mutate(dmLivingSit = fct_recode(dmLivingSit,
                                    "eigene Wohnung" = "eigeneWohnung",
                                    "Partner/Kind" = "PartnerKind",
-                                   "Wohnheim-\nAppartment." = "WohnheimAppartment",
+                                   "Wohnheim-\nAppartment" = "WohnheimAppartment",
                                    "Wohnheim-\nZimmer" = "WohnheimZimmer")) %>% 
   ggplot+
   geom_bar(aes(dmLivingSit), fill = "#537188")+
@@ -204,18 +206,6 @@ dataset %>%
 ```
 
 Hier in dem Fall taucht die `fct`-Funktion erst im Plot auf, da nach `mean.gw` sortiert werden soll und diese Variable erst mal im Kontext von `summarize` entsteht. Es funktioniert genauso, aber wenn man die Möglichkeit hat, ist es übersichtlicher, sie bei `mutate` auszuführen.
-
-### Aufgabe
-
-Jetzt könnt ihr die Funktionen mal selber anwenden und kombinieren, um den "idealen" Plot zu erstellen. Schaut euch dafür die Ausprägung von `suboptimal_study` in Abhängigkeit von `dmLivingSit` an.
-
-Zur Übersicht:
-
--   Benennt die Faktorstufen passend mit `fct_recode`
-
--   Fasst die Faktorstufen bei Bedarf zusammen mit `fct_collapse`, `fct_lump_min`, `fct_lump_prop,` `facet_lump_n` und/oder `facet_lump_lowfreq`
-
--   Sortiert die Faktoren angemessen mit `fct_infreq`, `fct_relevel`, `fct_reorder` und/oder `fct_rev`
 
 ```{r}
 #| echo: false
