@@ -285,12 +285,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  <a href="./analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
+  <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,7 +314,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#faktorstufen-umbenennen" id="toc-faktorstufen-umbenennen" class="nav-link" data-scroll-target="#faktorstufen-umbenennen">Faktorstufen umbenennen</a></li>
   <li><a href="#faktorstufen-zusammenfassen" id="toc-faktorstufen-zusammenfassen" class="nav-link" data-scroll-target="#faktorstufen-zusammenfassen">Faktorstufen zusammenfassen</a></li>
   <li><a href="#faktoren-umsortieren" id="toc-faktoren-umsortieren" class="nav-link" data-scroll-target="#faktoren-umsortieren">Faktoren umsortieren</a></li>
-  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe">Aufgabe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -346,60 +345,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyverse' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'ggplot2' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tibble' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'readr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'purrr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'dplyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'stringr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'forcats' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'lubridate' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset_srl_challenges_wrangled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <section id="umgang-mit-faktoren-in-plots" class="level1">
 <h1>Umgang mit Faktoren in Plots</h1>
 <p>In diesem Abschnitt tauchen wir etwas tiefer ein in den Umgang mit Faktoren in Plots.</p>
 <p>Wenn man nur kurz für einen Überblick einen Plot erstellt, ist die Lesbarkeit und Ästhetik weniger wichtig, aber wenn Plots für eine Abgabe oder Publikation gedacht sind, ist das Verhalten von Faktoren in Plots manchmal zum Haare raufen. Daher schauen wir uns schon mal präventiv an, wie man die Darstellung unter Kontrolle bekommt.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(dmLivingSit, gewissenhaftigkeit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(dmLivingSit, gewissenhaftigkeit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -417,23 +373,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Über <code>fct_recode()</code> können wir die Faktorstufen nach dem Prinzip <code>neu = alt</code> umbenennen. Nicht genannte Stufen werden einfach beibehalten.</p>
 <p>Ein netter Trick ist außerdem, lange Labels mit <code>\n</code> mit einem Zeilensprung vom Überlappen abzuhalten. Dabei kann man <code>\n</code> einfach “dreist” mitten in den neuen Namen einfügen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Stufen gibt es noch mal?</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(dataset<span class="sc">$</span>dmLivingSit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Stufen gibt es noch mal?</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(dataset<span class="sc">$</span>dmLivingSit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "eigeneWohnung"      "Elternhaus"         "PartnerKind"       
 [4] "Sonstiges"          "WG"                 "WohnheimAppartment"
 [7] "WohnheimZimmer"    </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot mit ordentlich benannten Faktorstufen</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_recode</span>(dmLivingSit,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"eigene Wohnung"</span> <span class="ot">=</span> <span class="st">"eigeneWohnung"</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Partner/Kind"</span> <span class="ot">=</span> <span class="st">"PartnerKind"</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Wohnheim-</span><span class="sc">\n</span><span class="st">Appartment."</span> <span class="ot">=</span> <span class="st">"WohnheimAppartment"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Wohnheim-</span><span class="sc">\n</span><span class="st">Zimmer"</span> <span class="ot">=</span> <span class="st">"WohnheimZimmer"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot mit ordentlich benannten Faktorstufen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_recode</span>(dmLivingSit,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"eigene Wohnung"</span> <span class="ot">=</span> <span class="st">"eigeneWohnung"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Partner/Kind"</span> <span class="ot">=</span> <span class="st">"PartnerKind"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Wohnheim-</span><span class="sc">\n</span><span class="st">Appartment"</span> <span class="ot">=</span> <span class="st">"WohnheimAppartment"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Wohnheim-</span><span class="sc">\n</span><span class="st">Zimmer"</span> <span class="ot">=</span> <span class="st">"WohnheimZimmer"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -446,12 +402,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="in-abhängigkeit-vom-inhalt">In Abhängigkeit vom Inhalt</h4>
 <p>Hier setzen wir das mithilfe von <code>fct_collapse()</code> für die beiden Wohnheim-Ausprägungen <code>WohnheimAppartment</code> und <code>WohnheimZimmer</code> um.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_collapse</span>(dmLivingSit,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Wohnheim =</span> <span class="fu">c</span>(<span class="st">"WohnheimAppartment"</span>, <span class="st">"WohnheimZimmer"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_collapse</span>(dmLivingSit,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Wohnheim =</span> <span class="fu">c</span>(<span class="st">"WohnheimAppartment"</span>, <span class="st">"WohnheimZimmer"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -462,55 +418,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Für die Idee von “die kleinsten Reste zusammenfassen” gibt es verschiedene <code>fct_lump</code>-Varianten. In dem Beispiel hier bietet es sich eigentlich nicht an, wir demonstrieren es trotzdem.</p>
 <p>Bei <code>fct_lump_min()</code> lässt sich über das Argument <code>min =</code> spezifizieren, wie häufig eine bestimmte Ausprägung mindestens vorkommen muss, um durch einen eigenen Balken dargestellt zu werden. Der Rest wird in einem Balken zusammengefasst und standardmäßig als “Other” bezeichnet, was sich über <code>other_level = ".."</code> ändern lässt.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">factor</span>(dataset<span class="sc">$</span>dmLivingSit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">factor</span>(dataset<span class="sc">$</span>dmLivingSit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     eigeneWohnung         Elternhaus        PartnerKind          Sonstiges 
                 10                 61                 12                  1 
                 WG WohnheimAppartment     WohnheimZimmer 
                 22                  3                  7 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_min</span>(dmLivingSit, <span class="at">min =</span> <span class="dv">20</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab n&gt;=20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_min</span>(dmLivingSit, <span class="at">min =</span> <span class="dv">20</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab n&gt;=20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Ähnlich fasst <code>fct_lump_prop()</code> die Kategorien nach prozentualen Anteilen zusammen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_prop</span>(dmLivingSit, <span class="at">prop =</span> <span class="fl">0.1</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab Anteil von 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_prop</span>(dmLivingSit, <span class="at">prop =</span> <span class="fl">0.1</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab Anteil von 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Andersherum können wir mit <code>fct_lump_n()</code> spezifizieren, wie viele Balken wir sehen wollen, also ab dem wievielten der Rest zusammengefasst werden soll (n+1). Dabei werden natürlich nicht einfach die n alphabetisch ersten Balken gewählt, sondern die höchsten.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_n</span>(dmLivingSit, <span class="at">n =</span> <span class="dv">4</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Reste zusammenfassen nach k=4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_n</span>(dmLivingSit, <span class="at">n =</span> <span class="dv">4</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Reste zusammenfassen nach k=4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Zuguterletzt fasst <code>fct_lump_lowfreq()</code> die Ausprägungen mit den geringsten Häufigkeiten automatisch so zusammen, dass “Other” nicht größer als der nächstgröße Balken wird. Wenn man also viele Ausprägungen und nicht das Bedürfnis hat, die Anzahl der Balken genau festzulegen, ist das eine bequeme Option.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_lowfreq</span>(dmLivingSit, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Reste so lange zusammenfassen, wie es der niedrigste Balken bleibt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_lowfreq</span>(dmLivingSit, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Reste so lange zusammenfassen, wie es der niedrigste Balken bleibt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -518,16 +474,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Aber Vorsicht: Wenn eine Ausprägung so häufig ist, dass die Summe der restlichen immer noch geringer ist, macht diese Funktion wenig Sinn, wie auch in unserem Plot zu erkennen ist.</p>
 <p>Die Beispiele hier haben wir anhand von Balkendiagrammen und der Häufigkeit gezeigt, es funktioniert aber natürlich auch mit anderen geoms und anderen kontinuierlichen Variablen auf der Y-Achse:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_prop</span>(dmLivingSit, <span class="at">prop =</span> <span class="fl">0.1</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dmLivingSit) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.gw =</span> <span class="fu">mean</span>(gewissenhaftigkeit),</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd.gw =</span> <span class="fu">sd</span>(gewissenhaftigkeit)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dmLivingSit, mean.gw))<span class="sc">+</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#537188"</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean.gw<span class="sc">-</span>sd.gw, <span class="at">ymax=</span>mean.gw<span class="sc">+</span>sd.gw), <span class="at">width=</span><span class="fl">0.1</span>, <span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab Anteil von 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_lump_prop</span>(dmLivingSit, <span class="at">prop =</span> <span class="fl">0.1</span>, <span class="at">other_level=</span> <span class="st">"Sonstiges"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dmLivingSit) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.gw =</span> <span class="fu">mean</span>(gewissenhaftigkeit),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd.gw =</span> <span class="fu">sd</span>(gewissenhaftigkeit)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dmLivingSit, mean.gw))<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#537188"</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean.gw<span class="sc">-</span>sd.gw, <span class="at">ymax=</span>mean.gw<span class="sc">+</span>sd.gw), <span class="at">width=</span><span class="fl">0.1</span>, <span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Ausprägungen ab Anteil von 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -541,24 +497,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="sortieren-nach-höhe">Sortieren nach Höhe</h4>
 <p>Die Funktion <code>fct_infreq()</code> ist vor allem für Barplots gedacht und sortiert diese nach Höhe.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_infreq</span>(dmLivingSit)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung nach Höhe, absteigend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_infreq</span>(dmLivingSit)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung nach Höhe, absteigend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Für den Fall, dass wir mit der niedrigsten Ausprägung anfangen wollen, können wir ein <code>fct_rev()</code> ergänzen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_rev</span>(<span class="fu">fct_infreq</span>(dmLivingSit))) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung nach Höhe, aufsteigend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_rev</span>(<span class="fu">fct_infreq</span>(dmLivingSit))) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung nach Höhe, aufsteigend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -569,12 +525,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Mit dem Sortieren nach der Größe haben wir zufällig auch erreicht, dass die “Sonstiges”-Ausprägung endlich am Ende landet. Aber das lässt sich auch gezielt umsetzen, indem wir mittels <code>fct_relevel()</code> genau spezifizieren, in welcher Reihenfolge die Faktorstufen angezeigt werden sollen.</p>
 <p>Dabei werden als Argumente neben dem Faktor alle Faktorstufen in der Reihenfolge genannt, in der sie auftauchen sollen: <code>fct_relevel(dmLivingSit, "Elternhaus", "eigeneWohnung", ...)</code>. Über das Argument <code>after=</code> lassen sich alternativ eine oder mehrere Ausprägungen an eine gezielte Stelle platzieren.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_relevel</span>(dmLivingSit, <span class="st">"Sonstiges"</span>, <span class="at">after=</span><span class="cn">Inf</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sonstiges am Ende platziert"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dmLivingSit =</span> <span class="fu">fct_relevel</span>(dmLivingSit, <span class="st">"Sonstiges"</span>, <span class="at">after=</span><span class="cn">Inf</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  ggplot<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(dmLivingSit), <span class="at">fill =</span> <span class="st">"#537188"</span>)<span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sonstiges am Ende platziert"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -585,31 +541,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Es ist zwar praktisch, die Faktorstufen individuell sortieren zu können, aber abgesehen von Sonderkategorieren doch eher aufwendig. Besonders umständlich wäre es, wenn wir die Stufen der Größe nach sortieren wollen, aber es bei der Größe um die Ausprägung einer anderen Variable gehen soll. Da müssten wir die Variable erst pro Faktorstufe berechnen, nach Größe sortieren und dann die Reihenfolge übernehmen.</p>
 <p>Glücklicherweise gibt es mit <code>fct_reorder()</code> eine einfachere Möglichkeit: Hier können wir eine Variable spezifizieren, deren Ausprägung die Reihenfolge vorgeben soll.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dmLivingSit) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.gw =</span> <span class="fu">mean</span>(gewissenhaftigkeit),</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd.gw =</span> <span class="fu">sd</span>(gewissenhaftigkeit)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_rev</span>(<span class="fu">fct_reorder</span>(dmLivingSit, mean.gw)), mean.gw))<span class="sc">+</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#537188"</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean.gw<span class="sc">-</span>sd.gw, <span class="at">ymax=</span>mean.gw<span class="sc">+</span>sd.gw), <span class="at">width=</span><span class="fl">0.1</span>, <span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung in Abhängigkeit von Gewissenhaftigkeit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dmLivingSit) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.gw =</span> <span class="fu">mean</span>(gewissenhaftigkeit),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd.gw =</span> <span class="fu">sd</span>(gewissenhaftigkeit)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_rev</span>(<span class="fu">fct_reorder</span>(dmLivingSit, mean.gw)), mean.gw))<span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#537188"</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean.gw<span class="sc">-</span>sd.gw, <span class="at">ymax=</span>mean.gw<span class="sc">+</span>sd.gw), <span class="at">width=</span><span class="fl">0.1</span>, <span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sortierung in Abhängigkeit von Gewissenhaftigkeit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Hier in dem Fall taucht die <code>fct</code>-Funktion erst im Plot auf, da nach <code>mean.gw</code> sortiert werden soll und diese Variable erst mal im Kontext von <code>summarize</code> entsteht. Es funktioniert genauso, aber wenn man die Möglichkeit hat, ist es übersichtlicher, sie bei <code>mutate</code> auszuführen.</p>
-</section>
-</section>
-<section id="aufgabe" class="level3">
-<h3 class="anchored" data-anchor-id="aufgabe">Aufgabe</h3>
-<p>Jetzt könnt ihr die Funktionen mal selber anwenden und kombinieren, um den “idealen” Plot zu erstellen. Schaut euch dafür die Ausprägung von <code>suboptimal_study</code> in Abhängigkeit von <code>dmLivingSit</code> an.</p>
-<p>Zur Übersicht:</p>
-<ul>
-<li><p>Benennt die Faktorstufen passend mit <code>fct_recode</code></p></li>
-<li><p>Fasst die Faktorstufen bei Bedarf zusammen mit <code>fct_collapse</code>, <code>fct_lump_min</code>, <code>fct_lump_prop,</code> <code>facet_lump_n</code> und/oder <code>facet_lump_lowfreq</code></p></li>
-<li><p>Sortiert die Faktoren angemessen mit <code>fct_infreq</code>, <code>fct_relevel</code>, <code>fct_reorder</code> und/oder <code>fct_rev</code></p></li>
-</ul>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="5factorplot_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
@@ -617,6 +562,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+</section>
 </section>
 </section>
 

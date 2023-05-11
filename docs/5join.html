@@ -285,12 +285,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5join.html" class="sidebar-item-text sidebar-link active">Zusammenhängende Dataframes</a>
+  <a href="./analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">5outlier</a>
+  <a href="./5join.html" class="sidebar-item-text sidebar-link active">Zusammenhängende Dataframes</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,16 +343,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset_srl_challenges_wrangled.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <section id="verknüpfung-von-dataframes" class="level1">
 <h1>Verknüpfung von Dataframes</h1>
 <p>Wir haben jetzt also ein neues dataframe, in dem die Arbeitsgedächtnisdaten enthalten sind. Natürlich wollen wir diese Daten am liebsten mit den restlichen Daten aus dem Fragebogen verknüpfen, damit uns für eine Auswertung alle Variablen zur Verfügung stehen. Welche Möglichkeit kennt ihr schon, zwei Dataframes miteinander zu verknüpfen?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bisheriges Wissen:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data.verknüpft <span class="ot">&lt;-</span> <span class="fu">cbind</span>(daten1, daten2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bisheriges Wissen:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data.verknüpft <span class="ot">&lt;-</span> <span class="fu">cbind</span>(daten1, daten2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(dataset, WMC_vals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Wann könnte diese Variante zu Problem führen bzw. zu einfach gedacht sein?</p>
 <ul>
@@ -365,29 +365,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Es wird also ein Vektor mit einem anderen Vektor verglichen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">"abc"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="st">"abc"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(vec1, vec2)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Woraus besteht der Output?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">"abc"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="st">"abc"</span>,<span class="dv">5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(vec1, vec2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Woraus besteht der Output?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Der Output gibt an, welche Elemente aus dem ersten Vektor im zweiten Vektor vorkommen, indem er 1) die Elemente des ersten Vektors schrittweise durchgeht und 2) für in beiden Vektoren vorkommende Elemente die Position des Elements im zweiten Vektor notiert. Er gibt <u>nicht</u> an, wie die Elemente “heißen”.</p>
 <p>Was können wir damit anfangen?</p>
 <p>Wir können es als Index nutzen, der uns angibt, welche Zeilen wir mit welchen matchen dürfen. Nach dem Prinzip: “Für das erste Element aus <code>vec1</code> nimm bitte das dritte Element aus <code>vec2</code>”. Wir wenden den Index also auf die Spalte mit der Variable an, die wir übertragen wollen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis: Die Werte von var aus data2, sortiert in der Reihenfolge, in der sie für data1 sinnvoll sind.</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># richtige Übertragung auf data1:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">newvar =</span> data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)])</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jetzt enthält data1 die Daten aus data2$var, aber garantiert in der richtigen Reihenfolge</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">match</span>(dataset<span class="sc">$</span>id, WMC_vals<span class="sc">$</span>subject.id)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>WMC_vals[<span class="fu">match</span>(dataset<span class="sc">$</span>id, WMC_vals<span class="sc">$</span>subject.id),]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>WMC_vals[<span class="fu">match</span>(WMC_vals<span class="sc">$</span>subject.id,dataset<span class="sc">$</span>id),]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis: Die Werte von var aus data2, sortiert in der Reihenfolge, in der sie für data1 sinnvoll sind.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># richtige Übertragung auf data1:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">newvar =</span> data2<span class="sc">$</span>var[<span class="fu">match</span>(data1<span class="sc">$</span>id, data2<span class="sc">$</span>id)])</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Jetzt enthält data1 die Daten aus data2$var, aber garantiert in der richtigen Reihenfolge</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wm =</span> WMC_vals<span class="sc">$</span>wmc_PCU[<span class="fu">match</span>(dataset<span class="sc">$</span>id, WMC_vals<span class="sc">$</span>subject.id)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wm, id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>match()</code> ist praktisch, benötigt allerdings Schreibaufwand bzw. Konzentration bei der Umsetzung. Außerdem ist es in der Form nur auf eine Variable beschränkt.</p>
 <p>Natürlich hat <code>dplyr</code> wieder etwas angenehmeres für uns: <code>left_join()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(data2, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> data1 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(data2, <span class="at">by =</span> <span class="st">"id"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>WMC_vals<span class="sc">$</span>subject.id <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(WMC_vals<span class="sc">$</span>subject.id)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dataset.joined <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(WMC_vals, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span><span class="ot">=</span><span class="st">"subject.id"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Hier werden alle Variablen aus data2 in data1 ergänzt, gematcht nach der id-Spalte, die hier in beiden Datensätzen verwendet wurde. Sollten die ID-Spalten unterscheidlich heißen, lässt sich das über <code>by = c("a" = "b")</code> ausgleichen</p>
 <p><code>left_join()</code> ist die Standardfunktion, um die Daten aus zwei Datensätzen miteinander zu verknüpfen, es gibt allerdings außerdem noch <code>right_join()</code>, <code>inner_join()</code> und <code>full_join()</code>.</p>
@@ -412,16 +427,26 @@ Beispiel: In meiner Studie wurde Stress bei DiabetikerInnen gemessen. Viele der 
 Mit <code>left_join()</code> und <code>right_join()</code> lässt sich also prinzipiell das Gleiche erreichen, wenn man die Datensätze an die passende Stelle setzt. Für welche Option man sich entscheidet hängt also vor allem davon ab, ob vor dem Joinen noch Datawrangling notwendig ist, z.B. wenn ich aus meinem ergänzenden Datensatz nur bestimmte Spalten übernehmen will:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, var3, var4) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(data1, <span class="at">by=</span><span class="st">"ID"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output besteht aus data1 (+ Erweiterungen)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, var3, var4) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(data1, <span class="at">by=</span><span class="st">"ID"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output besteht aus data1 (+ Erweiterungen)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="aufgabe" class="level2">
 <h2 class="anchored" data-anchor-id="aufgabe">Aufgabe</h2>
 <p>Jetzt, wo ihr die Theorie von left_join() kennengelernt habt, könnt ihr es auch selbst anwenden für unsere dataframes.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>WMC_vals <span class="ot">&lt;-</span> WMC_vals <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subject.id =</span> <span class="fu">as.numeric</span>(subject.id))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data.joined <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(WMC_vals, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span><span class="ot">=</span> <span class="st">"subject.id"</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>data.joined <span class="ot">&lt;-</span> WMC_vals <span class="sc">%&gt;%</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subject.id =</span> <span class="fu">as.numeric</span>(subject.id)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(dataset, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"subject.id"</span><span class="ot">=</span> <span class="st">"id"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
