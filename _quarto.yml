@@ -40,6 +40,7 @@ website:
           - analysis3.qmd
       - section: "Anwendung: Fragebögen II"
         contents: 
+          - analysis2_1.qmd
           - 5join.qmd
           - 5outlier.qmd
           - 5factorplot.qmd
