@@ -1,0 +1,467 @@
+---
+title: "Dates & Times"
+subtitle: "Seminar[6] <- Dates & Times"
+author: "Simon Krukowski"
+format:
+  html:
+    code-fold: false
+    code-summary: "Show code"
+    df-print: paged
+editor: visual
+bibliography: "assets/bibliographies/analysis1.bib"
+---
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(reshape2)
+library(reactable)
+library(nycflights13)
+
+palette1 <- c("#648fff","#785ef0","#dc267f","#fe6100","#ffb000","#000000","#ffffff")
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+# Einführung
+
+![](assets/img/lubridate.png){fig-align="center" width="1000"}
+
+Im Rahmen des Seminars haben wir bis jetzt schon viel über R gelernt und können tolle Analysen rechnen und komplexe Grafiken erstellen. Was wir bis jetzt allerdings noch nicht so wirklich gelernt haben, sind **Datumsobjekte**. Diese können besonders wertvoll sein und dabei helfen, tiefergehende Fragestellungen zu untersuchen. Die Voraussetzung dafür ist jedoch, dass sie richtig formatiert sind. Warum das so ist, und was "richtig formatiert" heißt, lernen wir heute.
+
+------------------------------------------------------------------------
+
+## Datumsobjekte und Zeiten
+
+Natürlich stellt sich zunächst die Frage, was Datumsobjekte sind und wie sie sich von anderen Datentypen unterscheiden. Neben `character`, `numeric` oder `factor` gibt es auch `Date` & `POSIXct`. Die Funktionen today() und now() können uns das aktuelle Datum bzw. die Zeit geben und demonstrieren uns dabei die beiden Datentypen:
+
+```{r}
+# Date:
+today()
+
+# PosixCT:
+now()
+```
+
+> Frage: Wofür steht CEST?
+
+CEST ist eine Zeitzone - Zeitzonen spielen bei Datumsobjekten eine Rolle, aber dazu später mehr.
+
+### Date
+
+Ihr habt bereits die Funktion `as.Date()` verwendet. Damit könnt ihr einen String in ein Datumsobjekt umwandeln, welches dann das Datum enthält:
+
+```{r}
+as.Date("1969-07-20")
+```
+
+### POSIXct
+
+Wenn wir jetzt auch die Uhrzeit abspeichern wollten, müssten wir ein POSIXct Objekt erzeugen, da R keinen eigenen Objekttyp für Zeiten hat:
+
+```{r}
+as.POSIXct("1969-07-20 20:17:40")
+```
+
+Super! Wir haben Datumsobjekte kennengelernt und erfolgreich angewendet. Jetzt stellt sich nur eine Frage:
+
+> Welchen Vorteil haben Datumsobjekte? Wofür brauchen wir so etwas?
+
+Im Gegensatz zu Zeiten, die bspw. als `character` gespeichert sind, können wir mit Datumsobjekten eine Vielzahl an Dingen machen. So können wir bspw. **Zeiträume berechnen**, **Tage/Monate** oder **Wochentage** extrahieren, und ebenso **Zeitzonen** **umrechnen**. Großartig!
+
+Ob das ganze wirklich so einfach wie gedacht ist, und wann `lubridate` ins Spiel kommt, das lernen wir jetzt.
+
+## Datumsformate
+
+Fangen wir also damit an, den angepassten `flights` Datensatz aus dem Moodle zu importieren:
+
+```{r}
+dataset <- read.csv("assets/datasets/flights.csv")
+```
+
+Zunächst wollen wir eine Idee davon bekommen:
+
+```{r}
+head(dataset)
+```
+
+> Frage: Welche sind die für uns relevanten, zeitbezogenen Spalten? Was für Probleme könnte es geben?
+
+```{r}
+#| eval: false
+dataset %>% 
+  mutate(departure = as.Date(departure))
+```
+
+R schmeißt uns hier den Fehler:
+
+> `character string is not in a standard unambiguous format`
+>
+> Frage: Wie könnten wir diesen Fehler lösen?
+
+Genau, erstens handelt es sich nicht nur um ein Datum, sondern um ein Datum mit Zeit, weshalb sich hier `POSIXct` besser eignet. Damit R aber unser Datumsobjekt auch als solches versteht, müssen wir auch das entsprechende Format des Datumsobjekts klarmachen. Wie auf dem Titelbild oben zu sehen, gibt es eine Vielzahl verschiedener Möglichkeiten, Daten aufzuschreiben, etwa:
+
+-   `"1969/07/20 20:17:40"`
+
+-   `"1969-07-20 20 Uhr"`
+
+-   `"20.7.1969 20:17:40"`
+
+-   `"20.07.1969 20:17:40"`
+
+-   `"20. Juli 1969 um 20:17:40"`
+
+-   `etc.`
+
+### Codes
+
+Das heißt, wir müssen irgendwie das Format definieren, in dem das Datum "geparsed" werden soll. Dazu gibt es verschiedene Codes. So können wir etwa über `%d` das Datum definieren, oder über `%m` den Monat. Hier eine (unvollständige) Liste der Codes, übernommen von [hier](https://r4ds.hadley.nz/datetimes.html):
+
+| Type  | Code | Meaning           | Example         |
+|-------|------|-------------------|-----------------|
+| Year  | `%Y` | 4 digit year      | 2021            |
+|       | `%y` | 2 digit year      | 21              |
+| Month | `%m` | Number            | 2               |
+|       | `%b` | Abbreviated name  | Feb             |
+|       | `%B` | Full name         | February        |
+| Day   | `%d` | Two digits        | 02              |
+|       | `%e` | One or two digits | 2               |
+| Time  | `%H` | 24-hour hour      | 13              |
+|       | `%I` | 12-hour hour      | 1               |
+|       | `%p` | AM/PM             | pm              |
+|       | `%M` | Minutes           | 35              |
+|       | `%S` | Seconds           | 45              |
+|       | `%Z` | Time zone name    | America/Chicago |
+|       | `%z` | Offset from UTC   | +0800           |
+
+Wir können nun aus diesen Codes das Datum parsen. Manchmal enthalten Daten noch zusätzliche Zeichen, wie etwa `/` oder `:`. Diese können wir einfach kombinieren mit den Codes:
+
+```{r}
+as.POSIXct("69/07/20-20:17:40", format = "%y/%m/%d-%H:%M:%S")
+```
+
+> Frage: Was fällt auf?
+
+Wie wir sehen können, haben wir den String `"69/07/20-20:17:40"` erfolgreich "geparsed". Das hat nur funktioniert, weil wir das Format über `format = "%y/%m/%d-%H:%M:%S"` definiert haben.
+
+## Flights Datensatz
+
+Betrachten wir nun also wieder unseren Datensatz `dataset`, und die darin enthaltenen Zeitspalten.
+
+> Wie können wir diese in ein richtiges Zeitobjekt überführen?
+
+Am besten wie oben, nur angepasst auf das neue Format:
+
+```{r}
+dataset %>% 
+  mutate(departure = as.POSIXct(departure, format = "%d.%m.%Y %H:%M:%S"),
+         scheduled_departure = as.POSIXct(departure, format = "%d.%m.%Y %H:%M:%S"),
+         arrival = as.POSIXct(arrival, format = "%d.%m.%Y %H:%M:%S"),
+         scheduled_arrival = as.POSIXct(scheduled_arrival, format = "%d.%m.%Y %H:%M:%S")) %>% 
+  head()
+  
+```
+
+Hätten wir das gleiche mit `as.Date()` gemacht, würden wir natürlich keine Uhrzeit mit dabei haben:
+
+```{r}
+dataset %>% 
+  mutate(departure = as.Date(departure, format = "%d.%m.%Y"),
+         scheduled_departure = as.Date(departure, format = "%d.%m.%Y"),
+         arrival = as.Date(arrival, format = "%d.%m.%Y"),
+         scheduled_arrival = as.Date(scheduled_arrival, format = "%d.%m.%Y")) %>% 
+  head()
+```
+
+Super! Nun wisst ihr, wie wie Spalten, in denen das Datum als `character` gespeichert ist, in ein richtiges Datumsobjekt überführt. Dennoch stellt sich die Frage, warum wir das ganze überhaupt machen - schließlich hätten wir die Spalten auch als einzelne "Faktoren" belassen können. Dazu kommen wir jetzt, denn die Datumsobjekte bringen eine Vielzahl sehr praktischer Funktionen mit sich, und dabei hilft uns am meisten das Package `lubridate`.
+
+## Lubridate und Datumsobjekte
+
+Wir könnten meinen, dass die obige Vorgehensweise etwas umständlich ist und erfordert, dass wir wissen, was die einzelnen Codes bedeuten. `Lubridate` bringt die Funktionen `ymd_hms()` und weitere mit:
+
+```{r}
+ymd_hms("69/07/20-20:17:40")
+```
+
+Wir sehen, dass `ymd_hms()` das Datum auch ohne die Angabe des Formats parsed.
+
+> Frage: Was wäre, wenn das Datum `20/7/1969 20:17:40` gelautet hätte?
+
+`Lubridate` bringt wie bereits erwähnt eine Vielzahl von Funktionen mit. Das heißt, wenn wir den obigen String parsen wollten, könnten wir einfach `dmy_hms()` benutzen:
+
+```{r}
+dmy_hms("20/7/1969 20:17:40")
+```
+
+Ebenso gibt es `mdy()` für Daten wie `"7-20-1969"` oder `mdy_hm()` für `"07-20-1969 20:17"`:
+
+```{r}
+mdy("7-20-1969")
+```
+
+Wir wissen nun also, wie wir bequem Datumsobjekte richtig umwandeln können. Aber was kann `lubridate` noch?
+
+### Komponenten
+
+Sobald wir ein Datumsobjekt haben, können wir allerlei Informationen daraus ziehen. Also bspw. den Tag...
+
+```{r}
+date <- dmy_hms("20/7/1969 20:17:40")
+
+day(date)
+```
+
+...den Monat...
+
+```{r}
+month(date)
+```
+
+oder das Jahr...
+
+```{r}
+year(date)
+```
+
+...oder die Kalenderwoche:
+
+```{r}
+week(date)
+```
+
+Manchmal kann es auch hilfreich sein, das Quartal zu extrahieren:
+
+```{r}
+quarter(date)
+```
+
+Super! Wir wissen nun also, wie wir aus einem funktionierenden Datumsobjekt Komponenten herausziehen können. Versuchen wir das doch mal mit unserem Datensatz `dataset`.
+
+> Wie würden wir vorgehen, um die Datumsspalten mit `lubridate` richtig zu formatieren?
+
+```{r}
+dataset %>% 
+  mutate(departure = dmy_hms(departure),
+         scheduled_departure = dmy_hms(scheduled_departure),
+         arrival = dmy_hms(arrival),
+         scheduled_arrival = dmy_hms(scheduled_arrival))
+```
+
+In der Warnmeldung sehen wir, dass 12 Zeilen nicht geparsed werden konnten. Offensichtlich gibt es 12 Zeilen, in denen es Probleme gibt. Da wir knapp 10,000 Observations haben, sind uns diese 12 Sonderfälle egal, und wir ignorieren den Fehler. Sollten wir aber einen kleineren Datensatz/kleinere Stichprobe haben, so wäre es schon relevant sich die betreffenden Zeilen anzuschauen. Wir müssen jetzt das ganze noch abspeichern:
+
+```{r}
+#| warning: false
+dataset <- dataset %>% 
+              mutate(departure = dmy_hms(departure),
+                     scheduled_departure = dmy_hms(scheduled_departure),
+                     arrival = dmy_hms(arrival),
+                     scheduled_arrival = dmy_hms(scheduled_arrival))
+```
+
+Sicherlich erinnern wir uns noch an den `flights` Datensatz, und dass wir dort Verspätungen berechnet haben. Nun wollen wir das gleiche mit unserem Datensatz `dataset` machen. Das könnten wir etwa aus `arrival` und `scheduled_arrival` machen.
+
+> Frage: Wie würden wir vorgehen?
+
+Im originalen `flights` Datensatz gab es einzelne Spalten für die Minuten und Stunden, sodass wir einfach die Verspätung als Zahl berechnen konnten (in dem Fall als Minuten). Nun, da wir richtige Datumsobjekte haben, können wir direkt mit ihnen arithmetische Operationen durchführen, was dann zu sogenannten `difftime` Objekten führt.
+
+### Difftime
+
+Beachten wir den Output des folgenden Codes:
+
+```{r}
+date1 <- dmy_hms("20/7/1969 20:17:40")
+date2 <- dmy_hms("21/7/1969 17:54:00")
+
+date2-date1
+```
+
+R gibt uns als Ergebnis der Subtraktion einen Satz mit der Zeitdifferenz aus. Wir sehen, dass der Datentyp `difftime` ist:
+
+```{r}
+class(date2-date1)
+```
+
+`Difftime` Objekte geben uns die Differenz intern in Sekunden wieder. Wir können die Differenz aber auch explizit berechnen, indem wir die `difftime()` Funktion benutzen. Hier müssen wir dann lediglich die zwei Zeitpunkte mit einem Komma (`,`) getrennt übergeben:
+
+```{r}
+difftime(date2,date1)
+```
+
+Nun können wir auch explizit machen, welche Einheit wir wollen:
+
+```{r}
+difftime(date2,date1,units = "mins")
+```
+
+Wir wissen also nun, wie wir Zeitdifferenzen berechnen. Wenden wir das nun also auf unseren Datensatz `dataset` an, und berechnen die Variable `late`:
+
+```{r}
+dataset <- dataset %>% 
+              mutate(late = difftime(arrival,scheduled_arrival,units = "mins"))
+```
+
+Nun wollen wir `late` visualisieren, um eine Idee über die durchschnittlichen Verspätungen zu bekommen:
+
+```{r}
+dataset %>% 
+  ggplot(aes(x=late))+
+  geom_bar()+
+  theme_classic()
+```
+
+Wir bekommen leider kein richtiges Ergebnis angezeigt.
+
+> Woran könnte das liegen?
+
+Ein kleiner Blick auf die Daten könnte uns helfen. Dazu müssen wir kurz die Variable mit `as.numeric()` umwandeln:
+
+```{r}
+summary(as.numeric(dataset$late))
+```
+
+Wir sehen, dass wir Werte haben, die **extrem** von der Mitte **abweichen**. Diese Ausreißer sollten wir entfernen. Wir wir das machen, lernt ihr gleich.
+
+Bis dahin können wir aber hingehen und alles mit mehr als 120 Minuten Verspätung (oder zu früh) ausschließen:
+
+```{r}
+dataset %>% 
+  filter(late < 120 & late > -120) %>% 
+  ggplot(aes(x=late))+
+  geom_bar(fill=palette1[3])+
+  geom_vline(xintercept=0,linetype="dashed")+
+  theme_classic()
+```
+
+Wie zu sehen, kommt der Großteil der Flüge **früher** an als geplant, im Schnitt `r dataset %>% filter(late < 120 & late > -120) %>% summarise(mean=round(mean(late, na.rm=T),2)) %>% pull()` Minuten.
+
+Angenommen, wir haben eine Studie mit 150 Proband:innen, und wollen den Datensatz in drei Gruppen aufteilen, je nach Uhrzeit: `morgens`, `mittags` und `abends`.
+
+> Wie könnten wir vorgehen? Wir haben `POSIXct`, `Date` und `Difftime` kennengelernt.
+
+Außer `difftime`, welches eine zeitliche **Differenz** wiedergibt, enthalten die beiden Typen `POSXIct` und `Date` **immer auch das Datum**. Was das für Implikationen hat, sehen wir, wenn wir die verschiedenen Daten im Folgenden betrachten:
+
+```{r}
+landing_times <- c(dmy_hms("20/7/1969 20:17:40"),
+                   dmy_hms("19/11/1969 06:54:35"),
+                   dmy_hms("5/2/1971 09:18:11"),
+                   dmy_hms("30/7/1971 22:16:29"),
+                   dmy_hms("21/4/1972 02:23:35"),
+                   dmy_hms("11/12/1972 19:54:58")) %>% 
+  as.data.frame() %>% 
+  setNames(c("time"))
+
+landing_times
+```
+
+`landing_times` zeigt uns verschiedene Zeitpunkte, die teilweise Jahre voneinander entfernt sind. Wenn uns jetzt aber nur die Uhrzeit interessiert, wollen wir das Datum gar nicht betrachten.
+
+> Frage: Wie können wir das lösen?
+
+Eine Möglichkeit wäre es, über `hour()` und `minute()` zu arbeiten, etwa so:
+
+```{r}
+landing_times %>% 
+  mutate(hour=hour(time),minute=minute(time))
+```
+
+Wenn wir allerdings eine Spalte haben wollen, in der beides enthalten ist (also nur die Zeit, nach dem Prinzip `h:m:s`, dann kommen wir mit `base-R` nicht weiter, dann hilft uns das gleichnamige Package `hms`, über welches wir Zeiten abspeichern können.
+
+## HMS::
+
+Wir wollen an dieser Stelle gar nicht zu tief in ein weiteres Package einsteigen, daher konzentrieren wir uns auf die für uns relevante Kernfunktionalität von `hms`: **Zeiten abspeichern**. Über den Befehl `as_hms()` können wir also aus einem Datumsobjekt die Zeit herausziehen, und das Datum loswerden:
+
+```{r}
+library(hms)
+
+landing_times %>% 
+  mutate(time_only = as_hms(time))
+```
+
+Perfekt! Ein neuer Versuch, unsere `landing_times` zu plotten:
+
+```{r}
+landing_times %>% 
+  mutate(time_only = as_hms(time)) %>% 
+  ggplot(aes(x=time_only))+
+  geom_density(fill="grey")+
+  theme_classic()
+```
+
+Perfekt! Wir sehen, dass es deskriptiv eine leichte Tendenz nach hinten gibt, d.h., die Zeiten sind eher in den späten Stunden.
+
+> Frage: Wofür könnte das eben Erlente im Komedia Kontext hilfreich sein?
+
+Bei Fragebogenstudien, sowie im Kontext von Learning Analytics können Zeiten und Datumsobjekte überaus hilfreich sein. So könnte man etwa die Tageszeit bei Fragebögen/Studien mit in die Analyse aufnehmen, oder die Beteiligung in Online-Foren im zeitlichen Verlauf bzw. in Abhängigkeit der Tageszeit. Das können wir nun - super!
+
+![](assets/img/duisburg_moon.png){fig-align="center" width="1000"}
+
+> Frage: Wo könnte es noch Probleme geben?
+
+Zeitzonen und wie sie abgespeichert sind ist ein überaus komplexes Thema, welches wir hier ebenfalls nicht komplett elaborieren wollen. Was aber wichtig ist, dass natürlich jedes Zeitobjekt einer Zeitzone zugewiesen wird. Standardmäßig wird bei den `Lubridate` Funktionen wie etwa `dmy_hms()` die Zeitzone `UTC` (Universal Coordinated Time) zugewiesen.
+
+Solange wir nicht Daten aus verschiedenen Quellen haben (vor allem aus verschiedenen Zeitzonen), sollte uns das erstmal nicht betreffen. Wenn wir allerdings in unserem Mondlandungsbeispiel bleiben, dann könnte uns durchaus interessieren, um wieviel Uhr hier in Duisburg die Astronauten jeweils ihren Fuß auf den Mond gesetzt haben. Wir wissen aus sicherer Quelle, dass die Zeitzone bereits `UTC` ist. Die Funktion `tz()` kann uns dabei helfen:
+
+```{r}
+landing_times %>% 
+  mutate(tz = tz(time))
+```
+
+Wenn wir nun zwei neue Spalten `time_duisburg` und `tz_duisburg` hinzufügen wollen, kann uns die Funktion `with_tz()` helfen, welche die Zeitzone in eine angegbene umrechnet:
+
+```{r}
+landing_times %>% 
+  mutate(tz=tz(time),
+         time_duisburg = with_tz(time,tzone="EST"),
+         tz_duisburg = tz(time_duisburg))
+```
+
+Super! Nun wissen wir auch die Zeiten in Duisburg, zu denen die Mondlandungen geschehen sind.
+
+```{r}
+landing_times <- c(dmy_hms("20/7/1969 20:17:40", tz="UTC"),
+                   dmy_hms("19/11/1969 06:54:35", tz="UTC"),
+                   dmy_hms("5/2/1971 09:18:11", tz="UTC"),
+                   dmy_hms("30/7/1971 22:16:29", tz="UTC"),
+                   dmy_hms("21/4/1972 02:23:35", tz="UTC"),
+                   dmy_hms("11/12/1972 19:54:58", tz="UTC")) %>% 
+  as.data.frame() %>% 
+  setNames(c("time"))
+
+landing_times %>% 
+  mutate(tz = tz(time),
+         time_duisburg = with_tz(time,tzone="EST"),
+         tz_duisburg = tz(time_duisburg))
+```
+
+Super! Wir kennen nun `dates`, `times`, `datetimes`, `POSIXct` & `times`. Und noch Zeitzonen! Wenn ihr mehr über Datumsobjekte erfahren wollt, schaut gerne hier vorbei:
+
+[**R for Data Science**](https://r4ds.hadley.nz/datetimes.html)
+
+```{r}
+#| eval: false
+#| include: false
+
+dataset %>% 
+  mutate(month2 = case_when(nchar(month)<2~paste0("0",month),
+                            T ~ paste0(month)),
+         day2 = case_when(nchar(day)<2~paste0("0",day),
+                           T ~ paste0(day))) %>% 
+  filter(!is.na(dep_time)) %>% 
+  mutate(dep_time = case_when(nchar(dep_time)<4 ~ paste0("0",dep_time),
+                              T ~ paste0(dep_time)),
+         sched_dep_time = case_when(nchar(sched_dep_time)<4 ~ paste0("0",sched_dep_time),
+                              T ~ paste0(sched_dep_time)),
+         arr_time = case_when(nchar(arr_time)<4 ~ paste0("0",arr_time),
+                              T ~ paste0(arr_time)),
+         sched_arr_time = case_when(nchar(sched_arr_time)<4 ~ paste0("0",sched_arr_time),
+                              T ~ paste0(sched_arr_time))) %>% 
+  separate(dep_time,-2,into=c("dep_hour","dep_minute"),remove = F) %>% 
+  separate(sched_dep_time,-2,into=c("sched_dep_hour","sched_dep_minute"),remove = F) %>% 
+  separate(arr_time,-2,into=c("arr_hour","arr_minute"),remove = F) %>% 
+  separate(sched_arr_time,-2,into=c("sched_arr_hour","sched_arr_minute"),remove = F) %>% 
+  mutate(departure = paste0(day2,".",month2,".",year," ",dep_hour,":",dep_minute,":00 Uhr"),
+         scheduled_departure = paste0(day2,".",month2,".",year," ",sched_dep_hour,":",sched_dep_minute,":00 Uhr"),
+         arrival = paste0(day2,".",month2,".",year," ",arr_hour,":",arr_minute,":00 Uhr"),
+         scheduled_arrival = paste0(day2,".",month2,".",year," ",sched_arr_hour,":",sched_arr_minute,":00 Uhr")) %>% 
+  select(c(carrier:scheduled_arrival,-hour,-minute,-time_hour,-month2,-day2, -air_time))-> dataset
+```
