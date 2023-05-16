@@ -6,6 +6,8 @@ execute:
 ---
 
 ```{r}
+#| echo: false
+#| warning: false
 library(tidyverse)
 
 dataset <- read.csv("dataset_srl_challenges_wrangled.csv")
@@ -18,6 +20,8 @@ Wir haben jetzt also ein neues dataframe, in dem die Arbeitsgedächtnisdaten ent
 ```{r}
 # bisheriges Wissen:
 data.verknüpft <- cbind(daten1, daten2)
+
+cbind(dataset, WMC_vals)
 ```
 
 Wann könnte diese Variante zu Problem führen bzw. zu einfach gedacht sein?
@@ -28,14 +32,13 @@ Wann könnte diese Variante zu Problem führen bzw. zu einfach gedacht sein?
 
 Sinnvoller ist es daher, die Passung der Datenframes zu überprüfen bzw. zu garantieren. In base R gibt es dafür bspw. `match()`. Schaut euch mal die Dokumentation/Hilfe dafür an.
 
-> `match(x, table, …)`
-> `match` returns a vector of the positions of (first) matches of its first argument in its second.
+> `match(x, table, …)` `match` returns a vector of the positions of (first) matches of its first argument in its second.
 
 Es wird also ein Vektor mit einem anderen Vektor verglichen.
 
 ```{r}
 vec1 <- c(1:10, "abc")
-vec2 <- c(5,3,1, "abc")
+vec2 <- c(5,3,1, "abc",5)
 
 match(vec1, vec2)
 # Woraus besteht der Output?
@@ -48,13 +51,23 @@ Was können wir damit anfangen?
 Wir können es als Index nutzen, der uns angibt, welche Zeilen wir mit welchen matchen dürfen. Nach dem Prinzip: "Für das erste Element aus `vec1` nimm bitte das dritte Element aus `vec2`". Wir wenden den Index also auf die Spalte mit der Variable an, die wir übertragen wollen:
 
 ```{r}
+match(dataset$id, WMC_vals$subject.id)
+
 data2$var[match(data1$id, data2$id)]
+
+
+WMC_vals[match(dataset$id, WMC_vals$subject.id),]
+
+WMC_vals[match(WMC_vals$subject.id,dataset$id),]
 # Ergebnis: Die Werte von var aus data2, sortiert in der Reihenfolge, in der sie für data1 sinnvoll sind.
 
 # richtige Übertragung auf data1:
 data1 <- data1 %>% 
   mutate(newvar = data2$var[match(data1$id, data2$id)])
 # Jetzt enthält data1 die Daten aus data2$var, aber garantiert in der richtigen Reihenfolge
+dataset %>% 
+  mutate(wm = WMC_vals$wmc_PCU[match(dataset$id, WMC_vals$subject.id)]) %>% 
+  select(wm, id)
 ```
 
 `match()` ist praktisch, benötigt allerdings Schreibaufwand bzw. Konzentration bei der Umsetzung. Außerdem ist es in der Form nur auf eine Variable beschränkt.
@@ -64,6 +77,11 @@ Natürlich hat `dplyr` wieder etwas angenehmeres für uns: `left_join()`
 ```{r}
 data1 <- data1 %>% 
   left_join(data2, by = "id")
+
+WMC_vals$subject.id <- as.numeric(WMC_vals$subject.id)
+
+dataset.joined <- dataset %>% 
+  left_join(WMC_vals, by = c("id"="subject.id"))
 ```
 
 Hier werden alle Variablen aus data2 in data1 ergänzt, gematcht nach der id-Spalte, die hier in beiden Datensätzen verwendet wurde. Sollten die ID-Spalten unterscheidlich heißen, lässt sich das über `by = c("a" = "b")` ausgleichen
@@ -104,9 +122,19 @@ data2 %>%
 Jetzt, wo ihr die Theorie von left_join() kennengelernt habt, könnt ihr es auch selbst anwenden für unsere dataframes.
 
 ```{r}
-#| echo: false
-wm <-  read.csv("C:/Users/WIMI/OneDrive - Universitaet Duisburg-Essen/Dokumente/PsychMeth/Lehre/_SoSe 2023/R Masterseminar/offline/id_wmc_PCU.csv")
+
+WMC_vals <- WMC_vals %>%
+  mutate(subject.id = as.numeric(subject.id))
 
 data.joined <- dataset %>% 
-  left_join(wm, by = "id")
+  left_join(WMC_vals, by = c("id"= "subject.id"))
+
+
+
+data.joined <- WMC_vals %>% 
+  mutate(subject.id = as.numeric(subject.id)) %>% 
+  right_join(dataset, by = c("subject.id"= "id"))
+
+
+  
 ```

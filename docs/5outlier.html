@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kira Wolff">
 
-<title>Medienbasierte Wissenskonstruktion mit R - 5outlier</title>
+<title>Medienbasierte Wissenskonstruktion mit R - Ausreißeranalyse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">5outlier</h1>
+      <h1 class="quarto-secondary-nav-title">Ausreißeranalyse</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -277,20 +277,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Anwendung: Fragebögen II</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Anwendung: Fragebögen II</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  <a href="./analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5outlier.html" class="sidebar-item-text sidebar-link active">5outlier</a>
+  <a href="./5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -324,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">5outlier</h1>
+<h1 class="title d-none d-lg-block">Ausreißeranalyse</h1>
 </div>
 
 
@@ -346,9 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(outliers)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnvStats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <section id="ausreißeranalyse" class="level1">
 <h1>Ausreißeranalyse</h1>
@@ -356,9 +354,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Ausreißer sind Werte, die im Vergleich zu den restlichen Ausprägungen der Variable extrem hoch oder niedrig sind. Damit können einzelne Datenpunkte einen großen Einfluss auf Analysen und Ergebnisse nehmen.</p>
 <p>Der Mittelwert ist beispielsweise sehr ausreißerempfindlich:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) <span class="co"># Mittelwert der Zahlen 1 bis 50: 25.5</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">1000</span>)) <span class="co"># Mittelwert der Zahlen 1 bis 50 und Ausreißer 1000: 44.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) <span class="co"># Mittelwert der Zahlen 1 bis 50: 25.5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">1000</span>)) <span class="co"># Mittelwert der Zahlen 1 bis 50 und Ausreißer 1000: 44.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Bei einer gründlichen statistischen Analyse gehört dazu, dass man sich neben den rein deskriptiven Eigenschaften der Variablen auch anschaut, ob es pro Variable Ausreißer gibt. Wenn man diese identifizieren kann, gibt es zwei Fragen: Warum ist es ein Ausreißer? Wie gehe ich damit um?</p>
 <p>Im Prinzip gibt es zwei Möglichkeiten, warum ein Ausreißer existiert: Entweder es handelt sich um einen Messfehler, weil bspw. ein Komma falsch gesetzt wurde; oder es ist ein echter Extremwert, der zwar selten ist, aber genauso existieren kann. Der größte Mann, der je gelebt hat, Robert Wadlow, war mit seinen 2.72m auf jeden Fall ein Ausreißer, trotzdem war seine Größe ja real und valide.</p>
@@ -368,18 +366,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="grafische-ausreißersuche">Grafische Ausreißersuche</h2>
 <p>Hier bieten sich zwei Plots an, die ihr schon kennt: Histogramme und Boxplots</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dataset<span class="sc">$</span>dmAge)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dataset<span class="sc">$</span>dmAge)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(dmAge))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(dmAge))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(dmAge))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset)<span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(dmAge))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Im Boxplot werden potentielle Ausreißer mit den Punkten dargestellt, wenn sie das “IQR Kriterium” überschreiten. IQR steht für interquartile range, also Abstand zwischen dem ersten und zweiten Quantil. Das erste Quantil ist die Zahl, unter dem 25% der Werte liegen und das dritte Quantil die Zahl, über der 25% der Werte liegen. Von diesen Quantilgrenzen aus geht man noch mal weiter um 1.5*IQR in beide Richtungen. Die Werte, die dann immer noch nicht im Bereich liegen, sind die potentiellen Ausreißer.</p>
 </section>
@@ -387,32 +385,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="ausreißersuche-mit-base-r">Ausreißersuche mit base R</h2>
 <p>Das IQR-Kriterium lässt sich natürlich nicht nur im Boxplot anwenden, sondern auch selbst berechnen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grenzen bestimmen</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">2</span>]<span class="sc">-</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">4</span>]<span class="sc">+</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge) </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Probanden identifizieren, die Grenzen überschreiten</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dmAge <span class="sc">&lt;</span> low <span class="sc">|</span> dmAge <span class="sc">&gt;</span> high) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grenzen bestimmen</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">2</span>]<span class="sc">-</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dataset<span class="sc">$</span>dmAge)[<span class="dv">4</span>]<span class="sc">+</span><span class="fl">1.5</span><span class="sc">*</span><span class="fu">IQR</span>(dataset<span class="sc">$</span>dmAge) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Probanden identifizieren, die Grenzen überschreiten</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dmAge <span class="sc">&lt;</span> low <span class="sc">|</span> dmAge <span class="sc">&gt;</span> high) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Netterweise gibt es auch eine Funktion zu den Daten hinter einem Boxplot, mit der wir die Werte der potentiellen Ausreißer direkt genannt bekommen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)<span class="sc">$</span>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">boxplot.stats</span>(dataset<span class="sc">$</span>dmAge)<span class="sc">$</span>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Hier werden uns nur leider nicht direkt die Probanden-IDs oder Zeilennummern mitgeliefert. Dabei kann uns aber die Funktion <code>which()</code> und der <code>%in%</code>-Operator helfen, die auch allgemein nützlich sind, immer wenn es darum geht, bestimmte Werte in einer Tabelle wiederzufinden.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Elemente des Alter-Vektors entsprechen einem der Elemente aus dem out-Vektor?</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Zeilen-Indices entsprechen diese Übereinstimmungen?</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ähnlich wie match(): Indices!</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Indices im Datensatz anwenden</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>dataset[<span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Elemente des Alter-Vektors entsprechen einem der Elemente aus dem out-Vektor?</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Welche Zeilen-Indices entsprechen diese Übereinstimmungen?</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ähnlich wie match(): Indices!</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Indices im Datensatz anwenden</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>dataset[<span class="fu">which</span>(dataset<span class="sc">$</span>dmAge <span class="sc">%in%</span> out),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ein weiterer Ansatz kann sein, die Daten mit <code>scale()</code> zu standardisieren und dann zu überprüfen, welche Werte die Grenzen überschreiten, welche gemäß der Standardnormalverteilung wie folgt definiert sind:</p>
 <ul>
@@ -420,10 +418,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>außerhalb von -3 oder 3: sehr selten</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age.sc =</span> <span class="fu">scale</span>(dmAge)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age.sc <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">|</span> age.sc <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age.sc =</span> <span class="fu">scale</span>(dmAge)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age.sc <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">|</span> age.sc <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dmAge, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ausreißersuche-mit-dafür-designten-packages" class="level2">
@@ -431,28 +429,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Neben diesen deskriptiven Ansätzen gibt es auch Signifikanz-Tests für die Ausreißeranalyse, die uns angeben, ob der extremste Wert ein Ausreißer ist oder nicht. Die hier vorgestellten basieren alle auf der Grundannahme, dass die Variable (abgesehen von den Ausreißern) normalverteilt ist.</p>
 <p>Der <code>grubbs.test()</code> kommt aus dem <code>outlier</code>-Package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge, <span class="at">opposite =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grubbs.test</span>(dataset<span class="sc">$</span>dmAge, <span class="at">opposite =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Der <code>dixon.test()</code> ebenso. Er eignet sich besonders gut für kleine samples mit maximal n = 30.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data.small <span class="ot">&lt;-</span> dataset[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge, <span class="at">opposite=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data.small <span class="ot">&lt;-</span> dataset[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># höchsten Wert testen</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># niedrigsten Wert testen</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dixon.test</span>(data.small<span class="sc">$</span>dmAge, <span class="at">opposite=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Wie man sieht, testen beide Tests immer nur einen Wert auf einmal. Allerdings konnten wir unserem Boxplot ja entnehmen, dass nicht nur der höchste Wert ein potentieller Ausreißer ist. Die Lösung dafür ist entweder, den Test zu wiederholen mit einem Datensatz, in dem der bereits identifizierte Ausreißer entfernt wurde, oder einen alternativen Test zu benutzen: <code>rosnerTest()</code> aus dem <code>EnvStats</code>-Package.</p>
 <p>Wichtig zu beachten ist dabei, dass dieser Test sich eher für große Samples (n&gt;20) eignet. Außerdem müssen wir spezifizieren, wie viele potentielle Ausreißer wir erwarten. Standardmäßig werden drei Werte getestet. Wir können uns gut am Boxplot von vorhin orientieren.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)<span class="sc">$</span>all.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rosnerTest</span>(dataset<span class="sc">$</span>dmAge, <span class="at">k=</span><span class="dv">7</span>)<span class="sc">$</span>all.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe" class="level2">

@@ -42,7 +42,6 @@ website:
         contents: 
           - analysis2_1.qmd
           - 5join.qmd
-          - 5outlier.qmd
           - 5factorplot.qmd
 format:
   html:
