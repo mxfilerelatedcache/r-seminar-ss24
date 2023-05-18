@@ -43,6 +43,10 @@ website:
           - analysis2_1.qmd
           - 5join.qmd
           - 5factorplot.qmd
+      - section: "Datum & Ausreißer"
+        contents:
+          - analysis3_1_dates.qmd
+          - 5outlier.qmd
 format:
   html:
     theme: cosmo
