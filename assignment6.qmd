@@ -1,6 +1,8 @@
 ---
 title: "Hausaufgabe 6"
 author: "Kira Wolff & Simon Krukowski"
+execute:
+  eval: false
 ---
 
 # Beschreibung

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -300,6 +300,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Datum &amp; Ausreißer</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis3_1_dates.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5outlier.html" class="sidebar-item-text sidebar-link">Ausreißeranalyse</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -412,18 +432,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Beispiel: Ich habe zwei separate Studien gemacht und mich interessieren nur noch die Probanden, die an beiden Studien teilgenommen haben. Ich möchte die erhobenen Variablen aus beiden Studien zusammenführen. Zeilen von Probanden, die nur an einer Studie teilgenommen haben, können also wegfallen.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://r4ds.had.co.nz/relational-data.html"><img src="./assets/img/inner_join.png" class="img-fluid figure-img" width="450"></a></p>
+<p><a href="https://r4ds.had.co.nz/relational-data.html"><img src=".\assets/img/inner_join.png" class="img-fluid figure-img" width="450"></a></p>
 <p></p><figcaption class="figure-caption">Abbildungen aus R for Data Science (Wickham &amp; Grolemund 2017)</figcaption><p></p>
 </figure>
 </div></li>
 <li><p><code>full_join()</code>: Das Ergebnis enthält alle Zeilen aus beiden Datensätzen, wobei die nach ID zueinander passenden Zeilen natürlich kombiniert wurden.<br>
 Beispiel: Ich habe verschiedene LimeSurvey-Umfragen zu verschiedenen Zeitpunkten für eine Langzeitstudie gemacht. Manche Probanden haben nur an T1 teilgenommen, andere nur an T2, manche an beiden. Ich möchte natürlich alle Probanden behalten, auch wenn manche bei einigen Variablen dann Lücken zeigen. Alle Zeilen aus beiden Studien sollen behalten werden.</p>
-<p><img src="./assets/img/full_join.png" class="img-fluid" width="450"></p></li>
+<p><img src=".\assets/img/full_join.png" class="img-fluid" width="450"></p></li>
 <li><p><code>left_join()</code>: Das Ergebnis enthält alle Zeilen aus dem ersten Datensatz und passende aus dem zweiten Datensatz.<br>
 Beispiel: In meiner Studie wurde Stress bei DiabetikerInnen gemessen. Viele der DiabetikerInnen haben bereits an einer anderen Studie teilgenommen, bei der die medizinischen Daten noch genauer erhoben wurden. Ich möchte davon alles, was meine Studie ergänzen kann, übernehmen. Der Stress-Datensatz soll dabei natürlich komplett erhalten bleiben. Zeilen von Probanden aus der anderen Studie, die nicht an der Stress-Studie teilgenommen haben, interessieren mich aber nicht.</p>
-<p><img src="./assets/img/left_join.png" class="img-fluid" width="450"></p></li>
+<p><img src=".\assets/img/left_join.png" class="img-fluid" width="450"></p></li>
 <li><p><code>right_join()</code>: Das Ergebnis enthält alle Zeilen aus dem zweiten Datensatz und passende aus dem ersten Datensatz.</p>
-<p><img src="./assets/img/right_join.png" class="img-fluid" width="450"><br>
+<p><img src=".\assets/img/right_join.png" class="img-fluid" width="450"><br>
 Mit <code>left_join()</code> und <code>right_join()</code> lässt sich also prinzipiell das Gleiche erreichen, wenn man die Datensätze an die passende Stelle setzt. Für welche Option man sich entscheidet hängt also vor allem davon ab, ob vor dem Joinen noch Datawrangling notwendig ist, z.B. wenn ich aus meinem ergänzenden Datensatz nur bestimmte Spalten übernehmen will:</p></li>
 </ul>
 <div class="cell">
