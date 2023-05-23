@@ -1,0 +1,264 @@
+---
+title: "Analysebeispiel - Virtual Learning Environment Data"
+exceute:
+  eval: false
+---
+
+In der heutigen Sitzung wollen wir beispielhaft eine komplette Analyse mit euch durchführen. Das soll euch auch darauf vorbereiten, wie ihr bei der Erstellung des Berichts vorgehen könnt.
+
+Wir haben heute grob drei Teile:
+
+-   Daten kennenlernen und Fragestellung entwickeln
+
+-   Datensatz wranglen und vorbereiten
+
+-   Stichprobe & Daten beschreiben und analysieren
+
+Wir verwenden Daten, die unter dem Namen "Open University Learning Analytics Dataset" laufen. Dort sind insgesamt sieben Datensätze enthalten, die verschiedene Informationen zur Studierenden und denen von ihnen belegten Kursen und durchgeführten Prüfungen enthalten. Mehr wollen wir noch nicht verraten, da ihr euch auch selbst der Herauforderung stellen sollt, sich in einen zunächst unbekannten Datensatz einzuarbeiten.
+
+## Exkurs zu kaggle.com
+
+Kaggle ist eine Website für alle, die an Data Science interessiert sind. Dort gibt es zahlreiche echte Datensätze zu diversen Themen, die man herunterladen und bearbeiten kann. Die eigene Auswertung kann man auch wieder hochladen und mit anderen Leuten diskutieren. Es gibt Wettbewerbe, bei denen Daten ausgewertet werden sollen, aber auch Kurse für Anfänger und Fortgeschrittene.
+
+Alles in allem also eine gute Plattform, um die eigenen Skills zu testen und zu erweitern.
+
+Den Datensatz für die heutige Stunde haben wir auch dort gefunden, und auch werdet dort beginnen, wenn ihr euch mit den Daten vertraut macht.
+
+# Teil 1: Daten kennenlernen
+
+Die Daten haben wir euch im Moodlekurs hochgeladen, ihr könnt sie aber auch unter https://www.kaggle.com/datasets/rocki37/open-university-learning-analytics-dataset?select=assessments.csv finden. Auf der Seite finden sich auch immer zusätzliche nützliche Informationen über die Herkunft und den Kontext der Daten. Außerdem sind sie für den Anfang recht übersichtlich aufbereitet, sodass man sich ohne viel Aufwand einen ersten Überblick verschaffen kann.
+
+Weitere Informationen findet ihr außerdem unter diesem Link:\
+https://analyse.kmi.open.ac.uk/open_dataset#description
+
+Dort werden die Variablen etwas genauer beschrieben und es gibt eine nette Grafik zur Verknüpfung der Variablen.
+
+Eure erste Aufgabe ist jetzt, euch einen Überblick über die Daten zu verschaffen:
+
+-   Was wurde hier eigentlich alles erfasst?
+
+-   Was steckt hinter welchem Datensatz?
+
+-   Was ist in jedem Datensatz die "Schlüssel"-Variable (die zum einen im Fokus steht, aber zum anderen auch als Identifikationsvariable verwendet werden kann)?
+
+-   Wie lassen sich die Datensätze miteinander verknüpfen?
+
+-   Welche Fragestellungen könnte man mit dem Datensatz bearbeiten?
+
+-   Welche Variable(n) bieten sich als abhängige Variablen an?
+
+Schaut euch also auf den Websites, in den Datensätzen und die Variablen an und überlegt Antworten auf die Fragen. Wir besprechen sie dann gleich gemeinsam.
+
+## Nach Bearbeitung:
+
+#### Datensätze
+
+-   In `studentRegistration` finden wir, welche/r Studierende sich wann in welchem Kurs eingeschrieben hat.
+
+    -   Warum gibt es immer `module` und `presentation`? Was steckt dahinter?
+
+-   In `studentAssessment` finden wir die Bewertung der Studierenden in verschiedenen Prüfungen, wann die Prüfung abgelegt wurde, und ob sie von einem anderen Kurs übertragen wurde
+
+-   In `studentVle` finden wir die Interaktionen der Studierenden mit dem Virtual Learning Environment. Mit welchem Element haben sie interagiert (`id_site`), und an welchem Tag (`date`) mit wie vielen Klicks (`sum_click`)
+
+    -   In welchem Format befindet sich `date`? Welche Information enthält es? Welche nicht?
+
+-   In `assessments` werden die einzelnen Prüfungen einem Modul und Semester zugeordnet. Außerdem wird nach Art der Prüfung unterschieden und der Zeitpunkt der Prüfung angegeben. `Weight` gibt an, ob es sich um eine alleinstehende Prüfung handelt oder sie mit anderen zusammen verrechnet wird. Der type "Final Exam" ist dabei alleinstehend, die anderen Types addieren sich zu 100%
+
+-   In `courses` werden die Module und Semester einander zugeordnet
+
+    -   Warum gibt es dafür einen extra Datensatz, wenn diese Information auch in vielen anderen Datensätzen miteinander kombiniert wird?
+
+-   In `vle` stehen genauere Information über die Materialien aus dem VLE (`id_site`), unter anderem um was für eine Aktivität sie sich handelt und in welchem zeitlichen Abschnitt die Interaktion damit vorgesehen wäre.
+
+-   In `studentInfo` sind vor allem demographische Daten pro Student enthalten, aber auch das `final_result` des Moduls
+
+    -   Die Variablen sind relativ selbsterklärend - hat jemand geschaut, wobei es sich um `imd_band` handelt?
+
+#### Verknüpfungen der Datensätze
+
+Bild aus PP einfügen
+
+-   Über `id_student` lassen sich die demographischen Daten der Studierenden mit den Anmeldungen, VLE-Interaktionen und Prüfungsleistungen verknüpfen
+
+-   Über `id_assessment` lassen sich die Leistungen mit den Eigenschaften der Prüfungen verknüpfen
+
+-   Über `id_site` lassen sich die Interaktionen mit den Elementen mit den Eigenschaften der Elemente abgleichen
+
+-   Sind `code_module` und `code_presentation` sinnvolle Verknüpfungsvariablen?
+
+#### Welche (sinnvollen) Fragestellungen könnte man bearbeiten?
+
+-   Zusammenhang der finalen Note mit...
+
+    -   demographischen Variablen wie Ausbildung, Herkunft, soziookonomischer Status
+
+    -   den verschiedenen Zwischenprüfungen
+
+    -   der Beschäftigung mit dem VLE (wie lässt sich das sinnvoll operationalisieren?)
+
+    -   Modul/Semester
+
+    -   vorherigen Versuchen
+
+-   Zusammenhang der Interaktion mit dem Material mit Type des Materials
+
+-   Zusammenhang des Materials mit Bestehensrate eines Moduls
+
+-   Zusammenhang des investierten Aufwands (wie kann man das operationalisieren?) mit der Gewichtung der Prüfung
+
+-   Zusammenhang von Note und Typ des Assessments
+
+-   ....
+
+#### Unsere Fragestellung heute:
+
+Was ist der beste Prädiktor für die finale Note?
+
+Dabei möchten wir berücksichtigen:
+
+-   Notendurchschnitt der dazugehörigen Zwischenprüfungen (-\> nicht final exam)
+
+-   Nutzung des Virtual Learning Environments
+
+-   Bestehensrate des entsprechenden Kurses
+
+-   Anzahl vorheriger Bestehensversuche
+
+# Teil 2: Daten aufbereiten
+
+Wir kennen nun die Datensätze und die Variablen, mit denen wir arbeiten möchten. Bevor wir uns richtig mit der Fragestellung beschäftigen können, müssen wir die relevanten Variablen erstellen und uns außerdem einen neuen Datensatz zusammenbasteln, in dem alle relevanten Variablen enthalten sind.
+
+Dabei sollten wir nicht blind loslegen, sondern immer die Datenstruktur und mögliche Auffälligkeiten im Blick behalten. Schließlich kennen wir die Daten noch nicht so gut, und einige Ideen zur Variablenerstellung könnten sich in der Praxis als wenig sinnvoll erweisen.
+
+Konkrete Aufgaben:
+
+-   Daten in R laden, Packages aktivieren
+
+-   neue Variablen erstellen, dabei Operationalisierung auf Tauglichkeit überprüfen und evtl. ändern
+
+-   Datensatz erstellen, mit dem wir die Fragestellung mithilfe einer Regression untersuchen können
+
+(Analysieren und Voraussetzungen testen müsst ihr hier noch nicht, das manchen wir im dritten Teil)
+
+## Nach Bearbeitung:
+
+Packages und beliebige weitere Variablen festlegen, z.B. Farbpaletten.
+
+```{r packages+colors}
+#| warning: false
+
+library(tidyverse)
+```
+
+Daten einlesen - vielleicht brauchen wir gar nicht alle Datensätze, aber ich lade sie lieber alle mal rein. Entfernen geht später immer noch
+
+```{r data}
+# Course Infos
+assess <- read.csv("assets/datasets/kaggle_learning_analytics/assessments.csv")
+courses <- read.csv("assets/datasets/kaggle_learning_analytics/courses.csv")
+
+# Student Infos
+student.assess <- read.csv("assets/datasets/kaggle_learning_analytics/studentAssessment.csv")
+student.info <- read.csv("assets/datasets/kaggle_learning_analytics/studentInfo.csv")
+student.regi <- read.csv("assets/datasets/kaggle_learning_analytics/studentRegistration.csv")
+
+# VLE Stuff
+student.vle <- read.csv("assets/datasets/kaggle_learning_analytics/studentVle.csv")
+vle <- read.csv("assets/datasets/kaggle_learning_analytics/vle.csv")
+
+# Theoretisch wäre hier apply() eine Option gewesen, ich wollte aber die klare Kontrolle darüber, welchem Datensatz ich hier welchem Namen zugewiesen habe
+```
+
+### Neue Variablen
+
+#### Notendurchschnitt der Zwischenprüfungen
+
+```{r}
+head(assess)
+```
+
+Anhand von `assessment_type` können wir sehen, welche assessments (nennen wir hier auch Prüfungen) ein "Final Exam" waren (`Exam`) und welche nicht (`TMA`, `CMA`). Da es uns ja nur um die Zwischenprüfungen geht, interessieren uns nicht `Exam`-Zeilen also nicht. Wir können uns jetzt also einen Vektor bauen mit den `id_assessment`-Werten, die wir weiterverarbeiten wollen:
+
+```{r}
+zwischenpruefungen <- assess %>% 
+  filter(!assessment_type == "Exam") %>% 
+  select(id_assessment)
+```
+
+Diesen Vektor können wir benutzen, um in dem Datensatz mit den Noten zu filtern:
+
+```{r}
+head(student.assess)
+
+student.assess %>% 
+  filter(id_assessment %in% zwischenpruefungen)
+# Das funktioniert nicht - es bleiben 0 Zeilen übrig
+# Test:
+typeof(student.assess$id_assessment) # integer
+typeof(zwischenpruefungen) #list
+
+# Aha, es könnte ein Datatype-Problem sein. Wie können wir uns noch mal die reinen Zahlen der Liste ausgeben lassen?
+zwischenpruefungen[[1]]
+
+student.zwischen <- student.assess %>% 
+  filter(id_assessment %in% zwischenpruefungen[[1]])
+# Jetzt klappt es! Nur noch 169k Zeilen statt 173k.
+
+# Alternative:
+student.assess %>% 
+  filter(id_assessment %in% zwischenpruefungen$id_assessment)
+# Mit der Pipe und select() ist es weiterhin ein Dataframe und gar kein Vektor gewesen, daher die Probleme beim Abgleich!
+```
+
+Der gefilterte Datensatz enthält `student_id` und `score` - da sind wir ja schon mal auf einem guten Weg. Reicht uns jetzt schon einfach die `score`-Spalte oder gibt es mehrere Zwischenprüfungen pro Modul und Student? Das sollten wir mal überprüfen.
+
+```{r}
+length(unique(student.zwischen$id_student))
+length(student.zwischen$id_student)
+
+# unique() gibt als Output jedes vorkommende Element nur einmal, entfernt also Duplikate - nützlich zum Abgleich, ob sich Werte wiederholen
+```
+
+Die beiden Vektoren sind nicht gleich lang, also gibt es definitiv mehrere Zwischenprüfungen pro StudentIn.
+
+Die nächste Idee ist jetzt, über `group_by` und `summarize` einen Mittelwert pro StudentIn zu erstellen.z
+
+Aber vorher gibt es noch zwei potenzielle Probleme:
+
+-   Was, wenn pro StudentIn Prüfungen aus verschiedenen Kursen eingetragen sind? Die sollten wir natürlich nicht zusammenfassen!
+
+-   Aus `assess` wissen wir, dass nicht alle Prüfungen gleich gewichtet werden - das sollten wir auch berücksichtigen beim Zusammenfassen der Ergebnisse!
+
+```{r}
+# Kurse pro StudentIn eingetragen sind
+# Einen der Datensätze raussuchen, in dem Kurse & Student_IDs verknüpft sind:
+head(student.regi)
+
+# Wenn von jedem/r Student/in nur für jeweils ein Modul drin ist, sollte die Länge des unique-Vektors der Länge des normalen Vektors entsprechen:
+length(unique(student.regi$id_student)) == length(student.regi$id_student)
+# FALSE - manche Studierende sind für mehrere Module eingeschrieben
+
+# Aber moment! Vielleicht sind die Studierenden, die doppelt vorkommen, gar nicht wirklich eingeschrieben für das Modul? Haben also keinen Wert bei date_registration?
+student.regi %>% 
+  filter(is.na(date_registration))
+# Das sind leider nur 45 Zeilen, das erklärt nicht die Differenz zwischen 29.000 und 32.000!
+```
+
+Fazit: Einige Studierende sind in mehrere Kurse eingetragen, wir müssen also auch nach Kurs aufteilen.
+
+```{r}
+# Gewichtung der Ergebnisse
+# Ist leider nur in "assess" enthalten - aber durch id_assessment haben wir ja einen key zum joinen
+student.zwischen <- student.zwischen %>% 
+  left_join(assess, by = "id_assessment")
+# Die anderen Spalten aus assess sind auch dazugekommen, aber das schadet ja erst mal nicht. Lässt sich später immer noch selecten, wenn es zu nervig werden würde. Außerdem brauchen wir das Modul eh gleich direkt!
+```
+
+Gewichtungen können jetzt berücksichtigt werden! Also sind wir jetzt bereit, die gemittelte Note pro StudentIn und Modul unter Berücksichtigung der Gewichtung zu berechnen:
+
+```{r}
+student.zwischen %>% 
+  group_by(id_student, code_module) %>% 
+  summarize(Note = score*weight)
+```
