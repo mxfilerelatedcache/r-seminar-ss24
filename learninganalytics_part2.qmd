@@ -1,0 +1,167 @@
+---
+title: "OULAD"
+author: "Simon Krukowski"
+---
+
+```{r}
+library(tidyverse)
+
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+Starten wir damit, die `.csv` Dateien einzulesen. Wir speichern zunächst die Pfade der Dateien unter `files` ab, und wenden dann über `lapply()` die `read.csv()` Funktion an:
+
+```{r}
+files <- c("/Users/simonkrukowski/Downloads/archive/assessments.csv",
+           "/Users/simonkrukowski/Downloads/archive/courses.csv",
+           "/Users/simonkrukowski/Downloads/archive/studentAssessment.csv",
+           "/Users/simonkrukowski/Downloads/archive/studentInfo.csv",
+           "/Users/simonkrukowski/Downloads/archive/studentRegistration.csv",
+           "/Users/simonkrukowski/Downloads/archive/studentVle.csv",
+           "/Users/simonkrukowski/Downloads/archive/vle.csv")
+
+files <- lapply(files, read.csv)
+
+names <- c("assessments",
+           "courses",
+           "studentAssessment",
+           "studentInfo",
+           "studentRegistration",
+           "studentVle",
+           "vle")
+
+names(files) <- names
+```
+
+Zum Schluss haben wir den Listenobjekten noch Namen aus einem Vektor zugewiesen, damit wir die einzelnen DFs einfach über den `$` Operator referenzieren können.
+
+## Teil 2: Data Wrangling
+
+Fangen wir nun also an, zu schauen, wie wir feststellen können, ob ein Assessment bestanden wurde. Dazu hilft ein Blick in `studentAssessment`:
+
+```{r}
+files$studentAssessment %>% head()
+```
+
+Wir sehen, dass wir `id_assessment`, `id_student`, und `score` haben. Das heißt, wir wissen über jedes assessment, wieviele Punkte einzelne students dort erzielt haben.
+
+Aus dem [Paper](https://www.nature.com/articles/sdata2017171) wissen wir, dass Scores \< 40 als nicht bestanden gelten. Wir können nun also alle Lernenden berechnen, ob der Test bestanden wurde. Über den `$` Operator können wir auch Zuweisungsoperationen machen. Mit `->` hinten angehangen ist es das gleiche wie vorne `<-` ,nur etwas ästhetischer. `if_else()` hilft uns hier.
+
+```{r}
+files$studentAssessment %>% 
+  mutate(passed = if_else(score > 40, TRUE, FALSE)) -> files$studentAssessment
+```
+
+Nun wollen wir auf Basis dessen etwas weitermachen. Dazu wollen wir wissen, wieviele denn überhaupt in einem Assessment mitgemacht haben. Dann können wir zählen, wieviele bestanden/nicht bestanden haben, und daraus eine `passing_rate` und `fail_rate` berechnen. Dabei helfen `sum()`, welches bei `TRUE`/`FALSE` immer die TRUE zählt, und `n()`.
+
+```{r}
+files$studentAssessment %>% 
+  group_by(id_assessment) %>% 
+  summarise(n=n(),
+            passed = sum(passed, na.rm=T),
+            failed = n-passed,
+            passing_rate = passed/n,
+            fail_rate = failed/n
+            ) -> files$courses_passRate
+```
+
+Nun wissen wir, wieviele mitgemacht haben pro assignment (`n`), wieviele bestanden haben (`passed`), wieviele nicht bestanden haben (`failed`), und haben daraus die zwei Rates berechnet (als Prozentzahl bzw. Wert zwischen 0.0 und 1.0).
+
+Leider haben wir diese Information aktuell nur **pro Test**, nicht aber **pro Modul**. Um diese zu berechnen, können wir mit `left_join()` über `id_assessment` den `assessments` Datensatz mit unserem gerade erstellten `courses_passRate` zusammenführen:
+
+```{r}
+files$assessments %>% 
+  left_join(files$courses_passRate %>% select(c(id_assessment,passed:fail_rate)), by="id_assessment") -> files$assessments
+```
+
+So wissen wir für jedes `assessment` und jedes entsprechende `code_module`, wie hoch die Bestehensrate ist. Wir bemerken, dass es mehrere Ausprägungen gibt für `code_module` und `code_presentation`:
+
+```{r}
+files$assessments %>% 
+  group_by(code_module, code_presentation) %>% 
+  summarise(n=n())
+```
+
+Anscheinend gibt es für `code_presentation` mehrere Ausprägungen, und zwar diese:
+
+```{r}
+files$assessments %>% 
+  select(code_presentation) %>% 
+  distinct()
+```
+
+Wir wollen uns zunächst auf die erste Zeiteinheit, `2013J`, fokussieren. Das heißt, wir filtern die Daten entsprechend. Das machen wir aber im Folgenden direkt über die `dyplr` Pipe, um nicht unnötige Dataframes in unserem Environment zwischenspeichern zu müssen.
+
+Plotten wir also mit `geom_point()` und `geom_line()`, und facettieren mit `facet_wrap()` über `code_module`.
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  ggplot()+
+  geom_point(aes(x=date,y=passing_rate, color=code_module))+
+  geom_line(aes(x=date,y=passing_rate, color=code_module))+
+  facet_wrap(code_module~.)+
+  theme_classic()+
+  scale_color_manual(values=palette2)
+```
+
+Das sieht schon mal ganz gut aus! Uns stört noch, dass es anscheinend mehrere Punkte gibt, die zur gleichen Zeit geschehen sind. Ein Beispiel dafür ist das `code_module` GGG. Schauen wir es uns also an:
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  filter(code_module == "GGG")
+```
+
+Anscheinend gibt es mehrere assessments, die zum `date` "229" geschrieben wurden. Wir vermuten, dass diese dennoch nicht **zeitgleich**, sondern nacheinander geschehen sind. Dafür könnten wir uns an der aufsteigenden `id_assessment` orientieren. Wir wollen nun also eine ID-Variable, welche **pro Gruppe** aufsteigt, und den einzelnen Tests eine ID zuweist. Wahlweise könnten wir auch einen Faktor machen. Das ist vielleicht sogar einfacher, also starten wir damit:
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  mutate(id_assessment = as.factor(id_assessment)) %>% 
+  ggplot()+
+  geom_point(aes(x=id_assessment,y=passing_rate, color=code_module))+
+  geom_line(aes(x=id_assessment,y=passing_rate, color=code_module))+
+  facet_wrap(code_module~.)+
+  theme_classic()+
+  scale_color_manual(values=palette2)
+```
+
+Das scheint nicht zu funktionieren, es scheint zu viele Ausprägungen von `id_assessment` zu geben. Wir wissen aber, dass es pro Kurs nur eine handvoll assessments gibt. Wir könnten also doch lieber die Option mit der aufsteigenden ID pro assessment machen. Dazu können wir mit row_number() pro Gruppe arbeiten:
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  group_by(code_module) %>% 
+  mutate(id=row_number())
+```
+
+Durch unser `group_by()` beziehen sich alle `mutate()` Operationen auf die Gruppe. `row_number()` gibt uns den jeweiligen Index aus (i.e., die Nummer der Zeile). Somit können wir einen aufsteigenden Index pro Test für jedes Modul zuweisen.
+
+Wir sehen auch, dass wir noch den `assessment_type` "Exam" haben, für den es keine Informationen bzgl. `passing_rate` etc. gibt. Diese wollen wir also auch herausfiltern:
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  group_by(code_module) %>% 
+  mutate(id=row_number()) %>% 
+  filter(!is.na(date))
+```
+
+Nun haben wir also alle Ergebnisse der Zwischentests für alle Module in `code_presentation` "2013J". Nun können wir unser ggplot() anhängen:
+
+```{r}
+files$assessments %>% 
+  filter(code_presentation == "2013J") %>% 
+  group_by(code_module) %>% 
+  mutate(id=row_number()) %>% 
+  filter(!is.na(date)) %>% 
+   ggplot()+
+  geom_point(aes(x=id,y=passing_rate, color=code_module))+
+  geom_line(aes(x=id,y=passing_rate, color=code_module))+
+  facet_wrap(code_module~.)+
+  theme_classic()+
+  scale_color_manual(values=palette2)
+```
+
+Super!
