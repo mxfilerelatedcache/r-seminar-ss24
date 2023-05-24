@@ -77,7 +77,7 @@ Schaut euch also auf den Websites, in den Datensätzen und die Variablen an und 
 
 #### Verknüpfungen der Datensätze
 
-Bild aus PP einfügen
+![](assets/img/learninganalytics_overview_datasets.png){fig-align="center"}
 
 -   Über `id_student` lassen sich die demographischen Daten der Studierenden mit den Anmeldungen, VLE-Interaktionen und Prüfungsleistungen verknüpfen
 
@@ -111,19 +111,11 @@ Bild aus PP einfügen
 
 -   ....
 
-#### Unsere Fragestellung heute:
+#### Unsere Fragestellungen heute:
 
-Was ist der beste Prädiktor für die finale Note?
+A\) Inwiefern hängen die Zwischenprüfungen, die im Kurs vor dem "final exam" durchgeführt wurden, mit dem Bestehen des Kurses zusammen?
 
-Dabei möchten wir berücksichtigen:
-
--   Notendurchschnitt der dazugehörigen Zwischenprüfungen (-\> nicht final exam)
-
--   Nutzung des Virtual Learning Environments
-
--   Bestehensrate des entsprechenden Kurses
-
--   Anzahl vorheriger Bestehensversuche
+B\) Wie verhalten sich die Bewertungen der Zwischenprüfungen über den Verlauf des Kurses für die verschiedenen Kurse?
 
 # Teil 2: Daten aufbereiten
 
@@ -135,11 +127,11 @@ Konkrete Aufgaben:
 
 -   Daten in R laden, Packages aktivieren
 
--   neue Variablen erstellen, dabei Operationalisierung auf Tauglichkeit überprüfen und evtl. ändern
+-   potentielle neue Variablen erstellen, dabei Operationalisierung auf Tauglichkeit überprüfen und evtl. ändern
 
--   Datensatz erstellen, mit dem wir die Fragestellung mithilfe einer Regression untersuchen können
+-   finalen Datenssatz erstellen, mit dem wir Plots & Analysen rechnen könnten
 
-(Analysieren und Voraussetzungen testen müsst ihr hier noch nicht, das manchen wir im dritten Teil)
+-   Dann gehen wir fließend zu Teil 3 über: Plot und/oder Analysen erstellen und auswerten
 
 ## Nach Bearbeitung:
 
@@ -149,6 +141,9 @@ Packages und beliebige weitere Variablen festlegen, z.B. Farbpaletten.
 #| warning: false
 
 library(tidyverse)
+library(rstatix)
+
+palette1 <- c("#FFD966", "#8FAADC", "#A9D18E", "#F4B183")
 ```
 
 Daten einlesen - vielleicht brauchen wir gar nicht alle Datensätze, aber ich lade sie lieber alle mal rein. Entfernen geht später immer noch
@@ -170,95 +165,120 @@ vle <- read.csv("assets/datasets/kaggle_learning_analytics/vle.csv")
 # Theoretisch wäre hier apply() eine Option gewesen, ich wollte aber die klare Kontrolle darüber, welchem Datensatz ich hier welchem Namen zugewiesen habe
 ```
 
-### Neue Variablen
+### Notendurchschnitt der Zwischenprüfungen 2 (nur für ein Modul)
 
-#### Notendurchschnitt der Zwischenprüfungen
+Um uns die Analyse etwas einfacher zu gestalten, schauen wir uns nur die Ergebnisse von einem Modul aus einem Semester an. So müssen wir nicht berücksichtigen, ob Studierenden mehrfach in den Daten auftauchen durch mehrfache Belegung uvm.
 
-```{r}
-head(assess)
+```{r modul-filter}
+# Welcher Kurs hat am meisten Anmeldungen (-> höheres n)?
+student.regi %>% 
+  filter(!is.na(date_registration)) %>% 
+  group_by(code_module, code_presentation) %>% 
+  summarize(n = n()) %>% 
+  arrange(desc(n))
+# code_module == CCC
+# code_presentation = 2014J
+
+# dazu gehörige assignments filtern
+assess.mod <- assess %>% 
+  filter(code_module == "CCC" & code_presentation == "2014J") %>% 
+  select(id_assessment)
+# Natürlich könnten wir das auch als dataframe abspeichern, aber wir werden ja nicht nur dieses Dataframe, sondern auch die anderen entsprechend gefiltert benötigen, daher ist es auch sinnvoll, einen Filtervektor zu definieren
 ```
 
 Anhand von `assessment_type` können wir sehen, welche assessments (nennen wir hier auch Prüfungen) ein "Final Exam" waren (`Exam`) und welche nicht (`TMA`, `CMA`). Da es uns ja nur um die Zwischenprüfungen geht, interessieren uns nicht `Exam`-Zeilen also nicht. Wir können uns jetzt also einen Vektor bauen mit den `id_assessment`-Werten, die wir weiterverarbeiten wollen:
 
-```{r}
+```{r assessment-filter}
 zwischenpruefungen <- assess %>% 
-  filter(!assessment_type == "Exam") %>% 
+  filter(id_assessment %in% assess.mod$id_assessment) %>% 
+  filter(assessment_type != "Exam") %>% 
   select(id_assessment)
 ```
 
-Diesen Vektor können wir benutzen, um in dem Datensatz mit den Noten zu filtern:
+Diesen Vektor können wir benutzen, um in dem Datensatz mit den Noten zu filtern (`student.assess`):
 
-```{r}
+```{r filter-assessments}
 head(student.assess)
 
-student.assess %>% 
-  filter(id_assessment %in% zwischenpruefungen)
-# Das funktioniert nicht - es bleiben 0 Zeilen übrig
-# Test:
-typeof(student.assess$id_assessment) # integer
-typeof(zwischenpruefungen) #list
-
-# Aha, es könnte ein Datatype-Problem sein. Wie können wir uns noch mal die reinen Zahlen der Liste ausgeben lassen?
-zwischenpruefungen[[1]]
-
 student.zwischen <- student.assess %>% 
-  filter(id_assessment %in% zwischenpruefungen[[1]])
-# Jetzt klappt es! Nur noch 169k Zeilen statt 173k.
-
-# Alternative:
-student.assess %>% 
   filter(id_assessment %in% zwischenpruefungen$id_assessment)
-# Mit der Pipe und select() ist es weiterhin ein Dataframe und gar kein Vektor gewesen, daher die Probleme beim Abgleich!
+# Hier speichere ich den Datensatz separat ab, da ich konkret mit ihm weiterrechnen will
 ```
 
-Der gefilterte Datensatz enthält `student_id` und `score` - da sind wir ja schon mal auf einem guten Weg. Reicht uns jetzt schon einfach die `score`-Spalte oder gibt es mehrere Zwischenprüfungen pro Modul und Student? Das sollten wir mal überprüfen.
+Der gefilterte Datensatz enthält `student_id` und `score` - da sind wir ja schon mal auf einem guten Weg.
 
-```{r}
-length(unique(student.zwischen$id_student))
-length(student.zwischen$id_student)
+Die nächste Idee ist jetzt, über `group_by` und `summarize` einen Mittelwert pro StudentIn zu erstellen.
 
-# unique() gibt als Output jedes vorkommende Element nur einmal, entfernt also Duplikate - nützlich zum Abgleich, ob sich Werte wiederholen
-```
+Aber vorher gibt es noch ein Sache zu berücksichtigen: Aus `assess` wissen wir, dass nicht alle Prüfungen gleich gewichtet werden - das sollten wir auch berücksichtigen beim Zusammenfassen der Ergebnisse!
 
-Die beiden Vektoren sind nicht gleich lang, also gibt es definitiv mehrere Zwischenprüfungen pro StudentIn.
+```{r add-weights}
+# Die Gewichtung ist leider nur in "assess" enthalten - aber durch id_assessment haben wir ja einen key zum joinen
 
-Die nächste Idee ist jetzt, über `group_by` und `summarize` einen Mittelwert pro StudentIn zu erstellen.z
-
-Aber vorher gibt es noch zwei potenzielle Probleme:
-
--   Was, wenn pro StudentIn Prüfungen aus verschiedenen Kursen eingetragen sind? Die sollten wir natürlich nicht zusammenfassen!
-
--   Aus `assess` wissen wir, dass nicht alle Prüfungen gleich gewichtet werden - das sollten wir auch berücksichtigen beim Zusammenfassen der Ergebnisse!
-
-```{r}
-# Kurse pro StudentIn eingetragen sind
-# Einen der Datensätze raussuchen, in dem Kurse & Student_IDs verknüpft sind:
-head(student.regi)
-
-# Wenn von jedem/r Student/in nur für jeweils ein Modul drin ist, sollte die Länge des unique-Vektors der Länge des normalen Vektors entsprechen:
-length(unique(student.regi$id_student)) == length(student.regi$id_student)
-# FALSE - manche Studierende sind für mehrere Module eingeschrieben
-
-# Aber moment! Vielleicht sind die Studierenden, die doppelt vorkommen, gar nicht wirklich eingeschrieben für das Modul? Haben also keinen Wert bei date_registration?
-student.regi %>% 
-  filter(is.na(date_registration))
-# Das sind leider nur 45 Zeilen, das erklärt nicht die Differenz zwischen 29.000 und 32.000!
-```
-
-Fazit: Einige Studierende sind in mehrere Kurse eingetragen, wir müssen also auch nach Kurs aufteilen.
-
-```{r}
-# Gewichtung der Ergebnisse
-# Ist leider nur in "assess" enthalten - aber durch id_assessment haben wir ja einen key zum joinen
 student.zwischen <- student.zwischen %>% 
   left_join(assess, by = "id_assessment")
-# Die anderen Spalten aus assess sind auch dazugekommen, aber das schadet ja erst mal nicht. Lässt sich später immer noch selecten, wenn es zu nervig werden würde. Außerdem brauchen wir das Modul eh gleich direkt!
+
+# Die anderen Spalten aus assess sind auch dazugekommen, aber das schadet ja erst mal nicht. Lässt sich später immer noch selecten, wenn es zu nervig werden würde.
 ```
 
-Gewichtungen können jetzt berücksichtigt werden! Also sind wir jetzt bereit, die gemittelte Note pro StudentIn und Modul unter Berücksichtigung der Gewichtung zu berechnen:
+Jetzt können wir einen gewichteten Mittelwert der Zwischenprüfungen pro StudentIn berechnen.
 
-```{r}
-student.zwischen %>% 
-  group_by(id_student, code_module) %>% 
-  summarize(Note = score*weight)
+```{r weighted-mean}
+student.zwischen.w <- student.zwischen %>% 
+  group_by(id_student) %>%
+  summarize(before_final = weighted.mean(score, weight))
+
+# Was im Hintergrund passiert beispielhaft an einem Studenten:
+student.zwischen %>%
+  filter(id_student == 23698) %>% 
+  select(score, weight)
+
+sum(c(9,22,22,22,2,7,8,8)) # = 100
+  
+94*0.09+60*0.22+69*0.22+67*0.22+78*0.02+93*0.07+73*0.08+56*0.08 # = 69.97
 ```
+
+Jetzt müssen wir nur noch aus `student.info` die finalen Scores ergänzen, um unsere Analyse rechnen zu können
+
+```{r add-finalscores}
+# Tatsächlich mal ein Fall für right_join, weil wir so student.info im gleichen Schritt noch aufbereiten können
+zwischen.final <- student.info %>% 
+  filter(code_module == "CCC" & code_presentation == "2014J") %>% 
+  # hier verwenden wir wieder den Filter vom Anfang, da es id_assessment nicht als Variable gibt
+  right_join(student.zwischen.w, by= "id_student")
+```
+
+# Teil 3: Analyse
+
+Und nun zum letzten Schritt, der Analyse bzw. dem Plot.
+
+```{r plot}
+# Basic Plot
+zwischen.final %>% 
+  ggplot()+
+  geom_violin(aes(x=final_result, y=before_final))
+
+# Verschönerter Plot
+zwischen.final %>% 
+  mutate(final_result = fct_relevel(final_result, "Distinction", "Pass", "Fail", "Withdrawn")) %>% 
+  ggplot()+
+  geom_violin(aes(x=final_result, y=before_final, fill = final_result))+
+  theme_minimal()+
+  xlab("Final Result")+
+  ylab("Results before Final Exam")+
+  scale_fill_manual(values=palette1)+
+  theme(legend.position = "none")
+```
+
+```{r analysis}
+# ANOVA
+zwischen.final %>%
+  anova_test(before_final ~ final_result)
+
+# Fost Hoc-Tests
+zwischen.final %>% 
+  tukey_hsd(before_final ~ final_result)
+```
+
+Auswertung: Die Studierenden, die am Ende das Modul mit Auszeichnung ("Distinction") abschließen, zeigen schon bei den Zwischenprüfungen signifikant bessere Ergebnisse als die Studierenden, die ohne Auszeichnung oder gar nicht abschließen. Die Studierenden, die ohne Auszeichnung bestehen, haben trotzdem bereits vorher signifikant besserer Zwischenprüfungen im Vergleich zu den nicht-Bestehenden. Zwischen denen, die final nicht bestehen und denen, die sich von der Prüfung wieder abmelden, gibt es keinen Unterschied.
+
+-   Plot verschönern: Palette
