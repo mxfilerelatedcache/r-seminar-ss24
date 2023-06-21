@@ -1,0 +1,15 @@
+---
+title: "Lösungen der Übungsblätter"
+---
+
+Hier findet ihr unsere Musterlösungen der Übungsblätter. In vielen Fällen gibt es natürlich auch mehrere Wege, die zur Lösung führen.
+
+Für Übungsblatt 7 gibt es keine Musterlösung - da habt ihr euch ja eine eigene Fragestellung überlegt.
+
+-   [Übungsblatt 1](assignment1-solved.qmd)
+-   [Übungsblatt 2](assignment2-solved.qmd)
+-   [Übungsblatt 3](assignment3-solved.qmd)
+-   [Übungsblatt 4](assignment4-solved.qmd)
+-   [Übungsblatt 5](assignment5-solved.qmd)
+-   [Übungsblatt 6](assignment6-solved.qmd)
+

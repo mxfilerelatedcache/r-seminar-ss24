@@ -1,0 +1,113 @@
+---
+title: "Hausaufgabe 6"
+author: "Kira Wolff & Simon Krukowski"
+---
+
+```{r}
+library(tidyverse)
+
+palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F00","#000000")
+```
+
+# Aufgaben
+
+Die Grundlage für diese Hausaufgabe soll wieder der Datensatz `flights.csv` sein, den ihr bereits im Seminar kennengelernt habt. Importiert ihn entsprechend, und speichert ihn als `dataset` ab.
+
+```{r}
+
+dataset <- read.csv("assets/datasets/flights.csv")
+```
+
+## Aufgabe 1 \[2 Punkte\]
+
+Zunächst interessieren wir uns für die Verspätungen. Diese habt ihr bereits in der Seminarstunde als `late` berechnet, aber hier nochmal der Code (führt ihn am besten zur Reproduzierbarkeit aus):
+
+```{r}
+#| warning: false
+dataset <- dataset %>% 
+              mutate(departure = dmy_hms(departure),
+                     scheduled_departure = dmy_hms(scheduled_departure),
+                     arrival = dmy_hms(arrival),
+                     scheduled_arrival = dmy_hms(scheduled_arrival),
+                     late = difftime(arrival,scheduled_arrival,units = "mins"))
+```
+
+Filtert nun `late` so, dass alle Werte, die Ausreißer sind (oder mehr als 3 SDs abweichen), für nachfolgende Berechnungen herausgefiltert werden:
+
+```{r}
+dataset <- dataset %>% 
+  filter(scale(late) < 3 & scale(late) > -3)
+```
+
+## Aufgabe 2 \[4 Punkte\]
+
+Wir wollen nun wissen, wieviel Verspätung (`late`) es **im Mittel** **pro Airline** (`carrier`) gibt. Berechnet das entsprechend und beantwortet folgende Frage:
+
+> Welche Airline hat die meiste, welche die wenigste Verspätung?
+
+```{r}
+dataset %>% 
+  group_by(carrier) %>% 
+  summarise(mean = mean(late, na.rm = T)) %>% 
+  arrange(mean)
+```
+
+Antwort:
+
+Weiterhin interessiert uns nun nicht **wieviel**, sondern **ob** ein Flug Verspätung hat. Das könnt ihr mittlerweile auch berechnen. Meistens sind Verspätungen von bis zu 30 Minuten kein Problem, weshalb wir diese nicht als Verspätung bezeichnen wollen.
+
+Berechnet nun also die Variable `delayed`, welche die Ausprägungen `TRUE`/`FALSE` hat, je nachdem, ob der einzelne Flug über 30 Minuten Verspätung hat und speichert das ganze in `dataset`.
+
+```{r}
+dataset %>% 
+ mutate(delayed = case_when(late > 30 ~ TRUE,
+                            late < 30 ~ FALSE)) -> dataset
+```
+
+> Welche Airline hat nun nicht im Mittel die meiste, sondern die häufigsten (und wenigsten) Verspätungen über 30 Minuten? Berechnet das.
+
+```{r}
+dataset %>% 
+  group_by(carrier, delayed) %>% 
+  filter(!is.na(delayed)) %>% 
+  summarise(sum = n()) %>% 
+  arrange(desc(sum))
+```
+
+Antwort:
+
+### \[Bonus\]
+
+> Was könnte man an der obigen Berechnung kritisieren?
+
+## Aufgabe 3 \[2 Punkte\]
+
+Der Datensatz beschreibt alle Abflüge von New Yorker Flughäfen im Jahr 2013 (von allen drei Flughäfen, siehe Variable `origin`). Wir sind nun auf der Suche nach einem Büro in der Nähe eines Flughafens, an dem wir **tagsüber gut arbeiten** können, d.h., der Geräuschpegel gering ist. Je mehr Abflüge es gibt, desto höher der Geräuschpegel.
+
+Zieht also entsprechend die Tageszeit aus den Abflugszeiten (hint: das `hms` Package hilft), und plottet die Abflugszeiten facettiert (`facet_wrap`) nach Ursprungsflughafen. Dazu eignet sich bspw. `geom_density()`. Am Ende solltet ihr ein Plot haben, was aus drei Kurven besteht, und auf der X-Achse die Tageszeit zeigt.
+
+```{r}
+dataset %>% 
+  mutate(departure_time = hms::as_hms(departure)) %>% 
+  ggplot(aes(x=departure_time))+
+  geom_density()+
+  facet_grid(origin~.)
+```
+
+## Aufgabe 4 \[2 Punkte\]
+
+Ein Bekannter möchte aus `dataset` nur die Flüge herausfiltern, die an die wichtigsten Flughäfen Kaliforniens gingen. Dazu hat er eine Liste der Flughafen-Tags erstellt und filtert die Daten folgendermaßen:
+
+```{r}
+ap.cali <- c("ACV", "BFL", "BUR", "FAT", "LGB", "LAX", "MRY", "OAK", "ONT", "SNA", "PSP", "RDD", "SMF", "SAN", "SFO", "SJC", "SBP", "SBA", "SMX", "STS", "SCK")
+
+dataset %>% 
+  filter(dest == ap.cali[1] | dest == ap.cali[2] | dest == ap.cali[3] | dest == ap.cali[4] | dest == ap.cali[5] | dest == ap.cali[6] | dest == ap.cali[7] | dest == ap.cali[8] | dest == ap.cali[9] | dest == ap.cali[10] | dest == ap.cali[11] | dest == ap.cali[12] | dest == ap.cali[13] | dest == ap.cali[14] | dest == ap.cali[15] | dest == ap.cali[16] | dest == ap.cali[17] | dest == ap.cali[18] | dest == ap.cali[19] | dest == ap.cali[20] | dest == ap.cali[21])
+```
+
+Wie könnte man diesen Filter deutlich effizienter umsetzen, mit dem, was ihr schon gelernt habt? Macht einen Vorschlag im Codefenster:
+
+```{r}
+dataset %>% 
+  filter(dest %in% ap.cali)
+```

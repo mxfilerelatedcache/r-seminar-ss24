@@ -1,0 +1,128 @@
+---
+title: "Hausaufgabe 5: lapply() & Faktoren"
+author: "Simon Krukowski & Kira Wolff"
+---
+
+Die Grundlage für diese Hausaufgabe soll wieder der Datensatz `dataset_srl_challenges_wrangled.csv` sein, den ihr bereits in den letzten Wochen kennengelernt habt. Importiert ihn entsprechend, und speichert ihn als `dataset` ab.
+
+### Aufgabe 1 \[4 Punkte\]
+
+Wir sind daran interessiert, ob unsere 32 abhängigen Variablen (`pmet_`, `pmot_`, etc....) normalverteilt sind. Das können wir mit der `shapiro_test()` Funktion prüfen. Allerdings wäre es uns zu aufwändig, dies für jede Variable einzeln zu machen. Zum Glück haben wir im Seminar Funktionen & `lapply()` kennengelernt.
+
+Ziel dieser Aufgabe soll es nun sein, mehrere Normalverteilungstests (`rstatix::shapiro_test()`) zu rechnen für alle Herausforderungs-Scores (32 Stück), und diese in einem Dataframe zu speichern. Hier ein paar Hinweise:
+
+-   Ihr wisst bereits, wie ihr bestimmte Spalten die mit einem Buchstaben anfangen, auswählen könnt (`ignore.case=F` hilft euch)
+
+-   Erstellt eine Funktion, in der ihr mit `shapiro_test()` die Normalverteilung testet und das Ergebnis als Dataframe erzeugt
+
+-   Ergänzt das Dataframe [innerhalb der Funktion]{.underline} außerdem um die Spalte `normality`, in der ihr das Ergebnis des Tests abhängig vom p-Wert als signifikant oder nicht signifikant bezeichnet (Tipp: `mutate` und `ifelse` / `case_when`)
+
+-   Wendet die neue Funktion mit `lapply()` auf die 32 ausgewählten Spalten an und formatiert das Ergebnis anschließend zu einem Dataframe
+
+Checkt gerne auch unsere Website, falls ihr nicht weiterkommt.
+
+```{r}
+calculateNormality <- function(column){
+  df <- shapiro_test(column)
+  df <- df %>% 
+    mutate(sig = ifelse(p < .05, "normalverteilt", "nicht normalverteilt"))
+  return(df)
+}
+
+dataset %>% select(starts_with("p",ignore.case=F)) -> normality_cols
+
+testlist <- lapply(normality_cols, calculateNormality)
+
+testlist_df <- bind_rows(testlist)
+```
+
+**\[Bonus\]:** Im finalen Dataframe fehlen uns leider die Namen der betreffenden Variablen, in der durch `lapply()` erstellten Liste sind diese aber noch als Namen der Listenobjekte enthalten. Wie können wir diese Namen unserem Dataframe hinzufügen?
+
+```{r}
+testlist_names <- names(testlist)
+testlist_df %>% 
+  mutate(variable=testlist_names)
+```
+
+### Aufgabe 2 \[4 Punkte\]
+
+Zur Visualisierung des Zusammenhangs zwischen Wohnsituation und Qualität des Lernorts wurde der folgende Plot erstellt:
+
+```{r}
+# Original zur Referenz - hier bitte nicht verändern
+
+dataset %>% 
+  group_by(dmLivingSit) %>% 
+  summarize(mean.study = mean(suboptimal_study),
+            sd.study = sd(suboptimal_study),
+            n = n()) %>% 
+  ggplot(aes(x=dmLivingSit, y=mean.study))+
+    geom_errorbar(aes(ymin=mean.study-sd.study, ymax=mean.study+sd.study), width=0.1, alpha=0.3)+
+  geom_point(color = "#537188", size=3)+
+  theme_minimal()+
+  ggtitle("Lernort in Abhängigkeit von Wohnsituation")+
+  xlab("Wohnsituation")+
+  ylab("Wie ungünstig ist der Lernort?")
+```
+
+Wie ihr direkt erkennen könnt, gibt es ästhetische Probleme mit den Faktorstufen. Ergänzt den gleichen Code im Chunk unten so, dass sich der Plot folgendermaßen verändert:
+
+-   Die Faktorstufen haben "ordentliche" Namen
+
+-   Die Reihenfolge der Faktorstufen hängt von ihrer Lernortausprägung ab, sodass sie absteigend sortiert sind
+
+-   "Sonstiges" wird als letzte Faktorstufe ganz rechts geplottet (obwohl es die höchste Ausprägung hat)
+
+Als kleine Hilfestellung hier eine Liste der vorgestellten `fct_-`Funktionen - keine Scheu vor unserer Website und/oder der Hilfefunktion! Nicht alle hier genannte Funktionen sind notwendig für die Lösung.
+
+-   `fct_recode`
+
+-   `fct_collapse`
+
+-   `fct_lump_min`, `fct_lump_prop`, `facet_lump_n`, `facet_lump_lowfreq`
+
+-   `fct_infreq`
+
+-   `fct_relevel`
+
+-   `fct_reorder`
+
+-   `fct_rev`
+
+```{r}
+# Eure Veränderungen bitte hier einfügen: 
+dataset %>%
+  mutate(dmLivingSit = fct_recode(dmLivingSit,
+                                   "eigene Wohnung" = "eigeneWohnung",
+                                   "Partner/ Kind" = "PartnerKind",
+                                   "Wohnheim-\nAppartment" = "WohnheimAppartment",
+                                   "Wohnheim-\nZimmer" = "WohnheimZimmer")) %>% 
+  group_by(dmLivingSit) %>% 
+  summarize(mean.study = mean(suboptimal_study),
+            sd.study = sd(suboptimal_study),
+            n = n()) %>% 
+  mutate(dmLivingSit = fct_reorder(dmLivingSit, mean.study, .desc = TRUE),
+         dmLivingSit = fct_relevel(dmLivingSit, "Sonstiges", after = Inf)) %>% 
+  ggplot(aes(x = dmLivingSit, y = mean.study)) +
+  geom_errorbar(aes(ymin = mean.study - sd.study, ymax = mean.study + sd.study), width = 0.1, alpha = 0.3) +
+  geom_point(color = "#537188", size = 3) +
+  theme_minimal() +
+  ggtitle("Lernort in Abhängigkeit von Wohnsituation") +
+  xlab("Wohnsituation") +
+  ylab("Wie ungünstig ist der Lernort?")
+```
+
+### Aufgabe 3 \[2 Punkte\]
+
+Im Seminar haben wir mit Strings der Dateinamen der Arbeitsgedächtnisdaten gearbeitet. Ihr habt in dem Kontext `str_split` kennengelernt. Schaut euch nun an, wie `str_sub()` funktioniert und zeigt anhand des vorgegebenen Beispiels, wie ihr damit ebenfalls die Probanden-ID aus dem Dateinamen extrahieren könntet.
+
+```{r}
+name <- "WM_operation_span_96_1611581289527.csv"
+
+str_sub(name, start=19, end=20)
+
+```
+
+Welche Methode findet ihr hier praktischer? Was wäre ein potenzieller Fall, in dem die andere Methode doch praktischer wäre?
+
+*Durch den gleichen Aufbau und die Trennzeichen ist str_split hier praktischer. Wenn man allerdings einen Fall hat, bei dem es keine Trennzeichen gibt, kann str_sub eine gute Alternative sein.*

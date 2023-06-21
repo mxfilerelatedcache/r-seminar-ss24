@@ -10,6 +10,8 @@ website:
     left:
       - text: "Home"
         file: index.qmd
+      - text: "Übungsblätter"
+        file: assignments-overview.qmd
       - text: "Kontakt"
         file: contact.qmd
       - text: "Nice to Know"

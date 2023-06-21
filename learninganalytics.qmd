@@ -101,7 +101,7 @@ Schaut euch also auf den Websites, in den Datensätzen und die Variablen an und 
 
     -   vorherigen Versuchen
 
--   Zusammenhang der Interaktion mit dem Material mit Type des Materials
+-   Zusammenhang der Interaktion mit dem Material mit Art des Materials
 
 -   Zusammenhang des Materials mit Bestehensrate eines Moduls
 
@@ -109,7 +109,9 @@ Schaut euch also auf den Websites, in den Datensätzen und die Variablen an und 
 
 -   Zusammenhang von Note und Typ des Assessments
 
--   ....
+-   Verlauf von Interaktionen mit dem Material über die Zeit des Kurses
+
+-   Verlauf der Benotungen über die Zeit des Kurses
 
 #### Unsere Fragestellungen heute:
 
@@ -117,7 +119,13 @@ A\) Inwiefern hängen die Zwischenprüfungen, die im Kurs vor dem "final exam" d
 
 B\) Wie verhalten sich die Bewertungen der Zwischenprüfungen über den Verlauf des Kurses für die verschiedenen Kurse?
 
-# Teil 2: Daten aufbereiten
+Damit es für uns heute im Seminar zeitlich machbar ist, schränken wir die Fragestellungen für jeweils einen Kurs bzw. ein Semester ein:
+
+A\) `code_module == "CCC" & code_presentation == "2014J"`
+
+B\) `code_presentation = "2013J"`
+
+## Teil 2: Data Wrangling
 
 Wir kennen nun die Datensätze und die Variablen, mit denen wir arbeiten möchten. Bevor wir uns richtig mit der Fragestellung beschäftigen können, müssen wir die relevanten Variablen erstellen und uns außerdem einen neuen Datensatz zusammenbasteln, in dem alle relevanten Variablen enthalten sind.
 
@@ -189,6 +197,7 @@ assess.mod <- assess %>%
 Anhand von `assessment_type` können wir sehen, welche assessments (nennen wir hier auch Prüfungen) ein "Final Exam" waren (`Exam`) und welche nicht (`TMA`, `CMA`). Da es uns ja nur um die Zwischenprüfungen geht, interessieren uns nicht `Exam`-Zeilen also nicht. Wir können uns jetzt also einen Vektor bauen mit den `id_assessment`-Werten, die wir weiterverarbeiten wollen:
 
 ```{r assessment-filter}
+
 zwischenpruefungen <- assess %>% 
   filter(id_assessment %in% assess.mod$id_assessment) %>% 
   filter(assessment_type != "Exam") %>% 
@@ -210,6 +219,8 @@ Der gefilterte Datensatz enthält `student_id` und `score` - da sind wir ja scho
 Die nächste Idee ist jetzt, über `group_by` und `summarize` einen Mittelwert pro StudentIn zu erstellen.
 
 Aber vorher gibt es noch ein Sache zu berücksichtigen: Aus `assess` wissen wir, dass nicht alle Prüfungen gleich gewichtet werden - das sollten wir auch berücksichtigen beim Zusammenfassen der Ergebnisse!
+
+Also müssen wir die Gewichtung aus dem einen Datensatz mit den Informationen aus dem anderen Datensatz zusammenführen.
 
 ```{r add-weights}
 # Die Gewichtung ist leider nur in "assess" enthalten - aber durch id_assessment haben wir ja einen key zum joinen
@@ -243,11 +254,11 @@ Jetzt müssen wir nur noch aus `student.info` die finalen Scores ergänzen, um u
 # Tatsächlich mal ein Fall für right_join, weil wir so student.info im gleichen Schritt noch aufbereiten können
 zwischen.final <- student.info %>% 
   filter(code_module == "CCC" & code_presentation == "2014J") %>% 
-  # hier verwenden wir wieder den Filter vom Anfang, da es id_assessment nicht als Variable gibt
+  # hier verwenden wir wieder den Filter vom Anfang, da es id_assessment nicht als Variable gibt.
   right_join(student.zwischen.w, by= "id_student")
 ```
 
-# Teil 3: Analyse
+## Teil 3: Analyse
 
 Und nun zum letzten Schritt, der Analyse bzw. dem Plot.
 

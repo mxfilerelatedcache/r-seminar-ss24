@@ -8,8 +8,6 @@ format:
 editor: visual
 ---
 
-# Kontakt
-
 Falls ihr Probleme oder Fragen habt, meldet euch gerne.
 
 ## Simon Krukowski
