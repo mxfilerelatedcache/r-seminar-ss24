@@ -167,7 +167,13 @@ sum <- summary(model)
 
 Ergänzt also die F-Statistik in folgendem Satz:
 
-> Die Regression mit *Sepal.Width* als abhängige und *Sepal.Length* und *Species* als erklärende Variablen ist signifikant, *F* (3,146) = `r round(sum$fstatistic[1], 2)`, *p* \< .001.
+```{r}
+#Diese Satz soll natürlich eigentlich nicht im Codechunk stehen sondern im normalen Text, hätte aber dann für die Website nicht gerendert werden können.
+
+Die Regression mit *Sepal.Width* als abhängige und *Sepal.Length* und *Species* als erklärende Variablen ist signifikant, *F* (3,146) = `r round(sum$fstatistic[1], 2)`, *p* \< .001.
+
+```
+
 
 ### Aufgabe 11 \[Bonus\]
 
