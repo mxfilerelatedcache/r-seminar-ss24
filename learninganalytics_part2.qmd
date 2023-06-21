@@ -1,6 +1,8 @@
 ---
 title: "OULAD"
 author: "Simon Krukowski"
+execute: 
+  eval: FALSE
 ---
 
 ```{r}
