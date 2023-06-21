@@ -6,10 +6,10 @@ Hier findet ihr unsere Musterlösungen der Übungsblätter. In vielen Fällen gi
 
 Für Übungsblatt 7 gibt es keine Musterlösung - da habt ihr euch ja eine eigene Fragestellung überlegt.
 
--   [Übungsblatt 1](assignment1-solved.qmd)
--   [Übungsblatt 2](assignment2-solved.qmd)
--   [Übungsblatt 3](assignment3-solved.qmd)
--   [Übungsblatt 4](assignment4-solved.qmd)
--   [Übungsblatt 5](assignment5-solved.qmd)
--   [Übungsblatt 6](assignment6-solved.qmd)
+-   [Übungsblatt 1](assignments/solutions/assignment1-solved.qmd)
+-   [Übungsblatt 2](assignments/solutions/assignment2-solved.qmd)
+-   [Übungsblatt 3](assignments/solutions/assignment3-solved.qmd)
+-   [Übungsblatt 4](assignments/solutions/assignment4-solved.qmd)
+-   [Übungsblatt 5](assignments/solutions/assignment5-solved.qmd)
+-   [Übungsblatt 6](assignments/solutions/assignment6-solved.qmd)
 
