@@ -1,6 +1,8 @@
 ---
 title: "Hausaufgabe 1: Grundlagen von R"
 author: "Kira Wolff & Simon Krukowski"
+execute: 
+  eval: FALSE
 ---
 
 # Beschreibung

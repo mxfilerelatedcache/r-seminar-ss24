@@ -1,6 +1,8 @@
 ---
 title: "Hausaufgabe 5: lapply() & Faktoren"
 author: "Simon Krukowski & Kira Wolff"
+execute: 
+  eval: FALSE
 ---
 
 Die Grundlage für diese Hausaufgabe soll wieder der Datensatz `dataset_srl_challenges_wrangled.csv` sein, den ihr bereits in den letzten Wochen kennengelernt habt. Importiert ihn entsprechend, und speichert ihn als `dataset` ab.

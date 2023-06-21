@@ -1,6 +1,8 @@
 ---
 title: "Hausaufgabe 2: Deskriptives"
 author: "Simon Krukowski & Kira Wolff"
+execute: 
+  eval: FALSE
 ---
 
 ### Aufgabe 1 \[1 Punkt\]
