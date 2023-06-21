@@ -12,13 +12,13 @@ palette2 <- c("#CC79A7","#D55E00","#0072B2","#F0E442","#009E73","#56B4E9","#E69F
 Starten wir damit, die `.csv` Dateien einzulesen. Wir speichern zunächst die Pfade der Dateien unter `files` ab, und wenden dann über `lapply()` die `read.csv()` Funktion an:
 
 ```{r}
-files <- c("/Users/simonkrukowski/Downloads/archive/assessments.csv",
-           "/Users/simonkrukowski/Downloads/archive/courses.csv",
-           "/Users/simonkrukowski/Downloads/archive/studentAssessment.csv",
-           "/Users/simonkrukowski/Downloads/archive/studentInfo.csv",
-           "/Users/simonkrukowski/Downloads/archive/studentRegistration.csv",
-           "/Users/simonkrukowski/Downloads/archive/studentVle.csv",
-           "/Users/simonkrukowski/Downloads/archive/vle.csv")
+files <- c("/assets/datasets/kaggle_learning_analytics/assessments.csv",
+           "/assets/datasets/kaggle_learning_analytics/courses.csv",
+           "/assets/datasets/kaggle_learning_analytics/studentAssessment.csv",
+           "/assets/datasets/kaggle_learning_analytics/studentInfo.csv",
+           "/assets/datasets/kaggle_learning_analytics/studentRegistration.csv",
+           "/assets/datasets/kaggle_learning_analytics/studentVle.csv",
+           "/assets/datasets/kaggle_learning_analytics/vle.csv")
 
 files <- lapply(files, read.csv)
 
