@@ -21,25 +21,88 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -71,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R</span>
     </a>
   </div>
@@ -81,19 +144,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page">
+    <a class="nav-link active" href="../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments-overview.html">
+    <a class="nav-link" href="../../assignments-overview.html">
  <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html">
+    <a class="nav-link" href="../../contact.html">
  <span class="menu-text">Kontakt</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ntn.html">
+    <a class="nav-link" href="../../ntn.html">
  <span class="menu-text">Nice to Know</span></a>
   </li>  
 </ul>
@@ -115,8 +178,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -136,12 +199,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
+  <a href="../../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
+  <a href="../../intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
   </div>
 </li>
       </ul>
@@ -156,17 +219,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
+  <a href="../../datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
+  <a href="../../datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
+  <a href="../../dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
   </div>
 </li>
       </ul>
@@ -181,12 +244,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
+  <a href="../../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
+  <a href="../../quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
   </div>
 </li>
       </ul>
@@ -201,17 +264,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
+  <a href="../../analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
+  <a href="../../analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
+  <a href="../../analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
   </div>
 </li>
       </ul>
@@ -226,17 +289,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
+  <a href="../../analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  <a href="../../5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
+  <a href="../../5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
   </div>
 </li>
       </ul>
@@ -251,12 +314,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis3_1_dates.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
+  <a href="../../analysis3_1_dates.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5outlier.html" class="sidebar-item-text sidebar-link">Ausreißeranalyse</a>
+  <a href="../../5outlier.html" class="sidebar-item-text sidebar-link">Ausreißeranalyse</a>
   </div>
 </li>
       </ul>
@@ -270,15 +333,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#beschreibung" id="toc-beschreibung" class="nav-link active" data-scroll-target="#beschreibung">Beschreibung</a>
-  <ul class="collapse">
-  <li><a href="#punkte" id="toc-punkte" class="nav-link" data-scroll-target="#punkte">Punkte</a></li>
-  <li><a href="#für-experten" id="toc-für-experten" class="nav-link" data-scroll-target="#für-experten">Für Experten</a></li>
-  <li><a href="#abgabe-.html" id="toc-abgabe-.html" class="nav-link" data-scroll-target="#abgabe-.html">Abgabe [+ .html]</a></li>
-  </ul></li>
-  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
-  <ul class="collapse">
-  <li><a href="#aufgabe-1-1-punkt" id="toc-aufgabe-1-1-punkt" class="nav-link" data-scroll-target="#aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-1-1-punkt" id="toc-aufgabe-1-1-punkt" class="nav-link active" data-scroll-target="#aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</a></li>
   <li><a href="#aufgabe-2-1-punkt" id="toc-aufgabe-2-1-punkt" class="nav-link" data-scroll-target="#aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</a></li>
   <li><a href="#aufgabe-3-1-punkt" id="toc-aufgabe-3-1-punkt" class="nav-link" data-scroll-target="#aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</a></li>
   <li><a href="#aufgabe-4-1-punkt" id="toc-aufgabe-4-1-punkt" class="nav-link" data-scroll-target="#aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</a></li>
@@ -290,7 +345,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#aufgabe-9-1-punkt" id="toc-aufgabe-9-1-punkt" class="nav-link" data-scroll-target="#aufgabe-9-1-punkt">Aufgabe 9 [1 Punkt]</a></li>
   <li><a href="#aufgabe-10-1-punkt" id="toc-aufgabe-10-1-punkt" class="nav-link" data-scroll-target="#aufgabe-10-1-punkt">Aufgabe 10 [1 Punkt]</a></li>
   <li><a href="#aufgabe-11-bonus" id="toc-aufgabe-11-bonus" class="nav-link" data-scroll-target="#aufgabe-11-bonus">Aufgabe 11 [Bonus]</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -320,81 +374,95 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="beschreibung" class="level1">
-<h1>Beschreibung</h1>
-<p>Diese Woche habt ihr euch im Seminar mit dem Einlesen von Daten, dem Zurechtschnibbeln von Dataframes, dem Aufbereiten deskriptiver Ergebnisse und dem Erstellen von Plots beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.</p>
-<p>Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.</p>
-<section id="punkte" class="level3">
-<h3 class="anchored" data-anchor-id="punkte">Punkte</h3>
-<p>Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 10 Punkte. Aufgaben, die als <strong>[Bonus]</strong> markiert sind, geben keine Punkte.</p>
-</section>
-<section id="für-experten" class="level3">
-<h3 class="anchored" data-anchor-id="für-experten">Für Experten</h3>
-<p>Manche Aufgaben erfordern Transferwissen, welches ihr im heutigen Seminar so nicht direkt gelernt hat. Diese Aufgaben sind als <strong>[Für Experten]</strong> markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).</p>
-</section>
-<section id="abgabe-.html" class="level3">
-<h3 class="anchored" data-anchor-id="abgabe-.html">Abgabe [+ .html]</h3>
-<p>Um eure Hausaufgabe abzugeben, ladet diese bitte als <code>.qmd</code> Datei im Moodle hoch. Etwaige anderer Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. <code>hausaufgabe2_simon_krukowski.qmd</code>, und schreibt hier in der Datei oben bei <code>author</code> euren Namen rein.</p>
-</section>
-</section>
-<section id="aufgaben" class="level1">
-<h1>Aufgaben</h1>
 <section id="aufgabe-1-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</h3>
-<p>In der letzten Seminarstunde habt ihr einiges über statistische Verfahren in R gelernt. In dieser Hausaufgabe geht es darum, dieses Wissenanzuwenden. In der Stunde habt ihr außerdem gelernt, warum es wichtig und sinnvoll ist, zu Beginn eines jeden Quarto-Dokuments einen “Info-Chunk” zu erstellen, in dem ihr alle benötigten Packages aktiviert etc.</p>
+<p>In der letzten Seminarstunde habt ihr einiges über statistische Verfahren in R gelernt. In dieser Hausaufgabe geht es darum, dieses Wissen anzuwenden. In der Stunde habt ihr außerdem gelernt, warum es wichtig und sinnvoll ist, zu Beginn eines jeden Quarto-Dokuments einen “Info-Chunk” zu erstellen, in dem ihr alle benötigten Packages aktiviert etc.</p>
 <p>Erstellt nun einen solchen Chunk und nennt ihn <code>preliminaries</code>. Ladet darin das Package <code>datarium</code> (installiert es vorher ggf. über die Konsole), sowie alle weiteren Packages, die ihr benötigt. Speichert das darin enthaltene Dataset <code>genderweight</code> als <code>dataset</code>.</p>
 <p>Außerdem kann es hilfreich sein, dort direkt eine Farbpalette (bspw. mit 4 Farben, definiert als hex codes) in einem Vektor zu speichern. Holt euch bspw. bei colorhunt.co Inspiration und speichert eine solche Palette darin ab.</p>
 <p>Stellt außerdem sicher, dass der Chunk keine Warnungen anzeigt beim rendern (hint: chunk-options).</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datarium)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> genderweight</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#8B1874"</span>,<span class="st">"#B71375"</span>,<span class="st">"#FC4F00"</span>,<span class="st">"#F79540"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-2-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</h3>
-<p>Schaut euch den Datensatz an, um ein Gefühl dafür zu bekommen. Gebt euch dazu wahlweise den Datensatz selbst, oder bspw. gruppierte Outputs über <code>dplyr</code> an. Wir wollen, dass die Tabellenoutputs nicht im default Format dargestellt werden. Stellt das entsprechend im YAML Header ein.</p>
+<p>Schaut euch den Datensatz an, um ein Gefühl dafür zu bekommen. Gebt euch dazu wahlweise den Datensatz selbst, oder bspw. gruppierte Outputs über <code>dplyr</code> an. Wir wollen, dass die Tabellenoutputs nach dem Rendern nicht im default Format dargestellt werden. Stellt das entsprechend im YAML Header ein.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(weight))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-3-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</h3>
 <p>Prüft nun die Variable <code>weight</code> auf Normalverteilung. Macht das wahlweise über einen Test, oder ein Diagramm:</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_qq</span>(<span class="fu">aes</span>(<span class="at">sample=</span>weight))<span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ist die Variable normalverteilt? Begründe kurz:</p>
-<p><em>Antwort hier</em></p>
+<p><em>Antwort hier:</em> Nein, da die Punkte eindeutig nicht der Form einer 45°-Geraden folgen.</p>
 </section>
 <section id="aufgabe-4-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</h3>
 <p>Unabhängig davon, was wir gerade herausgefunden haben, entscheiden wir uns dazu, einen t-Test zu rechnen, und die Mittelwerte von <code>weight</code> miteinander zu vergleichen. Wir haben die Vermutung, dass Männer ein höheres Gewicht haben. Berücksichtigt das und rechnet den Test (hint: gerichtetes Testen). Was kommt heraus?</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(weight <span class="sc">~</span> group, dataset, <span class="at">alternative =</span> <span class="st">"less"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(weight<span class="sc">~</span>group, <span class="at">alternative =</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><em>Antwort hier</em></p>
+<p><em>Antwort: Der Test ist signifikant, es gibt einen signifikanten Unterschied zwischen Männern und Frauen bezüglich Gewicht.</em></p>
 </section>
 <section id="bonus" class="level3">
 <h3 class="anchored" data-anchor-id="bonus">Bonus:</h3>
 <p>Was hat die Überschrift zu bedeuten und wie könnte das mit Voraussetzungen zu tun haben?</p>
-<p><em>Antwort hier</em></p>
+<p><em>Antwort hier: [Nur relevant, wenn man t.test und nicht t_test gerechnet hat] Der Output hat die Überschrift “Welch Two Sample t-test”, d.h. R hat automatisch den non-parametrischen Test gerechnet, falls Normalverteilung nicht gegeben ist.</em></p>
 </section>
 <section id="aufgabe-5-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</h3>
 <p>Angenommen, wir hätten in der Zwischenzeit herausgefunden, dass die Variable <code>weight</code> nicht normalverteilt ist. Welcher Test bietet sich dann stattdessen an? Rechnet diesen.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(dataset<span class="sc">$</span>weight <span class="sc">~</span> dataset<span class="sc">$</span>group, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-6-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-6-1-punkt">Aufgabe 6 [1 Punkt]</h3>
-<p>-&gt; Anova mit CO2 und Messwiederholung -&gt; Long/Wide?</p>
+<p>Im Datensatz <code>stress</code> (auch aus datarium) wird die Auswirkung einer neuen Behandlungsmethode (<code>treatment</code>) auf einen Stress-Score (<code>score</code>) dargestellt. Berechnet die entsprechende AN(C)OVA, unter Berücksichtigung des Alters (<code>age</code>) als Kovariate.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stress <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(score <span class="sc">~</span> treatment <span class="sc">+</span> age)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>stress <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(<span class="at">dv =</span> score,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">between =</span> treatment,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">covariate =</span> age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-7-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-7-1-punkt">Aufgabe 7 [1 Punkt]</h3>
-<p>-&gt; Boxplot? -&gt; Palette verwenden</p>
+<p>Erstellt den zu Aufgabe 6 passenden Boxplot (ohne Kovariate).</p>
+<p>Gestaltet den Boxplot:</p>
+<ul>
+<li><p>mit Farben aus euer oben festgelegten Palette</p></li>
+<li><p>mit einem anderen theme</p></li>
+<li><p>mit einem weiteren, passenden geom</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stress <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(treatment, score))<span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(treatment, score, <span class="at">color=</span>treatment), <span class="at">width=</span><span class="fl">0.05</span>)<span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> palette)<span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="aufgabe-8-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-8-1-punkt">Aufgabe 8 [1 Punkt]</h3>
@@ -404,43 +472,52 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Eine Regressionsgrade (hint: <code>geom_smooth()</code> ist euer Freund)</p></li>
 </ul>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length,<span class="at">y=</span>Sepal.Width)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F)<span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Rechnet auch eine Pearson-Korrelation zwischen den beiden Variablen:</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length,iris<span class="sc">$</span>Sepal.Width)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Was lässt sich über den Zusammenhang der beiden Variablen sagen?</p>
-<p><em>Antwort hier</em></p>
+<p><em>Antwort: Die Korrelation ist klein und negativ, aber nicht signifikant.</em></p>
 </section>
 <section id="aufgabe-9-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-9-1-punkt">Aufgabe 9 [1 Punkt]</h3>
 <p>Wir haben nun die Annahme, dass die Spezies der Pflanzen außerdem einen Einfluss auf den Zusammenhang zwischen den beiden Variablen hat. Dazu sollt ihr zunächst die Punkte in Abhängigkeit von <code>Species</code> einfärben:</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length,<span class="at">y=</span>Sepal.Width)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Wir haben nun das Gefühl, dass ein Zusammenhang zwischen den beiden Variablen besteht und uns dazu entschieden, ein Regressionsmodell zu berechnen, in dem wir <code>Sepal.Length</code> als abhängige Variable haben, sowie <code>Species</code> und <code>Sepal.Width</code> als Prädiktoren. Berechnet ein solches Modell und speichert es als <code>model</code>:</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Sepal.Width <span class="sc">+</span> Species, iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-10-1-punkt" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-10-1-punkt">Aufgabe 10 [1 Punkt]</h3>
 <p>Nun wollen wir die Ergebnisse der Regressionsanalyse entsprechend berichten. Aus Übungsgründen sollt ihr dabei auf Packages wie <code>stargazer()</code> verzichten. Ihr habt im Seminar inline-Code gelernt. Verwendet diesen, um die Ergebnisse entsprechend zu berichten. Dazu bietet es sich an, den Output von <code>summary()</code> in einem Objekt zu speichern, und dann auf die Werte zuzugreifen. Denkt dran: über den <code>$</code> Operator sowie <code>['variable']</code> könnt ihr auf einzelne Werte zugreifen.</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ergänzt also die F-Statistik in folgendem Satz:</p>
-<blockquote class="blockquote">
-<p>Die Regression mit <em>Sepal.Width</em> als abhängige und&nbsp;<em>Sepal.Length</em> und <em>Species</em>&nbsp;als erklärende Variablen ist signifikant,&nbsp;<em>F</em>&nbsp;(3,146) = <code>antwort hier</code>,&nbsp;<em>p</em> &lt; .001.</p>
-</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Diese Satz soll natürlich eigentlich nicht im Codechunk stehen sondern im normalen Text, hätte aber dann für die Website nicht gerendert werden können.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>Die Regression mit <span class="sc">*</span>Sepal.Width<span class="sc">*</span> als abhängige und&nbsp;<span class="sc">*</span>Sepal.Length<span class="sc">*</span> und <span class="sc">*</span>Species<span class="sc">*</span>&nbsp;als erklärende Variablen ist signifikant,&nbsp;<span class="sc">*</span>F<span class="sc">*</span>&nbsp;(<span class="dv">3</span>,<span class="dv">146</span>) <span class="ot">=</span> <span class="st">`</span><span class="at">r round(sum$fstatistic[1], 2)</span><span class="st">`</span>,&nbsp;<span class="sc">*</span>p<span class="sc">*</span> \<span class="sc">&lt;</span> .<span class="fl">001.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="aufgabe-11-bonus" class="level3">
 <h3 class="anchored" data-anchor-id="aufgabe-11-bonus">Aufgabe 11 [Bonus]</h3>
 <p>Was macht die <code>paste0</code> Funktion und könnte man die obige Lösung damit vereinfachen?</p>
+<p><em>Dabei werden Elemente eines Vektors in Character umgewandelt und ohne Trennzeichen aneinandergehängt. Den Antwortsatz oben hätte man dementsprechend auch über paste0 zusammenbasteln können.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
