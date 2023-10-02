@@ -45,6 +45,10 @@ website:
           - analysis2_1.qmd
           - 5join.qmd
           - 5factorplot.qmd
+      - section: "Anwendung: Learning Analytics"
+        contents: 
+          - learninganalytics.qmd
+          - learninganalytics_part2.qmd
       - section: "Datum & Ausreißer"
         contents:
           - analysis3_1_dates.qmd
