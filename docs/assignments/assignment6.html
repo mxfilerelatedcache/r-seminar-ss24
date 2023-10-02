@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,9 +18,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -138,37 +109,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments-overview.html">
+    <a class="nav-link" href="../assignments-overview.html" rel="" target="">
  <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html">
+    <a class="nav-link" href="../contact.html" rel="" target="">
  <span class="menu-text">Kontakt</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ntn.html">
+    <a class="nav-link" href="../ntn.html" rel="" target="">
  <span class="menu-text">Nice to Know</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Hausaufgabe 6</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Hausaufgabe 6</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -176,150 +154,171 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../assets/img/logo_ude.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Basics</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../installation.html" class="sidebar-item-text sidebar-link">Download &amp; Installation von R</a>
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Download &amp; Installation von R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">Introduction &amp; Basics</a>
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction &amp; Basics</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Data Wrangling &amp; Visualisierung</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Data Wrangling &amp; Visualisierung</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_base.html" class="sidebar-item-text sidebar-link">Base R</a>
+  <a href="../datawrangling_base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Base R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">Wrangling mit dplyr</a>
+  <a href="../datawrangling_dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wrangling mit dplyr</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">Visualisierung mit ggplot2</a>
+  <a href="../dataviz_ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualisierung mit ggplot2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Inferenzstatistik &amp; Berichten</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Inferenzstatistik &amp; Berichten</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content3.html" class="sidebar-item-text sidebar-link">Inferenzstatistik in R</a>
+  <a href="../content3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferenzstatistik in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto_reports.html" class="sidebar-item-text sidebar-link">Berichte in Quarto</a>
+  <a href="../quarto_reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Berichte in Quarto</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Anwendung: Fragebögen I</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Anwendung: Fragebögen I</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis1.html" class="sidebar-item-text sidebar-link">Skalen mit across()</a>
+  <a href="../analysis1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Skalen mit across()</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis2.html" class="sidebar-item-text sidebar-link">Wide/long Format</a>
+  <a href="../analysis2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wide/long Format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis3.html" class="sidebar-item-text sidebar-link">Inferenzstatistische Analyse</a>
+  <a href="../analysis3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferenzstatistische Analyse</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Anwendung: Fragebögen II</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Anwendung: Fragebögen II</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis2_1.html" class="sidebar-item-text sidebar-link">Apply &amp; Multiple data sources</a>
+  <a href="../analysis2_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apply &amp; Multiple data sources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5join.html" class="sidebar-item-text sidebar-link">Zusammenhängende Dataframes</a>
+  <a href="../5join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zusammenhängende Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5factorplot.html" class="sidebar-item-text sidebar-link">Umgang mit Faktoren in Plots</a>
+  <a href="../5factorplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Umgang mit Faktoren in Plots</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Datum &amp; Ausreißer</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Datum &amp; Ausreißer</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../analysis3_1_dates.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
+  <a href="../analysis3_1_dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dates &amp; Times</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../5outlier.html" class="sidebar-item-text sidebar-link">Ausreißeranalyse</a>
+  <a href="../5outlier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ausreißeranalyse</span></a>
   </div>
 </li>
       </ul>
@@ -327,6 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -357,7 +357,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Hausaufgabe 6</h1>
+<h1 class="title">Hausaufgabe 6</h1>
 </div>
 
 
@@ -395,36 +395,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyverse' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'ggplot2' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tibble' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'tidyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'readr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'purrr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'dplyr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'stringr' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'forcats' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Paket 'lubridate' wurde unter R Version 4.2.3 erstellt</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.2     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
@@ -436,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>palette2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#CC79A7"</span>,<span class="st">"#D55E00"</span>,<span class="st">"#0072B2"</span>,<span class="st">"#F0E442"</span>,<span class="st">"#009E73"</span>,<span class="st">"#56B4E9"</span>,<span class="st">"#E69F00"</span>,<span class="st">"#000000"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>palette2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#CC79A7"</span>,<span class="st">"#D55E00"</span>,<span class="st">"#0072B2"</span>,<span class="st">"#F0E442"</span>,<span class="st">"#009E73"</span>,<span class="st">"#56B4E9"</span>,<span class="st">"#E69F00"</span>,<span class="st">"#000000"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -444,24 +414,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Aufgaben</h1>
 <p>Die Grundlage für diese Hausaufgabe soll wieder der Datensatz <code>flights.csv</code> sein, den ihr bereits im Seminar kennengelernt habt. Importiert ihn entsprechend, und speichert ihn als <code>dataset</code> ab.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../assets/datasets/flights.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../assets/datasets/flights.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="aufgabe-1-2-punkte" class="level2">
 <h2 class="anchored" data-anchor-id="aufgabe-1-2-punkte">Aufgabe 1 [2 Punkte]</h2>
 <p>Zunächst interessieren wir uns für die Verspätungen. Diese habt ihr bereits in der Seminarstunde als <code>late</code> berechnet, aber hier nochmal der Code (führt ihn am besten zur Reproduzierbarkeit aus):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">dmy_hms</span>(departure),</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scheduled_departure =</span> <span class="fu">dmy_hms</span>(scheduled_departure),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">arrival =</span> <span class="fu">dmy_hms</span>(arrival),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scheduled_arrival =</span> <span class="fu">dmy_hms</span>(scheduled_arrival),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">late =</span> <span class="fu">difftime</span>(arrival,scheduled_arrival,<span class="at">units =</span> <span class="st">"mins"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">dmy_hms</span>(departure),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scheduled_departure =</span> <span class="fu">dmy_hms</span>(scheduled_departure),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">arrival =</span> <span class="fu">dmy_hms</span>(arrival),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">scheduled_arrival =</span> <span class="fu">dmy_hms</span>(scheduled_arrival),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">late =</span> <span class="fu">difftime</span>(arrival,scheduled_arrival,<span class="at">units =</span> <span class="st">"mins"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Filtert nun <code>late</code> so, dass alle Werte, die Ausreißer sind (oder mehr als 3 SDs abweichen), für nachfolgende Berechnungen herausgefiltert werden:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">late_scaled =</span> <span class="fu">scale</span>(late)) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(late_scaled <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> late_scaled <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">late_scaled =</span> <span class="fu">scale</span>(late)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(late_scaled <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> late_scaled <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
 ℹ Please use one dimensional logical vectors instead.</code></pre>
@@ -475,10 +445,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Welche Airline hat die meiste, welche die wenigste Verspätung?</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(late, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(late, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 2
    carrier mean           
@@ -499,12 +469,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 14 HA       10.727273 mins
 15 YV       14.500000 mins</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder so:</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(late, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">which.min</span>(mean),<span class="fu">which.max</span>(mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oder so:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(late, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">which.min</span>(mean),<span class="fu">which.max</span>(mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   carrier mean          
@@ -517,19 +487,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Weiterhin interessiert uns nun nicht <strong>wieviel</strong>, sondern <strong>ob</strong> ein Flug Verspätung hat. Das könnt ihr mittlerweile auch berechnen. Meistens sind Verspätungen von bis zu 30 Minuten kein Problem, weshalb wir diese nicht als Verspätung bezeichnen wollen.</p>
 <p>Berechnet nun also die Variable <code>delayed</code>, welche die Ausprägungen <code>TRUE</code>/<code>FALSE</code> hat, je nachdem, ob der einzelne Flug über 30 Minuten Verspätung hat und speichert das ganze in <code>dataset</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">delayed =</span> <span class="fu">case_when</span>(late <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                            late <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="cn">FALSE</span>)) <span class="ot">-&gt;</span> dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">delayed =</span> <span class="fu">case_when</span>(late <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                            late <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="cn">FALSE</span>)) <span class="ot">-&gt;</span> dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p>Welche Airline hat nun nicht im Mittel die meiste, sondern die häufigsten (und wenigsten) Verspätungen über 30 Minuten? Berechnet das.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(delayed, carrier) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(delayed)) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(delayed, carrier) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(delayed)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sum =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'delayed'. You can override using the
 `.groups` argument.</code></pre>
@@ -565,13 +535,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Der Datensatz beschreibt alle Abflüge von New Yorker Flughäfen im Jahr 2013 (von allen drei Flughäfen, siehe Variable <code>origin</code>). Wir sind nun auf der Suche nach einem Büro in der Nähe eines Flughafens, an dem wir <strong>tagsüber gut arbeiten</strong> können, d.h., der Geräuschpegel gering ist. Je mehr Abflüge es gibt, desto höher der Geräuschpegel.</p>
 <p>Zieht also entsprechend die Tageszeit aus den Abflugszeiten (hint: das <code>hms</code> Package hilft), und plottet die Abflugszeiten facettiert (<code>facet_wrap</code>) nach Ursprungsflughafen. Dazu eignet sich bspw. <code>geom_density()</code>. Am Ende solltet ihr ein Plot haben, was aus drei Kurven besteht, und auf der X-Achse die Tageszeit zeigt.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure_time =</span> hms<span class="sc">::</span><span class="fu">as_hms</span>(departure)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>departure_time,<span class="at">color=</span>origin))<span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()<span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(origin<span class="sc">~</span>.)<span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure_time =</span> hms<span class="sc">::</span><span class="fu">as_hms</span>(departure)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>departure_time,<span class="at">color=</span>origin))<span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()<span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(origin<span class="sc">~</span>.)<span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assignment6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -581,10 +551,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="aufgabe-4-2-punkte">Aufgabe 4 [2 Punkte]</h2>
 <p>Ein Bekannter möchte aus <code>dataset</code> nur die Flüge herausfiltern, die an die wichtigsten Flughäfen Kaliforniens gingen. Dazu hat er eine Liste der Flughafen-Tags erstellt und filtert die Daten folgendermaßen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ap.cali <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACV"</span>, <span class="st">"BFL"</span>, <span class="st">"BUR"</span>, <span class="st">"FAT"</span>, <span class="st">"LGB"</span>, <span class="st">"LAX"</span>, <span class="st">"MRY"</span>, <span class="st">"OAK"</span>, <span class="st">"ONT"</span>, <span class="st">"SNA"</span>, <span class="st">"PSP"</span>, <span class="st">"RDD"</span>, <span class="st">"SMF"</span>, <span class="st">"SAN"</span>, <span class="st">"SFO"</span>, <span class="st">"SJC"</span>, <span class="st">"SBP"</span>, <span class="st">"SBA"</span>, <span class="st">"SMX"</span>, <span class="st">"STS"</span>, <span class="st">"SCK"</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">==</span> ap.cali[<span class="dv">1</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">2</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">3</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">4</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">5</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">6</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">7</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">8</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">9</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">10</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">11</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">12</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">13</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">14</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">15</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">16</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">17</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">18</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">19</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">20</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">21</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ap.cali <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACV"</span>, <span class="st">"BFL"</span>, <span class="st">"BUR"</span>, <span class="st">"FAT"</span>, <span class="st">"LGB"</span>, <span class="st">"LAX"</span>, <span class="st">"MRY"</span>, <span class="st">"OAK"</span>, <span class="st">"ONT"</span>, <span class="st">"SNA"</span>, <span class="st">"PSP"</span>, <span class="st">"RDD"</span>, <span class="st">"SMF"</span>, <span class="st">"SAN"</span>, <span class="st">"SFO"</span>, <span class="st">"SJC"</span>, <span class="st">"SBP"</span>, <span class="st">"SBA"</span>, <span class="st">"SMX"</span>, <span class="st">"STS"</span>, <span class="st">"SCK"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">==</span> ap.cali[<span class="dv">1</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">2</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">3</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">4</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">5</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">6</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">7</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">8</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">9</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">10</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">11</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">12</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">13</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">14</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">15</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">16</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">17</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">18</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">19</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">20</span>] <span class="sc">|</span> dest <span class="sc">==</span> ap.cali[<span class="dv">21</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        X carrier flight tailnum origin dest distance           departure
 1      13      VX    407  N626VA    JFK  LAX     2475 2013-06-30 09:40:00
@@ -3683,8 +3653,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Wie könnte man diesen Filter deutlich effizienter umsetzen, mit dem, was ihr schon gelernt habt? Macht einen Vorschlag im Codefenster:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">%in%</span> ap.cali)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">%in%</span> ap.cali)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        X carrier flight tailnum origin dest distance           departure
 1      13      VX    407  N626VA    JFK  LAX     2475 2013-06-30 09:40:00
@@ -6814,9 +6784,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -6881,6 +6865,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
