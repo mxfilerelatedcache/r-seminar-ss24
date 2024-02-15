@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs/assets
+
+website:
+  title: "Medienbasierte Wissenskonstruktion mit R (SS24)"
+  site-path: "/ss24/r-seminar/"
+  navbar:
+    background: primary
+    search: true
+    logo: assets/img/signet_ude_rgb_neg.png
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Kontakt"
+        file: contact.qmd
+      - text: "Nice to Know"
+        file: ntn.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Tutorials"
+        contents:
+          - text: "Tutorial Landing"
+            href: tutorials.qmd
+  body-header: ""
+  page-footer: "Made with ❤️ @Universität Duisburg-Essen by Simon Krukowski" 
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+editor: visual
+
