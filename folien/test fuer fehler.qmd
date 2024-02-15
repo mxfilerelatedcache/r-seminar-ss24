@@ -1,8 +1,0 @@
----
-title: "Untitled"
----
-
-```{r}
-#| eval: false
-print(paste0("Ich habe ",R.version$version.string," und RStudio v",rstudioapi::versionInfo()$version))
-```
