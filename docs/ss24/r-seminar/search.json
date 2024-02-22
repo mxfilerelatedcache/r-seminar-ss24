@@ -1,9 +1,196 @@
 [
   {
+    "objectID": "pipeline.html",
+    "href": "pipeline.html",
+    "title": "Pipeline",
+    "section": "",
+    "text": "Unser Seminar und diese Website orientieren sich an der R-Datenanalyse Pipeline (In Anlehnung an Wickham, Çetinkaya-Rundel, and Grolemund (2023)). Wir lernen also alle nötigen Schritte, um R zu meistern - von Datenimport über Bereinigung und Aufbereitung hin zu Visualisierung und Modellierung. Natürlich lernen wir auch, wie wir das Ganze dann kommunizieren.\nDie verschiedenen “Stationen” dieser Pipeline sind nicht zwingend konsekutiv - d.h. bspw. vor allem im Explore Teil durchlaufen wir die verschiedenen Stationen mehrfach, um Erkenntnisse zu gewinnen. Um mehr Übersichtlichkeit zu gewährleisten, bilden diese Stationen auch thematischen Oberkategorien dieser Veranstaltung.\n\n\n\nR-Datenanalysepipeline angelehnt an @wickham2023\n\n\n\n\n\n\nReferences\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for data science: import, tidy, transform, visualize, and model data. 2nd edition. Beijing Boston Farnham Sebastopol Tokyo: O’Reilly.",
+    "crumbs": [
+      "Home",
+      "Intro",
+      "Pipeline"
+    ]
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "Studentin die gerade R und R-Studio herunterlädt\n\n\n\nInstallation\nIm Folgenden erklären wir, wie ihr euch R und RStudio herunterladen könnt. Zwar gibt es im Web einige How-Tos und Tutorials, wir wollen euch an dieser Stelle der Vollständigkeit halber aber nochmal vermitteln, wie genau ihr euch die Software installiert und was es dabei zu beachten gibt. Falls während der Installation Fragen aufkommen, meldet euch gerne per Mail bei mir (simon.krukowski@uni-due.de) oder schaut einfach im Web nach How-Tos/Troubleshooting. Das ist generell auch eine gute Idee beim Thema R, Programmieren & Datenanalyse - mehr dazu erfahrt ihr dann im Seminar.\n\n\nÜberblick\nDa dein Computer R als Programmiersprache nicht von selbst versteht, musst du es zunächst installieren. Nach der Installation kannst du es theoretisch benutzen und Daten damit auswerten. Hierbei ist wichtig zu differenzieren, dass du R zwar in der Kommandozeile/Terminal verwenden kannst, dies aber wenig intuitiv ist. Im folgenden Video siehst du, wie es aussehen kann, R in der Kommandozeile zu benutzen, nachdem du es installiert hast:\n\nWenn es nun aber um komplexere Rechenoperationen als 1+1, das Einlesen von Datensätzen oder das Generieren von Grafiken geht, wird es schwierig mit der Kommandozeile. Daher bietet es sich an, eine IDE (Entwicklungsumgebung, siehe hier) zu benutzen. Die populärste IDE dafür ist RStudio:\n\nIm Rahmen dieses Seminars werden wir mit RStudio arbeiten. Wie du beides installierst, erfährst du in dieser Lektion.\n\n\nDownload & Installation\nStarten wir also mit dem Download. Besuche folgende Website:\n\n\n\n\n\nWenn du dem Link folgst, wirst du auf die offzielle Seite von R (CRAN) weitergeleitet, und kannst dir dort die für dein System richtige Version auswählen:\n\n\n\n\n\nIn unserem Fall haben wir einen Mac, und wählen den entsprechenden Link aus. Auf der folgenden Seite gibt es viele verschiedene Links, hier ist es wichtig den bei latest release und für euer System richtigen zu nehmen (in unserem Fall Apple Silicon).\n\n\n\n\n\nNach dem Download könnt ihr den Installer ausführen und voilà - ihr habt R installiert! Da bei uns R schon installiert ist gibt es hier leider keinen Screenshot.\nTheoretisch könntet ihr R nun wie oben beschrieben in der Kommandozeile verwenden. Wir wollen allerdings RStudio benutzen, also gehen wir wieder zurück zu posit.co und laden dort die richtige Version für unser System herunter (die richtige Version wird hier automatisch vorgeschlagen):\n\n\n\n\n\nJe nach System unterscheidet sich hier die Installation etwas, aber am Ende sollte RStudio bei dir installiert sein. Öffnet also R, und es sollte etwa wie folgt aussehen:\n\n\n\n\n\n\n\nR-Skripte ausführen\nAls erste Übung wollen wir ein Test-Skript ausführen. Ladet euch das Skript herunter und bringt es bei der ersten Seminarstunde mit. Dort werden wir das Ergebnis besprechen.\n\n\n R-Skript herunterladen\n\n\n\n\nTroubleshooting\nHaben sich bei der Installation Probleme ergeben? Meldet euch gerne per Mail an simon.krukowski@uni-due.de.",
+    "crumbs": [
+      "Home",
+      "Intro",
+      "Installation"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Erste Lektion",
+    "title": "Startseite",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Willkommen auf unserer seminarbegleitenden Website. Hier findet ihr die Skripte der einzelnen Seminarstunden (als .qmd Dateien), Übungsblätter sowie deren Lösungen, als auch viele weitere hilfreiche Informationen.\n\nprint(\"Herzlich Willkommen!\")\n\n[1] \"Herzlich Willkommen!\"\n\ncolors &lt;- c(\"#ee352e\",\"#ff6319\",\"#00933c\",\"#fccc0a\",\"#0039a6\",\"#b933ad\",\"#996633\")\n\n\n\n\nFig 1.: Glückliche Studentin, die gerade R gelernt hat"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Übungsblätter & Lösungen",
+    "section": "",
+    "text": "Nr.\nÜbungsblatt\nLösungen\n\n\n\n\n1\n\n\n\n\n2"
+  },
+  {
+    "objectID": "packages_help.html",
+    "href": "packages_help.html",
+    "title": "Packages & Help",
+    "section": "",
+    "text": "Studentin, die realisiert, dass R durch seine Packages unschlagbar ist.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Packages & Help"
+    ]
+  },
+  {
+    "objectID": "packages_help.html#packages",
+    "href": "packages_help.html#packages",
+    "title": "Packages & Help",
+    "section": "Packages",
+    "text": "Packages\nEin großer Vorteil von R sind die zahlreichen Packages, die es für fast jeden Anwendungsfall gibt und die sehr leicht über das Repository-System CRAN (Comprehensive R Archive Network) heruntergeladen werden können. Base-R (quasi frisch nach Installation) verfügt nur über einige wenige Packages. Ein Klick auf Packages unten rechts kann euch einen Überblick über installierte & aktivierte Packages geben.\n\nBase-R ist zwar ein sehr gutes Tool mit dem wir viele Fragestellungen lösen können (Data Wrangling und Visualisierung), allerdings ist deren Anwendung manchmal etwas umständlich bzw. im Funktionsumfang dann doch eingeschränkt. Daher bietet es sich besonders an, Packages zu benutzen. Neben besonders hilfreichen und zentralen Packages wie bspw. dplyr, ggplot oder tidyr gibt es auch auf verschiedene Forschungsdomänen oder spezifische Datenanalyseaufgaben zugeschnittene Packages.\nWir behandeln in diesem Seminar vor allem solche Packages, die bei (lern)psychologischen Fragestellungen helfen. In diesem Abschnitt soll es aber nicht um spezifische Packages gehen, sondern um deren Installation und den Einsatz in R.\n\nInstallation\nWir können Packages über die Funktion install.packages(x) installieren. Hier ist wichtig zu verstehen, dass wir dies nur einmal machen müssen - danach sind die Packages ja installiert. Daher sollte man den Befehl install.packages(x) auch nicht in einem Code Chunk ausführen, sondern direkt in der R-Konsole, und zwar nach der Syntax install.packages(\"package_name\"). Hier ist wichtig, dass der Name des Packages in Anführungszeichen \" ist, da wir ihn der Funktion als character übergeben.\n\n\n\n\n\n\n\nAufgabe\n\n\n\nInstalliert nun nach diesem Prinzip das Package tidyverse.\n\n\nMit tidyverse habt ihr bereits eine Vielzahl der wichtigsten Packages installiert (es ist quasi eine Sammlung an Packages). Hier findet ihr eine Übersicht über die installierten Packages. Wir werden am meisten mit dplyr, ggplot2, tidyr und lubridate arbeiten, aber auch andere Packages verwenden.\n\n\nAktivierung\nSuper! Nun ist tidyverse installiert. Allerdings müssen wir das Package noch aktivieren. Dazu brauchen wir den library(x) Befehl, und führen ihn entsprechend aus:\n\nlibrary(tidyverse)\n\n\n\n\n\n\n\nFrage\n\n\n\nWas ist beim Aktivieren der Packages anders als beim Installieren?\n\n\n\n\nStruktur\nNachdem wir Packages aktiviert haben, können wir ihre Funktionen während der gesamten R-Session verwenden. Es bietet sich an, die Packages gleich zu Beginn zu aktivieren, d.h., am besten gleich zu Anfang eures Codes, damit alle nachfolgenden Code-Blöcke auf das Package zugreifen können.\nDa wir im Rahmen dieses Seminars mit Quarto arbeiten, bietet es sich an, als ersten Chunk einen sogenannten Preliminaries Chunk anzulegen, indem ihr alle benötigten Packages aktiviert, und nebenbei auch alle anderen wichtigen DInge definiert, wie bspw. benötigte Farbpaletten, benutzerdefinierte Funktionen (später mehr zu beidem). Folgende Grafik veranschaulicht das etwas:",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Packages & Help"
+    ]
+  },
+  {
+    "objectID": "packages_help.html#help",
+    "href": "packages_help.html#help",
+    "title": "Packages & Help",
+    "section": "Help",
+    "text": "Help\nEs kann immer mal vorkommen, dass wir bei manchen Funktionen HIlfe brauchen. Dazu gibt es in R die help(x) Funktion. Angenommen, ich brauche Hilfe bei der round(x) Funktion, da ich nicht mehr genau weiß, wie deren Parameter sind. Die Syntax ist:\nhelp(function)\nAlso schreiben wir:\n\nhelp(round)\n\nUnd es öffnet sich unten rechts in R-Studio der Hilfereiter:\n\nAlternativ können wir auch schreiben:\n\n?help()\n\nIm Hilfereiter befindet sich dann doe Dokumentation. Alternativ wäre diese auch im Web zu finden. Nach gleichem Prinzip können wir auch die Dokumentation ganzer Packages beziehen:\n\nhelp(tidyverse)\n\n\nHilfe außerhalb von R-Studio\nAuch außerhalb von R-Studio könnt ihr euch Hilfe holen. Moderne Programmiersprachen und vor allem R sind heutzutage so gut dokumentiert, dass ihr nach wenigen Suchbegriffen schon eine Lösung für euer Problem gefunden habt. Falls nicht gibt es bestimmt jemanden, der das gleiche Problem wie ihr hat, und das auf Stackoverflow nachgfragt hat. Oder ihr macht es wie jede:r in 2024 und benutzt LMMs wie ChatGPT - seid hier aber gewarnt und denkt an unsere Hinweise aus der Präsentation! Die Antworten von LLMs sind nicht immer akkurat und vor allem nehmen sie uns die Fähigkeit, unser Problem zu abstrahieren. Das ist eine wichtige Eigenschaft, die ihr lernen solltet.\n\n\n\nRessourcen wenn es um Hilfe bei R geht: Google, Stackoverflow oder auch ChatGPT\n\n\n\n\nNächste Session\nDas war’s mit dieser Session. In der nächsten Session geht es um den Import von Daten.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Packages & Help"
+    ]
+  },
+  {
+    "objectID": "tidy.html",
+    "href": "tidy.html",
+    "title": "Tidy",
+    "section": "",
+    "text": "Blablabla",
+    "crumbs": [
+      "Home",
+      "Wrangle",
+      "Tidy"
+    ]
+  },
+  {
+    "objectID": "syntax_datatypes.html",
+    "href": "syntax_datatypes.html",
+    "title": "Syntax & Datentypen",
+    "section": "",
+    "text": "Studentin, die endlich versteht, wie die R-Syntax funktioniert",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Syntax & Datentypen"
+    ]
+  },
+  {
+    "objectID": "syntax_datatypes.html#syntax",
+    "href": "syntax_datatypes.html#syntax",
+    "title": "Syntax & Datentypen",
+    "section": "Syntax",
+    "text": "Syntax\nDie Syntax von R ist relativ simpel. Als interpretierte Sprache (im Gegensatz zu kompilierten Sprachen wie C oder Java) müsst ihr nicht erst etwaige Klassen oder Objekte erzeugen und den Code kompilieren, um loszulegen, sondern könnt einzelne Zeilen direkt ausführen. Da es eine Statistiksoftware ist, wurden R quasi die Möglichkeiten statistischen Fragestellungen nachzugehen in die Wiege gelegt. Dazu gehört also auch die schnelle Berechnung einer mathematischen Aufgabe, wie wir bspw. letzte Woche gesehen haben:\n\n4+5\n\n[1] 9\n\n\nWie wir sehen reicht eine Zeile in einem R Code-Chunk aus, um die Aufgabe zu berechnen. Wichtig ist hier zu verstehen, dass bei Quarto-Dokumenten ausführbarer Code also immer in Code-Chunks ist, während Text (bspw. zur Beschreibung) zwischen den Chunks ist.\n\nKommentare\nNatürlich können wir aber auch in den Chunks selbst Text schreiben. Damit dieser nicht von R mit ausführbarem Code verwechselt wird, müssen wir diesen aber mit # als Kommentar kennzeichnen, etwa so:\n\n# Rechnung:\n4+5\n\n[1] 9\n\n\nSo weiß der R Interpreter, dass es sich um ein Kommentar handelt und beachtet diese Zeile nicht. Das besondere an R ist, dass R natürlich noch viel mehr bietet, und viele Vorteile, die andere Programmiersprachen wie bspw. Python mitbringen, ebenfalls mitbringt (bspw. Funktionen, Schleifen etc.). Es ist also ein ganz schön mächtiges Tool.\n\n\nUnterschiede zu anderen Programmiersprachen\nR unterscheidet bei Zahlen-Datentypen nicht zwischen Integer (42) und Double (42.0) (wie etwa Java), aber dazu gleich mehr. Strings heißen character, und außerdem verwendet es keine Pointer (wie bspw. Python). Tendenziell könnt ihr euch merken: Viele Angelegenheiten, bei denen andere Sprachen empfindlich sind, sind in R simpler aufgebaut - um einer schnellen statistischen Auswertung keine Steine in den Weg zu legen!\n\n\n(Rechen)operatoren\nNatürlich gibt es noch weitere Rechenoperatoren als +. Viele davon solltet ihr schon aus anderen Programmiersprachen gewohnt sein. Der Einfachheit halber berichten wir hier sowohl mathematische als auch andere Operatoren:\n\n\n\n\n\n\nAufgabe\n\n\n\nErstellt einen neuen Code Chunk und macht für jeden Operator ein Beispiel. Wählt bei logischen Operatoren die Zahlen oder Variablen so, dass TRUE zurückgegeben wird.\n\n\n\n\n\n\n\n\n\n\n(Rechen)operator\nFunktion\nBeispiel\n\n\n\n\n+\nAddition\n37 + 5\n\n\n-\nSubtraktion\n48 - 6\n\n\n*\nMultiplikation\n7 * 6\n\n\n/\nDivision\n546 / 13\n\n\n^\nExponent\n6.480741 ^ 2\n\n\nsqrt(x)\nWurzel\nsqrt(1764)\n\n\n&gt;\nGrößer\n40+3 &gt; 42\n\n\n&lt;\nKleiner\n41 &lt; 546/13\n\n\n&gt;=\nGrößer gleich\n42 &gt;= 21*2\n\n\n&lt;=\nKleiner gleich\n7*6 &lt;= sqrt(1764)\n\n\n==\nLogischer Vergleich (gleich)\n42 == sqrt(1764)\n\n\n!=\nLogischer Vergleich (ungleich)\n\"R\" != \"R-Studio\"\n\n\n&\nLogisches Und\nTrue & True\n\n\n|\nLogisches Oder\nTrue & True\n\n\nxor\nLogisches exklusives Oder\nFalse & True\n\n\n!\nLogisches Nicht\n! False\n\n\n\n\n\n\n\n\n\nFrage\n\n\n\nWas fällt auf?\n\n\nJe nach Operator ist die Syntax etwas anders (bspw. bei sqrt(x)). Warum das so ist, klären wir in dieser Session. Außerdem ist vielleicht aufgefallen, dass wir mit verschiedenen Arten von Daten arbeiten können, wie bspw. Strings, logischen Werten oder (Komma)zahlen. Das leitet zu Datentypen über.\n\n\nDatentypen\nWie in anderen Programmiersprachen gibt es verschiedene Datentypen in R, hier eine Aufzählung der häufigsten:\n\n\n\n\n\n\n\n\nDatentyp\nBeschreibung\nBeispiel\n\n\n\n\nnumeric\nZahlen (integer, double)\n42, 42.0, 42.001\n\n\ncharacter\nZeichen/Buchstabenfolgen, Strings\n\"42\", \"Zweiundvierzig\"\n\n\nlogical\nLogische Werte\nTRUE, FALSE\n\n\nfactor\nz.B. Faktorstufen eines Faktors\n\"blonde\", \"red-haired\", \"brunette\"\n\n\nvector\nEindimensionale Reihe von Elementen\nc(1, 2, 3, 4\n\n\nmatrix\nEin- bis zweidimensionale Reihe von Elementen\nmatrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)\n\n\nliste\nKann verschiedene Datentypen & Strukturen enthalten\nlist(c(1,2,3),c(4,5,6))\n\n\nDataframe/Tibble\nHäufigstes Format zur Darstellung von Datensätzen mit unterschiedlichen Datentypen pro Spalte\ndata.frame(x=c(1,2,3),y=c(4,5,6))\n\n\n\n\n\n\n\n\n\nFrage\n\n\n\nWie können wir uns factor nun konkret vorstellen, und warum bestehen list und data.frame aus mehreren Objekten? Und warum sind manche Dinge in Klammern?\n\n\n\n\nBasisfunktionen\nVektoren oder Dataframes werden über sogenannte Funktionen erzeugt, erkennbar an Klammern. Eine Funktion ist in R immer gleich aufgebaut:\nfunction(value, parameter)\nEin Beispiel wäre die obige Funktion zum Berechnen der Quadratwurzel:\n\nsqrt(1764)\n\n[1] 42\n\n\nfunction ist hier also der Name der Funktion (sqrt) und value ist der Wert, den wir der Funktion übergeben (1764). In diesem Fall brauchen wir keine weiteren Parameter übergeben, daher belassen wir es bei der Zahl. Wenn wir bspw. eine Zahl runden möchten, können wir die round(x) Funktion nehmen:\n\nround(3.14159, digits = 2)\n\n[1] 3.14\n\n\nWie wir sehen, haben wir hier 3.14159 als value übergeben und 2 als parameter (in dem Fall digit also die Anzahl an Nachkommastellen).\nFunktionen kommen überall in R in verschiedensten Formen und Farben vor, und die Grundsyntax ist wie oben beschrieben.\n\n\nVariablen & Objekte\nWenn wir nun wirklich mit Daten arbeiten wollen und diese nicht nur flüchtig betrachten, müssen wir Werte in Variablen speichern. Dabei ist in R vor allem der Zuweisungsoperator &lt;- wichtig. Mit diesem Operator können wir Variablen bzw. Objekte erzeugen und diese in unserem Environment speichern. Das funktioniert immer nach dem Prinzip:\nvariable &lt;- value\nWobei dann unter variable die value gespeichert wird. Hier ein Beispiel:\n\nnumber &lt;- 1764\n\nsqrt(number)\n\n[1] 42\n\n\nnumber taucht nun also in meinem Environment unter Values auf:\n\nUnd ich kann während der gesamten R-Session darauf zugreifen:\n\nnumber\n\n[1] 1764\n\n\n\n\n\n\n\n\nAchtung\n\n\n\nEs ist wichtig, dass ihr immer &lt;- als Zuweisungsoperator benutzt. Das Gleichzeichen = (wie bspw. in Python) funktioniert nicht verlässlich.\n\n\nMit der Funktion typeof(x) bzw. den Funktionen is.factor(x), is.numeric(x), oder is.character(x) können wir bspw. überprüfen, welchen Typ eine Variable hat bzw. ob der Typ einer Variable bspw. numeric ist. Mit as.numeric(x) können wir den Typ einer Variable verändern. Dann würde ich etwa so vorgehen:\n\nnumber &lt;- as.character(number)\n\nnumber\n\n[1] \"1764\"\n\n\nWie wir sehen, wurde der Typ der Variablen number nun verändert.\n\n\n\n\n\n\nAchtung\n\n\n\nDer Operator &lt;- kann natürlich nicht nur zum erstmaligen Zuweisen von Werten/Variablen verwendet werden, sondern auch zum Überschreiben (wie im Beispiel oben). Auch hier gilt das Prinzip: old_value &lt;- new_value.\n\n\nNeben einzelnen Werten gibt es aber auch Objekte, mit denen wir in R arbeiten können und die wir in unser Environment speichern können. Dazu gehören etwa die oben genannten list, data.frame, vector oder matrix.\n\nVector\nWenn wir mehrere Werte als Vektoren darstellen bzw. abspeichern wollen, benutzen wir die c(x) Funktion. Ich kann also mehrere Werte wie 42,43,44,45 wie folgt als Vektor erzeugen:\n\n# Basismethode\nc(42,43,44,45)\n\n[1] 42 43 44 45\n\n# Alternativmethode\nc(42:45)\n\n[1] 42 43 44 45\n\n\nZum Abspeichern benutzen wir nun wieder den &lt;- Operator:\n\nvec &lt;- c(42:45)\n\nvec\n\n[1] 42 43 44 45\n\n\nWir können natürlich auch andere Datentypen als numeric abspeichern, wie bspw. character:\n\nvec1 &lt;- c(\"Zweiundvierzig\",\"Dreiundvierzig\",\"Vierundvierzig\",\"Fünfundvierzig\")\n\nvec1\n\n[1] \"Zweiundvierzig\" \"Dreiundvierzig\" \"Vierundvierzig\" \"Fünfundvierzig\"\n\n\n\n\nDataframe\nDie meisten Daten mit denen wir hantieren (vor allem im lernpsychologischen Bereich) sind aber komplexer als eindimensionale Vektoren, und sind meistens in tabellarischer Form vorhanden. Dies wird über den data.frame Datentypen abgebildet. Diesen können wir manuell erzeugen, meistens tun wir das aber nicht (sondern importieren ihn etc.). Intern handelt es sich aber trotzdem fast immer um Dataframes. Daher ist deren Verständnis wichtig.\n\n\n\n\n\n\nInfo\n\n\n\nEs kann helfen sich vorzustellen, dass Dataframes im Prinzip aus Vektoren bestehen, die aneinander gefügt werden - vertikal oder horizontal, je nach Sichtweise.\n\n\nWir können also ein Dataframe manuell erstellen, entweder mit spezifischen Werten oder mit bereits vorhandenen Vektoren. Wir wollen nun die obige Aussage testen und ein Dataframe aus den beiden Vektoren vec und vec1 erstellen. Dazu benutzen wir die data.frame(x) Funktion, und weisen von uns definierten Spalten die oberen zwei Vektoren vec und vec1 zu.\n\ndf &lt;- data.frame(num=vec,\n                 char=vec1)\n\ndf\n\n  num           char\n1  42 Zweiundvierzig\n2  43 Dreiundvierzig\n3  44 Vierundvierzig\n4  45 Fünfundvierzig\n\n\nDie expliziten Namen haben wir entschieden, um die Zuordnung zu erleichtern. Unser Dataframe taucht nun in unserem Environment unter Data anstatt Values auf, da es sich um ein Objekt handelt:\n\nDurch ein Klicken auf das Dataframe (oder die Funktion View(df))können wir es uns im Datenviewer anschauen:\n\nDas kann sehr hilfreich sein, um einen Überblick über die Daten zu bekommen.\n\n\nList\nAngenommen, wir haben zwei Dataframes, und wollen diese zusammen abspeichern, so können wir diese in einer Liste abspeichern:\n\ndf1 &lt;- data.frame(x=c(7,8,9),y=c(10,11,12))\n\nlst &lt;- list(df,df1)\n\nVoilá! Nun haben wir beide Dataframes in einem Listenobjekt abgespeichert.\nEs gibt noch weitere Datentypen wie matrix, welche wir im Rahmen dieses Seminars aber nicht weiter besprechen werden.\n\n\n\nElemente & Objekte auswählen\nWir kennen nun die Basis-R Syntax, wissen wie wir Werte und Objekte erzeugen und in unserem Environment speichern und wissen, wie wir Dataframes erzeugen. Manchmal möchten wir auf einzelne Were (bspw. Spalten) zugreifen. Zu wissen, wie das mit der Basis-R Syntax geht ist sehr hilfreich, daher schauen wir uns das nun an.\n\nVektoren\nWir haben oben den Vektor vec erstellt, welcher vier Zahlen enthält:\n\nvec\n\n[1] 42 43 44 45\n\n\nWenn wir nun auf das zweite Element dieses Vektors zugreifen wollen, können wir dies wie folgt tun:\n\nvec[2]\n\n[1] 43\n\n\nAufmerksame Programmierer:innen stutzen hier vielleicht kurz, weil wir hier eine 2 anstatt einer 1 verwenden. Der Hintergrund: In R startet der Index bei 1 anstatt bei 0, wie bspw. bei Python oder anderen Programmiersprachen.\nSoweit, so gut. Doch was ist, wenn ich an spezifische Daten in meinem Dataframe df kommen möchte?\n\n\nDataframes\nUnser erzeugtes Dataframe df hat zwei Spalten und vier Zeilen. Angenommen, wir wollen die zweite Spalte haben, welche ursprünglich unseren Vektor vec1 enthält, dann gehen wir wie folgt vor:\n\ndf[,2]\n\n[1] \"Zweiundvierzig\" \"Dreiundvierzig\" \"Vierundvierzig\" \"Fünfundvierzig\"\n\n\n\n\n\n\n\n\nFrage\n\n\n\nWofür ist das Komma, und was könnte vor das Komma kommen?\n\n\nDie Auswahl funktioniert nach folgender Syntax:\ndataframe[row, column]\nWenn wir also die gesamte zweite Spalte haben möchten, gehen wir wie oben vor. Wenn wir bspw. nur die zweite Zeile haben wollen, gehen wir so vor:\n\ndf[2,]\n\n  num           char\n2  43 Dreiundvierzig\n\n\nNach gleichem Prinzip können wir uns auch einzelne Werte anschauen:\n\ndf[4,2]\n\n[1] \"Fünfundvierzig\"\n\n\nWir können auch Spaltennamen verwenden:\n\ndf[,\"char\"]\n\n[1] \"Zweiundvierzig\" \"Dreiundvierzig\" \"Vierundvierzig\" \"Fünfundvierzig\"\n\n\nSofern Spaltennamen vorhanden sind, können wir auch den $ Operator nehmen, um auf die Spalte zuzugreifen:\n\ndf$char\n\n[1] \"Zweiundvierzig\" \"Dreiundvierzig\" \"Vierundvierzig\" \"Fünfundvierzig\"\n\n\nDer obige Code tut dasselbe wie df[,\"char\"]. Die Voraussetzung ist, dass das Objekt ein Dataframe ist.\n\n\n\n\n\n\nFrage\n\n\n\nWofür ist das wichtig?\n\n\nWir könnten nun fragen, wie häufig wir in der tatsächlichen Praxis auf einzelne Werte über die oben gezeigte Syntax zugreifen wollen - zurecht! Wahrscheinlich eher selten - trotzdem ist es wichtig, das Prinzip von Dataframes und Vektoren verstanden zu haben, da es uns später bei einer Vielzahl von Anwendungen helfen kann, und die seltsam anmutende Syntax und Begriffe wie Vektoren und Dataframes ein Stück weit entzaubert.\n\n\n\nNächste Session\nDas war’s mit dieser Session. In der nächsten Session geht es um Packages & Help.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Syntax & Datentypen"
+    ]
+  },
+  {
+    "objectID": "basics.html",
+    "href": "basics.html",
+    "title": "Basics",
+    "section": "",
+    "text": "Student, der endlich versteht was R & R-Studio ist",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#was-ist-r",
+    "href": "basics.html#was-ist-r",
+    "title": "Basics",
+    "section": "Was ist R?",
+    "text": "Was ist R?\nR ist eine Programmiersprache (und mit R-Studio auch eine Programmieroberfläche) für statistische Berechnungen und Grafiken. Es ist Open-Source & kostenlos, und durch die große Community, die ständig wächst, wird es stets um Funktionen erweitert. Die Community kann auch bei Fragen helfen. Die meistgenutzte IDE ist R-Studio, welches die Handhabung wesentlich einfacher macht.\nDie Besonderheit bei R ist, dass man besonders nah an den Daten dran ist, und dementsprechend schnell explorative Analysen machen oder Plots erstellen kann. Diese Nähe schreckt manche vielleicht zu Beginn ab - langfristig kann sie sich aber als großer Vorteil erweisen.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#user-interface",
+    "href": "basics.html#user-interface",
+    "title": "Basics",
+    "section": "User Interface",
+    "text": "User Interface\nIn den meisten Fällen benutzen wir R über unsere IDE R-Studio. In der Standardeinstellung sieht die Benutzeroberfläche wie folgt aus:\n\nEs gibt vier Hauptbereiche, wobei wir uns hier auf die am häufigsten verwendeten Reiter beschränken:\n\n\n\n\n\n\n\nBereich\nErläuterung\n\n\n\n\nSkript/Quarto-Dokument\nHier befindet sich euer Code\n\n\nR-Console\nHier befindet sich die R-Konsole. Jeder Code, den ihr oben ausführt, erscheint auch in der Konsole. Ihr könnt Code auch direkt in der Konsole ausführen\n\n\nEnvironment\nHier befinden sich eure in dieser Session erzeugten R-Objekte, Werte etc.\n\n\nFiles, Plot & Help\nHier befinden sich die Dateien im Ordner eures R-Projektes, erzeugte Plots & aktivierte Packages sowie die Hilfeseite",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#code-erstellen-ausführen",
+    "href": "basics.html#code-erstellen-ausführen",
+    "title": "Basics",
+    "section": "Code erstellen & ausführen",
+    "text": "Code erstellen & ausführen\n\n\n\n\n\n\nAufgabe\n\n\n\nÖffnet das File welches ihr auf der Installationsseite heruntergeladen habt.\n\n\nIn dem File sind nur die Zeilen ohne # ausführbarer Code. Wie hier geschehen, lassen sich mit # Kommentare in den Code hinzufügen, die dem Code Struktur geben oder erklären, was hier passieren soll\n\n\n\n\n\n\nAufgabe\n\n\n\nFührt die Zeile Code aus, in dem ihr euren Cursor in die Zeile stellt und STRG+ENTER bzw. CMD+ENTER drückt\n\n\nÜber das Markieren von mehreren/allen Zeilen werden die entsprechenden Zeilen nacheinander ausgeführt\n\n# R-Version:\nprint(R.version$version.string)\n\n[1] \"R version 4.3.2 (2023-10-31)\"\n\n\nVoilá - wir haben unsere erste Code-Zeile ausgeführt. Sie zeigt uns die installierte R-Version an. Wir wollen aber auch wissen, welche R-Studio Version wir installiert haben. Dazu führen wir die zweite Zeile aus:\n\n# R-Studio Version:   \nprint(rstudioapi::versionInfo()$version)",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#r-vs.-quarto",
+    "href": "basics.html#r-vs.-quarto",
+    "title": "Basics",
+    "section": "R vs. Quarto",
+    "text": "R vs. Quarto\nAlles klar, wir können nun ein .R Skript öffnen und ausführen. Aber was ist denn nun Quarto?\n\n\n\nR vs. Quarto\n\n\nDas standard Dateiformat für R sind .R Dateien, welche sich über R-Studio öffnen lassen uns wie ein Skript ausgeführt werden können, etwa vergleichbar mit .py Dateien. Im Grunde genommen sind es aber nur Textdateien. Zwar können wir über die oben gelernte Tastenkombination einzelne Code-Zeilen ausführen, was die Bedienung in R-Studio einfacher macht, dennoch haben Quarto-Dateien (Dateiendung .qmd) einige Vorteile:\n\nSie ermöglichen den Export/ das Rendern in andere Dateiformate (html, pdf, docx, pptx,…)\nSie ermöglichen neben Code-Abschnitten auch Text-Abschnitte, die formatiert werden können (wie LaTeX) und die übersichtlicher sind\nSie ermöglichen einzustellen, ob nur Code, nur Output, oder Code+Output angezeigt werden soll, somit können Auswertung & Bericht im gleichen Dokument geschehen\nSie bieten eine Vielzahl an Möglichkeiten (diese ganze Website ist über Quarto geschrieben!)\n\n\nQuarto & Markdown\nWenn ihr in Quarto-Dokumenten Text hinzufügt, ist der Text mithilfe von Markdown formatiert. Markdown ist eine leichte Auszeichnungssprache, die entwickelt wurde, um mit möglichst einfacher Textformatierung lesbare und ästhetische Dokumente zu erstellen. Die Kernidee dabei ist, dass die Syntax einfach zu lesen und zu schreiben sein soll, sowohl in ihrer Rohform als auch nach der Umwandlung in reichhaltigere Formate wie HTML.\n\n\n\n\n\n\nFrage\n\n\n\nMoment mal - noch eine Syntax?\n\n\nGenau richtig, allerdings sollte uns das an der Stelle nicht weiter interessieren, mit Markdown befassen wir uns im Kapitel Communicate genauer. Vorab: R-Studio hat zwei Modi zur Bearbeitung von Dokumenten - Source und Visual:\n\n\n\n\n\n\n\nAufgabe\n\n\n\nSwitcht mal zwischen den Modi und beschreibt, was die Unterschiede sind.\n\n\nAlles klar! Für die meisten Fälle reicht uns der Visual Mode, welcher durch R-Studios Funktionen sehr gut ergänzt wird.\nSchauen wir uns also nun Quarto und die darin vorkommende R-Syntax an.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#quarto",
+    "href": "basics.html#quarto",
+    "title": "Basics",
+    "section": "Quarto",
+    "text": "Quarto\nUm das Ganze direkt zu testen, sollt ihr nun ein neues Quarto Dokument erstellen. Navigiert dazu zu File/New File/Quarto Document:\n\n\n\nEin neues Quarto Dokument über den Datei Reiter erstellen\n\n\nNun sollte sich ein Fenster öffnen, in dem ihr den Titel eures Dokuments & den Autor einstellen, sowie weitere Einstellungen vornehmen könnt. Wie in folgender Grafik zu sehen, gibt es drei Render-Möglichkeiten:\n\n\n\nEin neues Quarto Dokument erstellen\n\n\n\nRender Optionen\n\n\n\n\n\n\nOption\nSinn\n\n\n\n\nHTML\nR-Studio rendert eine .html Datei, welche ihr mit jedem gewöhnlichen Browser öffnen könnt. Vorteil: Kompatibilität. Nachteil: Manchmal möchte man eine .pdf haben.\n\n\nPDF\nR-Studio rendert mit einer LaTeX Engine eine .pdf Datei. Vorteil: Ihr habt eine .pdf, Nachteil: Das Installieren der Engine sowie das Rendern kann fehleranfällig sein.\n\n\nWord\nR-Studio rendert eine Word-Datei (.docx). Vorteil: Ihr könnt in der Datei herumschreiben, Nachteil: Formatierung etc.\n\n\n\nWir entscheiden uns im Ramen dieses Seminars immer für HTML, da dies das versatilste Format ist. Solltet ihr nun also ein Dokument erstellt haben, sollte es bereits mit Beispielcontent gefüllt sein, und etwas so aussehen:\n\n\n\nR-Studio fügt automatisch Beispielcontent hinzu\n\n\nEs befinden sich also bereits Text, Überschriften & Code in sogenannten Code-Chunks im Dokument. Löscht diesen nun aber heraus, damit wir einen sauberen Start haben.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
+  },
+  {
+    "objectID": "basics.html#chunks-hinzufügen",
+    "href": "basics.html#chunks-hinzufügen",
+    "title": "Basics",
+    "section": "Chunks hinzufügen",
+    "text": "Chunks hinzufügen\nMit der Tastenkombination COMMAND + OPTION + I bzw. STRG + ALT + I oder folgendem Button:\n\n\n\nNeuer Chunk per GUI\n\n\nkönnt ihr neue Chunks hinzufügen.\n\n\n\n\n\n\nAufgabe\n\n\n\nFügt nun einen Chunk hinzu, und schreibt dort 4+5 hinein:\n\n\n\n4+5\n\n[1] 9\n\n\n\n\n\n\n\n\nAufgabe\n\n\n\nFügt nun die gleiche Rechenaufgabe hinzu, ohne einen neuen Chunk zu erzeugen:\n\n\n4+5\n\n\n\n\n\n\nFrage\n\n\n\nWas fällt auf?\n\n\nWenn ihr nun rendert seht ihr, dass im ersten Fall der Code zu sehen ist, sowie das Ergebnis der Berechnung. Im zweiten Fall dagegen sehen wir nur die Rechnung, sie wurde aber nicht von R evaluiert. Das liegt daran, dass dies nur Markdown-Text war, also kein Code. Code wird also bis auf weiteres nur innerhalb von Chunks ausgeführt.\nNicht immer (eigentlich sehr selten) wollen wir erst rendern, um das Ergebnis unserer Berechnungen zu sehen. Äquivalent zu R-Skripten können wir Code direkt in R-Studio ausführen. Auch dazu können wir unsere gewohnte Tastenkombination STRG + ENTER oder COMMAND + ENTER benutzen, oder oben aus den Play-Button im Chunk drücken (dann wird der ganze Chunk ausgeführt). Das Ganze sieht dann so aus:\n\n\n\nIn R-Studio ausgeführter Code mit Quarto\n\n\n\nNächste Session\nDas war’s mit dieser Session. In der nächsten Session geht es um Syntax & Datentypen.",
+    "crumbs": [
+      "Home",
+      "Program",
+      "Basics"
+    ]
   }
 ]
