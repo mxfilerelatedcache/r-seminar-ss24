@@ -1,0 +1,35 @@
+/* css styles */
+
+.title{
+  color: white;
+  background-color: #996633;
+  border-radius: 20px;
+  padding:10px;
+  width: 9em;
+  text-align: center;
+}
+
+.btn-primary{
+  border-radius: 10px;
+  border-style: none;
+}
+
+.next{
+  border-radius: 30px;
+  transition: all 0.25s;
+}
+
+
+.download_table{
+  width: 70%;
+}
+
+.download{
+  transition: all 0.25s;
+}
+
+.download:hover{
+   cursor: pointer;
+  filter: brightness(97%);
+  transform: scale(1.01);
+}

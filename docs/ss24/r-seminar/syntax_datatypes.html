@@ -140,8 +140,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./slides.qmd"> 
-<span class="menu-text">Seminarfolien</span></a>
+    <a class="nav-link active" href="./pipeline.html" aria-current="page"> 
+<span class="menu-text">Pipeline</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./contact.qmd"> 
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./import.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Import</span></a>
   </div>
 </li>
@@ -262,13 +262,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./base_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Base R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./tidy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tidy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transform.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transform</span></a>
   </div>
 </li>
@@ -335,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax">Syntax</a>
+  <li><a href="#einleitung" id="toc-einleitung" class="nav-link active" data-scroll-target="#einleitung">Einleitung</a>
   <ul class="collapse">
   <li><a href="#rechenoperatoren" id="toc-rechenoperatoren" class="nav-link" data-scroll-target="#rechenoperatoren">(Rechen)operatoren</a></li>
   <li><a href="#datentypen" id="toc-datentypen" class="nav-link" data-scroll-target="#datentypen">Datentypen</a></li>
@@ -381,8 +387,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Studentin, die endlich versteht, wie die R-Syntax funktioniert</figcaption>
 </figure>
 </div>
-<section id="syntax" class="level2">
-<h2 class="anchored" data-anchor-id="syntax">Syntax</h2>
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
 <p>Die Syntax von <strong>R</strong> ist relativ simpel. Als interpretierte Sprache (im Gegensatz zu kompilierten Sprachen wie C oder Java) müsst ihr nicht erst etwaige Klassen oder Objekte erzeugen und den Code kompilieren, um loszulegen, sondern könnt einzelne Zeilen direkt ausführen. Da es eine Statistiksoftware ist, wurden <strong>R</strong> quasi die Möglichkeiten statistischen Fragestellungen nachzugehen in die Wiege gelegt. Dazu gehört also auch die schnelle Berechnung einer mathematischen Aufgabe, wie wir bspw. letzte Woche gesehen haben:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

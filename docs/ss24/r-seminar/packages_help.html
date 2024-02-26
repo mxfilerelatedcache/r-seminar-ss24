@@ -140,8 +140,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./slides.qmd"> 
-<span class="menu-text">Seminarfolien</span></a>
+    <a class="nav-link active" href="./pipeline.html" aria-current="page"> 
+<span class="menu-text">Pipeline</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./contact.qmd"> 
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./import.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Import</span></a>
   </div>
 </li>
@@ -262,13 +262,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./base_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Base R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./tidy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tidy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transform.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transform</span></a>
   </div>
 </li>
@@ -335,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a>
+  <li><a href="#einleitung" id="toc-einleitung" class="nav-link active" data-scroll-target="#einleitung">Einleitung</a>
   <ul class="collapse">
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#aktivierung" id="toc-aktivierung" class="nav-link" data-scroll-target="#aktivierung">Aktivierung</a></li>
@@ -383,8 +389,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Studentin, die realisiert, dass R durch seine Packages unschlagbar ist.</figcaption>
 </figure>
 </div>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
 <p>Ein großer Vorteil von R sind die zahlreichen Packages, die es für fast jeden Anwendungsfall gibt und die sehr leicht über das Repository-System CRAN (Comprehensive R Archive Network) heruntergeladen werden können. Base-R (quasi frisch nach Installation) verfügt nur über einige wenige Packages. Ein Klick auf <strong>Packages</strong> unten rechts kann euch einen Überblick über installierte &amp; aktivierte Packages geben.</p>
 <p><img src="images/Screenshot 2024-02-22 at 11.30.33.png" class="img-fluid" width="300"></p>
 <p>Base-R ist zwar ein sehr gutes Tool mit dem wir viele Fragestellungen lösen können (Data Wrangling und Visualisierung), allerdings ist deren Anwendung manchmal etwas umständlich bzw. im Funktionsumfang dann doch eingeschränkt. Daher bietet es sich besonders an, Packages zu benutzen. Neben besonders hilfreichen und zentralen Packages wie bspw. <code>dplyr</code>, <code>ggplot</code> oder <code>tidyr</code> gibt es auch auf verschiedene Forschungsdomänen oder spezifische Datenanalyseaufgaben zugeschnittene Packages.</p>
@@ -449,7 +455,7 @@ Frage
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">help</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Im Hilfereiter befindet sich dann doe Dokumentation. Alternativ wäre diese auch im <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html">Web</a> zu finden. Nach gleichem Prinzip können wir auch die Dokumentation ganzer Packages beziehen:</p>
+<p>Im Hilfereiter befindet sich dann die Dokumentation. Alternativ wäre diese auch im <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html">Web</a> zu finden. Nach gleichem Prinzip können wir auch die Dokumentation ganzer Packages beziehen:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -466,7 +472,7 @@ Frage
 <section id="nächste-session" class="level3">
 <h3 class="anchored" data-anchor-id="nächste-session">Nächste Session</h3>
 <p>Das war’s mit dieser Session. In der nächsten Session geht es um den Import von Daten.</p>
-<p><a href="import.qmd"><img src="assets/img/next3.png" class="next img-fluid" width="300"></a></p>
+<p><a href="./import.html"><img src="assets/img/next3.png" class="next img-fluid" width="300"></a></p>
 
 
 </section>

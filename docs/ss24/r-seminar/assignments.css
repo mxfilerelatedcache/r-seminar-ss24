@@ -1,0 +1,14 @@
+/* css styles */
+
+.next{
+  transition: all 0.25s;
+}
+
+.next:hover{
+  filter: brightness(95%);
+  transform: scale(1.01);
+}
+
+.assignments_table{
+  width: 70%;
+}
