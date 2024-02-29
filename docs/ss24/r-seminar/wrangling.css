@@ -20,7 +20,7 @@
 }
 
 .next:hover{
-  filter: brightness(97%);
+  filter: brightness(99%);
   transform: scale(1.01);
 }
 
@@ -34,6 +34,6 @@
 
 .download:hover{
    cursor: pointer;
-  filter: brightness(97%);
+  filter: brightness(99%);
   transform: scale(1.01);
 }

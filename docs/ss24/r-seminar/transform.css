@@ -19,6 +19,14 @@
   transition: all 0.25s;
 }
 
+.next:hover{
+  filter: brightness(99%);
+  transform: scale(1.01);
+}
+
+.construction{
+  border-radius: 30px;
+}
 
 .download_table{
   width: 70%;
@@ -30,6 +38,6 @@
 
 .download:hover{
    cursor: pointer;
-  filter: brightness(97%);
+  filter: brightness(99%);
   transform: scale(1.01);
 }

@@ -1,0 +1,47 @@
+/* css styles */
+
+.title{
+  color: white;
+  background-color: #00933c;
+  border-radius: 20px;
+  /*
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fccc0a;
+  */
+  padding:10px;
+  width: 9em;
+  text-align: center;
+}
+
+.next{
+  border-radius: 30px;
+  transition: all 0.25s;
+}
+
+.next:hover{
+  filter: brightness(97%);
+  transform: scale(1.01);
+}
+
+.download{
+  transition: all 0.25s;
+}
+
+.download:hover{
+  cursor: pointer;
+  filter: brightness(99%);
+  transform: scale(1.01);
+}
+
+.cheatsheet{
+   border-radius: 10px;
+   transition: all 0.25s;
+   box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.1);
+}
+
+.cheatsheet:hover{
+  cursor: pointer;
+  filter: brightness(99%);
+  transform: scale(1.01);
+}

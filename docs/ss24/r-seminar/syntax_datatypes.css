@@ -23,6 +23,6 @@
 }
 
 .next:hover{
-  filter: brightness(95%);
+  filter: brightness(99%);
   transform: scale(1.01);
 }

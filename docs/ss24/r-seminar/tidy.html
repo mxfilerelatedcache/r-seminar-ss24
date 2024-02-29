@@ -8,7 +8,7 @@
 
 <meta name="author" content="Simon Krukowski">
 
-<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Tidy</title>
+<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Tidy: tidyr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,6 +101,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -108,6 +144,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link active" href="./pipeline.html" aria-current="page"> 
 <span class="menu-text">Pipeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cheatsheets.html"> 
+<span class="menu-text">Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./contact.qmd"> 
@@ -257,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visualise.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./visualise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualise</span></a>
   </div>
 </li>
@@ -274,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./model.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model</span></a>
   </div>
 </li>
@@ -303,14 +343,34 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#einleitung" id="toc-einleitung" class="nav-link active" data-scroll-target="#einleitung">Einleitung</a></li>
+  <li><a href="#tidying" id="toc-tidying" class="nav-link" data-scroll-target="#tidying">Tidying</a>
+  <ul class="collapse">
+  <li><a href="#einlesen-verstehen" id="toc-einlesen-verstehen" class="nav-link" data-scroll-target="#einlesen-verstehen">Einlesen &amp; verstehen</a></li>
+  <li><a href="#probleme" id="toc-probleme" class="nav-link" data-scroll-target="#probleme">Probleme</a></li>
+  </ul></li>
+  <li><a href="#daten-säubern" id="toc-daten-säubern" class="nav-link" data-scroll-target="#daten-säubern">Daten säubern</a>
+  <ul class="collapse">
+  <li><a href="#spalten-entfernen" id="toc-spalten-entfernen" class="nav-link" data-scroll-target="#spalten-entfernen">Spalten entfernen</a></li>
+  <li><a href="#spalten-umbenennen" id="toc-spalten-umbenennen" class="nav-link" data-scroll-target="#spalten-umbenennen">Spalten umbenennen</a></li>
+  <li><a href="#spaltennamen-ändern" id="toc-spaltennamen-ändern" class="nav-link" data-scroll-target="#spaltennamen-ändern">Spaltennamen ändern</a></li>
+  <li><a href="#datentyp-ändern" id="toc-datentyp-ändern" class="nav-link" data-scroll-target="#datentyp-ändern">Datentyp ändern</a></li>
+  <li><a href="#spalten-aufteilen" id="toc-spalten-aufteilen" class="nav-link" data-scroll-target="#spalten-aufteilen">Spalten aufteilen</a></li>
+  <li><a href="#nächste-session" id="toc-nächste-session" class="nav-link" data-scroll-target="#nächste-session">Nächste Session</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./base_r.html">Wrangle</a></li><li class="breadcrumb-item"><a href="./tidy.html">Tidy</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Tidy</h1>
+<h1 class="title">Tidy: tidyr</h1>
 </div>
 
 
@@ -333,9 +393,432 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Blablabla</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="assets/img/student_tidying.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="300"></p>
+<figcaption>Bemühte Studentin, die gerade Daten reinigt (fast)</figcaption>
+</figure>
+</div>
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
+<p>Daten sind leider nicht immer so schön sauber wie in vielen Beispieldatensätzen. Oft passen die Variablennamen nicht oder sind irreführend, Spalten sind falsch kodiert oder enthalten den falschen Datentyp, oder es liegen noch grundlegendere Probleme vor.</p>
+<p>Als echte R-Data Scientists müssen wir damit natürlich umgehen können. Auch hier gibt es sowohl in Base-R, vor allem aber auch durch die Packages <code>tidyr</code> und <code>stringr</code> aus dem <code>tidyverse</code> Package eine Vielzahl an Möglichkeiten und Funktionen, mit “unsauberen” Daten umzugehen. Das Ziel dieser Session soll sein, einige Funktionen dieser Packages kennenzulernen, um eine Grundlage für selbstständige Recherche in der Zukunft zu schaffen. Hier aber noch ein paar Infos zu den Packages:</p>
+<blockquote class="blockquote">
+<h3 id="tidyr" class="anchored"><a href="https://tidyr.tidyverse.org"><strong>tidyr</strong></a></h3>
+<p>The goal of tidyr is to help you create <strong>tidy data</strong>. Tidy data is data where:</p>
+<ol type="1">
+<li><p>Each variable is a column; each column is a variable.</p></li>
+<li><p>Each observation is a row; each row is an observation.</p></li>
+<li><p>Each value is a cell; each cell is a single value.</p></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<h3 id="stringr" class="anchored"><a href="https://stringr.tidyverse.org">stringr</a></h3>
+<p>Strings are not glamorous, high-profile components of R, but they do play a big role in many data cleaning and preparation tasks. The stringr package provides a cohesive set of functions designed to make working with strings as easy as possible</p>
+</blockquote>
+<p>Beide Packages sind über <code>library(tidyverse)</code> bereits in eurem Environment aktiviert und müssen nicht nochmal gesondert aktiviert werden.</p>
+</section>
+<section id="tidying" class="level2">
+<h2 class="anchored" data-anchor-id="tidying">Tidying</h2>
+<section id="einlesen-verstehen" class="level3">
+<h3 class="anchored" data-anchor-id="einlesen-verstehen">Einlesen &amp; verstehen</h3>
+<p>Zu Übungszwecken haben wir einen “messy” Datensatz vorbereitet, speziell den <code>iris</code> Datensatz, welchen wir bereits kennen. Ladet diesen herunter und anschließend in euer Environment:</p>
+<p><a href="assets/datasets/iris/iris_messy.csv"><img src="assets/img/messy_data.png" class="download img-fluid" width="100"></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um die .csv Datei herunterzuladen, klickt ihr mit der rechten Maustaste auf den Link und klickt auf <em>Verknüpfte Datei speichern unter</em></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"assets/datasets/iris/iris_messy.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Benutzt hier bitte die Base-R <code>read.csv(x)</code> Funktion, anstatt der <code>dplyr</code> read_csv(x) Funktion, da wir den Datensatz so wie er ist importieren wollen.</p>
+</div>
+</div>
+<p>Und werfen einen schnellen Blick auf die Daten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["X"],"name":[1],"type":["int"],"align":["right"]},{"label":["VARIABLE.SEPAL_LENGTH"],"name":[2],"type":["chr"],"align":["left"]},{"label":["VARIABLE.SEPAL_WIDTH"],"name":[3],"type":["chr"],"align":["left"]},{"label":["VARIABLE.PETAL_LENGTH"],"name":[4],"type":["chr"],"align":["left"]},{"label":["VARIABLE.PETAL_WIDTH"],"name":[5],"type":["chr"],"align":["left"]},{"label":["type"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"5,1","3":"3,5","4":"1,4","5":"0,2","6":"setosa-white","_rn_":"1"},{"1":"2","2":"4,9","3":"3","4":"1,4","5":"0,2","6":"setosa-blue","_rn_":"2"},{"1":"3","2":"4,7","3":"3,2","4":"1,3","5":"0,2","6":"setosa-blue","_rn_":"3"},{"1":"4","2":"4,6","3":"3,1","4":"1,5","5":"0,2","6":"setosa-purple","_rn_":"4"},{"1":"5","2":"5","3":"3,6","4":"1,4","5":"0,2","6":"setosa-purple","_rn_":"5"},{"1":"6","2":"5,4","3":"3,9","4":"1,7","5":"0,4","6":"setosa-purple","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wir benutzen hier die <code>head(x)</code> Funktion, um nicht das ganze Dataframe anzuzeigen.</p>
+</div>
+</div>
+<p>Ein genauerer Blick zeigt, dass hier einige Probleme vorliegen.</p>
+</section>
+<section id="probleme" class="level3">
+<h3 class="anchored" data-anchor-id="probleme">Probleme</h3>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Frage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Was für Probleme gibt es?</p>
+</div>
+</div>
+<p>Richtig, es gibt insgesamt 5 Probleme:</p>
+<ol type="1">
+<li><p>Spalte <code>X</code> mit Zeilennummern brauchen wir nicht</p></li>
+<li><p>Variablennamen sind großgeschrieben</p></li>
+<li><p><code>VARIABLE.(..)</code> vor den Blattgrößen brauchen wir nicht</p></li>
+<li><p>Die Variablen sind nicht <code>numeric</code>, und wir haben das falsche Dezimaltrennzeichen (<code>,</code> anstatt <code>.</code>)</p></li>
+<li><p>Die spalte <code>type</code> hilft uns so nicht weiter, da wir einzelne Informationen zu <code>species</code> und <code>color</code> brauchen</p></li>
+</ol>
+<p>Aber keine Sorge! Wir nehmen uns all dieser Probleme in dieser Session an.</p>
+</section>
+</section>
+<section id="daten-säubern" class="level2">
+<h2 class="anchored" data-anchor-id="daten-säubern">Daten säubern</h2>
+<section id="spalten-entfernen" class="level3">
+<h3 class="anchored" data-anchor-id="spalten-entfernen">Spalten entfernen</h3>
+<p>Unser erstes Problem können wir bereits mit unserem Wissen aus der letzten Session lösen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aufgabe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Entfernt die Spalte <code>X</code> aus dem Datensatz und speichert diesen in eurem Environment.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="sc">-</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Super!</p>
+</section>
+<section id="spalten-umbenennen" class="level3">
+<h3 class="anchored" data-anchor-id="spalten-umbenennen">Spalten umbenennen</h3>
+<p>Auch das zweite Problem können wir mit einer Funktion aus der letzten Session lösen - denkt hier vor allem an die <code>rename(x)</code> Funktion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aufgabe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ändert alle Variablennamen in Kleinschreibung</p>
+</div>
+</div>
+<p>Hier können wir uns der <code>rename(x)</code> Funktion aus der letzten Session bedienen, und manuell die Variablennamen ändern:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">variable_sepal_length =</span> VARIABLE.SEPAL_LENGTH,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">variable_sepal_width =</span> VARIABLE.SEPAL_WIDTH,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">variable_petal_length =</span> VARIABLE.PETAL_LENGTH,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">variable_petal_width =</span> VARIABLE.PETAL_WIDTH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["variable_sepal_length"],"name":[1],"type":["chr"],"align":["left"]},{"label":["variable_sepal_width"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable_petal_length"],"name":[3],"type":["chr"],"align":["left"]},{"label":["variable_petal_width"],"name":[4],"type":["chr"],"align":["left"]},{"label":["type"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"5,1","2":"3,5","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,9","2":"3","3":"1,4","4":"0,2","5":"setosa-blue"},{"1":"4,7","2":"3,2","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"4,6","2":"3,1","3":"1,5","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,6","3":"1,4","4":"0,2","5":"setosa-purple"},{"1":"5,4","2":"3,9","3":"1,7","4":"0,4","5":"setosa-purple"},{"1":"4,6","2":"3,4","3":"1,4","4":"0,3","5":"setosa-white"},{"1":"5","2":"3,4","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"4,4","2":"2,9","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-purple"},{"1":"5,4","2":"3,7","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"4,8","2":"3,4","3":"1,6","4":"0,2","5":"setosa-white"},{"1":"4,8","2":"3","3":"1,4","4":"0,1","5":"setosa-white"},{"1":"4,3","2":"3","3":"1,1","4":"0,1","5":"setosa-white"},{"1":"5,8","2":"4","3":"1,2","4":"0,2","5":"setosa-blue"},{"1":"5,7","2":"4,4","3":"1,5","4":"0,4","5":"setosa-blue"},{"1":"5,4","2":"3,9","3":"1,3","4":"0,4","5":"setosa-purple"},{"1":"5,1","2":"3,5","3":"1,4","4":"0,3","5":"setosa-blue"},{"1":"5,7","2":"3,8","3":"1,7","4":"0,3","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,5","4":"0,3","5":"setosa-blue"},{"1":"5,4","2":"3,4","3":"1,7","4":"0,2","5":"setosa-blue"},{"1":"5,1","2":"3,7","3":"1,5","4":"0,4","5":"setosa-purple"},{"1":"4,6","2":"3,6","3":"1","4":"0,2","5":"setosa-purple"},{"1":"5,1","2":"3,3","3":"1,7","4":"0,5","5":"setosa-purple"},{"1":"4,8","2":"3,4","3":"1,9","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"5","2":"3,4","3":"1,6","4":"0,4","5":"setosa-purple"},{"1":"5,2","2":"3,5","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"5,2","2":"3,4","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,7","2":"3,2","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"4,8","2":"3,1","3":"1,6","4":"0,2","5":"setosa-purple"},{"1":"5,4","2":"3,4","3":"1,5","4":"0,4","5":"setosa-blue"},{"1":"5,2","2":"4,1","3":"1,5","4":"0,1","5":"setosa-white"},{"1":"5,5","2":"4,2","3":"1,4","4":"0,2","5":"setosa-purple"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-white"},{"1":"5","2":"3,2","3":"1,2","4":"0,2","5":"setosa-blue"},{"1":"5,5","2":"3,5","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-purple"},{"1":"4,4","2":"3","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"5,1","2":"3,4","3":"1,5","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,5","3":"1,3","4":"0,3","5":"setosa-purple"},{"1":"4,5","2":"2,3","3":"1,3","4":"0,3","5":"setosa-white"},{"1":"4,4","2":"3,2","3":"1,3","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,5","3":"1,6","4":"0,6","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,9","4":"0,4","5":"setosa-white"},{"1":"4,8","2":"3","3":"1,4","4":"0,3","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"4,6","2":"3,2","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"5,3","2":"3,7","3":"1,5","4":"0,2","5":"setosa-blue"},{"1":"5","2":"3,3","3":"1,4","4":"0,2","5":"setosa-blue"},{"1":"7","2":"3,2","3":"4,7","4":"1,4","5":"versicolor-blue"},{"1":"6,4","2":"3,2","3":"4,5","4":"1,5","5":"versicolor-blue"},{"1":"6,9","2":"3,1","3":"4,9","4":"1,5","5":"versicolor-white"},{"1":"5,5","2":"2,3","3":"4","4":"1,3","5":"versicolor-white"},{"1":"6,5","2":"2,8","3":"4,6","4":"1,5","5":"versicolor-white"},{"1":"5,7","2":"2,8","3":"4,5","4":"1,3","5":"versicolor-purple"},{"1":"6,3","2":"3,3","3":"4,7","4":"1,6","5":"versicolor-purple"},{"1":"4,9","2":"2,4","3":"3,3","4":"1","5":"versicolor-white"},{"1":"6,6","2":"2,9","3":"4,6","4":"1,3","5":"versicolor-blue"},{"1":"5,2","2":"2,7","3":"3,9","4":"1,4","5":"versicolor-white"},{"1":"5","2":"2","3":"3,5","4":"1","5":"versicolor-blue"},{"1":"5,9","2":"3","3":"4,2","4":"1,5","5":"versicolor-white"},{"1":"6","2":"2,2","3":"4","4":"1","5":"versicolor-blue"},{"1":"6,1","2":"2,9","3":"4,7","4":"1,4","5":"versicolor-purple"},{"1":"5,6","2":"2,9","3":"3,6","4":"1,3","5":"versicolor-blue"},{"1":"6,7","2":"3,1","3":"4,4","4":"1,4","5":"versicolor-white"},{"1":"5,6","2":"3","3":"4,5","4":"1,5","5":"versicolor-white"},{"1":"5,8","2":"2,7","3":"4,1","4":"1","5":"versicolor-blue"},{"1":"6,2","2":"2,2","3":"4,5","4":"1,5","5":"versicolor-blue"},{"1":"5,6","2":"2,5","3":"3,9","4":"1,1","5":"versicolor-purple"},{"1":"5,9","2":"3,2","3":"4,8","4":"1,8","5":"versicolor-white"},{"1":"6,1","2":"2,8","3":"4","4":"1,3","5":"versicolor-white"},{"1":"6,3","2":"2,5","3":"4,9","4":"1,5","5":"versicolor-purple"},{"1":"6,1","2":"2,8","3":"4,7","4":"1,2","5":"versicolor-white"},{"1":"6,4","2":"2,9","3":"4,3","4":"1,3","5":"versicolor-purple"},{"1":"6,6","2":"3","3":"4,4","4":"1,4","5":"versicolor-blue"},{"1":"6,8","2":"2,8","3":"4,8","4":"1,4","5":"versicolor-white"},{"1":"6,7","2":"3","3":"5","4":"1,7","5":"versicolor-purple"},{"1":"6","2":"2,9","3":"4,5","4":"1,5","5":"versicolor-purple"},{"1":"5,7","2":"2,6","3":"3,5","4":"1","5":"versicolor-purple"},{"1":"5,5","2":"2,4","3":"3,8","4":"1,1","5":"versicolor-purple"},{"1":"5,5","2":"2,4","3":"3,7","4":"1","5":"versicolor-white"},{"1":"5,8","2":"2,7","3":"3,9","4":"1,2","5":"versicolor-purple"},{"1":"6","2":"2,7","3":"5,1","4":"1,6","5":"versicolor-white"},{"1":"5,4","2":"3","3":"4,5","4":"1,5","5":"versicolor-purple"},{"1":"6","2":"3,4","3":"4,5","4":"1,6","5":"versicolor-white"},{"1":"6,7","2":"3,1","3":"4,7","4":"1,5","5":"versicolor-white"},{"1":"6,3","2":"2,3","3":"4,4","4":"1,3","5":"versicolor-purple"},{"1":"5,6","2":"3","3":"4,1","4":"1,3","5":"versicolor-purple"},{"1":"5,5","2":"2,5","3":"4","4":"1,3","5":"versicolor-blue"},{"1":"5,5","2":"2,6","3":"4,4","4":"1,2","5":"versicolor-purple"},{"1":"6,1","2":"3","3":"4,6","4":"1,4","5":"versicolor-purple"},{"1":"5,8","2":"2,6","3":"4","4":"1,2","5":"versicolor-purple"},{"1":"5","2":"2,3","3":"3,3","4":"1","5":"versicolor-white"},{"1":"5,6","2":"2,7","3":"4,2","4":"1,3","5":"versicolor-purple"},{"1":"5,7","2":"3","3":"4,2","4":"1,2","5":"versicolor-blue"},{"1":"5,7","2":"2,9","3":"4,2","4":"1,3","5":"versicolor-white"},{"1":"6,2","2":"2,9","3":"4,3","4":"1,3","5":"versicolor-blue"},{"1":"5,1","2":"2,5","3":"3","4":"1,1","5":"versicolor-white"},{"1":"5,7","2":"2,8","3":"4,1","4":"1,3","5":"versicolor-purple"},{"1":"6,3","2":"3,3","3":"6","4":"2,5","5":"virginica-purple"},{"1":"5,8","2":"2,7","3":"5,1","4":"1,9","5":"virginica-blue"},{"1":"7,1","2":"3","3":"5,9","4":"2,1","5":"virginica-blue"},{"1":"6,3","2":"2,9","3":"5,6","4":"1,8","5":"virginica-purple"},{"1":"6,5","2":"3","3":"5,8","4":"2,2","5":"virginica-blue"},{"1":"7,6","2":"3","3":"6,6","4":"2,1","5":"virginica-white"},{"1":"4,9","2":"2,5","3":"4,5","4":"1,7","5":"virginica-purple"},{"1":"7,3","2":"2,9","3":"6,3","4":"1,8","5":"virginica-white"},{"1":"6,7","2":"2,5","3":"5,8","4":"1,8","5":"virginica-white"},{"1":"7,2","2":"3,6","3":"6,1","4":"2,5","5":"virginica-purple"},{"1":"6,5","2":"3,2","3":"5,1","4":"2","5":"virginica-purple"},{"1":"6,4","2":"2,7","3":"5,3","4":"1,9","5":"virginica-blue"},{"1":"6,8","2":"3","3":"5,5","4":"2,1","5":"virginica-white"},{"1":"5,7","2":"2,5","3":"5","4":"2","5":"virginica-white"},{"1":"5,8","2":"2,8","3":"5,1","4":"2,4","5":"virginica-blue"},{"1":"6,4","2":"3,2","3":"5,3","4":"2,3","5":"virginica-white"},{"1":"6,5","2":"3","3":"5,5","4":"1,8","5":"virginica-white"},{"1":"7,7","2":"3,8","3":"6,7","4":"2,2","5":"virginica-blue"},{"1":"7,7","2":"2,6","3":"6,9","4":"2,3","5":"virginica-purple"},{"1":"6","2":"2,2","3":"5","4":"1,5","5":"virginica-purple"},{"1":"6,9","2":"3,2","3":"5,7","4":"2,3","5":"virginica-purple"},{"1":"5,6","2":"2,8","3":"4,9","4":"2","5":"virginica-white"},{"1":"7,7","2":"2,8","3":"6,7","4":"2","5":"virginica-white"},{"1":"6,3","2":"2,7","3":"4,9","4":"1,8","5":"virginica-white"},{"1":"6,7","2":"3,3","3":"5,7","4":"2,1","5":"virginica-purple"},{"1":"7,2","2":"3,2","3":"6","4":"1,8","5":"virginica-white"},{"1":"6,2","2":"2,8","3":"4,8","4":"1,8","5":"virginica-purple"},{"1":"6,1","2":"3","3":"4,9","4":"1,8","5":"virginica-purple"},{"1":"6,4","2":"2,8","3":"5,6","4":"2,1","5":"virginica-blue"},{"1":"7,2","2":"3","3":"5,8","4":"1,6","5":"virginica-blue"},{"1":"7,4","2":"2,8","3":"6,1","4":"1,9","5":"virginica-blue"},{"1":"7,9","2":"3,8","3":"6,4","4":"2","5":"virginica-blue"},{"1":"6,4","2":"2,8","3":"5,6","4":"2,2","5":"virginica-purple"},{"1":"6,3","2":"2,8","3":"5,1","4":"1,5","5":"virginica-blue"},{"1":"6,1","2":"2,6","3":"5,6","4":"1,4","5":"virginica-blue"},{"1":"7,7","2":"3","3":"6,1","4":"2,3","5":"virginica-white"},{"1":"6,3","2":"3,4","3":"5,6","4":"2,4","5":"virginica-purple"},{"1":"6,4","2":"3,1","3":"5,5","4":"1,8","5":"virginica-white"},{"1":"6","2":"3","3":"4,8","4":"1,8","5":"virginica-blue"},{"1":"6,9","2":"3,1","3":"5,4","4":"2,1","5":"virginica-purple"},{"1":"6,7","2":"3,1","3":"5,6","4":"2,4","5":"virginica-purple"},{"1":"6,9","2":"3,1","3":"5,1","4":"2,3","5":"virginica-white"},{"1":"5,8","2":"2,7","3":"5,1","4":"1,9","5":"virginica-blue"},{"1":"6,8","2":"3,2","3":"5,9","4":"2,3","5":"virginica-blue"},{"1":"6,7","2":"3,3","3":"5,7","4":"2,5","5":"virginica-blue"},{"1":"6,7","2":"3","3":"5,2","4":"2,3","5":"virginica-white"},{"1":"6,3","2":"2,5","3":"5","4":"1,9","5":"virginica-blue"},{"1":"6,5","2":"3","3":"5,2","4":"2","5":"virginica-white"},{"1":"6,2","2":"3,4","3":"5,4","4":"2,3","5":"virginica-blue"},{"1":"5,9","2":"3","3":"5,1","4":"1,8","5":"virginica-blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Der R-Weg wäre aber eher, das Ganze programmatisch zu lösen. Dazu bieten sich die Funktionen <code>str_to_lower(x)</code> und <code>rename_with(x)</code> aus den <code>dplyr</code> und <code>stringr</code> Packages an. Deren Syntax ist wie folgt:</p>
+<p>Mit <code>str_to_lower(str)</code> können wir einen String bzw. <code>character</code> in Kleinschreibung umwandeln:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(<span class="st">"TEST"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "test"</code></pre>
+</div>
+</div>
+<p>Wir sehen, die Funktion bekommt einen String, ändert diesen und gibt ihn dann Kleinschreibung zurück.</p>
+<p><code>rename_with(x)</code> von <code>dplyr</code> dagegen ist quasi eine Erweiterung von <code>rename(x)</code>, mit der wir eine Funktion zum umbenennen von Variablennamen in Dataframes verwenden können:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rename_with</span>(.,str_to_lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn eine Funktion eigentlich ein Dataframe als Parameter erwartet (wie <code>rename_with(dataframe, function)</code>) und wir uns aber in einer Pipe befinden, können wir einen Punkt <code>.</code> anstatt des Dataframes nehmen.</p>
+</div>
+</div>
+<p>Super! Das zweite Problem haben wir nun auch gelöst.</p>
+</section>
+<section id="spaltennamen-ändern" class="level3">
+<h3 class="anchored" data-anchor-id="spaltennamen-ändern">Spaltennamen ändern</h3>
+<p>Leider hat jede unserer Blattgrößen-Variablen immer noch den String <code>variable.</code> voranstehen. Das wollen wir ändern, und auch hierbei hilft uns <code>stringr</code> in Kombination mit <code>rename_with(x)</code>. Die betreffende Funktion ist die <code>str_replace(x)</code> Funktion. Diese funktioniert nach folgender Syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(string, pattern, replacement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Wobei <code>string</code> der zu ändernde String ist, <code>pattern</code> das, wonach wir suchen und <code>replacement</code> unser Ersatz ist.</p>
+<p>Hier ein konkretes Beispiel:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>str <span class="ot">&lt;-</span> <span class="st">"This is bananas"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(str, <span class="st">"is"</span>, <span class="st">"was"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Thwas is bananas"</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Frage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Warum sieht der geänderte String nun so aus?</p>
+</div>
+</div>
+<p>Da <code>str_replace</code> natürlich jedes Vorkommen von “is” ersetzt, wird das “is” in “This” ersetzt. Allerdings bleibt das zweite Vorkommen von “is” nicht ersetzt. Das liegt daran, dass <code>str_replace(x)</code> nur das <strong>erste Vorkommen</strong> ersetzt. Wollen wir alle Vorkommen ändern, müssen wir <code>str_replace_all(x)</code> benutzen. Das ist in unserem Beispiel aber nicht nötig.</p>
+<p>Kombinieren wir nun also die <code>str_replace(x)</code> Funktion mit der <code>rename_with(x)</code> Funktion, um unseren Datensatz zu ändern.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rename_with</span>(., <span class="sc">~</span> <span class="fu">str_replace</span>(.,<span class="st">"variable."</span>,<span class="st">""</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>iris_messy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["sepal_length"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sepal_width"],"name":[2],"type":["chr"],"align":["left"]},{"label":["petal_length"],"name":[3],"type":["chr"],"align":["left"]},{"label":["petal_width"],"name":[4],"type":["chr"],"align":["left"]},{"label":["type"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"5,1","2":"3,5","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,9","2":"3","3":"1,4","4":"0,2","5":"setosa-blue"},{"1":"4,7","2":"3,2","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"4,6","2":"3,1","3":"1,5","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,6","3":"1,4","4":"0,2","5":"setosa-purple"},{"1":"5,4","2":"3,9","3":"1,7","4":"0,4","5":"setosa-purple"},{"1":"4,6","2":"3,4","3":"1,4","4":"0,3","5":"setosa-white"},{"1":"5","2":"3,4","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"4,4","2":"2,9","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-purple"},{"1":"5,4","2":"3,7","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"4,8","2":"3,4","3":"1,6","4":"0,2","5":"setosa-white"},{"1":"4,8","2":"3","3":"1,4","4":"0,1","5":"setosa-white"},{"1":"4,3","2":"3","3":"1,1","4":"0,1","5":"setosa-white"},{"1":"5,8","2":"4","3":"1,2","4":"0,2","5":"setosa-blue"},{"1":"5,7","2":"4,4","3":"1,5","4":"0,4","5":"setosa-blue"},{"1":"5,4","2":"3,9","3":"1,3","4":"0,4","5":"setosa-purple"},{"1":"5,1","2":"3,5","3":"1,4","4":"0,3","5":"setosa-blue"},{"1":"5,7","2":"3,8","3":"1,7","4":"0,3","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,5","4":"0,3","5":"setosa-blue"},{"1":"5,4","2":"3,4","3":"1,7","4":"0,2","5":"setosa-blue"},{"1":"5,1","2":"3,7","3":"1,5","4":"0,4","5":"setosa-purple"},{"1":"4,6","2":"3,6","3":"1","4":"0,2","5":"setosa-purple"},{"1":"5,1","2":"3,3","3":"1,7","4":"0,5","5":"setosa-purple"},{"1":"4,8","2":"3,4","3":"1,9","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"5","2":"3,4","3":"1,6","4":"0,4","5":"setosa-purple"},{"1":"5,2","2":"3,5","3":"1,5","4":"0,2","5":"setosa-white"},{"1":"5,2","2":"3,4","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"4,7","2":"3,2","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"4,8","2":"3,1","3":"1,6","4":"0,2","5":"setosa-purple"},{"1":"5,4","2":"3,4","3":"1,5","4":"0,4","5":"setosa-blue"},{"1":"5,2","2":"4,1","3":"1,5","4":"0,1","5":"setosa-white"},{"1":"5,5","2":"4,2","3":"1,4","4":"0,2","5":"setosa-purple"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-white"},{"1":"5","2":"3,2","3":"1,2","4":"0,2","5":"setosa-blue"},{"1":"5,5","2":"3,5","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"4,9","2":"3,1","3":"1,5","4":"0,1","5":"setosa-purple"},{"1":"4,4","2":"3","3":"1,3","4":"0,2","5":"setosa-blue"},{"1":"5,1","2":"3,4","3":"1,5","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,5","3":"1,3","4":"0,3","5":"setosa-purple"},{"1":"4,5","2":"2,3","3":"1,3","4":"0,3","5":"setosa-white"},{"1":"4,4","2":"3,2","3":"1,3","4":"0,2","5":"setosa-purple"},{"1":"5","2":"3,5","3":"1,6","4":"0,6","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,9","4":"0,4","5":"setosa-white"},{"1":"4,8","2":"3","3":"1,4","4":"0,3","5":"setosa-blue"},{"1":"5,1","2":"3,8","3":"1,6","4":"0,2","5":"setosa-blue"},{"1":"4,6","2":"3,2","3":"1,4","4":"0,2","5":"setosa-white"},{"1":"5,3","2":"3,7","3":"1,5","4":"0,2","5":"setosa-blue"},{"1":"5","2":"3,3","3":"1,4","4":"0,2","5":"setosa-blue"},{"1":"7","2":"3,2","3":"4,7","4":"1,4","5":"versicolor-blue"},{"1":"6,4","2":"3,2","3":"4,5","4":"1,5","5":"versicolor-blue"},{"1":"6,9","2":"3,1","3":"4,9","4":"1,5","5":"versicolor-white"},{"1":"5,5","2":"2,3","3":"4","4":"1,3","5":"versicolor-white"},{"1":"6,5","2":"2,8","3":"4,6","4":"1,5","5":"versicolor-white"},{"1":"5,7","2":"2,8","3":"4,5","4":"1,3","5":"versicolor-purple"},{"1":"6,3","2":"3,3","3":"4,7","4":"1,6","5":"versicolor-purple"},{"1":"4,9","2":"2,4","3":"3,3","4":"1","5":"versicolor-white"},{"1":"6,6","2":"2,9","3":"4,6","4":"1,3","5":"versicolor-blue"},{"1":"5,2","2":"2,7","3":"3,9","4":"1,4","5":"versicolor-white"},{"1":"5","2":"2","3":"3,5","4":"1","5":"versicolor-blue"},{"1":"5,9","2":"3","3":"4,2","4":"1,5","5":"versicolor-white"},{"1":"6","2":"2,2","3":"4","4":"1","5":"versicolor-blue"},{"1":"6,1","2":"2,9","3":"4,7","4":"1,4","5":"versicolor-purple"},{"1":"5,6","2":"2,9","3":"3,6","4":"1,3","5":"versicolor-blue"},{"1":"6,7","2":"3,1","3":"4,4","4":"1,4","5":"versicolor-white"},{"1":"5,6","2":"3","3":"4,5","4":"1,5","5":"versicolor-white"},{"1":"5,8","2":"2,7","3":"4,1","4":"1","5":"versicolor-blue"},{"1":"6,2","2":"2,2","3":"4,5","4":"1,5","5":"versicolor-blue"},{"1":"5,6","2":"2,5","3":"3,9","4":"1,1","5":"versicolor-purple"},{"1":"5,9","2":"3,2","3":"4,8","4":"1,8","5":"versicolor-white"},{"1":"6,1","2":"2,8","3":"4","4":"1,3","5":"versicolor-white"},{"1":"6,3","2":"2,5","3":"4,9","4":"1,5","5":"versicolor-purple"},{"1":"6,1","2":"2,8","3":"4,7","4":"1,2","5":"versicolor-white"},{"1":"6,4","2":"2,9","3":"4,3","4":"1,3","5":"versicolor-purple"},{"1":"6,6","2":"3","3":"4,4","4":"1,4","5":"versicolor-blue"},{"1":"6,8","2":"2,8","3":"4,8","4":"1,4","5":"versicolor-white"},{"1":"6,7","2":"3","3":"5","4":"1,7","5":"versicolor-purple"},{"1":"6","2":"2,9","3":"4,5","4":"1,5","5":"versicolor-purple"},{"1":"5,7","2":"2,6","3":"3,5","4":"1","5":"versicolor-purple"},{"1":"5,5","2":"2,4","3":"3,8","4":"1,1","5":"versicolor-purple"},{"1":"5,5","2":"2,4","3":"3,7","4":"1","5":"versicolor-white"},{"1":"5,8","2":"2,7","3":"3,9","4":"1,2","5":"versicolor-purple"},{"1":"6","2":"2,7","3":"5,1","4":"1,6","5":"versicolor-white"},{"1":"5,4","2":"3","3":"4,5","4":"1,5","5":"versicolor-purple"},{"1":"6","2":"3,4","3":"4,5","4":"1,6","5":"versicolor-white"},{"1":"6,7","2":"3,1","3":"4,7","4":"1,5","5":"versicolor-white"},{"1":"6,3","2":"2,3","3":"4,4","4":"1,3","5":"versicolor-purple"},{"1":"5,6","2":"3","3":"4,1","4":"1,3","5":"versicolor-purple"},{"1":"5,5","2":"2,5","3":"4","4":"1,3","5":"versicolor-blue"},{"1":"5,5","2":"2,6","3":"4,4","4":"1,2","5":"versicolor-purple"},{"1":"6,1","2":"3","3":"4,6","4":"1,4","5":"versicolor-purple"},{"1":"5,8","2":"2,6","3":"4","4":"1,2","5":"versicolor-purple"},{"1":"5","2":"2,3","3":"3,3","4":"1","5":"versicolor-white"},{"1":"5,6","2":"2,7","3":"4,2","4":"1,3","5":"versicolor-purple"},{"1":"5,7","2":"3","3":"4,2","4":"1,2","5":"versicolor-blue"},{"1":"5,7","2":"2,9","3":"4,2","4":"1,3","5":"versicolor-white"},{"1":"6,2","2":"2,9","3":"4,3","4":"1,3","5":"versicolor-blue"},{"1":"5,1","2":"2,5","3":"3","4":"1,1","5":"versicolor-white"},{"1":"5,7","2":"2,8","3":"4,1","4":"1,3","5":"versicolor-purple"},{"1":"6,3","2":"3,3","3":"6","4":"2,5","5":"virginica-purple"},{"1":"5,8","2":"2,7","3":"5,1","4":"1,9","5":"virginica-blue"},{"1":"7,1","2":"3","3":"5,9","4":"2,1","5":"virginica-blue"},{"1":"6,3","2":"2,9","3":"5,6","4":"1,8","5":"virginica-purple"},{"1":"6,5","2":"3","3":"5,8","4":"2,2","5":"virginica-blue"},{"1":"7,6","2":"3","3":"6,6","4":"2,1","5":"virginica-white"},{"1":"4,9","2":"2,5","3":"4,5","4":"1,7","5":"virginica-purple"},{"1":"7,3","2":"2,9","3":"6,3","4":"1,8","5":"virginica-white"},{"1":"6,7","2":"2,5","3":"5,8","4":"1,8","5":"virginica-white"},{"1":"7,2","2":"3,6","3":"6,1","4":"2,5","5":"virginica-purple"},{"1":"6,5","2":"3,2","3":"5,1","4":"2","5":"virginica-purple"},{"1":"6,4","2":"2,7","3":"5,3","4":"1,9","5":"virginica-blue"},{"1":"6,8","2":"3","3":"5,5","4":"2,1","5":"virginica-white"},{"1":"5,7","2":"2,5","3":"5","4":"2","5":"virginica-white"},{"1":"5,8","2":"2,8","3":"5,1","4":"2,4","5":"virginica-blue"},{"1":"6,4","2":"3,2","3":"5,3","4":"2,3","5":"virginica-white"},{"1":"6,5","2":"3","3":"5,5","4":"1,8","5":"virginica-white"},{"1":"7,7","2":"3,8","3":"6,7","4":"2,2","5":"virginica-blue"},{"1":"7,7","2":"2,6","3":"6,9","4":"2,3","5":"virginica-purple"},{"1":"6","2":"2,2","3":"5","4":"1,5","5":"virginica-purple"},{"1":"6,9","2":"3,2","3":"5,7","4":"2,3","5":"virginica-purple"},{"1":"5,6","2":"2,8","3":"4,9","4":"2","5":"virginica-white"},{"1":"7,7","2":"2,8","3":"6,7","4":"2","5":"virginica-white"},{"1":"6,3","2":"2,7","3":"4,9","4":"1,8","5":"virginica-white"},{"1":"6,7","2":"3,3","3":"5,7","4":"2,1","5":"virginica-purple"},{"1":"7,2","2":"3,2","3":"6","4":"1,8","5":"virginica-white"},{"1":"6,2","2":"2,8","3":"4,8","4":"1,8","5":"virginica-purple"},{"1":"6,1","2":"3","3":"4,9","4":"1,8","5":"virginica-purple"},{"1":"6,4","2":"2,8","3":"5,6","4":"2,1","5":"virginica-blue"},{"1":"7,2","2":"3","3":"5,8","4":"1,6","5":"virginica-blue"},{"1":"7,4","2":"2,8","3":"6,1","4":"1,9","5":"virginica-blue"},{"1":"7,9","2":"3,8","3":"6,4","4":"2","5":"virginica-blue"},{"1":"6,4","2":"2,8","3":"5,6","4":"2,2","5":"virginica-purple"},{"1":"6,3","2":"2,8","3":"5,1","4":"1,5","5":"virginica-blue"},{"1":"6,1","2":"2,6","3":"5,6","4":"1,4","5":"virginica-blue"},{"1":"7,7","2":"3","3":"6,1","4":"2,3","5":"virginica-white"},{"1":"6,3","2":"3,4","3":"5,6","4":"2,4","5":"virginica-purple"},{"1":"6,4","2":"3,1","3":"5,5","4":"1,8","5":"virginica-white"},{"1":"6","2":"3","3":"4,8","4":"1,8","5":"virginica-blue"},{"1":"6,9","2":"3,1","3":"5,4","4":"2,1","5":"virginica-purple"},{"1":"6,7","2":"3,1","3":"5,6","4":"2,4","5":"virginica-purple"},{"1":"6,9","2":"3,1","3":"5,1","4":"2,3","5":"virginica-white"},{"1":"5,8","2":"2,7","3":"5,1","4":"1,9","5":"virginica-blue"},{"1":"6,8","2":"3,2","3":"5,9","4":"2,3","5":"virginica-blue"},{"1":"6,7","2":"3,3","3":"5,7","4":"2,5","5":"virginica-blue"},{"1":"6,7","2":"3","3":"5,2","4":"2,3","5":"virginica-white"},{"1":"6,3","2":"2,5","3":"5","4":"1,9","5":"virginica-blue"},{"1":"6,5","2":"3","3":"5,2","4":"2","5":"virginica-white"},{"1":"6,2","2":"3,4","3":"5,4","4":"2,3","5":"virginica-blue"},{"1":"5,9","2":"3","3":"5,1","4":"1,8","5":"virginica-blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Manchmal kommt es vor, dass wir eine Funktion in einer Funktion übergeben, und diese dann nochmal Parameter hat. Im Tidyverse muss man in diesen Fällen immer den Tilde-Operator <code>~</code> voranstellen.</p>
+</div>
+</div>
+<p>Super! Nun sind die Variablennamen so, wie wir sie brauchen.</p>
+</section>
+<section id="datentyp-ändern" class="level3">
+<h3 class="anchored" data-anchor-id="datentyp-ändern">Datentyp ändern</h3>
+<p>Nun stört uns noch, dass die Spalten mit den Blütengrößen noch als <code>character</code> kodiert sind. Das wollen wir ändern, dazu kennen wir ja bereits die <code>mutate(x)</code> Funktion aus der letzten Session und die <code>as.numeric(x)</code> Funktion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aufgabe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ändert die Datentypen der vier Blütengrößenspalten (e.g., <code>sepal_width</code> etc.). Speichert das Ganze noch nicht ab, sondern testet es erst (als Pipe)</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sepal_length =</span> <span class="fu">as.numeric</span>(sepal_length),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_width =</span> <span class="fu">as.numeric</span>(sepal_width),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_length =</span> <span class="fu">as.numeric</span>(petal_length),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_width =</span> <span class="fu">as.numeric</span>(petal_width))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There were 4 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `sepal_length = as.numeric(sepal_length)`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 3 remaining warnings.</code></pre>
+</div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["sepal_length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sepal_width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["petal_length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["petal_width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["type"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"4","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"1","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"5","2":"3","3":"NA","4":"NA","5":"setosa-blue"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-purple"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"5","2":"NA","3":"NA","4":"NA","5":"setosa-blue"},{"1":"7","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"4","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"1","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"5","2":"2","3":"NA","4":"1","5":"versicolor-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-white"},{"1":"6","2":"NA","3":"4","4":"1","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"1","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"4","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"3","3":"5","4":"NA","5":"versicolor-purple"},{"1":"6","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"1","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"NA","4":"1","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"6","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"6","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"4","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"4","4":"NA","5":"versicolor-purple"},{"1":"5","2":"NA","3":"NA","4":"1","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-blue"},{"1":"NA","2":"NA","3":"3","4":"NA","5":"versicolor-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"versicolor-purple"},{"1":"NA","2":"NA","3":"6","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"2","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"5","4":"2","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"6","2":"NA","3":"5","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"2","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"2","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"6","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"2","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"6","2":"3","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-purple"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-white"},{"1":"NA","2":"NA","3":"5","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"2","5":"virginica-white"},{"1":"NA","2":"NA","3":"NA","4":"NA","5":"virginica-blue"},{"1":"NA","2":"3","3":"NA","4":"NA","5":"virginica-blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Das scheint nicht so gut geklappt zu haben. Wie wir sehen, gibt es nun viele <code>NA</code> Werte in den Daten.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Frage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Woran könnte das liegen?</p>
+</div>
+</div>
+<p>Ein genauer Blick zeigt, dass interessanterweise genau die Werte kein <code>NA</code> sind, die vor der Umwandlung keine Nachkommazahl hatten. Das bedeutet, dass die <code>as.numeric(x)</code> Funktion offensichtlich nicht mit Nachkommazahlen klar kommt. Kann das sein?</p>
+<p>Wohl eher nicht. Das Problem ist viel eher, dass wir das falsche Dezimalzeichen in unseren Daten haben, und zwar das <code>,</code> anstatt dem Punkt. Das kann manchmal passieren, wenn wir <code>.csv</code> Dateien mit dem deutschen Excel erstellen. Um das also zu ändern, können wir einfach wieder die <code>str_replace(x)</code> Funktion verwenden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aufgabe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Benutzt die kennengelernten Funktionen, um das Komma durch einen Punkt zu ersetzen bei den Variablen für die Blütengrößen</p>
+</div>
+</div>
+<p>Auch hier hilft uns die <code>mutate(x)</code> Funktion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sepal_length =</span> <span class="fu">str_replace</span>(sepal_length,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">sepal_width =</span> <span class="fu">str_replace</span>(sepal_length,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_length =</span> <span class="fu">str_replace</span>(sepal_length,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">petal_width =</span> <span class="fu">str_replace</span>(sepal_length,<span class="st">","</span>,<span class="st">"."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["sepal_length"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sepal_width"],"name":[2],"type":["chr"],"align":["left"]},{"label":["petal_length"],"name":[3],"type":["chr"],"align":["left"]},{"label":["petal_width"],"name":[4],"type":["chr"],"align":["left"]},{"label":["type"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-white"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"setosa-blue"},{"1":"4.7","2":"4.7","3":"4.7","4":"4.7","5":"setosa-blue"},{"1":"4.6","2":"4.6","3":"4.6","4":"4.6","5":"setosa-purple"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-purple"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"setosa-purple"},{"1":"4.6","2":"4.6","3":"4.6","4":"4.6","5":"setosa-white"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-white"},{"1":"4.4","2":"4.4","3":"4.4","4":"4.4","5":"setosa-white"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"setosa-purple"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"setosa-white"},{"1":"4.8","2":"4.8","3":"4.8","4":"4.8","5":"setosa-white"},{"1":"4.8","2":"4.8","3":"4.8","4":"4.8","5":"setosa-white"},{"1":"4.3","2":"4.3","3":"4.3","4":"4.3","5":"setosa-white"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"setosa-blue"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"setosa-blue"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"setosa-purple"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-blue"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"setosa-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-blue"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"setosa-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-purple"},{"1":"4.6","2":"4.6","3":"4.6","4":"4.6","5":"setosa-purple"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-purple"},{"1":"4.8","2":"4.8","3":"4.8","4":"4.8","5":"setosa-purple"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-blue"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-purple"},{"1":"5.2","2":"5.2","3":"5.2","4":"5.2","5":"setosa-white"},{"1":"5.2","2":"5.2","3":"5.2","4":"5.2","5":"setosa-white"},{"1":"4.7","2":"4.7","3":"4.7","4":"4.7","5":"setosa-blue"},{"1":"4.8","2":"4.8","3":"4.8","4":"4.8","5":"setosa-purple"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"setosa-blue"},{"1":"5.2","2":"5.2","3":"5.2","4":"5.2","5":"setosa-white"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"setosa-purple"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"setosa-white"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-blue"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"setosa-blue"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"setosa-purple"},{"1":"4.4","2":"4.4","3":"4.4","4":"4.4","5":"setosa-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-purple"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-purple"},{"1":"4.5","2":"4.5","3":"4.5","4":"4.5","5":"setosa-white"},{"1":"4.4","2":"4.4","3":"4.4","4":"4.4","5":"setosa-purple"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-white"},{"1":"4.8","2":"4.8","3":"4.8","4":"4.8","5":"setosa-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"setosa-blue"},{"1":"4.6","2":"4.6","3":"4.6","4":"4.6","5":"setosa-white"},{"1":"5.3","2":"5.3","3":"5.3","4":"5.3","5":"setosa-blue"},{"1":"5","2":"5","3":"5","4":"5","5":"setosa-blue"},{"1":"7","2":"7","3":"7","4":"7","5":"versicolor-blue"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"versicolor-blue"},{"1":"6.9","2":"6.9","3":"6.9","4":"6.9","5":"versicolor-white"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"versicolor-white"},{"1":"6.5","2":"6.5","3":"6.5","4":"6.5","5":"versicolor-white"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"versicolor-purple"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"versicolor-purple"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"versicolor-white"},{"1":"6.6","2":"6.6","3":"6.6","4":"6.6","5":"versicolor-blue"},{"1":"5.2","2":"5.2","3":"5.2","4":"5.2","5":"versicolor-white"},{"1":"5","2":"5","3":"5","4":"5","5":"versicolor-blue"},{"1":"5.9","2":"5.9","3":"5.9","4":"5.9","5":"versicolor-white"},{"1":"6","2":"6","3":"6","4":"6","5":"versicolor-blue"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"versicolor-purple"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"versicolor-blue"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"versicolor-white"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"versicolor-white"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"versicolor-blue"},{"1":"6.2","2":"6.2","3":"6.2","4":"6.2","5":"versicolor-blue"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"versicolor-purple"},{"1":"5.9","2":"5.9","3":"5.9","4":"5.9","5":"versicolor-white"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"versicolor-white"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"versicolor-purple"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"versicolor-white"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"versicolor-purple"},{"1":"6.6","2":"6.6","3":"6.6","4":"6.6","5":"versicolor-blue"},{"1":"6.8","2":"6.8","3":"6.8","4":"6.8","5":"versicolor-white"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"versicolor-purple"},{"1":"6","2":"6","3":"6","4":"6","5":"versicolor-purple"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"versicolor-purple"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"versicolor-purple"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"versicolor-white"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"versicolor-purple"},{"1":"6","2":"6","3":"6","4":"6","5":"versicolor-white"},{"1":"5.4","2":"5.4","3":"5.4","4":"5.4","5":"versicolor-purple"},{"1":"6","2":"6","3":"6","4":"6","5":"versicolor-white"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"versicolor-white"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"versicolor-purple"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"versicolor-purple"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"versicolor-blue"},{"1":"5.5","2":"5.5","3":"5.5","4":"5.5","5":"versicolor-purple"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"versicolor-purple"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"versicolor-purple"},{"1":"5","2":"5","3":"5","4":"5","5":"versicolor-white"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"versicolor-purple"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"versicolor-blue"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"versicolor-white"},{"1":"6.2","2":"6.2","3":"6.2","4":"6.2","5":"versicolor-blue"},{"1":"5.1","2":"5.1","3":"5.1","4":"5.1","5":"versicolor-white"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"versicolor-purple"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-purple"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"virginica-blue"},{"1":"7.1","2":"7.1","3":"7.1","4":"7.1","5":"virginica-blue"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-purple"},{"1":"6.5","2":"6.5","3":"6.5","4":"6.5","5":"virginica-blue"},{"1":"7.6","2":"7.6","3":"7.6","4":"7.6","5":"virginica-white"},{"1":"4.9","2":"4.9","3":"4.9","4":"4.9","5":"virginica-purple"},{"1":"7.3","2":"7.3","3":"7.3","4":"7.3","5":"virginica-white"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"virginica-white"},{"1":"7.2","2":"7.2","3":"7.2","4":"7.2","5":"virginica-purple"},{"1":"6.5","2":"6.5","3":"6.5","4":"6.5","5":"virginica-purple"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"virginica-blue"},{"1":"6.8","2":"6.8","3":"6.8","4":"6.8","5":"virginica-white"},{"1":"5.7","2":"5.7","3":"5.7","4":"5.7","5":"virginica-white"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"virginica-blue"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"virginica-white"},{"1":"6.5","2":"6.5","3":"6.5","4":"6.5","5":"virginica-white"},{"1":"7.7","2":"7.7","3":"7.7","4":"7.7","5":"virginica-blue"},{"1":"7.7","2":"7.7","3":"7.7","4":"7.7","5":"virginica-purple"},{"1":"6","2":"6","3":"6","4":"6","5":"virginica-purple"},{"1":"6.9","2":"6.9","3":"6.9","4":"6.9","5":"virginica-purple"},{"1":"5.6","2":"5.6","3":"5.6","4":"5.6","5":"virginica-white"},{"1":"7.7","2":"7.7","3":"7.7","4":"7.7","5":"virginica-white"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-white"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"virginica-purple"},{"1":"7.2","2":"7.2","3":"7.2","4":"7.2","5":"virginica-white"},{"1":"6.2","2":"6.2","3":"6.2","4":"6.2","5":"virginica-purple"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"virginica-purple"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"virginica-blue"},{"1":"7.2","2":"7.2","3":"7.2","4":"7.2","5":"virginica-blue"},{"1":"7.4","2":"7.4","3":"7.4","4":"7.4","5":"virginica-blue"},{"1":"7.9","2":"7.9","3":"7.9","4":"7.9","5":"virginica-blue"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"virginica-purple"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-blue"},{"1":"6.1","2":"6.1","3":"6.1","4":"6.1","5":"virginica-blue"},{"1":"7.7","2":"7.7","3":"7.7","4":"7.7","5":"virginica-white"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-purple"},{"1":"6.4","2":"6.4","3":"6.4","4":"6.4","5":"virginica-white"},{"1":"6","2":"6","3":"6","4":"6","5":"virginica-blue"},{"1":"6.9","2":"6.9","3":"6.9","4":"6.9","5":"virginica-purple"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"virginica-purple"},{"1":"6.9","2":"6.9","3":"6.9","4":"6.9","5":"virginica-white"},{"1":"5.8","2":"5.8","3":"5.8","4":"5.8","5":"virginica-blue"},{"1":"6.8","2":"6.8","3":"6.8","4":"6.8","5":"virginica-blue"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"virginica-blue"},{"1":"6.7","2":"6.7","3":"6.7","4":"6.7","5":"virginica-white"},{"1":"6.3","2":"6.3","3":"6.3","4":"6.3","5":"virginica-blue"},{"1":"6.5","2":"6.5","3":"6.5","4":"6.5","5":"virginica-white"},{"1":"6.2","2":"6.2","3":"6.2","4":"6.2","5":"virginica-blue"},{"1":"5.9","2":"5.9","3":"5.9","4":"5.9","5":"virginica-blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Super! Machen wir auch gleich die <code>as.numeric(x)</code> Funktion und speichern das Ganze ab:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">sepal_length =</span> <span class="fu">str_replace</span>(sepal_length,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sepal_width =</span> <span class="fu">str_replace</span>(sepal_width,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">petal_length =</span> <span class="fu">str_replace</span>(petal_length,<span class="st">","</span>,<span class="st">"."</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">petal_width =</span> <span class="fu">str_replace</span>(petal_width,<span class="st">","</span>,<span class="st">"."</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">sepal_length =</span> <span class="fu">as.numeric</span>(sepal_length),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sepal_width =</span> <span class="fu">as.numeric</span>(sepal_width),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">petal_length =</span> <span class="fu">as.numeric</span>(petal_length),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">petal_width =</span> <span class="fu">as.numeric</span>(petal_width))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Das vierte Problem ist nun auch gelöst. Machen wir uns nun an das letzte Problem - die Spalte <code>type</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aufmerksame Programmierer:innen fragen sich hier bestimmt: Geht das nicht leichter? Müssen wir wirklich jede Spalte von Hand definieren? Ja das geht leichter und natürlich nicht! Auch dafür ist in R gesorgt - das würde hier allerdings den Rahmen sprengen, weshalb wir dies zu einem späteren Zeitpunkt besprechen</p>
+</div>
+</div>
+</section>
+<section id="spalten-aufteilen" class="level3">
+<h3 class="anchored" data-anchor-id="spalten-aufteilen">Spalten aufteilen</h3>
+<p>Wir sehen, dass die Spalte <code>type</code> Informationen aus den Spalten <code>species</code> und <code>color</code> enthält. Angenommen, wir wollten unseren Datensatz nach species gruppieren, so hätten wir hier ein Problem, da immer nur die Kombination aus beiden enthalten ist:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sepal_length_mean =</span> <span class="fu">mean</span>(sepal_length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sepal_length_mean"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"setosa-blue","2":"5.136842"},{"1":"setosa-purple","2":"4.975000"},{"1":"setosa-white","2":"4.873333"},{"1":"versicolor-blue","2":"6.050000"},{"1":"versicolor-purple","2":"5.900000"},{"1":"versicolor-white","2":"5.900000"},{"1":"virginica-blue","2":"6.542105"},{"1":"virginica-purple","2":"6.473333"},{"1":"virginica-white","2":"6.750000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Das wollen wir nun ändern. Dazu bietet sich die <code>separate_wider_delim(x)</code> Funktion aus dem <code>tidyr</code> Package an. Diese funktioniert in einer Pipe nach folgender Syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_wider_delim</span>(column, separator, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Wobei <code>column</code> sich hier auf die betreffende Spalte bezieht, <code>separator</code> auf den Charakter, welcher das Trennzeichen ist (in unserem Fall <code>-</code> und <code>names</code> bezieht sich auf die Namen, die die neuen Spalten bekommen sollen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aufgabe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wendet diese Syntax an und benennt die neuen Spalten so wie die im original Iris-Datensatz.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(type,<span class="st">"-"</span>,<span class="at">names =</span> <span class="fu">c</span>(<span class="st">"species"</span>,<span class="st">"color"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["sepal_length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sepal_width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["petal_length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["petal_width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[5],"type":["chr"],"align":["left"]},{"label":["color"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","6":"white"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","6":"blue"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","6":"blue"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa","6":"purple"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa","6":"purple"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa","6":"purple"},{"1":"4.6","2":"3.4","3":"1.4","4":"0.3","5":"setosa","6":"white"},{"1":"5.0","2":"3.4","3":"1.5","4":"0.2","5":"setosa","6":"white"},{"1":"4.4","2":"2.9","3":"1.4","4":"0.2","5":"setosa","6":"white"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1","5":"setosa","6":"purple"},{"1":"5.4","2":"3.7","3":"1.5","4":"0.2","5":"setosa","6":"white"},{"1":"4.8","2":"3.4","3":"1.6","4":"0.2","5":"setosa","6":"white"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.1","5":"setosa","6":"white"},{"1":"4.3","2":"3.0","3":"1.1","4":"0.1","5":"setosa","6":"white"},{"1":"5.8","2":"4.0","3":"1.2","4":"0.2","5":"setosa","6":"blue"},{"1":"5.7","2":"4.4","3":"1.5","4":"0.4","5":"setosa","6":"blue"},{"1":"5.4","2":"3.9","3":"1.3","4":"0.4","5":"setosa","6":"purple"},{"1":"5.1","2":"3.5","3":"1.4","4":"0.3","5":"setosa","6":"blue"},{"1":"5.7","2":"3.8","3":"1.7","4":"0.3","5":"setosa","6":"blue"},{"1":"5.1","2":"3.8","3":"1.5","4":"0.3","5":"setosa","6":"blue"},{"1":"5.4","2":"3.4","3":"1.7","4":"0.2","5":"setosa","6":"blue"},{"1":"5.1","2":"3.7","3":"1.5","4":"0.4","5":"setosa","6":"purple"},{"1":"4.6","2":"3.6","3":"1.0","4":"0.2","5":"setosa","6":"purple"},{"1":"5.1","2":"3.3","3":"1.7","4":"0.5","5":"setosa","6":"purple"},{"1":"4.8","2":"3.4","3":"1.9","4":"0.2","5":"setosa","6":"purple"},{"1":"5.0","2":"3.0","3":"1.6","4":"0.2","5":"setosa","6":"blue"},{"1":"5.0","2":"3.4","3":"1.6","4":"0.4","5":"setosa","6":"purple"},{"1":"5.2","2":"3.5","3":"1.5","4":"0.2","5":"setosa","6":"white"},{"1":"5.2","2":"3.4","3":"1.4","4":"0.2","5":"setosa","6":"white"},{"1":"4.7","2":"3.2","3":"1.6","4":"0.2","5":"setosa","6":"blue"},{"1":"4.8","2":"3.1","3":"1.6","4":"0.2","5":"setosa","6":"purple"},{"1":"5.4","2":"3.4","3":"1.5","4":"0.4","5":"setosa","6":"blue"},{"1":"5.2","2":"4.1","3":"1.5","4":"0.1","5":"setosa","6":"white"},{"1":"5.5","2":"4.2","3":"1.4","4":"0.2","5":"setosa","6":"purple"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1","5":"setosa","6":"white"},{"1":"5.0","2":"3.2","3":"1.2","4":"0.2","5":"setosa","6":"blue"},{"1":"5.5","2":"3.5","3":"1.3","4":"0.2","5":"setosa","6":"blue"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1","5":"setosa","6":"purple"},{"1":"4.4","2":"3.0","3":"1.3","4":"0.2","5":"setosa","6":"blue"},{"1":"5.1","2":"3.4","3":"1.5","4":"0.2","5":"setosa","6":"purple"},{"1":"5.0","2":"3.5","3":"1.3","4":"0.3","5":"setosa","6":"purple"},{"1":"4.5","2":"2.3","3":"1.3","4":"0.3","5":"setosa","6":"white"},{"1":"4.4","2":"3.2","3":"1.3","4":"0.2","5":"setosa","6":"purple"},{"1":"5.0","2":"3.5","3":"1.6","4":"0.6","5":"setosa","6":"blue"},{"1":"5.1","2":"3.8","3":"1.9","4":"0.4","5":"setosa","6":"white"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.3","5":"setosa","6":"blue"},{"1":"5.1","2":"3.8","3":"1.6","4":"0.2","5":"setosa","6":"blue"},{"1":"4.6","2":"3.2","3":"1.4","4":"0.2","5":"setosa","6":"white"},{"1":"5.3","2":"3.7","3":"1.5","4":"0.2","5":"setosa","6":"blue"},{"1":"5.0","2":"3.3","3":"1.4","4":"0.2","5":"setosa","6":"blue"},{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor","6":"blue"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor","6":"blue"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor","6":"white"},{"1":"5.5","2":"2.3","3":"4.0","4":"1.3","5":"versicolor","6":"white"},{"1":"6.5","2":"2.8","3":"4.6","4":"1.5","5":"versicolor","6":"white"},{"1":"5.7","2":"2.8","3":"4.5","4":"1.3","5":"versicolor","6":"purple"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6","5":"versicolor","6":"purple"},{"1":"4.9","2":"2.4","3":"3.3","4":"1.0","5":"versicolor","6":"white"},{"1":"6.6","2":"2.9","3":"4.6","4":"1.3","5":"versicolor","6":"blue"},{"1":"5.2","2":"2.7","3":"3.9","4":"1.4","5":"versicolor","6":"white"},{"1":"5.0","2":"2.0","3":"3.5","4":"1.0","5":"versicolor","6":"blue"},{"1":"5.9","2":"3.0","3":"4.2","4":"1.5","5":"versicolor","6":"white"},{"1":"6.0","2":"2.2","3":"4.0","4":"1.0","5":"versicolor","6":"blue"},{"1":"6.1","2":"2.9","3":"4.7","4":"1.4","5":"versicolor","6":"purple"},{"1":"5.6","2":"2.9","3":"3.6","4":"1.3","5":"versicolor","6":"blue"},{"1":"6.7","2":"3.1","3":"4.4","4":"1.4","5":"versicolor","6":"white"},{"1":"5.6","2":"3.0","3":"4.5","4":"1.5","5":"versicolor","6":"white"},{"1":"5.8","2":"2.7","3":"4.1","4":"1.0","5":"versicolor","6":"blue"},{"1":"6.2","2":"2.2","3":"4.5","4":"1.5","5":"versicolor","6":"blue"},{"1":"5.6","2":"2.5","3":"3.9","4":"1.1","5":"versicolor","6":"purple"},{"1":"5.9","2":"3.2","3":"4.8","4":"1.8","5":"versicolor","6":"white"},{"1":"6.1","2":"2.8","3":"4.0","4":"1.3","5":"versicolor","6":"white"},{"1":"6.3","2":"2.5","3":"4.9","4":"1.5","5":"versicolor","6":"purple"},{"1":"6.1","2":"2.8","3":"4.7","4":"1.2","5":"versicolor","6":"white"},{"1":"6.4","2":"2.9","3":"4.3","4":"1.3","5":"versicolor","6":"purple"},{"1":"6.6","2":"3.0","3":"4.4","4":"1.4","5":"versicolor","6":"blue"},{"1":"6.8","2":"2.8","3":"4.8","4":"1.4","5":"versicolor","6":"white"},{"1":"6.7","2":"3.0","3":"5.0","4":"1.7","5":"versicolor","6":"purple"},{"1":"6.0","2":"2.9","3":"4.5","4":"1.5","5":"versicolor","6":"purple"},{"1":"5.7","2":"2.6","3":"3.5","4":"1.0","5":"versicolor","6":"purple"},{"1":"5.5","2":"2.4","3":"3.8","4":"1.1","5":"versicolor","6":"purple"},{"1":"5.5","2":"2.4","3":"3.7","4":"1.0","5":"versicolor","6":"white"},{"1":"5.8","2":"2.7","3":"3.9","4":"1.2","5":"versicolor","6":"purple"},{"1":"6.0","2":"2.7","3":"5.1","4":"1.6","5":"versicolor","6":"white"},{"1":"5.4","2":"3.0","3":"4.5","4":"1.5","5":"versicolor","6":"purple"},{"1":"6.0","2":"3.4","3":"4.5","4":"1.6","5":"versicolor","6":"white"},{"1":"6.7","2":"3.1","3":"4.7","4":"1.5","5":"versicolor","6":"white"},{"1":"6.3","2":"2.3","3":"4.4","4":"1.3","5":"versicolor","6":"purple"},{"1":"5.6","2":"3.0","3":"4.1","4":"1.3","5":"versicolor","6":"purple"},{"1":"5.5","2":"2.5","3":"4.0","4":"1.3","5":"versicolor","6":"blue"},{"1":"5.5","2":"2.6","3":"4.4","4":"1.2","5":"versicolor","6":"purple"},{"1":"6.1","2":"3.0","3":"4.6","4":"1.4","5":"versicolor","6":"purple"},{"1":"5.8","2":"2.6","3":"4.0","4":"1.2","5":"versicolor","6":"purple"},{"1":"5.0","2":"2.3","3":"3.3","4":"1.0","5":"versicolor","6":"white"},{"1":"5.6","2":"2.7","3":"4.2","4":"1.3","5":"versicolor","6":"purple"},{"1":"5.7","2":"3.0","3":"4.2","4":"1.2","5":"versicolor","6":"blue"},{"1":"5.7","2":"2.9","3":"4.2","4":"1.3","5":"versicolor","6":"white"},{"1":"6.2","2":"2.9","3":"4.3","4":"1.3","5":"versicolor","6":"blue"},{"1":"5.1","2":"2.5","3":"3.0","4":"1.1","5":"versicolor","6":"white"},{"1":"5.7","2":"2.8","3":"4.1","4":"1.3","5":"versicolor","6":"purple"},{"1":"6.3","2":"3.3","3":"6.0","4":"2.5","5":"virginica","6":"purple"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica","6":"blue"},{"1":"7.1","2":"3.0","3":"5.9","4":"2.1","5":"virginica","6":"blue"},{"1":"6.3","2":"2.9","3":"5.6","4":"1.8","5":"virginica","6":"purple"},{"1":"6.5","2":"3.0","3":"5.8","4":"2.2","5":"virginica","6":"blue"},{"1":"7.6","2":"3.0","3":"6.6","4":"2.1","5":"virginica","6":"white"},{"1":"4.9","2":"2.5","3":"4.5","4":"1.7","5":"virginica","6":"purple"},{"1":"7.3","2":"2.9","3":"6.3","4":"1.8","5":"virginica","6":"white"},{"1":"6.7","2":"2.5","3":"5.8","4":"1.8","5":"virginica","6":"white"},{"1":"7.2","2":"3.6","3":"6.1","4":"2.5","5":"virginica","6":"purple"},{"1":"6.5","2":"3.2","3":"5.1","4":"2.0","5":"virginica","6":"purple"},{"1":"6.4","2":"2.7","3":"5.3","4":"1.9","5":"virginica","6":"blue"},{"1":"6.8","2":"3.0","3":"5.5","4":"2.1","5":"virginica","6":"white"},{"1":"5.7","2":"2.5","3":"5.0","4":"2.0","5":"virginica","6":"white"},{"1":"5.8","2":"2.8","3":"5.1","4":"2.4","5":"virginica","6":"blue"},{"1":"6.4","2":"3.2","3":"5.3","4":"2.3","5":"virginica","6":"white"},{"1":"6.5","2":"3.0","3":"5.5","4":"1.8","5":"virginica","6":"white"},{"1":"7.7","2":"3.8","3":"6.7","4":"2.2","5":"virginica","6":"blue"},{"1":"7.7","2":"2.6","3":"6.9","4":"2.3","5":"virginica","6":"purple"},{"1":"6.0","2":"2.2","3":"5.0","4":"1.5","5":"virginica","6":"purple"},{"1":"6.9","2":"3.2","3":"5.7","4":"2.3","5":"virginica","6":"purple"},{"1":"5.6","2":"2.8","3":"4.9","4":"2.0","5":"virginica","6":"white"},{"1":"7.7","2":"2.8","3":"6.7","4":"2.0","5":"virginica","6":"white"},{"1":"6.3","2":"2.7","3":"4.9","4":"1.8","5":"virginica","6":"white"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.1","5":"virginica","6":"purple"},{"1":"7.2","2":"3.2","3":"6.0","4":"1.8","5":"virginica","6":"white"},{"1":"6.2","2":"2.8","3":"4.8","4":"1.8","5":"virginica","6":"purple"},{"1":"6.1","2":"3.0","3":"4.9","4":"1.8","5":"virginica","6":"purple"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.1","5":"virginica","6":"blue"},{"1":"7.2","2":"3.0","3":"5.8","4":"1.6","5":"virginica","6":"blue"},{"1":"7.4","2":"2.8","3":"6.1","4":"1.9","5":"virginica","6":"blue"},{"1":"7.9","2":"3.8","3":"6.4","4":"2.0","5":"virginica","6":"blue"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.2","5":"virginica","6":"purple"},{"1":"6.3","2":"2.8","3":"5.1","4":"1.5","5":"virginica","6":"blue"},{"1":"6.1","2":"2.6","3":"5.6","4":"1.4","5":"virginica","6":"blue"},{"1":"7.7","2":"3.0","3":"6.1","4":"2.3","5":"virginica","6":"white"},{"1":"6.3","2":"3.4","3":"5.6","4":"2.4","5":"virginica","6":"purple"},{"1":"6.4","2":"3.1","3":"5.5","4":"1.8","5":"virginica","6":"white"},{"1":"6.0","2":"3.0","3":"4.8","4":"1.8","5":"virginica","6":"blue"},{"1":"6.9","2":"3.1","3":"5.4","4":"2.1","5":"virginica","6":"purple"},{"1":"6.7","2":"3.1","3":"5.6","4":"2.4","5":"virginica","6":"purple"},{"1":"6.9","2":"3.1","3":"5.1","4":"2.3","5":"virginica","6":"white"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica","6":"blue"},{"1":"6.8","2":"3.2","3":"5.9","4":"2.3","5":"virginica","6":"blue"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.5","5":"virginica","6":"blue"},{"1":"6.7","2":"3.0","3":"5.2","4":"2.3","5":"virginica","6":"white"},{"1":"6.3","2":"2.5","3":"5.0","4":"1.9","5":"virginica","6":"blue"},{"1":"6.5","2":"3.0","3":"5.2","4":"2.0","5":"virginica","6":"white"},{"1":"6.2","2":"3.4","3":"5.4","4":"2.3","5":"virginica","6":"blue"},{"1":"5.9","2":"3.0","3":"5.1","4":"1.8","5":"virginica","6":"blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Das klappt super! Speichern wir das Ganze noch. Da wir uns sicher sind, dass der neue bereinigte <code>iris</code> Datensatz unserem ursprünglichen entspricht, überschreiben wir diesen auch gleich, und löschen danach den <code>iris_messy</code> Datensatz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>iris_messy <span class="ot">&lt;-</span> iris_messy <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">separate_wider_delim</span>(type,<span class="st">"-"</span>,<span class="at">names =</span> <span class="fu">c</span>(<span class="st">"species"</span>,<span class="st">"color"</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris_messy</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(iris_messy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nächste-session" class="level3">
+<h3 class="anchored" data-anchor-id="nächste-session">Nächste Session</h3>
+<p>Das war’s mit dieser Session. Wir sind nun von unsauberen Daten nicht mehr eingeschüchtert, sondern können etwaige Probleme selbstbewusst lösen! Da wir nun also einen sauberen Datensatz haben und alle Tools zum numerischen Verständnis bereits an der Hand haben fehlt nun natürlich noch die visuelle Komponente - und darum gehts in der nächsten Session <strong>Datenvisualisierung</strong> mit ggplot.</p>
+<p><a href="./visualise.html"><img src="assets/img/next7.png" class="next img-fluid" width="300"></a></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
