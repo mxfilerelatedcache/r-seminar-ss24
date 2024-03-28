@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Simon Krukowski">
 
-<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Übungsblätter &amp; Lösungen</title>
+<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Übungsblatt 4: Transform mit dplyr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +21,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/img/favicon-light.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/img/favicon-light.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,8 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="assignments.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -80,10 +114,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/img/signet_ude_rgb_neg.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/img/signet_ude_rgb_neg.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R (SS24)</span>
     </a>
   </div>
@@ -94,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -102,19 +136,19 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Moodle</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments.html"> 
 <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pipeline.html"> 
+    <a class="nav-link active" href="../../pipeline.html" aria-current="page"> 
 <span class="menu-text">Pipeline</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cheatsheets.html"> 
+    <a class="nav-link" href="../../cheatsheets.html"> 
 <span class="menu-text">Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../../contact.html"> 
 <span class="menu-text">Kontakt</span></a>
   </li>  
   <li class="nav-item">
@@ -132,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Übungsblätter &amp; Lösungen</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Übungsblatt 4: Transform mit dplyr</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -166,13 +200,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pipeline</span></a>
   </div>
 </li>
@@ -193,19 +227,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syntax_datatypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../syntax_datatypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syntax &amp; Datentypen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./packages_help.html" class="sidebar-item-text sidebar-link">
+  <a href="../../packages_help.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages &amp; Help</span></a>
   </div>
 </li>
@@ -222,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import.html" class="sidebar-item-text sidebar-link">
+  <a href="../../import.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Import</span></a>
   </div>
 </li>
@@ -239,19 +273,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./base_r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../base_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Base R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tidy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tidy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transform</span></a>
   </div>
 </li>
@@ -268,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visualise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../visualise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualise</span></a>
   </div>
 </li>
@@ -285,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./model.html" class="sidebar-item-text sidebar-link">
+  <a href="../../model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model</span></a>
   </div>
 </li>
@@ -302,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./communicate.html" class="sidebar-item-text sidebar-link">
+  <a href="../../communicate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communicate</span></a>
   </div>
 </li>
@@ -323,13 +357,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../application1.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Skalen &amp; Summenscores</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../application1.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wide/Long Format</span></a>
   </div>
 </li>
@@ -341,20 +375,45 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#beschreibung" id="toc-beschreibung" class="nav-link active" data-scroll-target="#beschreibung">Beschreibung</a>
+  <ul class="collapse">
+  <li><a href="#punkte" id="toc-punkte" class="nav-link" data-scroll-target="#punkte">Punkte</a></li>
+  <li><a href="#für-expertinnen" id="toc-für-expertinnen" class="nav-link" data-scroll-target="#für-expertinnen">Für Expert:innen</a></li>
+  <li><a href="#abgabe" id="toc-abgabe" class="nav-link" data-scroll-target="#abgabe">Abgabe</a></li>
+  </ul></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-1-1-punkt" id="toc-aufgabe-1-1-punkt" class="nav-link" data-scroll-target="#aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-2-1-punkt" id="toc-aufgabe-2-1-punkt" class="nav-link" data-scroll-target="#aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-3-1-punkt" id="toc-aufgabe-3-1-punkt" class="nav-link" data-scroll-target="#aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-4-1-punkt" id="toc-aufgabe-4-1-punkt" class="nav-link" data-scroll-target="#aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-5-1-punkt" id="toc-aufgabe-5-1-punkt" class="nav-link" data-scroll-target="#aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Übungsblätter &amp; Lösungen</h1>
+<h1 class="title">Übungsblatt 4: Transform mit dplyr</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Krukowski </p>
+          </div>
+  </div>
     
   
     
@@ -365,29 +424,197 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<table class="assignments_table table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Nr.</th>
-<th style="text-align: center;">Übungsblatt</th>
-<th style="text-align: center;">Lösungen</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/assignment.png" class="next img-fluid" width="150"></a></td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/solution.png" class="next img-fluid" width="150"></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/assignment.png" class="next img-fluid" width="150"></a></td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/solution.png" class="next img-fluid" width="150"></a></td>
-</tr>
-</tbody>
-</table>
+<section id="beschreibung" class="level1">
+<h1>Beschreibung</h1>
+<p>Diese Woche habt ihr euch im Seminar mit dem Transformieren von Daten mit <code>dplyr</code> beschäftigt. Wie letzte Woche wollen wir euch hier einiges wiederholen, kombinieren und weiterdenken lassen.</p>
+<p>Falls ihr an einer Stelle mal nicht weiterkommen solltet, sodass die folgenden Aufgaben nicht mehr lösbar sind, meldet euch bitte bei uns.</p>
+<section id="punkte" class="level3">
+<h3 class="anchored" data-anchor-id="punkte">Punkte</h3>
+<p>Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Aufgabenblatt 5 Punkte. Aufgaben, die als <strong>[Bonus]</strong> markiert sind, geben keine Punkte.</p>
+</section>
+<section id="für-expertinnen" class="level3">
+<h3 class="anchored" data-anchor-id="für-expertinnen">Für Expert:innen</h3>
+<p>Manche Aufgaben erfordern Transferwissen, welches ihr im Seminar bisher so nicht direkt gelernt hat. Diese Aufgaben sind als <strong>[Für Expert:innen]</strong> markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).</p>
+</section>
+<section id="abgabe" class="level3">
+<h3 class="anchored" data-anchor-id="abgabe">Abgabe</h3>
+<p>Um eure Hausaufgabe abzugeben, ladet diese bitte als <code>.qmd</code> Datei im Moodle hoch. Etwaige andere Dateien (.html, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. <code>hausaufgabe2_simon_krukowski.qmd</code>, und schreibt hier in der Datei oben bei <code>author</code> euren Namen rein.</p>
+</section>
+</section>
+<section id="aufgaben" class="level1">
+<h1>Aufgaben</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aktiviert benötigte Packages hier</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<section id="aufgabe-1-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</h3>
+<p>Für dieses Übungsblatt benötigt ihr wieder den Titanic Datensatz vom letzten mal. Falls dieser nicht mehr in eurem Environment ist, ladet ihn entsprechend hinein:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>titanic <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datasets/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 891 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (5): Name, Sex, Ticket, Cabin, Embarked
+dbl (7): PassengerId, Survived, Pclass, Age, SibSp, Parch, Fare
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Schaut euch über <code>View(x)</code> den Datensatz erneut an, um euch wieder an die Struktur zu erinnern:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Es fällt auf, dass der Datentyp der <code>Age</code> Variable <code>double</code> ist, bzw. Kommazahlen enthält. Woran könnte das liegen?</p>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-2-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</h3>
+<p>Beim letzten Mal habt ihr mit <code>filter(x)</code> Zeilen herausgefiltert, die bei <code>Age</code> den Wert <code>NA</code> hatten. Allerdings scheint es noch in anderen Spalten <code>NA</code> Werte zu geben. Diese alle einzeln mit <code>filter(x)</code> herauszufiltern, ist euch zu aufwendig.</p>
+<p>Glücklicherweise gibt es in <code>tidyr</code> eine Funktion, mit der ihr genau dies tun könnt: Alle Spalten mit <code>NA</code>s herausfiltern. Findet heraus, welche Funktion das ist und wendet sie an.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 183 × 12
+   PassengerId Survived Pclass Name   Sex     Age SibSp Parch Ticket  Fare Cabin
+         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;
+ 1           2        1      1 Cumin… fema…    38     1     0 PC 17…  71.3 C85  
+ 2           4        1      1 Futre… fema…    35     1     0 113803  53.1 C123 
+ 3           7        0      1 McCar… male     54     0     0 17463   51.9 E46  
+ 4          11        1      3 Sands… fema…     4     1     1 PP 95…  16.7 G6   
+ 5          12        1      1 Bonne… fema…    58     0     0 113783  26.6 C103 
+ 6          22        1      2 Beesl… male     34     0     0 248698  13   D56  
+ 7          24        1      1 Slope… male     28     0     0 113788  35.5 A6   
+ 8          28        0      1 Fortu… male     19     3     2 19950  263   C23 …
+ 9          53        1      1 Harpe… fema…    49     1     0 PC 17…  76.7 D33  
+10          55        0      1 Ostby… male     65     0     1 113509  62.0 B30  
+# ℹ 173 more rows
+# ℹ 1 more variable: Embarked &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Wieviele Zeilen bleiben über und wie praktikabel schätzt ihr diesen Ansatz ein?</p>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-3-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</h3>
+<p>Ihr entscheidet euch, erstmal keine <code>NA</code>s aus dem Datensatz zu entfernen. Euch fällt aber auch auf, dass die Variable <code>Name</code> nur schwer zu gebrauchen ist, und eine einzelne Spalte für den Vor- bzw. Nachnamen praktischer wäre. Dazu habt ihr im Seminar bereits eine <code>tidyr</code> Funktion kennengelernt. Benutzt diese, um die beiden Spalten <code>Name</code> (Vorname) und <code>Surname</code> (Nachname) zu erstellen und speichert den Datensatz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(.,<span class="at">cols=</span>Name,<span class="at">delim=</span><span class="st">","</span>,<span class="at">names=</span><span class="fu">c</span>(<span class="st">"Surname"</span>,<span class="st">"Name"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 891 × 13
+   PassengerId Survived Pclass Surname   Name     Sex     Age SibSp Parch Ticket
+         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
+ 1           1        0      3 Braund    " Mr. O… male     22     1     0 A/5 2…
+ 2           2        1      1 Cumings   " Mrs. … fema…    38     1     0 PC 17…
+ 3           3        1      3 Heikkinen " Miss.… fema…    26     0     0 STON/…
+ 4           4        1      1 Futrelle  " Mrs. … fema…    35     1     0 113803
+ 5           5        0      3 Allen     " Mr. W… male     35     0     0 373450
+ 6           6        0      3 Moran     " Mr. J… male     NA     0     0 330877
+ 7           7        0      1 McCarthy  " Mr. T… male     54     0     0 17463 
+ 8           8        0      3 Palsson   " Maste… male      2     3     1 349909
+ 9           9        1      3 Johnson   " Mrs. … fema…    27     0     2 347742
+10          10        1      2 Nasser    " Mrs. … fema…    14     1     0 237736
+# ℹ 881 more rows
+# ℹ 3 more variables: Fare &lt;dbl&gt;, Cabin &lt;chr&gt;, Embarked &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="aufgabe-4-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</h3>
+<p>Ein genauerer Blick auf die <code>Fare</code> Variable zeigt überraschend geringe Werte - diese entsprechen offensichtlich den Preisen in Dollar aus 1912. Da ihr wissen wollt, wie hoch die Preise heute wären, müsst ihr diese an die Inflation anpassen.</p>
+<p>Eine kurze Recherche zeigt, dass 1$ in 1912 heutzutage 31.80$ wert ist. Das können wir nutzen, um die Preise an die Inflation anzupassen. Nutzt <code>mutate(x)</code>, um die Variable <code>Fare_adj</code> zu erstellen, welche den heutigen Ticketpreis wiedergibt:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fare_adj =</span> Fare<span class="sc">*</span><span class="fl">31.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 891 × 13
+   PassengerId Survived Pclass Name   Sex     Age SibSp Parch Ticket  Fare Cabin
+         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;
+ 1           1        0      3 Braun… male     22     1     0 A/5 2…  7.25 &lt;NA&gt; 
+ 2           2        1      1 Cumin… fema…    38     1     0 PC 17… 71.3  C85  
+ 3           3        1      3 Heikk… fema…    26     0     0 STON/…  7.92 &lt;NA&gt; 
+ 4           4        1      1 Futre… fema…    35     1     0 113803 53.1  C123 
+ 5           5        0      3 Allen… male     35     0     0 373450  8.05 &lt;NA&gt; 
+ 6           6        0      3 Moran… male     NA     0     0 330877  8.46 &lt;NA&gt; 
+ 7           7        0      1 McCar… male     54     0     0 17463  51.9  E46  
+ 8           8        0      3 Palss… male      2     3     1 349909 21.1  &lt;NA&gt; 
+ 9           9        1      3 Johns… fema…    27     0     2 347742 11.1  &lt;NA&gt; 
+10          10        1      2 Nasse… fema…    14     1     0 237736 30.1  &lt;NA&gt; 
+# ℹ 881 more rows
+# ℹ 2 more variables: Embarked &lt;chr&gt;, Fare_adj &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="aufgabe-5-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</h3>
+<p>Die Ticketpreise wirken jedoch immer noch recht “preiswert”. Ihr bemerkt, dass sich die <code>Fare</code> Variable auf Preise in GBP (Pfund, £) bezieht und 1912 ein Pfund fünf Dollar entsprach. Passt eure Berechnung entsprechend an:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fare_adj =</span> Fare<span class="sc">*</span><span class="dv">5</span><span class="sc">*</span><span class="fl">31.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 891 × 13
+   PassengerId Survived Pclass Name   Sex     Age SibSp Parch Ticket  Fare Cabin
+         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;
+ 1           1        0      3 Braun… male     22     1     0 A/5 2…  7.25 &lt;NA&gt; 
+ 2           2        1      1 Cumin… fema…    38     1     0 PC 17… 71.3  C85  
+ 3           3        1      3 Heikk… fema…    26     0     0 STON/…  7.92 &lt;NA&gt; 
+ 4           4        1      1 Futre… fema…    35     1     0 113803 53.1  C123 
+ 5           5        0      3 Allen… male     35     0     0 373450  8.05 &lt;NA&gt; 
+ 6           6        0      3 Moran… male     NA     0     0 330877  8.46 &lt;NA&gt; 
+ 7           7        0      1 McCar… male     54     0     0 17463  51.9  E46  
+ 8           8        0      3 Palss… male      2     3     1 349909 21.1  &lt;NA&gt; 
+ 9           9        1      3 Johns… fema…    27     0     2 347742 11.1  &lt;NA&gt; 
+10          10        1      2 Nasse… fema…    14     1     0 237736 30.1  &lt;NA&gt; 
+# ℹ 881 more rows
+# ℹ 2 more variables: Embarked &lt;chr&gt;, Fare_adj &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Wie hoch ist der durchschnittliche Ticketpreis für die einzelnen Klassen? Benutzt <code>group_by(x)</code> und <code>summarise(x)</code> und berechnet auch die Standardabweichung:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fare_adj =</span> Fare<span class="sc">*</span><span class="dv">5</span><span class="sc">*</span><span class="fl">31.8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Pclass) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(Fare_adj),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(Fare_adj))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Pclass   mean     sd
+   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1      1 13381. 12462.
+2      2  3285.  2133.
+3      3  2174.  1873.</code></pre>
+</div>
+</div>
+<p>Beschreibt kurz die Ergebnisse:</p>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

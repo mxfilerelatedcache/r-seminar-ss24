@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Simon Krukowski">
 
-<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Übungsblätter &amp; Lösungen</title>
+<title>Medienbasierte Wissenskonstruktion mit R (SS24) - Übungsblatt 2: Syntax, Datentypen &amp; Packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +21,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/img/favicon-light.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/img/favicon-light.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,8 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="assignments.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -80,10 +114,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/img/signet_ude_rgb_neg.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/img/signet_ude_rgb_neg.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Medienbasierte Wissenskonstruktion mit R (SS24)</span>
     </a>
   </div>
@@ -94,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -102,19 +136,19 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Moodle</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments.html"> 
 <span class="menu-text">Übungsblätter</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pipeline.html"> 
+    <a class="nav-link active" href="../../pipeline.html" aria-current="page"> 
 <span class="menu-text">Pipeline</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cheatsheets.html"> 
+    <a class="nav-link" href="../../cheatsheets.html"> 
 <span class="menu-text">Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../../contact.html"> 
 <span class="menu-text">Kontakt</span></a>
   </li>  
   <li class="nav-item">
@@ -132,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Übungsblätter &amp; Lösungen</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Übungsblatt 2: Syntax, Datentypen &amp; Packages</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -166,13 +200,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pipeline</span></a>
   </div>
 </li>
@@ -193,19 +227,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syntax_datatypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../syntax_datatypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syntax &amp; Datentypen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./packages_help.html" class="sidebar-item-text sidebar-link">
+  <a href="../../packages_help.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages &amp; Help</span></a>
   </div>
 </li>
@@ -222,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import.html" class="sidebar-item-text sidebar-link">
+  <a href="../../import.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Import</span></a>
   </div>
 </li>
@@ -239,19 +273,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./base_r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../base_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Base R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidy.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tidy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tidy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+  <a href="../../dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transform</span></a>
   </div>
 </li>
@@ -268,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visualise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../visualise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualise</span></a>
   </div>
 </li>
@@ -285,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./model.html" class="sidebar-item-text sidebar-link">
+  <a href="../../model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model</span></a>
   </div>
 </li>
@@ -302,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./communicate.html" class="sidebar-item-text sidebar-link">
+  <a href="../../communicate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communicate</span></a>
   </div>
 </li>
@@ -323,13 +357,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../application1.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Skalen &amp; Summenscores</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../application1.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wide/Long Format</span></a>
   </div>
 </li>
@@ -341,20 +375,46 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#beschreibung" id="toc-beschreibung" class="nav-link active" data-scroll-target="#beschreibung">Beschreibung</a>
+  <ul class="collapse">
+  <li><a href="#punkte" id="toc-punkte" class="nav-link" data-scroll-target="#punkte">Punkte</a></li>
+  <li><a href="#für-expertinnen" id="toc-für-expertinnen" class="nav-link" data-scroll-target="#für-expertinnen">Für Expert:innen</a></li>
+  <li><a href="#abgabe" id="toc-abgabe" class="nav-link" data-scroll-target="#abgabe">Abgabe:</a></li>
+  </ul></li>
+  <li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-1-1-punkt" id="toc-aufgabe-1-1-punkt" class="nav-link" data-scroll-target="#aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-2-1-punkt" id="toc-aufgabe-2-1-punkt" class="nav-link" data-scroll-target="#aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-3-1-punkt" id="toc-aufgabe-3-1-punkt" class="nav-link" data-scroll-target="#aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-4-1-punkt" id="toc-aufgabe-4-1-punkt" class="nav-link" data-scroll-target="#aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-5-1-punkt" id="toc-aufgabe-5-1-punkt" class="nav-link" data-scroll-target="#aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</a></li>
+  <li><a href="#aufgabe-6-bonus" id="toc-aufgabe-6-bonus" class="nav-link" data-scroll-target="#aufgabe-6-bonus">Aufgabe 6 [Bonus]</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Übungsblätter &amp; Lösungen</h1>
+<h1 class="title">Übungsblatt 2: Syntax, Datentypen &amp; Packages</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Krukowski </p>
+          </div>
+  </div>
     
   
     
@@ -365,29 +425,134 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<table class="assignments_table table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Nr.</th>
-<th style="text-align: center;">Übungsblatt</th>
-<th style="text-align: center;">Lösungen</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/assignment.png" class="next img-fluid" width="150"></a></td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/solution.png" class="next img-fluid" width="150"></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/assignment.png" class="next img-fluid" width="150"></a></td>
-<td style="text-align: center;"><a href="./assets/assignments/assignment1.pdf"><img src="assets/img/solution.png" class="next img-fluid" width="150"></a></td>
-</tr>
-</tbody>
-</table>
+<section id="beschreibung" class="level1">
+<h1>Beschreibung</h1>
+<p>Im Seminar habt ihr einige Dinge über <strong>Syntax, Datentypen &amp; Packages</strong> gelernt. Dieses Übungsblatt dient dazu, euer erlerntes Wissen zu festigen. Wie ihr seht, besteht dieses Übungsblatt aus einem Quarto-Markdown Dokument, in welchem ihr direkt in den entsprechenden Chunks eure Antworten/Lösungen eintragen könnt. Dabei können die Antworten entweder Code- oder Text-Blöcke sein - das werden wir dann jeweils kenntlich machen.</p>
+<section id="punkte" class="level3">
+<h3 class="anchored" data-anchor-id="punkte">Punkte</h3>
+<p>Für jede Aufgabe bzw. Teilaufgabe gibt es Punkte - diese sind entsprechend kenntlich gemacht. Insgesamt gibt es für jedes Übungsblatt 5 Punkte. Aufgaben, die als <strong>[Bonus]</strong> markiert sind, geben keine Punkte.</p>
+</section>
+<section id="für-expertinnen" class="level3">
+<h3 class="anchored" data-anchor-id="für-expertinnen">Für Expert:innen</h3>
+<p>Manche Aufgaben erfordern Transferwissen, welches ihr im Seminar bisher so nicht direkt gelernt hat. Diese Aufgaben sind als <strong>[Für Expert:innen]</strong> markiert - hier berücksichtigen wir nicht nur die Lösung, sondern schon eure Lösungsversuche (falls ihr auf keine Lösung kommt).</p>
+</section>
+<section id="abgabe" class="level3">
+<h3 class="anchored" data-anchor-id="abgabe">Abgabe:</h3>
+<p>Um euer Übungsblatt abzugeben, ladet es bitte als <code>.qmd</code> Datei im Moodle hoch. Etwaige andere Dateien (<code>.html</code>, assets-Ordner) müsst ihr nicht hochladen. Bitte benennt die Dateien entsprechend (bspw. <code>hausaufgabe2_simon_krukowski.qmd</code>, und schreibt oben bei <code>author</code> euren Namen rein.</p>
+</section>
+</section>
+<section id="aufgaben" class="level1">
+<h1>Aufgaben</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aktiviert benötigte Packages hier</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<section id="aufgabe-1-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-1-1-punkt">Aufgabe 1 [1 Punkt]</h3>
+<p>Im Seminar habt ihr verschiedene Rechenoperatoren gelernt. Vervollständigt den folgenden Code, indem ihr die entsprechenden Rechenoperationen wie in den Beispielen anpasst, sodass das Ergebnis 13 ist.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">+</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraktion:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Division:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplikation:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponent:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Wurzel:</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="aufgabe-2-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-2-1-punkt">Aufgabe 2 [1 Punkt]</h3>
+<p>Außerdem habt ihr logische Operatoren kennengelernt. Erklärt, warum folgender Ausdruck <code>TRUE</code> zurückgibt:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">41</span> <span class="sc">&lt;</span> <span class="dv">42</span> <span class="sc">|</span> <span class="dv">42</span> <span class="sc">&lt;</span> <span class="dv">43</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-3-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-3-1-punkt">Aufgabe 3 [1 Punkt]</h3>
+<p>Speichert nun das Ergebnis der Rechnung <code>(3.5*14)-7</code> in einem Objekt namens <code>result1</code> und prüft dann, ob es mit <code>result2</code> übereinstimmt (logischer Vergleich):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>result2 <span class="ot">&lt;-</span> <span class="st">"42"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sind die beiden Objekte gleich? Begründet eure Antwort:</p>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-4-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-4-1-punkt">Aufgabe 4 [1 Punkt]</h3>
+<p>Wir wollen die beiden Objekte nun zusammenfügen. Führt folgenden Code aus und erklärt, wie das Ergebnis bzw. etwaige Fehlermeldungen zustande gekommen sein könnten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>combined_results <span class="ot">&lt;-</span> result1<span class="sc">+</span>result2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-5-1-punkt" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-5-1-punkt">Aufgabe 5 [1 Punkt]</h3>
+<p>In der Session habt ihr über Vektoren und Dataframes gelernt. Erstellt nun aus folgenden Vektoren <code>names</code>, <code>age</code>, <code>gender</code> &amp; <code>studied</code> ein Dataframe und nennt es <code>df</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hanna"</span>, <span class="st">"Erik"</span>,<span class="st">"Jona"</span>,<span class="st">"Tom"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>,<span class="dv">26</span>,<span class="dv">30</span>,<span class="dv">20</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"female"</span>,<span class="st">"female"</span>,<span class="st">"diverse"</span>,<span class="st">"male"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>studied <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Extrahiert nun die Zeile mit der Ausprägung <code>Jona</code> in der Spalte <code>names</code> und speichert diese unter dem Namen <code>jona</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Um welchen Datentyp handelt es sich bei dem Objekt <code>jona</code>?</p>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
+</section>
+<section id="aufgabe-6-bonus" class="level3">
+<h3 class="anchored" data-anchor-id="aufgabe-6-bonus">Aufgabe 6 [Bonus]</h3>
+<p>Was würde passieren, wenn ihr zusätzlich <code>row.names = T</code> beim Erstellen des Dataframes als Parameter übergebt?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lösung hier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p><em>Antwort hier</em></p>
+<hr>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
